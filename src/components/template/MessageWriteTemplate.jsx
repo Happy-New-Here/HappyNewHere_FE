@@ -3,6 +3,8 @@
 // params 전역으로 관리하기
 
 import { React, useEffect, useState } from "react";
+import { BASE_URL } from "../../utils/URL";
+import axios from "axios";
 import Message from "../common/Message";
 import sendIcon from "../../assets/sendIcon.svg";
 
