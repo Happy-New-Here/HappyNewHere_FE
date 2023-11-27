@@ -5,17 +5,19 @@ import NicknamePage from "./pages/Nickname";
 import AuthPage from "./pages/Auth";
 import MailSelectPage from "./pages/MailSelect";
 import MailWritePage from "./pages/MailWrite";
+import Root from "./pages/Root";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />,
+    element: <Root />,
     children: [
       { index: true, path: "", element: <HomePage /> },
       {
         path: "auth",
         children: [
           { path: "", element: <AuthPage /> },
+          { path: "kakao/callback", element: <AuthPage /> },
           { path: "nickname", element: <NicknamePage /> },
         ],
       },

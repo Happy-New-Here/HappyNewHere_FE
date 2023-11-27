@@ -1,20 +1,18 @@
 import { Outlet, useNavigation } from "react-router-dom";
 import Footer from "../components/common/Footer";
 
-const RootLayout = () => {
-    const navigation = useNavigation();
+const Root = () => {
+  const navigation = useNavigation();
 
- 
-    return (
-        <>
-            <main>
-                {navigation.state === 'loading' && <p>Loading...</p>}
-                <Outlet />
-            </main>
-            <Footer />
-        </>
-    )
-
+  return (
+    <>
+      <main>
+        {navigation.state === "loading" && <p>Loading...</p>}
+        <Outlet />
+      </main>
+      <Footer />
+    </>
+  );
 };
 
-export default RootLayout;
+export default Root;
