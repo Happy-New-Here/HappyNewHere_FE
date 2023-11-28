@@ -11,9 +11,21 @@ const MessagePaperChoose = () => {
 
   return (
     <div>
-      <MessagePaperThumbnail paperNum="1" onSelect={handlePaperSelect} />
-      <MessagePaperThumbnail paperNum="2" onSelect={handlePaperSelect} />
-      <MessagePaperThumbnail paperNum="3" onSelect={handlePaperSelect} />
+      <MessagePaperThumbnail
+        paperNum="1"
+        backgroundImage="url('src/assets/MessagePaperSample.png')"
+        onSelect={handlePaperSelect}
+      />
+      <MessagePaperThumbnail
+        paperNum="2"
+        backgroundImage="url('src/assets/MessagePaperSample.png')"
+        onSelect={handlePaperSelect}
+      />
+      <MessagePaperThumbnail
+        paperNum="3"
+        backgroundImage="url('src/assets/MessagePaperSample.png')"
+        onSelect={handlePaperSelect}
+      />
     </div>
   );
 };
