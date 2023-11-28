@@ -1,6 +1,15 @@
 // 편지지 선택하는 곳
 import React, { useState } from "react";
+import styled from "styled-components";
 import MessagePaperThumbnail from "../common/MessagePaperThumbnail";
+
+const MessagePaperContainer = styled.div`
+  width: 100vw;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 32px;
+`;
 
 const MessagePaperChoose = () => {
   const [selectedPaperNum, setSelectedPaperNum] = useState(null);
@@ -10,7 +19,7 @@ const MessagePaperChoose = () => {
   };
 
   return (
-    <div>
+    <MessagePaperContainer>
       <MessagePaperThumbnail
         paperNum="1"
         backgroundImage="url('src/assets/MessagePaperSample.png')"
@@ -26,7 +35,7 @@ const MessagePaperChoose = () => {
         backgroundImage="url('src/assets/MessagePaperSample.png')"
         onSelect={handlePaperSelect}
       />
-    </div>
+    </MessagePaperContainer>
   );
 };
 
