@@ -5,20 +5,22 @@
 import { React, useEffect, useState } from "react";
 import { BASE_URL } from "../../utils/URL";
 import axios from "axios";
+import MessagePaperSelect from "../organisms/MessagePaperSelect";
 import Message from "../common/Message";
 import sendIcon from "../../assets/sendIcon.svg";
 
 const MailWriteTemplate = () => {
   const [isSent, setIsSent] = useState(false);
+  const [messageInput, setMessageInput] = useState("");
 
   const handleSendButton = () => {
-    setIsSent = true;
+    setIsSent(true);
   };
 
   let paramsToSend = {
     context: messageInput,
     int: paperNum,
-    authorized: true, // Header Authorization
+    // Header Authorization
     anonymous: false,
   };
 
@@ -35,6 +37,7 @@ const MailWriteTemplate = () => {
 
   return (
     <>
+      <MessagePaperSelect />
       <Message />
 
       <button onChange={handleSendButton}>

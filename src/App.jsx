@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "mail",
+        path: "message",
         children: [
           // { path: "", element: <MessageSelectPage /> },
           { path: "write", element: <MessageWritePage /> },
