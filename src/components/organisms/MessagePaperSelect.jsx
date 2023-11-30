@@ -11,7 +11,7 @@ const MessagePaperContainer = styled.div`
   padding: 0 32px;
 `;
 
-const MessagePaperChoose = () => {
+const MessagePaperSelect = () => {
   const [selectedPaperNum, setSelectedPaperNum] = useState(null);
 
   const handlePaperSelect = (paperNum) => {
@@ -39,4 +39,4 @@ const MessagePaperChoose = () => {
   );
 };
 
-export default MessagePaperChoose;
+export default MessagePaperSelect;
