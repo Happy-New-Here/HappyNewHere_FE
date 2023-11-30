@@ -1,7 +1,9 @@
 // 편지 쓰거나 보여주는 칸
-// background-image 자기가 선택한 편지지 나오게
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setMessageInput } from "../../store/messageInputSlice";
 import styled from "styled-components";
+// import { selectedPaperNum } from "../organisms/MessagePaperSelect";
 
 const PlaceCenter = styled.div`
   display: flex;
@@ -14,7 +16,8 @@ const MessageContainer = styled.div`
   width: 296px;
   height: 296px;
   ${PlaceCenter};
-  background-image: ${(props) => `url(${props.backgroundImage})`};
+  background-image: ${(props) =>
+    `url(${messagePaperSRC[props.backgroundImage]})`};
   margin: 32px 32px 16px;
 `;
 
@@ -31,19 +34,27 @@ const MessageText = styled.form`
 `;
 
 const Message = () => {
-  const [messageInput, setMessageInput] = useState(null);
-  const [backgroundImage, setBackgroundImage] = useState(null);
+  const dispatch = useDispatch();
+  // const [messageInput, setMessageInput] = useState(null);
+  // const [backgroundImage, setBackgroundImage] = useState(null);
+  const messageInput = useSelector((state) => state.messageInput);
+  const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
+
+  const messagePaperSRC = {
+    1: "src/assets/MessagePaperSample.png",
+    2: "src/assets/MessagePaperSample.png",
+    3: "src/assets/MessagePaperSample.png",
+  };
 
   const handleMessageInputChange = (e) => {
-    if (e.target.value !== messageInput) {
-      setMessageInput(e.target.value);
-    }
+    // setMessageInput(e.target.value);
+    dispatch(setMessageInput(e.target.value));
 
     // 메시지 value 입력되었는지 체크 -> send 버튼 활성화
   };
 
   return (
-    <MessageContainer backgroundImage={backgroundImage}>
+    <MessageContainer backgroundImage={selectedPaperNum}>
       <MessageText>
         <Receiver>`To. 카카오톡 닉네임`</Receiver>
         <input

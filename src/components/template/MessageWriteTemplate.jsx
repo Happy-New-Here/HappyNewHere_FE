@@ -1,12 +1,10 @@
-// 메시지 작성 칸 + 보내기 버튼
-// sendButton 누르면 post 요청
-// params 전역으로 관리하기
-
-import { React, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+const messageInput = useSelector((state) => state.messageInput);
+const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
+import Message from "../common/Message";
 import { BASE_URL } from "../../utils/URL";
 import axios from "axios";
-import Message, { messageInput } from "../common/Message";
-import { selectedPaperNum } from "../organisms/MessagePaperSelect";
 import sendIcon from "../../assets/sendIcon.svg";
 
 const MessageWriteTemplate = () => {
@@ -30,12 +28,12 @@ const MessageWriteTemplate = () => {
 
   useEffect(() => {
     axios
-      .post(`${BASE_URL}/message/create`, { paramsToSend })
+      .post(`${BASE_URL}/message/create`, paramsToSend)
       .then((response) => {
-        console.log(`Your message have been sent successfuly.`);
+        console.log(`Your message has been sent successfuly.`);
       })
       .catch((error) => {
-        console.error(`An error occured on sending the message.`);
+        console.error(`An error occured while sending the message.`);
       });
   }, [isSent]);
 

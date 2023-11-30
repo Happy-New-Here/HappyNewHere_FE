@@ -1,8 +1,4 @@
 // 편지지 선택 시 보여줄 편지지 썸네일 한 개
-// 각 썸네일마다 고유 번호 필요
-// 선택 가능하게 누를 수 있게 할 것
-// 편지지 번호는 MessagePaperChoose에서 차례대로 부여 <MessagePaperThumbnail paperNum="1" />
-
 import React, { useState } from "react";
 import styled from "styled-components";
 
