@@ -1,9 +1,9 @@
-import GiftBox from '../common/GiftBox.jsx';
+import GiftBox from '../common/GiftBox';
 
 const HomeTemplate = () => {
     return (
         <>
-            {/* 유튜브 클론 작업중에 시간없어서 중단됨... */}
+            홈 템플릿입니다.
             <GiftBox />
         </>
     );

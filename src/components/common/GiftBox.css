@@ -97,8 +97,6 @@ body {
     transform-origin: 50% 100%;
 }
 
-/* 나머지 코드는 그대로 유지 */
-
 .box-gifts {
     animation: box-Bounce 1.5s ease-in-out infinite;
     background: linear-gradient(#cc2424, #cc2424) 50% 50% / 3.3em 100% no-repeat, #dfd9d9;
