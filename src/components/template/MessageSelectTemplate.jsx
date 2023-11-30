@@ -1,9 +1,11 @@
-const MailSelectTemplate = () => {
-    return(
-        <>
-            편지지 선택창입니다.
-        </>
-    )
-}
+import MessagePaperSelect from "../organisms/MessagePaperSelect";
 
-export default MailSelectTemplate;
+const MessagePaperSelectTemplate = () => {
+  return (
+    <>
+      <MessagePaperSelect />
+    </>
+  );
+};
+
+export default MessagePaperSelectTemplate;

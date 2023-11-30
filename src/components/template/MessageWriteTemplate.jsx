@@ -5,13 +5,17 @@
 import { React, useEffect, useState } from "react";
 import { BASE_URL } from "../../utils/URL";
 import axios from "axios";
-import MessagePaperSelect from "../organisms/MessagePaperSelect";
-import Message from "../common/Message";
+import Message, { messageInput } from "../common/Message";
+import { selectedPaperNum } from "../organisms/MessagePaperSelect";
 import sendIcon from "../../assets/sendIcon.svg";
 
-const MailWriteTemplate = () => {
+const MessageWriteTemplate = () => {
+  const [isChecked, setIsChecked] = useState(false);
   const [isSent, setIsSent] = useState(false);
-  const [messageInput, setMessageInput] = useState("");
+
+  const handleCheckAnonymous = () => {
+    setIsChecked(!isChecked);
+  };
 
   const handleSendButton = () => {
     setIsSent(true);
@@ -19,9 +23,9 @@ const MailWriteTemplate = () => {
 
   let paramsToSend = {
     context: messageInput,
-    int: paperNum,
+    int: selectedPaperNum,
     // Header Authorization
-    anonymous: false,
+    anonymous: isChecked,
   };
 
   useEffect(() => {
@@ -37,9 +41,16 @@ const MailWriteTemplate = () => {
 
   return (
     <>
-      <MessagePaperSelect />
       <Message />
 
+      <form>
+        <label>`익명으로 보내기 `</label>
+        <input
+          type="checkbox"
+          checked={isChecked}
+          onChange={handleCheckAnonymous}
+        />
+      </form>
       <button onChange={handleSendButton}>
         메시지 보내기
         <img src={sendIcon} alt="sendIcon" />
@@ -48,4 +59,4 @@ const MailWriteTemplate = () => {
   );
 };
 
-export default MailWriteTemplate;
+export default MessageWriteTemplate;
