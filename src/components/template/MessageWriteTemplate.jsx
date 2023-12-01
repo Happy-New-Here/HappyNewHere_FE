@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-const messageInput = useSelector((state) => state.messageInput);
-const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
 import Message from "../common/Message";
 import { BASE_URL } from "../../utils/URL";
 import axios from "axios";
 import sendIcon from "../../assets/sendIcon.svg";
 
 const MessageWriteTemplate = () => {
+  const messageInput = useSelector((state) => state.messageInput);
+  const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
   const [isChecked, setIsChecked] = useState(false);
   const [isSent, setIsSent] = useState(false);
 
@@ -49,7 +49,7 @@ const MessageWriteTemplate = () => {
           onChange={handleCheckAnonymous}
         />
       </form>
-      <button onChange={handleSendButton}>
+      <button onClick={handleSendButton}>
         메시지 보내기
         <img src={sendIcon} alt="sendIcon" />
       </button>

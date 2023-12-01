@@ -33,18 +33,18 @@ const MessageText = styled.form`
   overflow-y: scroll;
 `;
 
+const messagePaperSRC = {
+  1: "src/assets/MessagePaperSample.png",
+  2: "src/assets/MessagePaperSample.png",
+  3: "src/assets/MessagePaperSample.png",
+};
+
 const Message = () => {
   const dispatch = useDispatch();
   // const [messageInput, setMessageInput] = useState(null);
   // const [backgroundImage, setBackgroundImage] = useState(null);
   const messageInput = useSelector((state) => state.messageInput);
   const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
-
-  const messagePaperSRC = {
-    1: "src/assets/MessagePaperSample.png",
-    2: "src/assets/MessagePaperSample.png",
-    3: "src/assets/MessagePaperSample.png",
-  };
 
   const handleMessageInputChange = (e) => {
     // setMessageInput(e.target.value);
