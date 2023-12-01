@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Message from "../../common/Message";
+import { Button } from "../../common/Button";
 import { BASE_URL } from "../../../utils/URL";
 import axios from "axios";
 import sendIcon from "../../../assets/sendIcon.svg";
@@ -52,10 +53,16 @@ const MessageWriteOrganism = () => {
           <label>익명으로 보내기 </label>
           <input type="checkbox" checked={isChecked} onChange={handleCheckAnonymous} />
         </form>
-        <button onClick={handleSendButton}>
-          메시지 보내기
+        <Button
+          type="primary"
+          width="88px"
+          height="16px"
+          fontSize="12px"
+          onClick={handleSendButton}
+        >
+          메시지 보내기&nbsp;
           <img src={sendIcon} alt="sendIcon" />
-        </button>
+        </Button>
       </CheckboxAndSendButton>
     </div>
   );
