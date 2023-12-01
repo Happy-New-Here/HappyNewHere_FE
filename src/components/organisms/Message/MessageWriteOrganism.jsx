@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Message from "../../common/Message";
 import { BASE_URL } from "../../../utils/URL";
 import axios from "axios";
-import sendIcon from "../../assets/sendIcon.svg";
+import sendIcon from "../../../assets/sendIcon.svg";
 import styled from "styled-components";
 
 const CheckboxAndSendButton = styled.div`
