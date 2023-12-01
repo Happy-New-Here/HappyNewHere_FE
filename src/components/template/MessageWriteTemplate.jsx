@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import MessagePaperSelect from "../organisms/MessagePaperSelect";
 import Message from "../common/Message";
+import TodayQuestion from "../common/TodayQuestion";
 import { BASE_URL } from "../../utils/URL";
 import axios from "axios";
 import sendIcon from "../../assets/sendIcon.svg";
@@ -13,6 +14,7 @@ const ContentLayout = styled.div`
   justify-content: flex-start;
   width: 100vw;
   height: auto;
+  gap: 32px;
   padding: 0px 32px;
 
   @media (min-width: 768px) {
@@ -61,23 +63,25 @@ const MessageWriteTemplate = () => {
   return (
     <>
       <ContentLayout>
+        <TodayQuestion />
         <MessagePaperSelect />
-
-        <Message />
-        <CheckboxAndSendButton>
-          <form>
-            <label>익명으로 보내기 </label>
-            <input
-              type="checkbox"
-              checked={isChecked}
-              onChange={handleCheckAnonymous}
-            />
-          </form>
-          <button onClick={handleSendButton}>
-            메시지 보내기
-            <img src={sendIcon} alt="sendIcon" />
-          </button>
-        </CheckboxAndSendButton>
+        <div>
+          <Message />
+          <CheckboxAndSendButton>
+            <form>
+              <label>익명으로 보내기 </label>
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={handleCheckAnonymous}
+              />
+            </form>
+            <button onClick={handleSendButton}>
+              메시지 보내기
+              <img src={sendIcon} alt="sendIcon" />
+            </button>
+          </CheckboxAndSendButton>
+        </div>
       </ContentLayout>
     </>
   );

@@ -2,21 +2,16 @@
 import React, { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setMessageInput } from "../../store/messageInputSlice";
-import styled from "styled-components";
 import messagePaperSRC from "../../utils/messagePaperSRC";
-
-const PlaceCenter = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+import styled from "styled-components";
+import { PlaceCenter } from "../../styles/utils";
 
 // 편지지 영역
 const MessageContainer = styled(PlaceCenter)`
   width: 100%;
   background: ${(props) => `url(${messagePaperSRC[props.paperNum]})`};
   background-size: 100% 100%;
-  margin: 32px 0px 16px;
+  margin: 0px 0px 16px;
   padding: 44px 24px;
 `;
 
