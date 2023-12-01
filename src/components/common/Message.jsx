@@ -59,8 +59,6 @@ const Message = () => {
 
   const handleMessageInputChange = (e) => {
     dispatch(setMessageInput(e.target.value));
-
-    // 메시지 value 입력되었는지 체크 -> send 버튼 활성화
   };
 
   return (

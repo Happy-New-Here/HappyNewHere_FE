@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faMicrophone, faImage } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
@@ -10,6 +9,8 @@ const StyledButton = styled.button`
   align-items: center;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
+  padding: ${(props) => props.paddingY} ${(props) => props.paddingX};
+  box-sizing: border-box;
   font-size: ${(props) => props.fontSize};
   border-radius: 5px;
   font-weight: bold;
@@ -17,22 +18,43 @@ const StyledButton = styled.button`
   // transition: background-color 0.3s;
   // font-family: ${(props) => props.theme.fontBody};
 
+  border: none;
+  background-color: #9a0501;
+  color: white;
+
   &:hover {
     cursor: pointer;
     opacity: 0.8;
   }
 `;
 
-const PrimaryButton = styled(StyledButton)`
-  border: none;
-  background-color: #9a0501;
-  color: white;
-`;
+const PrimaryButton = styled(StyledButton)``;
 
 const DottedlineButton = styled(StyledButton)`
-  border: 2px dotted #9a0501;
+  border: 1.5px dotted #9a0501;
   background-color: white;
   color: #9a0501;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #9a0501;
+    color: white;
+    opacity: 0.8;
+  }
+`;
+
+const DisabledButton = styled(StyledButton)`
+  opacity: 0.5;
+
+  ${(props) =>
+    props.disabled &&
+    `
+    cursor: not-allowed;
+    `}
+
+  &:hover {
+    opacity: 0.5;
+  }
 `;
 
 const StyledButtonGroup = styled.div`
@@ -43,25 +65,61 @@ const StyledButtonGroup = styled.div`
 
 const linkHome = "/home";
 const linkMessageWrite = "/message/write";
-const linkFriendsFeed = "/";
 
-// type은 버튼 모양 (필수), children은 내용 (없어도 됨)
-export const Button = ({ type, children, width, height, fontSize, ...rest }) => {
+// type은 버튼 모양 (필수), children은 내용 (선택), 나머지도 다 선택 사항
+export const Button = ({
+  type,
+  children,
+  width,
+  height,
+  paddingX,
+  paddingY,
+  fontSize,
+  ...rest
+}) => {
   const navigate = useNavigate();
 
   if (type === "undefined") {
     throw new Error("type prop is necessary.");
   } else if (type === "primary") {
     return (
-      <PrimaryButton width={width} height={height} fontSize={fontSize} {...rest}>
+      <PrimaryButton
+        width={width}
+        height={height}
+        paddingX={paddingX}
+        paddingY={paddingY}
+        fontSize={fontSize}
+        {...rest}
+      >
         {children}
       </PrimaryButton>
     );
   } else if (type === "dottedline") {
     return (
-      <DottedlineButton width={width} height={height} fontSize={fontSize} {...rest}>
+      <DottedlineButton
+        width={width}
+        height={height}
+        paddingX={paddingX}
+        paddingY={paddingY}
+        fontSize={fontSize}
+        {...rest}
+      >
         {children}
       </DottedlineButton>
+    );
+  } else if (type === "disabled") {
+    return (
+      <DisabledButton
+        width={width}
+        height={height}
+        paddingX={paddingX}
+        paddingY={paddingY}
+        fontSize={fontSize}
+        disabled
+        {...rest}
+      >
+        {children}
+      </DisabledButton>
     );
   } else throw new Error("undefined type");
 };

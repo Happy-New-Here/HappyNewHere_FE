@@ -31,7 +31,9 @@ const MessageWriteOrganism = () => {
   };
 
   const handleSendButton = () => {
-    setIsSent(true);
+    if (messageInput) {
+      setIsSent(true);
+    }
   };
 
   let paramsToSend = {
@@ -60,16 +62,29 @@ const MessageWriteOrganism = () => {
           <label>익명으로 보내기&nbsp;</label>
           <input type="checkbox" checked={isChecked} onChange={handleCheckAnonymous} />
         </AnonymousCheckBox>
-        <Button
-          type="primary"
-          width="110px"
-          height="30px"
-          fontSize="12px"
-          onClick={handleSendButton}
-        >
-          메시지 보내기&nbsp;
-          <img src={sendIcon} alt="sendIcon" />
-        </Button>
+        {messageInput ? (
+          <Button
+            type="primary"
+            // paddingX="12px"
+            // paddingY="6px"
+            fontSize="12px"
+            onClick={handleSendButton}
+          >
+            메시지 보내기&nbsp;
+            <img src={sendIcon} alt="sendIcon" />
+          </Button>
+        ) : (
+          <Button
+            type="disabled"
+            // paddingX="12px"
+            // paddingY="6px"
+            fontSize="12px"
+            onClick={handleSendButton}
+          >
+            메시지 보내기&nbsp;
+            <img src={sendIcon} alt="sendIcon" />
+          </Button>
+        )}
       </CheckboxAndSendButton>
     </div>
   );
