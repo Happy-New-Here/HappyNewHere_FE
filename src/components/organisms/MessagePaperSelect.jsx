@@ -29,19 +29,16 @@ const MessagePaperSelect = () => {
     <MessagePaperContainer>
       <MessagePaperThumbnail
         paperNum="1"
-        backgroundImage="url('src/assets/MessagePaperSample.png')"
         isSelected={selectedPaperNum === "1"}
         onSelect={handlePaperSelect}
       />
       <MessagePaperThumbnail
         paperNum="2"
-        backgroundImage="url('src/assets/MessagePaperSample.png')"
         isSelected={selectedPaperNum === "2"}
         onSelect={handlePaperSelect}
       />
       <MessagePaperThumbnail
         paperNum="3"
-        backgroundImage="url('src/assets/MessagePaperSample.png')"
         isSelected={selectedPaperNum === "3"}
         onSelect={handlePaperSelect}
       />

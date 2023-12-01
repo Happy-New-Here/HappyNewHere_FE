@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setMessageInput } from "../../store/messageInputSlice";
 import styled from "styled-components";
+import messagePaperSRC from "../../utils/messagePaperSRC";
 
 const PlaceCenter = styled.div`
   display: flex;
@@ -13,10 +14,9 @@ const PlaceCenter = styled.div`
 // 편지지 영역
 const MessageContainer = styled(PlaceCenter)`
   width: 100%;
-  background-color: #eeeeee;
-  background-image: ${(props) => `url(${messagePaperSRC[props.backgroundImage]})`};
-  margin: 32px 0px 16px;
+  background: ${(props) => `url(${messagePaperSRC[props.paperNum]})`};
   background-size: 100% 100%;
+  margin: 32px 0px 16px;
   padding: 44px 24px;
 `;
 
@@ -44,12 +44,6 @@ const TextArea = styled.textarea`
   overflow: scroll;
 `;
 
-const messagePaperSRC = {
-  1: "src/assets/MessagePaperSample.png",
-  2: "src/assets/MessagePaperSample.png",
-  3: "src/assets/MessagePaperSample.png",
-};
-
 const Message = () => {
   // MessageContainer height width에 따라 동적 적용
   const messageContainerRef = useRef(null);
@@ -73,7 +67,7 @@ const Message = () => {
   };
 
   return (
-    <MessageContainer ref={messageContainerRef} backgroundImage={selectedPaperNum}>
+    <MessageContainer ref={messageContainerRef} paperNum={selectedPaperNum}>
       <MessageText>
         <Receiver>To. {receiverNickname}</Receiver>
         <TextArea
