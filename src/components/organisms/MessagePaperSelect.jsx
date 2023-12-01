@@ -1,5 +1,5 @@
 // 편지지 선택하는 곳
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedPaperNum } from "../../store/SelectedPaperNumSlice";
 import MessagePaperThumbnail from "../common/MessagePaperThumbnail";
@@ -14,13 +14,12 @@ const MessagePaperContainer = styled.div`
 `;
 
 const MessagePaperSelect = () => {
-  // const [selectedPaperNum, setSelectedPaperNum] = useState(1);
   const dispatch = useDispatch();
   const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
 
   const handlePaperSelect = (paperNum) => {
-    // setSelectedPaperNum(paperNum);
     dispatch(setSelectedPaperNum(paperNum));
+    console.log(`paper ${selectedPaperNum} is selected.`);
   };
 
   return (
@@ -28,19 +27,19 @@ const MessagePaperSelect = () => {
       <MessagePaperThumbnail
         paperNum="1"
         backgroundImage="url('src/assets/MessagePaperSample.png')"
-        selected={selectedPaperNum === "1"}
+        isSelected={selectedPaperNum === "1"}
         onSelect={handlePaperSelect}
       />
       <MessagePaperThumbnail
         paperNum="2"
         backgroundImage="url('src/assets/MessagePaperSample.png')"
-        selected={selectedPaperNum === "2"}
+        isSelected={selectedPaperNum === "2"}
         onSelect={handlePaperSelect}
       />
       <MessagePaperThumbnail
         paperNum="3"
         backgroundImage="url('src/assets/MessagePaperSample.png')"
-        selected={selectedPaperNum === "3"}
+        isSelected={selectedPaperNum === "3"}
         onSelect={handlePaperSelect}
       />
     </MessagePaperContainer>

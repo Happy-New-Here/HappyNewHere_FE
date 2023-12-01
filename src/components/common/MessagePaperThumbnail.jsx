@@ -1,5 +1,5 @@
 // 편지지 선택 시 보여줄 편지지 썸네일 한 개
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const MessagePaperButton = styled.button`
@@ -9,7 +9,7 @@ const MessagePaperButton = styled.button`
   background-image: ${(props) => `url(${props.backgroundImage})`};
 
   ${(props) =>
-    props.selected &&
+    props.isSelected &&
     `
     border: 2px solid black;
     `}
@@ -18,21 +18,17 @@ const MessagePaperButton = styled.button`
 const MessagePaperThumbnail = ({
   paperNum,
   backgroundImage,
-  selected,
+  isSelected,
   onSelect,
 }) => {
-  // const [selected, setSelected] = useState(false);
-
   const handlePaperChange = () => {
-    // setSelected((prevSelected) => !prevSelected);
     onSelect(paperNum); // 부모 컴포넌트 MessagePaperSelect로 전달
   };
 
   return (
     <MessagePaperButton
-      className={`MessagePaperThumbnail ${selected ? "selected" : ""}`}
       backgroundImage={backgroundImage}
-      selected={selected}
+      isSelected={isSelected}
       onClick={handlePaperChange}
     />
   );
