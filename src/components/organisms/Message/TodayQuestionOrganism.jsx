@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { PlaceCenter, PlaceLeftRow, PlaceLeftColumn } from "../../styles/utils";
+import { PlaceCenter, PlaceLeftRow, PlaceLeftColumn } from "../../../styles/utils";
 
 const TodayQuestionContainer = styled(PlaceLeftColumn)`
   width: 100%;

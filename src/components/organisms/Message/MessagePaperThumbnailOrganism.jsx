@@ -1,8 +1,8 @@
 // 편지지 선택하는 곳
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setSelectedPaperNum } from "../../store/SelectedPaperNumSlice";
-import MessagePaperThumbnail from "../common/MessagePaperThumbnail";
+import { setSelectedPaperNum } from "../../../store/SelectedPaperNumSlice";
+import MessagePaperThumbnail from "../../common/MessagePaperThumbnail";
 import styled from "styled-components";
 
 const MessagePaperContainer = styled.div`
