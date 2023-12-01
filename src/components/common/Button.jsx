@@ -8,15 +8,9 @@ const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: ${(props) => {
-    props.width;
-  }};
-  height: ${(props) => {
-    props.height;
-  }};
-  font-size: ${(props) => {
-    props.fontSize;
-  }};
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  font-size: ${(props) => props.fontSize};
   border-radius: 5px;
   font-weight: bold;
   text-decoration: none;

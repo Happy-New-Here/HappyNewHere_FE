@@ -13,6 +13,13 @@ const CheckboxAndSendButton = styled.div`
   align-items: center;
 `;
 
+const AnonymousCheckBox = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+`;
+
 const MessageWriteOrganism = () => {
   const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
   const messageInput = useSelector((state) => state.messageInput);
@@ -49,14 +56,14 @@ const MessageWriteOrganism = () => {
     <div>
       <Message />
       <CheckboxAndSendButton>
-        <form>
-          <label>익명으로 보내기 </label>
+        <AnonymousCheckBox>
+          <label>익명으로 보내기&nbsp;</label>
           <input type="checkbox" checked={isChecked} onChange={handleCheckAnonymous} />
-        </form>
+        </AnonymousCheckBox>
         <Button
           type="primary"
-          width="88px"
-          height="16px"
+          width="110px"
+          height="30px"
           fontSize="12px"
           onClick={handleSendButton}
         >
