@@ -15,11 +15,16 @@ const MessagePaperButton = styled.button`
     `}
 `;
 
-const MessagePaperThumbnail = ({ paperNum, backgroundImage, onSelect }) => {
-  const [selected, setSelected] = useState(false);
+const MessagePaperThumbnail = ({
+  paperNum,
+  backgroundImage,
+  selected,
+  onSelect,
+}) => {
+  // const [selected, setSelected] = useState(false);
 
   const handlePaperChange = () => {
-    setSelected((prevSelected) => !prevSelected);
+    // setSelected((prevSelected) => !prevSelected);
     onSelect(paperNum); // 부모 컴포넌트 MessagePaperSelect로 전달
   };
 
