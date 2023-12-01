@@ -1,5 +1,5 @@
 // 편지 쓰거나 보여주는 칸
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setMessageInput } from "../../store/messageInputSlice";
 import styled from "styled-components";
@@ -13,10 +13,8 @@ const PlaceCenter = styled.div`
 // 편지지 영역
 const MessageContainer = styled(PlaceCenter)`
   width: 100%;
-  height: 296px;
   background-color: #eeeeee;
-  background-image: ${(props) =>
-    `url(${messagePaperSRC[props.backgroundImage]})`};
+  background-image: ${(props) => `url(${messagePaperSRC[props.backgroundImage]})`};
   margin: 32px 0px 16px;
   background-size: 100% 100%;
   padding: 44px 24px;
@@ -53,6 +51,16 @@ const messagePaperSRC = {
 };
 
 const Message = () => {
+  // MessageContainer height width에 따라 동적 적용
+  const messageContainerRef = useRef(null);
+
+  useEffect(() => {
+    const messageContainer = messageContainerRef.current;
+    const width = messageContainer.offsetWidth;
+    const height = width;
+    messageContainer.style.height = `${height}px`;
+  }, []);
+
   const receiverNickname = ""; // 카카오톡 닉네임
   const dispatch = useDispatch();
   const messageInput = useSelector((state) => state.messageInput);
@@ -65,7 +73,7 @@ const Message = () => {
   };
 
   return (
-    <MessageContainer backgroundImage={selectedPaperNum}>
+    <MessageContainer ref={messageContainerRef} backgroundImage={selectedPaperNum}>
       <MessageText>
         <Receiver>To. {receiverNickname}</Receiver>
         <TextArea
