@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Message from "../../common/Message";
 import { Button } from "../../common/Button";
@@ -25,6 +26,7 @@ const MessageWriteOrganism = () => {
   const messageInput = useSelector((state) => state.messageInput);
   const [isChecked, setIsChecked] = useState(false);
   const [isSent, setIsSent] = useState(false);
+  const navigate = useNavigate();
 
   const handleCheckAnonymous = () => {
     setIsChecked(!isChecked);
@@ -48,6 +50,7 @@ const MessageWriteOrganism = () => {
       .post(`${BASE_URL}/message/create`, paramsToSend)
       .then((response) => {
         console.log(`Your message has been sent successfuly.`);
+        navigate("/");
       })
       .catch((error) => {
         console.error(`An error occured while sending the message.`);

@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faMicrophone, faImage } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
@@ -63,7 +62,7 @@ const StyledButtonGroup = styled.div`
   margin: 10px 0px;
 `;
 
-const linkHome = "/home";
+const linkHome = "/";
 const linkMessageWrite = "/message/write";
 
 // type은 버튼 모양 (필수), children은 내용 (선택), 나머지도 다 선택 사항
@@ -77,8 +76,6 @@ export const Button = ({
   fontSize,
   ...rest
 }) => {
-  const navigate = useNavigate();
-
   if (type === "undefined") {
     throw new Error("type prop is necessary.");
   } else if (type === "primary") {
