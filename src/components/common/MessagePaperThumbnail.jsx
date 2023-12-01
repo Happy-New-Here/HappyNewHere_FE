@@ -6,6 +6,7 @@ const MessagePaperButton = styled.button`
   width: 64px;
   height: 64px;
   border: none;
+  border-radius: 0;
   background-image: ${(props) => `url(${props.backgroundImage})`};
 
   ${(props) =>

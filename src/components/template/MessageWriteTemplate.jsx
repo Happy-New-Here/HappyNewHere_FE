@@ -5,6 +5,26 @@ import Message from "../common/Message";
 import { BASE_URL } from "../../utils/URL";
 import axios from "axios";
 import sendIcon from "../../assets/sendIcon.svg";
+import styled from "styled-components";
+
+const ContentLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100vw;
+  height: auto;
+  padding: 0px 32px;
+
+  @media (min-width: 768px) {
+    width: 322px;
+  }
+`;
+
+const CheckboxAndSendButton = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 const MessageWriteTemplate = () => {
   const messageInput = useSelector((state) => state.messageInput);
@@ -40,22 +60,25 @@ const MessageWriteTemplate = () => {
 
   return (
     <>
-      <MessagePaperSelect />
+      <ContentLayout>
+        <MessagePaperSelect />
 
-      <Message />
-
-      <form>
-        <label>`익명으로 보내기 `</label>
-        <input
-          type="checkbox"
-          checked={isChecked}
-          onChange={handleCheckAnonymous}
-        />
-      </form>
-      <button onClick={handleSendButton}>
-        메시지 보내기
-        <img src={sendIcon} alt="sendIcon" />
-      </button>
+        <Message />
+        <CheckboxAndSendButton>
+          <form>
+            <label>익명으로 보내기 </label>
+            <input
+              type="checkbox"
+              checked={isChecked}
+              onChange={handleCheckAnonymous}
+            />
+          </form>
+          <button onClick={handleSendButton}>
+            메시지 보내기
+            <img src={sendIcon} alt="sendIcon" />
+          </button>
+        </CheckboxAndSendButton>
+      </ContentLayout>
     </>
   );
 };

@@ -1,9 +1,8 @@
 // 편지 쓰거나 보여주는 칸
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setMessageInput } from "../../store/messageInputSlice";
 import styled from "styled-components";
-// import { selectedPaperNum } from "../organisms/MessagePaperSelect";
 
 const PlaceCenter = styled.div`
   display: flex;
@@ -12,25 +11,39 @@ const PlaceCenter = styled.div`
 `;
 
 // 편지지 영역
-const MessageContainer = styled.div`
-  width: 296px;
+const MessageContainer = styled(PlaceCenter)`
+  width: 100%;
   height: 296px;
-  ${PlaceCenter};
+  background-color: #eeeeee;
   background-image: ${(props) =>
     `url(${messagePaperSRC[props.backgroundImage]})`};
-  margin: 32px 32px 16px;
+  margin: 32px 0px 16px;
+  background-size: 100% 100%;
+  padding: 44px 24px;
 `;
 
-const Receiver = styled.div`
-  ${PlaceCenter};
+const Receiver = styled.p`
   font-weight: bold;
 `;
 
 // 사용자 입력 받을 메시지 내용
 const MessageText = styled.form`
-  width: 248px;
-  height: 251px;
-  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+`;
+
+const TextArea = styled.textarea`
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: none;
+  resize: none;
+  overflow: scroll;
 `;
 
 const messagePaperSRC = {
@@ -40,14 +53,12 @@ const messagePaperSRC = {
 };
 
 const Message = () => {
+  const receiverNickname = ""; // 카카오톡 닉네임
   const dispatch = useDispatch();
-  // const [messageInput, setMessageInput] = useState(null);
-  // const [backgroundImage, setBackgroundImage] = useState(null);
   const messageInput = useSelector((state) => state.messageInput);
   const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
 
   const handleMessageInputChange = (e) => {
-    // setMessageInput(e.target.value);
     dispatch(setMessageInput(e.target.value));
 
     // 메시지 value 입력되었는지 체크 -> send 버튼 활성화
@@ -56,9 +67,8 @@ const Message = () => {
   return (
     <MessageContainer backgroundImage={selectedPaperNum}>
       <MessageText>
-        <Receiver>`To. 카카오톡 닉네임`</Receiver>
-        <input
-          type="text"
+        <Receiver>To. {receiverNickname}</Receiver>
+        <TextArea
           placeholder="여기에 메시지를 입력하세요"
           value={messageInput}
           onChange={handleMessageInputChange}

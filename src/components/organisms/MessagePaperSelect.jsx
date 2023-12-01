@@ -6,11 +6,11 @@ import MessagePaperThumbnail from "../common/MessagePaperThumbnail";
 import styled from "styled-components";
 
 const MessagePaperContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   height: auto;
   display: flex;
   justify-content: space-between;
-  padding: 0 32px;
+  // padding: 0 32px;
 `;
 
 const MessagePaperSelect = () => {
