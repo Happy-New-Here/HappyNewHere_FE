@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import AuthTemplate from "../components/template/AuthTemplate";
 import AuthRedirect from "../components/template/AuthRedirect";
-import KakaoLoginBtn from "../components/common/KakaoLoginBtn";
+import KakaoLoginBtn from "../components/common/kakaoLoginBtn";
 
 const AuthPage = () => {
   // Redux store에서 isLoggedIn 상태 가져오기
