@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import MessagePaperSelect from "../organisms/MessagePaperSelect";
 import Message from "../common/Message";
 import { BASE_URL } from "../../utils/URL";
 import axios from "axios";
@@ -39,6 +40,8 @@ const MessageWriteTemplate = () => {
 
   return (
     <>
+      <MessagePaperSelect />
+
       <Message />
 
       <form>
