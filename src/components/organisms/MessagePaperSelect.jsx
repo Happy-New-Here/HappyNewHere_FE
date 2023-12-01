@@ -1,5 +1,5 @@
 // 편지지 선택하는 곳
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedPaperNum } from "../../store/SelectedPaperNumSlice";
 import MessagePaperThumbnail from "../common/MessagePaperThumbnail";
@@ -19,8 +19,11 @@ const MessagePaperSelect = () => {
 
   const handlePaperSelect = (paperNum) => {
     dispatch(setSelectedPaperNum(paperNum));
-    console.log(`paper ${selectedPaperNum} is selected.`);
   };
+
+  useEffect(() => {
+    console.log(`paper ${selectedPaperNum} is selected.`);
+  }, [selectedPaperNum]);
 
   return (
     <MessagePaperContainer>
