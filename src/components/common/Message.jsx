@@ -17,6 +17,7 @@ const MessageContainer = styled(PlaceCenter)`
 
 const Receiver = styled.p`
   font-weight: bold;
+  font-size: 18px;
 `;
 
 // 사용자 입력 받을 메시지 내용
@@ -37,6 +38,7 @@ const TextArea = styled.textarea`
   background: none;
   resize: none;
   overflow: scroll;
+  font-size: 16px;
 `;
 
 const Message = () => {
@@ -50,15 +52,13 @@ const Message = () => {
     messageContainer.style.height = `${height}px`;
   }, []);
 
-  const receiverNickname = ""; // 카카오톡 닉네임
+  const receiverNickname = "민주"; // 카카오톡 닉네임
   const dispatch = useDispatch();
   const messageInput = useSelector((state) => state.messageInput);
   const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
 
   const handleMessageInputChange = (e) => {
     dispatch(setMessageInput(e.target.value));
-
-    // 메시지 value 입력되었는지 체크 -> send 버튼 활성화
   };
 
   return (
