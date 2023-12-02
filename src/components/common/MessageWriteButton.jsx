@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setIsMessageWriteVisible } from "../../store/isMessageWriteVisibleSlice";
 import { Button } from "../../components/common/Button";
 import envelopeIconRed from "../../assets/envelopeIconRed.svg";
 import envelopeIconWhite from "../../assets/envelopeIconWhite.svg";
@@ -18,10 +19,10 @@ const EnvelopeIcon = styled.img`
 const MessageWriteButton = () => {
   const [hover, setHover] = useState(false);
 
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleMessageWriteButtonClick = () => {
-    // navigate("/");
+    dispatch(setIsMessageWriteVisible(true));
   };
 
   return (
