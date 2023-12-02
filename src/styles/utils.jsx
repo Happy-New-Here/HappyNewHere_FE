@@ -19,6 +19,17 @@ export const PlaceLeftColumn = styled.div`
   align-items: flex-start;
 `;
 
+// 헤더 영역 레이아웃
+export const HeaderLayout = styled(PlaceLeftRow)`
+  width: 100vw;
+  height: 76px;
+  padding: 20px 20px;
+
+  @media (min-width: 768px) {
+    width: 220px; // 임의
+  }
+`;
+
 // 컨텐트 영역 레이아웃: 좌우 패딩 32px씩
 export const ContentLayout = styled.div`
   display: flex;

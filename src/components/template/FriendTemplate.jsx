@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Header from "../common/Header";
 import TodayQuestionOrganism from "../organisms/Message/TodayQuestionOrganism";
 import MessageWriteButtonOrganism from "../organisms/Message/MessageWriteButtonOrganism";
 import MessagePaperThumbnailOrganism from "../organisms/Message/MessagePaperThumbnailOrganism";
@@ -11,6 +12,7 @@ const MessageWriteTemplate = () => {
 
   return (
     <>
+      <Header />
       <div>프로필과 상태메시지</div>
       <ContentLayout>
         <TodayQuestionOrganism />
