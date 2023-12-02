@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import TodayQuestion from "../organisms/Message/TodayQuestionOrganism";
+import TodayQuestionOrganism from "../organisms/Message/TodayQuestionOrganism";
 import MessageWriteButtonOrganism from "../organisms/Message/MessageWriteButtonOrganism";
-import MessagePaperSelect from "../organisms/Message/MessagePaperThumbnailOrganism";
+import MessagePaperThumbnailOrganism from "../organisms/Message/MessagePaperThumbnailOrganism";
 import MessageWriteOrganism from "../organisms/Message/MessageWriteOrganism";
 import { ContentLayout } from "../../styles/utils";
 
@@ -13,10 +13,10 @@ const MessageWriteTemplate = () => {
     <>
       <div>프로필과 상태메시지</div>
       <ContentLayout>
-        <TodayQuestion />
+        <TodayQuestionOrganism />
         {isMessageWriteVisible ? (
           <>
-            <MessagePaperSelect />
+            <MessagePaperThumbnailOrganism />
             <MessageWriteOrganism />
           </>
         ) : (
