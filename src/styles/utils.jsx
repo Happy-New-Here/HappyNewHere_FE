@@ -66,6 +66,8 @@ export const ContentLayout = styled.div`
   gap: 32px;
   padding: 0px 32px;
 
+  overflow: scroll;
+
   @media (min-width: 768px) {
     flex-direction: row;
     padding: 0;
@@ -84,13 +86,13 @@ export const Center = styled.div`
   @media (min-width: 768px) {
     order: 1;
 
-    width: 322px; // 임의
+    width: 400px; // 임의
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     gap: 32px;
 
-    overflow: scroll;
+    // overflow: scroll;
   }
 `;
 
