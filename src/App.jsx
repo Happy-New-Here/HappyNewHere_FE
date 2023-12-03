@@ -3,7 +3,7 @@ import HomePage from "./pages/Home";
 import SearchPage from "./pages/Search";
 import NicknamePage from "./pages/Nickname";
 import AuthPage from "./pages/Auth";
-import Friend from "./pages/Friend";
+import FriendPage from "./pages/Friend";
 import Root from "./pages/Root";
 
 const router = createBrowserRouter([
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path: "friend",
-        children: [{ path: "", element: <Friend /> }],
+        children: [{ path: "", element: <FriendPage /> }],
       },
       { path: "search", element: <SearchPage /> },
     ],

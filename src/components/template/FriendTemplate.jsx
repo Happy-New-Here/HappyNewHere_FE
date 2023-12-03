@@ -5,27 +5,63 @@ import TodayQuestionOrganism from "../organisms/Message/TodayQuestionOrganism";
 import MessageWriteButtonOrganism from "../organisms/Message/MessageWriteButtonOrganism";
 import MessagePaperThumbnailOrganism from "../organisms/Message/MessagePaperThumbnailOrganism";
 import MessageWriteOrganism from "../organisms/Message/MessageWriteOrganism";
-import { ContentLayout } from "../../styles/utils";
+import Footer from "../common/Footer";
+import {
+  ResponsiveLayout,
+  Leftside,
+  Center,
+  Rightside,
+  ContentLayout,
+} from "../../styles/utils";
 
 const MessageWriteTemplate = () => {
   const isMessageWriteVisible = useSelector((state) => state.isMessageWriteVisible);
 
   return (
-    <>
-      <Header />
-      <div>프로필과 상태메시지</div>
-      <ContentLayout>
-        <TodayQuestionOrganism />
-        {isMessageWriteVisible ? (
-          <>
-            <MessagePaperThumbnailOrganism />
-            <MessageWriteOrganism />
-          </>
-        ) : (
-          <MessageWriteButtonOrganism />
-        )}
-      </ContentLayout>
-    </>
+    <ResponsiveLayout>
+      {window.innerWidth >= 768 ? (
+        <>
+          <Leftside>
+            <Header />
+            <Footer />
+          </Leftside>
+          <Rightside>
+            <div style={{ width: "176px" }}>프로필과 상태메시지</div>
+          </Rightside>
+          <Center>
+            <ContentLayout>
+              <TodayQuestionOrganism />
+              {isMessageWriteVisible ? (
+                <>
+                  <MessagePaperThumbnailOrganism />
+                  <MessageWriteOrganism />
+                </>
+              ) : (
+                <MessageWriteButtonOrganism />
+              )}
+            </ContentLayout>
+          </Center>
+        </>
+      ) : (
+        <>
+          <Header />
+          <div style={{ width: "176px" }}>프로필과 상태메시지</div>
+
+          <ContentLayout>
+            <TodayQuestionOrganism />
+            {isMessageWriteVisible ? (
+              <>
+                <MessagePaperThumbnailOrganism />
+                <MessageWriteOrganism />
+              </>
+            ) : (
+              <MessageWriteButtonOrganism />
+            )}
+          </ContentLayout>
+          <Footer />
+        </>
+      )}
+    </ResponsiveLayout>
   );
 };
 
