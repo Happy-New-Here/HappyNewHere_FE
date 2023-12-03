@@ -3,8 +3,7 @@ import HomePage from "./pages/Home";
 import SearchPage from "./pages/Search";
 import NicknamePage from "./pages/Nickname";
 import AuthPage from "./pages/Auth";
-// import MessageSelectPage from "./pages/MessageSelect";
-import MessageWritePage from "./pages/MessageWrite";
+import FriendPage from "./pages/Friend";
 import Root from "./pages/Root";
 
 const router = createBrowserRouter([
@@ -22,11 +21,8 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "message",
-        children: [
-          // { path: "", element: <MessageSelectPage /> },
-          { path: "write", element: <MessageWritePage /> },
-        ],
+        path: "friend",
+        children: [{ path: "", element: <FriendPage /> }],
       },
       { path: "search", element: <SearchPage /> },
     ],

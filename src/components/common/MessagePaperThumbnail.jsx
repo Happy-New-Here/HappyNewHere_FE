@@ -7,28 +7,22 @@ const MessagePaperButton = styled.button`
   width: 64px;
   height: 64px;
   border: none;
-  border-radius: 0;
+  border-radius: 5px;
   padding: 0px 0px;
   // background: ${(props) => `url(${props.backgroundImage})`};
   background: ${(props) => `url(${messagePaperSRC[props.paperNum]})`};
   background-size: 100% 100%;
 
-  @media (min-width: 768px) {
-    width: 90px;
-    height: 90px;
-  }
-
   ${(props) =>
     props.isSelected &&
     `
     border: 2px solid black;
-
-    @media (prefers-color-scheme: dark) {
-      border: 2px solid #9A0501;
-    }
     `}
+
+  @media (min-width: 768px) {
+    width: 90px;
+    height: 90px;
   }
-  // 이 밑으로 적으면 스타일 적용이 안 됨
 `;
 
 const MessagePaperThumbnail = ({ paperNum, isSelected, onSelect }) => {
