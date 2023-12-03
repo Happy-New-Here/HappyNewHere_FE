@@ -13,11 +13,22 @@ const MessagePaperButton = styled.button`
   background: ${(props) => `url(${messagePaperSRC[props.paperNum]})`};
   background-size: 100% 100%;
 
+  @media (min-width: 768px) {
+    width: 90px;
+    height: 90px;
+  }
+
   ${(props) =>
     props.isSelected &&
     `
     border: 2px solid black;
+
+    @media (prefers-color-scheme: dark) {
+      border: 2px solid #9A0501;
+    }
     `}
+  }
+  // 이 밑으로 적으면 스타일 적용이 안 됨
 `;
 
 const MessagePaperThumbnail = ({ paperNum, isSelected, onSelect }) => {
