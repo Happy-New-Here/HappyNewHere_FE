@@ -40,6 +40,10 @@ const DottedlineButton = styled(StyledButton)`
     color: white;
     opacity: 0.8;
   }
+
+  @media (prefers-color-scheme: dark) {
+    background-color: transparent;
+  }
 `;
 
 const DisabledButton = styled(StyledButton)`
