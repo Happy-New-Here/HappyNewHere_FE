@@ -9,6 +9,7 @@ import { PlaceCenter } from "../../styles/utils";
 // 편지지 영역
 const MessageContainer = styled(PlaceCenter)`
   width: 100%;
+  border-radius: 5px;
   background: ${(props) => `url(${messagePaperSRC[props.paperNum]})`};
   background-size: 100% 100%;
   margin: 0px 0px 16px;
