@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "../common/Header";
 import TodayQuestionOrganism from "../organisms/Message/TodayQuestionOrganism";
 import MessageWriteButtonOrganism from "../organisms/Message/MessageWriteButtonOrganism";
@@ -13,9 +13,18 @@ import {
   Rightside,
   ContentLayout,
 } from "../../styles/utils";
+import { useSpring, animated } from "react-spring"; // 애니메이션
 
 const MessageWriteTemplate = () => {
   const isMessageWriteVisible = useSelector((state) => state.isMessageWriteVisible);
+  // const animationProps = useSpring({
+  //   opacity: isMessageWriteVisible ? 1 : 0,
+  //   config: { duration: 300 },
+  // });
+  const animationProps = useSpring({
+    transform: isMessageWriteVisible ? "translateX(0%)" : "translateX(-30%)",
+    config: { duration: 800 }, // 속도
+  });
 
   return (
     <ResponsiveLayout>
@@ -42,7 +51,13 @@ const MessageWriteTemplate = () => {
             </Center>
             <Rightside>
               <div>프로필과 상태메시지</div>
-              {isMessageWriteVisible ? <TodayQuestionOrganism /> : <></>}
+              {isMessageWriteVisible ? (
+                <animated.div style={animationProps}>
+                  <TodayQuestionOrganism />
+                </animated.div>
+              ) : (
+                <></>
+              )}
             </Rightside>
           </ContentLayout>
         </>

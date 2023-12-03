@@ -1,24 +1,52 @@
 // 편지 쓰거나 보여주는 칸
 import React, { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { setIsMessageWriteVisible } from "../../store/isMessageWriteVisibleSlice";
 import { setMessageInput } from "../../store/messageInputSlice";
-import messagePaperSRC from "../../utils/messagePaperSRC";
+import messagePaperSRC, { messageFontColor } from "../../utils/messagePaperSRC";
+import cancelIcon from "../../assets/cancelIcon.svg";
 import styled from "styled-components";
-import { PlaceCenter } from "../../styles/utils";
+import { PlaceCenter, PlaceTopColumn } from "../../styles/utils";
+
+const StyledMessage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+
+  @media (min-width: 768px) {
+    gap: 10px;
+  }
+`;
 
 // 편지지 영역
-const MessageContainer = styled(PlaceCenter)`
+const MessageContainer = styled(PlaceTopColumn)`
   width: 100%;
-  border-radius: 5px;
   background: ${(props) => `url(${messagePaperSRC[props.paperNum]})`};
   background-size: 100% 100%;
   margin: 0px 0px 16px;
   padding: 44px 24px;
 `;
 
+const CancelIcon = styled.img`
+  width: 8px;
+  height: 8px;
+  position: relative;
+  top: 0;
+  right: 0;
+
+  @media (prefers-color-scheme: dark) {
+    filter: invert(100%);
+  }
+
+  @media (min-width: 768px) {
+    width: 12px;
+    height: 12px;
+  }
+`;
+
 const Receiver = styled.p`
   font-weight: bold;
-  font-size: 18px;
 `;
 
 // 사용자 입력 받을 메시지 내용
@@ -30,6 +58,7 @@ const MessageText = styled.form`
   gap: 10px;
   width: 100%;
   height: 100%;
+  color: ${(props) => props.fontColor};
 `;
 
 const TextArea = styled.textarea`
@@ -40,6 +69,12 @@ const TextArea = styled.textarea`
   resize: none;
   overflow: scroll;
   font-size: 16px;
+  text-align: center;
+  color: ${(props) => props.fontColor};
+
+  &::placeholder {
+    text-align: center;
+  }
 `;
 
 const Message = () => {
@@ -53,26 +88,39 @@ const Message = () => {
     messageContainer.style.height = `${height}px`;
   }, []);
 
-  const receiverNickname = "민주"; // 카카오톡 닉네임
+  const receiverNickname = ""; // 카카오톡 닉네임
   const dispatch = useDispatch();
   const messageInput = useSelector((state) => state.messageInput);
   const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
+
+  const handleCancelClick = () => {
+    const isConfirmed = confirm("메시지 작성을 취소하시겠어요?");
+
+    if (isConfirmed) {
+      dispatch(setIsMessageWriteVisible(false));
+    }
+  };
 
   const handleMessageInputChange = (e) => {
     dispatch(setMessageInput(e.target.value));
   };
 
   return (
-    <MessageContainer ref={messageContainerRef} paperNum={selectedPaperNum}>
-      <MessageText>
-        <Receiver>To. {receiverNickname}</Receiver>
-        <TextArea
-          placeholder="여기에 메시지를 입력하세요"
-          value={messageInput}
-          onChange={handleMessageInputChange}
-        />
-      </MessageText>
-    </MessageContainer>
+    <StyledMessage>
+      <CancelIcon src={cancelIcon} alt="cancelIcon" onClick={handleCancelClick} />
+
+      <MessageContainer ref={messageContainerRef} paperNum={selectedPaperNum}>
+        <MessageText fontColor={messageFontColor(selectedPaperNum)}>
+          <Receiver>To. {receiverNickname}</Receiver>
+          <TextArea
+            placeholder="여기에 메시지를 입력하세요"
+            value={messageInput}
+            fontColor={messageFontColor(selectedPaperNum)}
+            onChange={handleMessageInputChange}
+          />
+        </MessageText>
+      </MessageContainer>
+    </StyledMessage>
   );
 };
 

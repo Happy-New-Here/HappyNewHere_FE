@@ -47,8 +47,8 @@ const TodayQuestionText = () => {
     case 24:
       return (
         <p>
-          크리스마스와 앞으로 다가올 새해를 기념해서 {receiverNickname} 님에게 하고싶은 말을
-          써주세요.
+          크리스마스와 곧 맞이할 새해를 기념해서 {receiverNickname} 님에게 하고싶은 말을
+          남겨주세요 :)
         </p>
       );
     default:
