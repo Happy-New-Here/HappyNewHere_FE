@@ -25,6 +25,10 @@ const StyledButton = styled.button`
     cursor: pointer;
     opacity: 0.8;
   }
+
+  @media (min-width: 768px) {
+    font-size: ${(props) => props.fontSizeDesktop};
+  }
 `;
 
 const PrimaryButton = styled(StyledButton)``;
@@ -48,16 +52,8 @@ const DottedlineButton = styled(StyledButton)`
 
 const DisabledButton = styled(StyledButton)`
   opacity: 0.5;
-
-  ${(props) =>
-    props.disabled &&
-    `
-    cursor: not-allowed;
-    `}
-
-  &:hover {
-    opacity: 0.5;
-  }
+  // cursor: not-allowed;
+  pointer-events: none;
 `;
 
 const StyledButtonGroup = styled.div`
@@ -78,6 +74,8 @@ export const Button = ({
   paddingX,
   paddingY,
   fontSize,
+  fontSizeDesktop,
+  disabled,
   ...rest
 }) => {
   if (type === "undefined") {
@@ -90,6 +88,7 @@ export const Button = ({
         paddingX={paddingX}
         paddingY={paddingY}
         fontSize={fontSize}
+        fontSizeDesktop={fontSizeDesktop}
         {...rest}
       >
         {children}
@@ -103,6 +102,7 @@ export const Button = ({
         paddingX={paddingX}
         paddingY={paddingY}
         fontSize={fontSize}
+        fontSizeDesktop={fontSizeDesktop}
         {...rest}
       >
         {children}
@@ -116,7 +116,7 @@ export const Button = ({
         paddingX={paddingX}
         paddingY={paddingY}
         fontSize={fontSize}
-        disabled
+        fontSizeDesktop={fontSizeDesktop}
         {...rest}
       >
         {children}

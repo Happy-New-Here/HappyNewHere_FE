@@ -25,29 +25,32 @@ const MessageWriteTemplate = () => {
             <Header />
             <Footer />
           </Leftside>
-          <Rightside>
-            <div style={{ width: "176px" }}>프로필과 상태메시지</div>
-          </Rightside>
-          <Center>
-            <ContentLayout>
-              <TodayQuestionOrganism />
+          <ContentLayout>
+            <Center>
+              {/* <TodayQuestionOrganism /> */}
               {isMessageWriteVisible ? (
                 <>
                   <MessagePaperThumbnailOrganism />
                   <MessageWriteOrganism />
                 </>
               ) : (
-                <MessageWriteButtonOrganism />
+                <>
+                  <TodayQuestionOrganism />
+                  <MessageWriteButtonOrganism />
+                </>
               )}
-            </ContentLayout>
-          </Center>
+            </Center>
+            <Rightside>
+              <div>프로필과 상태메시지</div>
+              {isMessageWriteVisible ? <TodayQuestionOrganism /> : <></>}
+            </Rightside>
+          </ContentLayout>
         </>
       ) : (
         <>
           <Header />
-          <div style={{ width: "176px" }}>프로필과 상태메시지</div>
-
           <ContentLayout>
+            <div style={{ width: "176px" }}>프로필과 상태메시지</div>
             <TodayQuestionOrganism />
             {isMessageWriteVisible ? (
               <>

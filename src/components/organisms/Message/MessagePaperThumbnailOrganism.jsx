@@ -1,5 +1,5 @@
 // 편지지 선택하는 곳
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setSelectedPaperNum } from "../../../store/SelectedPaperNumSlice";
 import MessagePaperThumbnail from "../../common/MessagePaperThumbnail";
@@ -16,8 +16,10 @@ const MessagePaperContainer = styled.div`
 const MessagePaperSelect = () => {
   const dispatch = useDispatch();
   const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
+  const [isPN1Selected, setIsPN1Selected] = useState(true); // 디폴트 편지지 1번
 
   const handlePaperSelect = (paperNum) => {
+    setIsPN1Selected(false); // 1번 편지지 선택 해제
     dispatch(setSelectedPaperNum(paperNum));
   };
 
@@ -29,7 +31,7 @@ const MessagePaperSelect = () => {
     <MessagePaperContainer>
       <MessagePaperThumbnail
         paperNum="1"
-        isSelected={selectedPaperNum === "1"}
+        isSelected={isPN1Selected || selectedPaperNum === "1"}
         onSelect={handlePaperSelect}
       />
       <MessagePaperThumbnail
