@@ -26,6 +26,7 @@ const MessageContainer = styled(PlaceTopColumn)`
   background-size: 100% 100%;
   margin: 0px 0px 16px;
   padding: 44px 24px;
+  border-radius: 5px;
 `;
 
 const CancelIcon = styled.img`
@@ -34,6 +35,10 @@ const CancelIcon = styled.img`
   position: relative;
   top: 0;
   right: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   @media (prefers-color-scheme: dark) {
     filter: invert(100%);
