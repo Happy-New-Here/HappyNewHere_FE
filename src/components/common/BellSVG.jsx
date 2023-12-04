@@ -1,6 +1,13 @@
 import React from "react";
 
-const BellSVG = ({ type = "navy", day = 1 }) => {
+const BellSVG = ({ type = "navy", date = 1, onClick }) => {
+  const handleClick = () => {
+    if (onClick) {
+      console.log("click");
+      onClick(date);
+    }
+  };
+
   let imageSrc = "";
   if (type === "navy") {
     imageSrc = "/img/bell_navy.svg";
@@ -19,9 +26,9 @@ const BellSVG = ({ type = "navy", day = 1 }) => {
   }
 
   return (
-    <div>
+    <div onClick={handleClick}>
       <img src={imageSrc} alt="Bell" />
-      <text>{day}</text>
+      <text>{date}</text>
     </div>
   );
 };
