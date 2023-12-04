@@ -30,7 +30,7 @@ export const Calendar = {
   },
 
   // 날짜 하나
-  item: ({ day, date }) => {
+  item: ({ day, date, onClick }) => {
     // 현재 요일에 따라 type 값을 설정
     let type = "navy";
 
@@ -61,8 +61,8 @@ export const Calendar = {
     }
 
     return (
-      <div className="w-8 h-[40.73px] flex flex-col justify-start items-start">
-        <BellSVG type={type} day={date} />
+      <div className="w-8 h-[40.73px] relative flex-col justify-start items-start inline-flex">
+        <BellSVG type={type} date={date} onClick={() => onClick(date)} />
       </div>
     );
   },
