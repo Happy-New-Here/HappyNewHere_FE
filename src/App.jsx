@@ -6,6 +6,7 @@ import AuthPage from "./pages/Auth";
 import MailSelectPage from "./pages/MailSelect";
 import MailWritePage from "./pages/MailWrite";
 import Root from "./pages/Root";
+import AuthRedirectPage from "./pages/AuthRedirectPage";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
         path: "auth",
         children: [
           { path: "", element: <AuthPage /> },
-          { path: "kakao/callback", element: <AuthPage /> },
+          { path: "kakao/callback", element: <AuthRedirectPage /> },
           { path: "nickname", element: <NicknamePage /> },
         ],
       },
