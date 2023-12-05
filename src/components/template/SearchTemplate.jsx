@@ -4,16 +4,39 @@ import {
     InsideLayoutPC,
     InsideLayoutMobile,
 } from "../../styles/utils";
+import {
+    SmallText,
+} from "../../styles/text";
+import { useMediaQuery } from "react-responsive";
+import { useDispatch, useSelector } from "react-redux";
+import { SearchAction } from "../../store/searchSlice";
+import { useState } from "react";
+import styled from "styled-components";
+
 import Header from "../common/Header";
 import Footer from "../common/Footer";
-import SearchBar from "../common/Search/SearchBar";
-import styled from "styled-components";
-import { useMediaQuery } from "react-responsive";
+import SearchBar from "../organisms/Search/SearchBar";
+import RecentSearch from "../organisms/Search/RecentSearch";
+
+
 
 const SearchTemplate = () => {
     const isPc = useMediaQuery({
         query: "(min-width:768px)"
     });
+
+    const dispatch = useDispatch();
+    const formData = useSelector((state) => state.search.search);
+    const [inputValue, setInputValue] = useState("");
+
+    const onClickSearch = () => {
+        console.log(formData);
+    }
+
+    const handleResetSearch = (e) => {
+        setInputValue("");
+        dispatch(SearchAction.resetSearch(e.target.value));
+    };
 
     return (
         <>
@@ -26,20 +49,57 @@ const SearchTemplate = () => {
                     </InsideLayoutPC>
                     <InsideLayoutPC>
                         <SearchTemplateWrapper>
-                            <SearchBar />
+                            <SearchBar
+                                onClick={onClickSearch}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        onClickSearch();
+                                    }
+                                }}
+                                onChange={(e) => {
+                                    setInputValue(e.target.value);
+                                    dispatch(SearchAction.setSearch(e.target.value))
+                                }}
+                                onReset={handleResetSearch}
+                                value={inputValue}
+                            />
                             <TextWrapper>
-                                <SmallText>취소</SmallText>
+                                <SmallText
+                                    fontsize="0.8rem"
+                                    margin="0 0 0 1rem"
+                                    onClick={handleResetSearch}
+                                >취소</SmallText>
                             </TextWrapper>
                         </SearchTemplateWrapper>
+                        {formData.length > 0 ? (
+                            <></>
+                        ) : (
+                            <RecentSearch />
+                        )}
                     </InsideLayoutPC>
                 </ResponsiveLayoutPC>
             ) : (
                 <ResponsiveLayoutMobile>
                     <InsideLayoutMobile>
                         <SearchTemplateWrapper>
-                            <SearchBar />
+                            <SearchBar
+                                onClick={onClickSearch}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        onClickSearch();
+                                    }
+                                }}
+                                onChange={(e) => {
+                                    setInputValue(e.target.value);
+                                    dispatch(SearchAction.setSearch(e.target.value))
+                                }}
+                                onReset={handleResetSearch}
+                                value={inputValue}
+                            />
                             <TextWrapper>
-                                <SmallText>취소</SmallText>
+                                <SmallText
+                                    onClick={handleResetSearch}
+                                >취소</SmallText>
                             </TextWrapper>
                         </SearchTemplateWrapper>
                     </InsideLayoutMobile>
@@ -58,15 +118,11 @@ const SearchTemplateWrapper = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-bottom: 1rem;
 `
 const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
-`;
-
-const SmallText = styled.span`
-    font-size: 0.8rem;
-    margin-left: 1rem;
 `;
