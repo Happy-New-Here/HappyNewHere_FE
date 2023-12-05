@@ -1,10 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { BASE_URL } from "../../utils/URL";
-import { useDispatch } from "react-redux";
-import { AuthActions } from "../../store/auth-slice";
-import "./KakaoLoginBtn.css";
+import styled from "styled-components";
 
 const REST_API_KEY = import.meta.env.VITE_APP_REST_API_KEY;
 
@@ -13,8 +7,8 @@ const KakaoLoginBtn = () => {
   const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   return (
-    <div className="KakaoLoginBtn-wrapper">
-      <a href={KAKAO_AUTH_URI} className="btn-kakao">
+    <KaKaoLoginBtnWrapper>
+      <BtnKakao href={KAKAO_AUTH_URI}>
         <div className="Balloon">
           <svg
             width="16"
@@ -30,10 +24,37 @@ const KakaoLoginBtn = () => {
             />
           </svg>
         </div>
-        <span className="text"> 카카오 계정으로 로그인</span>
-      </a>
-    </div>
+        <Text> 카카오 계정으로 로그인</Text>
+      </BtnKakao>
+    </KaKaoLoginBtnWrapper>
   );
 };
 
 export default KakaoLoginBtn;
+
+const KaKaoLoginBtnWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const BtnKakao = styled.a`
+  width: 300px;
+  height: 46px;
+  background: #FEE500;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  transition: background-color 0.3s; 
+`;
+
+const Text = styled.span`
+  /* font-family: 'Noto Sans', sans-serif; */
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  color: #000000;
+`;
