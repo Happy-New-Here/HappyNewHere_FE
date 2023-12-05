@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import AuthTemplate from "../components/template/AuthTemplate";
 import AuthRedirect from "../components/template/AuthRedirectTemplate";
