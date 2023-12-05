@@ -49,8 +49,6 @@ const AuthRedirectTemplate = () => {
 
   return (
     <>
-      {/* 리디렉션 페이지 */}
-      리디렉션
     </>
   );
 };
