@@ -1,4 +1,4 @@
-import KakaoLoginBtn from "../common/Button/kakaoLoginBtn";
+import KakaoLoginBtn from "../common/Button/KakaoLoginBtn";
 
 const AuthTemplate = () => {
   return (
