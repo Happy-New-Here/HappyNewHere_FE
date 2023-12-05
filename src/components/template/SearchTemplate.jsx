@@ -30,10 +30,16 @@ const SearchTemplate = () => {
     const dispatch = useDispatch();
     const formData = useSelector((state) => state.search.search);
     const [inputValue, setInputValue] = useState("");
+    const paging = 0;
 
-    const onClickSearch = () => {
+
+    const onClickCount = () => {
+        //페이지 카운트
+    };
+
+    const onClickSearch = async() => {
         //console.log(formData);
-        dispatch(searchResult(formData));
+       searchResult(formData, paging);
     }
 
     const handleResetSearch = (e) => {
@@ -68,14 +74,14 @@ const SearchTemplate = () => {
                             />
                             <TextWrapper>
                                 <SmallText
-                                    fontsize="0.8rem"
+                                    fontSize="0.8rem"
                                     margin="0 0 0 1rem"
                                     onClick={handleResetSearch}
                                 >취소</SmallText>
                             </TextWrapper>
                         </SearchTemplateWrapper>
                         {formData.length > 0 ? (
-                            <ResultSearch />
+                            <ResultSearch onClick={onClickCount} />
                         ) : (
                             <RecentSearch />
                         )}
@@ -101,7 +107,7 @@ const SearchTemplate = () => {
                             />
                             <TextWrapper>
                                 <SmallText
-                                    fontsize="0.8rem"
+                                    fontSize="0.8rem"
                                     margin="0 0 0 1rem"
                                     onClick={handleResetSearch}
                                 >취소</SmallText>

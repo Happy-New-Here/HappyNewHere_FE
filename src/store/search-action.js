@@ -1,9 +1,12 @@
 import { BASE_URL } from "../utils/URL";
 import axios from "axios";
 
-export const searchResult = async (search) => {
+export const searchResult = async (search, paging) => {
     try {
-        const response = await axios.get(`${BASE_URL}/find/이름?page=0&size=10&sort=nickname,${search}`, {
+        //카카오 로그인 액세스 토큰 받아와야함.
+
+
+        const response = await axios.get(`${BASE_URL}/find/${search}?page=${paging}&size=10&sort=nickname,asc`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("jwt")}`,
                 "Content-Type": "application/json",
