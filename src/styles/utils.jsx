@@ -78,7 +78,7 @@ export const ContentLayout = styled.div`
 export const Leftside = styled.div`
   @media (min-width: 768px) {
     order: 0;
-    flex-direction: coloum;
+    flex-direction: column;
   }
 `;
 
@@ -102,4 +102,36 @@ export const Rightside = styled(PlaceTopColumn)`
     width: 176px; // 임의
     gap: 32px;
   }
+`;
+
+// Search Template 반응형 레이아웃 파트입니다.
+export const ResponsiveLayoutPC = styled.div`
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-content: center;
+  align-items: start;
+  min-width: 768px;
+  width: 100%;
+  height: 550px;
+  margin-top: 0;
+`;
+
+export const InsideLayoutPC = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ResponsiveLayoutMobile = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  max-width: 768px;
+  height: 550px;
+`;
+
+export const InsideLayoutMobile = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
