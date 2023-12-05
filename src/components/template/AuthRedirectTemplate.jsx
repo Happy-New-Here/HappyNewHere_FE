@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../utils/URL";
@@ -21,6 +21,7 @@ const AuthRedirectTemplate = () => {
           // Redux store에 로그인 상태 업데이트
           dispatch(AuthActions.setSignIn({ status: "success", token: token }));
 
+          localStorage.setItem("accessToken", token)
           // 로그인 성공 시 페이지 이동
           navigate("/");
         } catch (e) {
