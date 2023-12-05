@@ -17,6 +17,8 @@ import Header from "../common/Header";
 import Footer from "../common/Footer";
 import SearchBar from "../organisms/Search/SearchBar";
 import RecentSearch from "../organisms/Search/RecentSearch";
+import { searchResult } from "../../store/search-action";
+import ResultSearch from "../organisms/Search/ResultSearch";
 
 
 
@@ -30,7 +32,8 @@ const SearchTemplate = () => {
     const [inputValue, setInputValue] = useState("");
 
     const onClickSearch = () => {
-        console.log(formData);
+        //console.log(formData);
+        dispatch(searchResult(formData));
     }
 
     const handleResetSearch = (e) => {
@@ -72,7 +75,7 @@ const SearchTemplate = () => {
                             </TextWrapper>
                         </SearchTemplateWrapper>
                         {formData.length > 0 ? (
-                            <></>
+                            <ResultSearch />
                         ) : (
                             <RecentSearch />
                         )}
@@ -98,10 +101,17 @@ const SearchTemplate = () => {
                             />
                             <TextWrapper>
                                 <SmallText
+                                    fontsize="0.8rem"
+                                    margin="0 0 0 1rem"
                                     onClick={handleResetSearch}
                                 >취소</SmallText>
                             </TextWrapper>
                         </SearchTemplateWrapper>
+                        {formData.length > 0 ? (
+                            <ResultSearch />
+                        ) : (
+                            <RecentSearch />
+                        )}
                     </InsideLayoutMobile>
                 </ResponsiveLayoutMobile>
             )}

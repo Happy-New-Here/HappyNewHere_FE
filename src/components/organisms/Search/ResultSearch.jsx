@@ -2,17 +2,18 @@ import {
     SmallText,
 } from '../../../styles/text';
 
-const RecentSearch = () => {
+const ResultSearch = () => {
     return (
         <>
-            <SmallText fontWeight="500">최근 검색</SmallText>
+            <SmallText fontWeight="500">검색 결과</SmallText>
+
+
         </>
 
     )
 }
 
-export default RecentSearch;
-
+export default ResultSearch;
 
 // const DUMMY_DATA = [
 //     {

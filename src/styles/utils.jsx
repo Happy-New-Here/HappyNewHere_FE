@@ -113,6 +113,8 @@ export const ResponsiveLayoutPC = styled.div`
   align-items: start;
   min-width: 768px;
   width: 100%;
+  height: 550px;
+  margin-top: 0;
 `;
 
 export const InsideLayoutPC = styled.div`
@@ -123,9 +125,10 @@ export const InsideLayoutPC = styled.div`
 export const ResponsiveLayoutMobile = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: start;
+  justify-content: start;
+  align-items: center;
   max-width: 768px;
+  height: 550px;
 `;
 
 export const InsideLayoutMobile = styled.div`
