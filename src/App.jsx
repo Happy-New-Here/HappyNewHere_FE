@@ -1,10 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/Home";
 import SearchPage from "./pages/Search";
-import NicknamePage from "./pages/Nickname";
+import IdInputPage from "./pages/IdInput";
 import AuthPage from "./pages/Auth";
-import MailSelectPage from "./pages/MailSelect";
-import MailWritePage from "./pages/MailWrite";
+// import MailSelectPage from "./pages/MailSelect";
+// import MailWritePage from "./pages/MailWrite";
 import RootLayout from "./pages/Root";
 import AuthRedirectPage from "./pages/AuthRedirectPage";
 
@@ -19,15 +19,15 @@ const router = createBrowserRouter([
                 children: [
                     { path: "", element: <AuthPage /> },
                     { path: "kakao/callback", element: <AuthRedirectPage /> },
-                    { path: "nickname", element: <NicknamePage /> },
+                    { path: "id/input", element: <IdInputPage /> },
                 ],
             },
             {
-                path: 'mail',
-                children: [
-                    { path: '', element: <MailSelectPage /> },
-                    { path: 'write', element: <MailWritePage /> },
-                ],
+                // path: 'mail',
+                // children: [
+                //     { path: '', element: <MailSelectPage /> },
+                //     { path: 'write', element: <MailWritePage /> },
+                // ],
             },
             { path: 'search', element: <SearchPage /> },
         ],
