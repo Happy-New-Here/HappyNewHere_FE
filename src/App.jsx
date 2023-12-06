@@ -18,7 +18,7 @@ const router = createBrowserRouter([
         children: [
             { index: true, path: '', element: <HomePage /> },
             {
-                path: "auth",
+                path: "login",
                 children: [
                     { path: "", element: <AuthPage /> },
                     { path: "kakao/callback", element: <AuthRedirectPage /> },

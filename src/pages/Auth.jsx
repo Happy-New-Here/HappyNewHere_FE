@@ -11,10 +11,11 @@ const AuthPage = () => {
   return (
     <>
       {/* 로그인 전 */}
-      {!isLoggedIn && <AuthTemplate />}
+      {/* {!isLoggedIn && <AuthTemplate />} */}
 
       {/* 로그인 후 */}
-      {isLoggedIn && <AuthRedirect />}
+      {/* {isLoggedIn && <AuthRedirect />} */}
+      <AuthTemplate />
     </>
   );
 };
