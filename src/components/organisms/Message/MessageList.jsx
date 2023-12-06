@@ -39,16 +39,18 @@ const MessageList = () => {
   //   }, []);
 
   return (
-    // <StyledMessageList>
-    //   <MessageThumbnail paperNum="1" />
-    // </StyledMessageList>
-    <>
-      {responseData.messages.map((message, index) => (
-        <StyledMessageList key={index}>
-          <MessageThumbnail paperNum={message["편지지 번호"]} />
-        </StyledMessageList>
-      ))}
-    </>
+    <StyledMessageList>
+      <MessageThumbnail paperNum="1" />
+      <MessageThumbnail paperNum="2" />
+      <MessageThumbnail paperNum="3" />
+    </StyledMessageList>
+    // <>
+    //   {responseData.messages.map((message, index) => (
+    //     <StyledMessageList key={index}>
+    //       <MessageThumbnail paperNum={message["편지지 번호"]} />
+    //     </StyledMessageList>
+    //   ))}
+    // </>
   );
 };
 
