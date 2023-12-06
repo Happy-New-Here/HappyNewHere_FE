@@ -3,15 +3,18 @@ import HomePage from "./pages/Home";
 import SearchPage from "./pages/Search";
 import IdInputPage from "./pages/IdInput";
 import AuthPage from "./pages/Auth";
-// import MailSelectPage from "./pages/MailSelect";
-// import MailWritePage from "./pages/MailWrite";
+import FriendPage from "./pages/Friend";
 import RootLayout from "./pages/Root";
 import AuthRedirectPage from "./pages/AuthRedirectPage";
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <RootLayout />,
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      { index: true, path: "", element: <HomePage /> },
+      {
+        path: "auth",
         children: [
             { index: true, path: '', element: <HomePage /> },
             {
@@ -31,15 +34,22 @@ const router = createBrowserRouter([
             },
             { path: 'search', element: <SearchPage /> },
         ],
-    },
+      },
+      {
+        path: "friend",
+        children: [{ path: "", element: <FriendPage /> }],
+      },
+      { path: "search", element: <SearchPage /> },
+    ],
+  },
 ]);
 
 function App() {
-    return (
-        <>
-            <RouterProvider router={router} />
-        </>
-    );
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
 export default App;
