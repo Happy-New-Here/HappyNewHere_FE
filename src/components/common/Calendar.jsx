@@ -74,7 +74,8 @@ export const Calendar = {
 
 const StyledWrapper = styled.div`
   display: flex;
-  width: 22rem;
+  //width: 22rem;
+  width: 100%;
   height: 2.5625rem;
   justify-content: space-between;
   align-items: flex-start;
