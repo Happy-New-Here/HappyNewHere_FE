@@ -1,4 +1,4 @@
-//import "./GiftBox.css";
+import "./GiftBox.css";
 
 export default function GiftBox() {
   return (

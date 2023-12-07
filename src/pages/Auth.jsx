@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import AuthTemplate from "../components/template/AuthTemplate";
 import AuthRedirect from "../components/template/AuthRedirectTemplate";
@@ -12,10 +11,11 @@ const AuthPage = () => {
   return (
     <>
       {/* 로그인 전 */}
-      {!isLoggedIn && <AuthTemplate />}
+      {/* {!isLoggedIn && <AuthTemplate />} */}
 
       {/* 로그인 후 */}
-      {isLoggedIn && <AuthRedirect />}
+      {/* {isLoggedIn && <AuthRedirect />} */}
+      <AuthTemplate />
     </>
   );
 };

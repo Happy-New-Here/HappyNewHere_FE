@@ -1,10 +1,15 @@
-import GiftBox from "../common/GiftBox.jsx";
+import React from "react";
+import GiftBox from "../common/GiftBox";
+import MessageList from "../organisms/Message/MessageList";
+import MessageViewOrganism from "../organisms/Message/MessageViewOrganism";
 
 const HomeTemplate = () => {
   return (
     <>
-      {/* 유튜브 클론 작업중에 시간없어서 중단됨... */}
-      {/* <GiftBox />  */}
+      홈 템플릿입니다.
+      <GiftBox />
+      <MessageList />
+      <MessageViewOrganism />
     </>
   );
 };
