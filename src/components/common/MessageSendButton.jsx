@@ -43,8 +43,8 @@ const MessageSendButton = () => {
       {messageInput ? (
         <Button
           type="primary"
-          // paddingX="12px"
-          // paddingY="6px"
+          paddingX="12px"
+          paddingY="6px"
           fontSize="12px"
           fontSizeDesktop="16px"
           onClick={handleSendButton}
@@ -55,8 +55,8 @@ const MessageSendButton = () => {
       ) : (
         <Button
           type="disabled"
-          // paddingX="12px"
-          // paddingY="6px"
+          paddingX="12px"
+          paddingY="6px"
           fontSize="12px"
           fontSizeDesktop="16px"
           onClick={handleSendButton}
