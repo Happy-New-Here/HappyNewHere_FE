@@ -31,6 +31,7 @@ export const ResponsiveLayout = styled.div`
   flex-direction: column;
   position: fixed;
   top: 0;
+  left: 0;
 
   @media (min-width: 768px) {
     // 중앙 정렬
