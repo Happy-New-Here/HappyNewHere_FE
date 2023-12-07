@@ -34,9 +34,9 @@ export const CancelIcon = styled.img`
     cursor: pointer;
   }
 
-  @media (prefers-color-scheme: dark) {
-    filter: invert(100%);
-  }
+  // @media (prefers-color-scheme: dark) {
+  //   filter: invert(100%);
+  // }
 
   @media (min-width: 768px) {
     width: 12px;
