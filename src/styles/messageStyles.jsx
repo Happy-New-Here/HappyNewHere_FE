@@ -1,4 +1,6 @@
 import messagePaperSRC, { messageFontColor } from "../utils/messagePaperSRC";
+import { PlaceTopColumn } from "./utils";
+import styled from "styled-components";
 
 export const StyledMessage = styled.div`
   display: flex;
