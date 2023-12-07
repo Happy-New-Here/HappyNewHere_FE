@@ -22,8 +22,8 @@ const MessageWriteTemplate = () => {
   //   config: { duration: 300 },
   // });
   const animationProps = useSpring({
-    transform: isMessageWriteVisible ? "translateX(0%)" : "translateX(-30%)",
-    config: { duration: 800 }, // 속도
+    transform: isMessageWriteVisible ? "translateX(0%)" : "translateX(-20%)",
+    config: { duration: 300 }, // 속도
   });
 
   return (
