@@ -28,6 +28,10 @@ const TextArea = styled.textarea`
   &::placeholder {
     text-align: center;
   }
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const Message = () => {
