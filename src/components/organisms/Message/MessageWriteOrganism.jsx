@@ -1,5 +1,5 @@
 import React from "react";
-import Message from "../../common/Message";
+import MessageWrite from "../../common/MessageWrite";
 import AnonymousCheckbox from "../../common/AnonymousCheckbox";
 import MessageSendButton from "../../common/MessageSendButton";
 import styled from "styled-components";
@@ -13,7 +13,7 @@ const CheckboxAndButton = styled.div`
 const MessageWriteOrganism = () => {
   return (
     <div>
-      <Message />
+      <MessageWrite />
       <CheckboxAndButton>
         <AnonymousCheckbox />
         <MessageSendButton />

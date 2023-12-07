@@ -1,4 +1,4 @@
-// 편지 쓰거나 보여주는 칸
+// 편지 쓰는 칸
 import React, { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsMessageWriteVisible } from "../../store/isMessageWriteVisibleSlice";
@@ -6,65 +6,13 @@ import { setMessageInput } from "../../store/messageInputSlice";
 import messagePaperSRC, { messageFontColor } from "../../utils/messagePaperSRC";
 import cancelIcon from "../../assets/cancelIcon.svg";
 import styled from "styled-components";
-import { PlaceCenter, PlaceTopColumn } from "../../styles/utils";
-
-const StyledMessage = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-
-  @media (min-width: 768px) {
-    gap: 10px;
-  }
-`;
-
-// 편지지 영역
-const MessageContainer = styled(PlaceTopColumn)`
-  width: 100%;
-  background: ${(props) => `url(${messagePaperSRC[props.paperNum]})`};
-  background-size: 100% 100%;
-  margin: 0px 0px 16px;
-  padding: 44px 24px;
-  border-radius: 5px;
-`;
-
-const CancelIcon = styled.img`
-  width: 8px;
-  height: 8px;
-  position: relative;
-  top: 0;
-  right: 0;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    filter: invert(100%);
-  }
-
-  @media (min-width: 768px) {
-    width: 12px;
-    height: 12px;
-  }
-`;
-
-const Receiver = styled.p`
-  font-weight: bold;
-`;
-
-// 사용자 입력 받을 메시지 내용
-const MessageText = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  height: 100%;
-  color: ${(props) => props.fontColor};
-`;
+import {
+  StyledMessage,
+  MessageContainer,
+  CancelIcon,
+  ReceiverOrSender,
+  MessageText,
+} from "../../styles/messageStyles";
 
 const TextArea = styled.textarea`
   width: 100%;
@@ -79,6 +27,10 @@ const TextArea = styled.textarea`
 
   &::placeholder {
     text-align: center;
+  }
+
+  &:focus {
+    outline: none;
   }
 `;
 
@@ -116,7 +68,7 @@ const Message = () => {
 
       <MessageContainer ref={messageContainerRef} paperNum={selectedPaperNum}>
         <MessageText fontColor={messageFontColor(selectedPaperNum)}>
-          <Receiver>To. {receiverNickname}</Receiver>
+          <ReceiverOrSender>To. {receiverNickname}</ReceiverOrSender>
           <TextArea
             placeholder="여기에 메시지를 입력하세요"
             value={messageInput}
