@@ -23,9 +23,9 @@ const MessagePaperButton = styled.button`
     `
     border: 2px solid black;
 
-    @media (prefers-color-scheme: dark) {
-      border: 2px solid #9A0501;
-    }
+    // @media (prefers-color-scheme: dark) {
+    //   border: 2px solid #9A0501;
+    // }
     `}
   }
   // 이 밑으로 적으면 스타일 적용이 안 됨
