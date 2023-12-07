@@ -1,22 +1,26 @@
 import React from "react";
 import BellSVG from "./BellSVG";
+import styled from "styled-components";
 
 export const Calendar = {
   wrapper: ({ children }) => {
-    return (
-      <div className="w-[352px] h-[41px] flex justify-between items-start">
-        {children}
-      </div>
-    );
+    return <StyledWrapper>{children}</StyledWrapper>;
   },
 
-  getWeekDates: () => {
+  getWeekDates: (startDay = null) => {
     const today = new Date();
-    const day = today.getDay();
+    let day = startDay !== null ? startDay : today.getDate(); // 매개변수로 주의 시작일을 받거나 제공되지 않으면 현재 날짜 사용
 
-    // 현재 요일이 월요일(1)이 아닌 경우, 이전 월요일로 이동
-    if (day !== 1) {
-      today.setDate(today.getDate() - day + 1);
+    // 만약 제공된 날짜가 숫자가 아니거나 범위를 벗어나면 현재 날짜를 사용
+    if (isNaN(day) || day < 1 || day > 31) {
+      day = today.getDate();
+    }
+
+    today.setDate(day); // 날짜를 제공된 날짜나 현재 날짜로 설정
+
+    // 현재 날짜가 월요일(1)이 아닌 경우, 이전 월요일로 이동
+    if (today.getDay() !== 1) {
+      today.setDate(today.getDate() - today.getDay() + 1);
     }
 
     const weekDates = [];
@@ -67,3 +71,12 @@ export const Calendar = {
     );
   },
 };
+
+const StyledWrapper = styled.div`
+  display: flex;
+  width: 22rem;
+  height: 2.5625rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-shrink: 0;
+`;
