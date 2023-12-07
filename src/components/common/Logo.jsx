@@ -9,9 +9,9 @@ const StyledLogo = styled.img`
     width: ${(props) => props.widthDesktop};
   }
 
-  @media (prefers-color-scheme: dark) {
-    filter: invert(100%);
-  }
+  // @media (prefers-color-scheme: dark) {
+  //   filter: invert(100%);
+  // }
 `;
 
 const Logo = ({ width, widthDesktop }) => {
