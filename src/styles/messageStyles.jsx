@@ -19,7 +19,7 @@ export const MessageContainer = styled(PlaceTopColumn)`
   background: ${(props) => `url(${messagePaperSRC[props.paperNum]})`};
   background-size: 100% 100%;
   margin: 0px 0px 16px;
-  padding: 44px 24px;
+  padding: 24px 32px 48px;
   border-radius: 5px;
 `;
 
