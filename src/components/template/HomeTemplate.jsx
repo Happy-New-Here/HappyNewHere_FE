@@ -5,7 +5,7 @@ import MessageViewOrganism from "../organisms/Message/MessageViewOrganism";
 import { Calendar } from "../common/Calendar";
 
 const HomeTemplate = () => {
-  let weekDates = Calendar.getWeekDates(18);
+  let weekDates = Calendar.getWeekDates(25);
   const [selectedDate, setSelectedDate] = useState(null);
 
   const handleDateClick = (date) => {

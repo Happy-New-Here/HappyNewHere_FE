@@ -8,22 +8,17 @@ const BellSVG = ({ type = "navy", date = 1, onClick }) => {
     }
   };
 
-  let imageSrc = "";
-  if (type === "navy") {
-    imageSrc = "/img/bell_navy.svg";
-  } else if (type === "green") {
-    imageSrc = "/img/bell_green.svg";
-  } else if (type === "maroon") {
-    imageSrc = "/img/bell_maroon.svg";
-  } else if (type === "pink") {
-    imageSrc = "/img/bell_pink.svg";
-  } else if (type === "red") {
-    imageSrc = "/img/bell_red.svg";
-  } else if (type === "white") {
-    imageSrc = "/img/bell_white.svg";
-  } else if (type === "yellow") {
-    imageSrc = "/img/bell_yellow.svg";
-  }
+  const BellSVGSRC = {
+    navy: "/src/assets/bell_navy.svg",
+    maroon: "/src/assets/bell_maroon.svg",
+    green: "/src/assets/bell_green.svg",
+    pink: "/src/assets/bell_pink.svg",
+    red: "/src/assets/bell_red.svg",
+    white: "/src/assets/bell_white.svg",
+    yellow: "/src/assets/bell_yellow.svg",
+  };
+
+  const imageSrc = BellSVGSRC[type] || BellSVGSRC[1]; // 기본값은 1
 
   return (
     <div onClick={handleClick}>
