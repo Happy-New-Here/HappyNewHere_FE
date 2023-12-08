@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/logo.svg';
 
 const IdTemplate = () => {
     const navigate = useNavigate();
