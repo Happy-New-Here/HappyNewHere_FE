@@ -16,23 +16,10 @@ const router = createBrowserRouter([
       {
         path: "auth",
         children: [
-            { index: true, path: '', element: <HomePage /> },
-            {
-                path: "login",
-                children: [
-                    { path: "", element: <AuthPage /> },
-                    { path: "kakao/callback", element: <AuthRedirectPage /> },
-                    { path: "id/input", element: <IdInputPage /> },
-                ],
-            },
-            {
-                // path: 'mail',
-                // children: [
-                //     { path: '', element: <MailSelectPage /> },
-                //     { path: 'write', element: <MailWritePage /> },
-                // ],
-            },
-            { path: 'search', element: <SearchPage /> },
+          { path: "", element: <AuthPage /> },
+          { path: "kakao/callback", element: <AuthRedirectPage /> },
+          { path: "id/input", element: <IdInputPage /> },
+          { path: "search", element: <SearchPage /> },
         ],
       },
       {
