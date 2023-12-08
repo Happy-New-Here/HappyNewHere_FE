@@ -1,7 +1,7 @@
 // 편지지 선택 시 보여줄 편지지 썸네일 한 개
 import React from "react";
 import styled from "styled-components";
-import messagePaperSRC from "../../utils/messagePaperSRC";
+import MessagePaperSRC from "../../utils/MessagePaperSRC";
 
 const MessagePaperButton = styled.button`
   width: 64px;
@@ -10,7 +10,7 @@ const MessagePaperButton = styled.button`
   border-radius: 5px;
   padding: 0px 0px;
   // background: ${(props) => `url(${props.backgroundImage})`};
-  background: ${(props) => `url(${messagePaperSRC[props.paperNum]})`};
+  background: ${(props) => `url(${MessagePaperSRC[props.paperNum]})`};
   background-size: 100% 100%;
 
   @media (min-width: 768px) {

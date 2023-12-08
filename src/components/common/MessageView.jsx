@@ -1,7 +1,7 @@
 // 편지 보여주는 칸
 import React, { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import messagePaperSRC, { messageFontColor } from "../../utils/messagePaperSRC";
+import MessagePaperSRC, { MessageFontColor } from "../../utils/MessagePaperSRC";
 import cancelIcon from "../../assets/cancelIcon.svg";
 import styled from "styled-components";
 import {
@@ -49,8 +49,8 @@ const Message = () => {
       <CancelIcon src={cancelIcon} alt="cancelIcon" onClick={handleCancelClick} />
 
       <MessageContainer ref={messageContainerRef} paperNum={selectedPaperNum}>
-        <MessageText fontColor={messageFontColor(selectedPaperNum)}>
-          <TextArea fontColor={messageFontColor(selectedPaperNum)}>
+        <MessageText fontColor={MessageFontColor(selectedPaperNum)}>
+          <TextArea fontColor={MessageFontColor(selectedPaperNum)}>
             안녕. <br /> 새해에는 좋은 일이 생기게 해주세요. <br /> Happy New Year!
           </TextArea>
           <ReceiverOrSender>From. {senderNickname}</ReceiverOrSender>

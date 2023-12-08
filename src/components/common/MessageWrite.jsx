@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsMessageWriteVisible } from "../../store/isMessageWriteVisibleSlice";
 import { setMessageInput } from "../../store/messageInputSlice";
-import messagePaperSRC, { messageFontColor } from "../../utils/messagePaperSRC";
+import MessagePaperSRC, { MessageFontColor } from "../../utils/MessagePaperSRC";
 import cancelIcon from "../../assets/cancelIcon.svg";
 import styled from "styled-components";
 import {
@@ -67,12 +67,12 @@ const Message = () => {
       <CancelIcon src={cancelIcon} alt="cancelIcon" onClick={handleCancelClick} />
 
       <MessageContainer ref={messageContainerRef} paperNum={selectedPaperNum}>
-        <MessageText fontColor={messageFontColor(selectedPaperNum)}>
+        <MessageText fontColor={MessageFontColor(selectedPaperNum)}>
           <ReceiverOrSender>To. {receiverNickname}</ReceiverOrSender>
           <TextArea
             placeholder="여기에 메시지를 입력하세요"
             value={messageInput}
-            fontColor={messageFontColor(selectedPaperNum)}
+            fontColor={MessageFontColor(selectedPaperNum)}
             onChange={handleMessageInputChange}
           />
         </MessageText>

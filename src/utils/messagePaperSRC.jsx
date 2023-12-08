@@ -1,11 +1,11 @@
-const messagePaperSRC = {
+const MessagePaperSRC = {
   1: "/src/assets/MessagePaper1.png",
   2: "/src/assets/MessagePaper2.png",
   3: "/src/assets/MessagePaper3.png",
 };
 
 // 편지지 바탕색에 따라 메시지 폰트 컬러 적용
-export const messageFontColor = (selectedPaperNum) => {
+export const MessageFontColor = (selectedPaperNum) => {
   switch (selectedPaperNum) {
     case 1:
     case 3:
@@ -17,4 +17,4 @@ export const messageFontColor = (selectedPaperNum) => {
   }
 };
 
-export default messagePaperSRC;
+export default MessagePaperSRC;
