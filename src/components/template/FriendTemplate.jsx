@@ -32,7 +32,7 @@ const MessageWriteTemplate = () => {
         <>
           <Leftside>
             <Header />
-            <Footer />
+            <Footer currentPage="home"/>
           </Leftside>
           <ContentLayout>
             <Center>
@@ -76,7 +76,7 @@ const MessageWriteTemplate = () => {
               <MessageWriteButtonOrganism />
             )}
           </ContentLayout>
-          <Footer />
+          <Footer currentPage="home"/>
         </>
       )}
     </ResponsiveLayout>

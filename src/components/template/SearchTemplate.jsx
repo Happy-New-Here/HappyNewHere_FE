@@ -54,7 +54,7 @@ const SearchTemplate = () => {
                 <ResponsiveLayoutPC>
                     <InsideLayoutPC>
                         <Header />
-                        <Footer />
+                        <Footer currentPage = "search"/>
                     </InsideLayoutPC>
                     <InsideLayoutPC>
                         <SearchTemplateWrapper>
