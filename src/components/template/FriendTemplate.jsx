@@ -14,6 +14,7 @@ import {
   ContentLayout,
 } from "../../styles/utils";
 import { useSpring, animated } from "react-spring"; // 애니메이션
+import { useMediaQuery } from "react-responsive";
 
 const MessageWriteTemplate = () => {
   const isMessageWriteVisible = useSelector((state) => state.isMessageWriteVisible);
@@ -26,13 +27,17 @@ const MessageWriteTemplate = () => {
     config: { duration: 300 }, // 속도
   });
 
+  const isPc = useMediaQuery({
+    query: "(min-width:768px)"
+  });
+
   return (
     <ResponsiveLayout>
       {window.innerWidth >= 768 ? (
         <>
           <Leftside>
             <Header />
-            <Footer currentPage="home"/>
+            <Footer currentPage="home" isPc = {isPc} />
           </Leftside>
           <ContentLayout>
             <Center>

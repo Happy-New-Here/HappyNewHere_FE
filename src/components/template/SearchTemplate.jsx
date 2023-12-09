@@ -54,7 +54,7 @@ const SearchTemplate = () => {
                 <ResponsiveLayoutPC>
                     <InsideLayoutPC>
                         <Header />
-                        <Footer currentPage = "search"/>
+                        <Footer currentPage = "search" isPc = {isPc} />
                     </InsideLayoutPC>
                     <InsideLayoutPC>
                         <SearchTemplateWrapper>
@@ -118,8 +118,10 @@ const SearchTemplate = () => {
                         ) : (
                             <RecentSearch />
                         )}
+                         <Footer currentPage="search" isPc={isPc}/>
                     </InsideLayoutMobile>
                 </ResponsiveLayoutMobile>
+                
             )}
 
         </>
