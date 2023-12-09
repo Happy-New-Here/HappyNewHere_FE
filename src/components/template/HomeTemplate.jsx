@@ -5,7 +5,7 @@ import MessageViewOrganism from "../organisms/Message/MessageViewOrganism";
 import { Calendar } from "../common/Calendar";
 
 const HomeTemplate = () => {
-  let weekDates = Calendar.getWeekDates(25);
+  let weekDates = Calendar.getWeekDates(25); // 이벤트 시작날짜 설정
   const [selectedDate, setSelectedDate] = useState(null);
 
   const handleDateClick = (date) => {
@@ -25,8 +25,7 @@ const HomeTemplate = () => {
           />
         ))}
       </Calendar.wrapper>
-      {/* <GiftBox /> */}
-      <MessageList />
+      <GiftBox />
       {selectedDate && (
         <div>
           선택한 날짜: {selectedDate.toDateString()}
