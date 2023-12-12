@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../common/Header";
+import Profile from "../common/Profile";
 import TodayQuestionOrganism from "../organisms/Message/TodayQuestionOrganism";
 import MessageWriteButtonOrganism from "../organisms/Message/MessageWriteButtonOrganism";
 import MessagePaperThumbnailOrganism from "../organisms/Message/MessagePaperThumbnailOrganism";
@@ -55,7 +56,7 @@ const MessageWriteTemplate = () => {
               )}
             </Center>
             <Rightside>
-              <div>프로필과 상태메시지</div>
+              <Profile />
               {isMessageWriteVisible ? (
                 <animated.div style={animationProps}>
                   <TodayQuestionOrganism />
@@ -70,7 +71,7 @@ const MessageWriteTemplate = () => {
         <>
           <Header />
           <ContentLayout>
-            <div style={{ width: "176px" }}>프로필과 상태메시지</div>
+            <Profile />
             <TodayQuestionOrganism />
             {isMessageWriteVisible ? (
               <>

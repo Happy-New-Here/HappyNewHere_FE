@@ -10,7 +10,7 @@ import SnowMan from "../../assets/SnowMan.svg";
 
 const AuthTemplate = () => {
   const isPc = useMediaQuery({
-    query: "(min-width:768px)"
+    query: "(min-width:768px)",
   });
 
   return (
@@ -22,8 +22,12 @@ const AuthTemplate = () => {
           </DecoWrapper>
           <img src={HappyHaedalLogo} alt="HappyHaedalLogo" />
           <TextWrapper>
-            <SmallText fontWeight="600">가장 추운 계절에 만나는 가장 따뜻한 축제 크리스마스,</SmallText>
-            <SmallText fontWeight="600">바로 여기, 해피뉴히어에서 친구에게 따뜻한 마음을 전해보세요!</SmallText>
+            <SmallText fontWeight="600">
+              가장 추운 계절에 만나는 가장 따뜻한 축제 크리스마스,
+            </SmallText>
+            <SmallText fontWeight="600">
+              바로 여기, 해피뉴히어에서 친구에게 따뜻한 마음을 전해보세요!
+            </SmallText>
           </TextWrapper>
           <ButtonWrapper>
             <KakaoLoginBtn />
@@ -32,7 +36,6 @@ const AuthTemplate = () => {
             <img src={SnowMan} alt="SnowMan" />
           </SnowManWrapper>
         </AuthResponsiveLayout>
-
       ) : (
         <BackGround>
           <AuthResponsiveLayout>
@@ -46,14 +49,16 @@ const AuthTemplate = () => {
                 justifycontent="center"
                 textalign="center"
               >
-                가장 추운 계절에 만나는<br /> 가장 따뜻한 축제 크리스마스,
+                가장 추운 계절에 만나는
+                <br /> 가장 따뜻한 축제 크리스마스,
               </SmallText>
               <SmallText
                 fontWeight="600"
                 justifycontent="center"
                 textalign="center"
               >
-                바로 여기, 해피뉴히어에서<br /> 친구에게 따뜻한 마음을 전해보세요!
+                바로 여기, 해피뉴히어에서
+                <br /> 친구에게 따뜻한 마음을 전해보세요!
               </SmallText>
             </TextWrapper>
             <ButtonWrapper>
@@ -65,7 +70,6 @@ const AuthTemplate = () => {
           </AuthResponsiveLayout>
         </BackGround>
       )}
-
     </>
   );
 };
@@ -83,7 +87,7 @@ const AuthResponsiveLayout = styled.div`
   max-height: 550px;
   position: relative;
 
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     max-width: 360px;
     max-height: 800px;
   }
@@ -94,7 +98,7 @@ const BackGround = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
-   background-color: #FFFBEE;
+  background-color: #fffbee;
 `;
 
 const DecoWrapper = styled.div`
@@ -103,7 +107,7 @@ const DecoWrapper = styled.div`
   position: absolute;
   top: 5%;
   left: 60%;
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     top: 10%;
   }
 `;
@@ -114,13 +118,12 @@ const SnowManWrapper = styled.div`
   position: absolute;
   left: 13%;
   top: 55%;
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     width: 37%;
     top: 65%;
     left: 0%;
   }
 `;
-
 
 const TextWrapper = styled.div`
   display: flex;

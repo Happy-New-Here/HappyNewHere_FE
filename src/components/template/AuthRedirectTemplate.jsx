@@ -21,7 +21,7 @@ const AuthRedirectTemplate = () => {
           // Redux store에 로그인 상태 업데이트
           dispatch(AuthActions.setSignIn({ status: "success", token: token }));
 
-          localStorage.setItem("accessToken", token)
+          localStorage.setItem("accessToken", token);
           // 로그인 성공 시 페이지 이동
           navigate("/");
         } catch (e) {
@@ -47,10 +47,7 @@ const AuthRedirectTemplate = () => {
     setCode(codeParam || "");
   }, []);
 
-  return (
-    <>
-    </>
-  );
+  return <></>;
 };
 
 export default AuthRedirectTemplate;
