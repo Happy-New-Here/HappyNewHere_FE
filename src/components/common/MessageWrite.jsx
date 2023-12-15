@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsMessageWriteVisible } from "../../store/isMessageWriteVisibleSlice";
 import { setMessageInput } from "../../store/messageInputSlice";
-import MessagePaperSRC, { MessageFontColor } from "../../utils/MessagePaperSRC";
+import { MessagePapersSRC, MessageFontColor } from "../../utils/MessagePapersSRC";
 import cancelIcon from "../../assets/cancelIcon.svg";
 import styled from "styled-components";
 import {

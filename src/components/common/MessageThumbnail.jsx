@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import MessagePaperSRC from "../../utils/MessagePaperSRC";
+import { MessagePapersSRC } from "../../utils/MessagePapersSRC";
 import { PlaceLeftRow } from "../../styles/utils";
 
 const StyledMessageThumbnail = styled(PlaceLeftRow)`
@@ -10,7 +10,7 @@ const StyledMessageThumbnail = styled(PlaceLeftRow)`
   //   border: 1px solid black;
   border-radius: 5px;
   font-size: 12px;
-  background: ${(props) => `url(${MessagePaperSRC[props.paperNum]})`};
+  background: ${(props) => `url(${MessagePapersSRC[props.paperNum]})`};
   background-size: 100%;
 
   @media (min-width: 768px) {

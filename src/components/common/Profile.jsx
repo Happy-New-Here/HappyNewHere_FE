@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { PlaceLeftColumn, PlaceLeftRow } from "../../styles/utils";
 import { SmallText } from "../../styles/text";
 import editIcon from "../../assets/editIcon.svg";
-import MessagePaperSRC from "../../utils/MessagePaperSRC"; // 임시
 
 const StyledProfile = styled(PlaceLeftRow)`
   width: 100%;
@@ -15,7 +14,8 @@ const Photo = styled.div`
   height: 48px;
   margin: 10px 10px;
   border-radius: 50%;
-  background: ${(props) => `url(${MessagePaperSRC[props.paperNum]})`}; // 본인 프사로 바꿀 것
+  border: 1px solid black; // 임시
+  // background:
   background-size: 100% 100%;
 `;
 
