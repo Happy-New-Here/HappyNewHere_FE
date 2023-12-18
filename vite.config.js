@@ -8,6 +8,7 @@ export default defineConfig({
     host: "127.0.0.1",
   },
   plugins: [
+    svgr(),
     react({
       babel: {
         plugins: ["babel-plugin-macros", "babel-plugin-styled-components"],
