@@ -23,8 +23,13 @@ const MessagePaperSelect = () => {
       setIsPN0Selected(false); // 0번 편지지 선택 해제
     }
     dispatch(setSelectedPaperNum(paperNum));
-    // console.log(`paper ${selectedPaperNum} is selected.`);
   };
+
+  // 테스트용
+  // dispatch setSelectedPaperNum 실행 이후 실행되도록
+  // useEffect(() => {
+  //   console.log(`paper no.${selectedPaperNum} is selected.`);
+  // }, [selectedPaperNum]);
 
   return (
     <MessagePaperContainer>
