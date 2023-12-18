@@ -51,9 +51,16 @@ const Message = () => {
   const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
 
   const handleCancelClick = () => {
-    const isConfirmed = confirm("메시지 작성을 취소하시겠어요?");
+    if (messageInput) {
+      const isConfirmed = confirm(
+        "메시지 쓰기를 취소하시겠어요? 작성하신 메시지는 저장되지 않아요. "
+      );
 
-    if (isConfirmed) {
+      if (isConfirmed) {
+        dispatch(setIsMessageWriteVisible(false));
+        dispatch(setMessageInput(""));
+      }
+    } else {
       dispatch(setIsMessageWriteVisible(false));
     }
   };
