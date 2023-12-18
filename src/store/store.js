@@ -6,7 +6,7 @@ import selectedPaperNumSlice from './SelectedPaperNumSlice';
 import isMessageWriteVisibleSlice from './isMessageWriteVisibleSlice';
 import isAnonymousSlice from './isAnonymousSlice';
 import searchSlice from './searchSlice';
-import idInputSlice from './idInputSlice';
+import idSlice from './id-Slice';
 
 export const store = configureStore({
     reducer: {
@@ -16,6 +16,6 @@ export const store = configureStore({
         isMessageWriteVisible: isMessageWriteVisibleSlice,
         isAnonymous: isAnonymousSlice,
         search: searchSlice.reducer,
-        idInput: idInputSlice,
+        id: idSlice.reducer,
     },
 });
