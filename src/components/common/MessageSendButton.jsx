@@ -11,13 +11,7 @@ const MessageSendButton = () => {
   const messageInput = useSelector((state) => state.messageInput);
   const isAnonymous = useSelector((state) => state.isAnonymous);
   const [isSent, setIsSent] = useState(false);
-  const navigate = useNavigate();
-
-  const handleSendButton = () => {
-    if (messageInput) {
-      setIsSent(true);
-    }
-  };
+  // const navigate = useNavigate();
 
   let paramsToSend = {
     context: messageInput,
@@ -26,18 +20,19 @@ const MessageSendButton = () => {
     anonymous: isAnonymous,
   };
 
-  useEffect(() => {
-    if (isSent) {
+  const handleSendButton = () => {
+    if (messageInput) {
       axios
         .post(`${BASE_URL}/message/create`, paramsToSend)
         .then((response) => {
           console.log(`Your message has been sent successfuly.`);
+          setIsSent(true);
         })
         .catch((error) => {
           console.error(`An error occured while sending the message.`);
         });
     }
-  }, [isSent]);
+  };
 
   return (
     <>
@@ -60,7 +55,6 @@ const MessageSendButton = () => {
           paddingY="6px"
           fontSize="12px"
           fontSizeDesktop="16px"
-          onClick={handleSendButton}
         >
           메시지 보내기&nbsp;
           <img src={sendIcon} alt="sendIcon" />
