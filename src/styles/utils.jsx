@@ -63,7 +63,7 @@ export const ContentLayout = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
-  height: auto;
+  height: 현재 화면 높이 - 76px-77px;
   gap: 32px;
   padding: 0px 32px;
 

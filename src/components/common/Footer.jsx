@@ -141,7 +141,7 @@ const Footer = (props) => {
         </PCFooter>
       ) : (
         <MobileFooter className="flex h-screen">
-          <div className="flex justify-between items-center w-full px-8 py-4 fixed bottom-0 left-0 right-0">
+          <div className="flex justify-between items-center w-full px-8 py-4 fixed bottom-0 left-0 right-0 bg-white border-t border-gray">
             <button
               className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
               onClick={togoHome}
