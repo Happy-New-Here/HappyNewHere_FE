@@ -36,22 +36,22 @@ const MessagePaperSelect = () => {
       <MessagePaperThumbnail
         paperNum="0"
         isSelected={isPN0Selected || selectedPaperNum === "0"}
-        onSelect={() => handlePaperSelect(paperNum)}
+        onSelect={handlePaperSelect}
       />
       <MessagePaperThumbnail
         paperNum="1"
         isSelected={selectedPaperNum === "1"}
-        onSelect={() => handlePaperSelect(paperNum)}
+        onSelect={handlePaperSelect}
       />
       <MessagePaperThumbnail
         paperNum="2"
         isSelected={selectedPaperNum === "2"}
-        onSelect={() => handlePaperSelect(paperNum)}
+        onSelect={handlePaperSelect}
       />
       <MessagePaperThumbnail
         paperNum="3"
         isSelected={selectedPaperNum === "3"}
-        onSelect={() => handlePaperSelect(paperNum)}
+        onSelect={handlePaperSelect}
       />
     </MessagePaperContainer>
   );
