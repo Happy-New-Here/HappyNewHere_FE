@@ -10,28 +10,37 @@ const MessagePaperContainer = styled.div`
   height: auto;
   display: flex;
   justify-content: space-between;
-  // padding: 0 32px;
+  align-items: center;
 `;
 
 const MessagePaperSelect = () => {
   const dispatch = useDispatch();
   const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
-  const [isPN1Selected, setIsPN1Selected] = useState(true); // 디폴트 편지지 1번
+  const [isPN0Selected, setIsPN0Selected] = useState(true); // 디폴트 편지지가 0번
 
   const handlePaperSelect = (paperNum) => {
-    setIsPN1Selected(false); // 1번 편지지 선택 해제
+    if (isPN0Selected) {
+      setIsPN0Selected(false); // 0번 편지지 선택 해제
+    }
     dispatch(setSelectedPaperNum(paperNum));
   };
 
-  useEffect(() => {
-    console.log(`paper ${selectedPaperNum} is selected.`);
-  }, [selectedPaperNum]);
+  // 테스트용
+  // dispatch setSelectedPaperNum 실행 이후 실행되도록
+  // useEffect(() => {
+  //   console.log(`paper no.${selectedPaperNum} is selected.`);
+  // }, [selectedPaperNum]);
 
   return (
     <MessagePaperContainer>
       <MessagePaperThumbnail
+        paperNum="0"
+        isSelected={isPN0Selected || selectedPaperNum === "0"}
+        onSelect={handlePaperSelect}
+      />
+      <MessagePaperThumbnail
         paperNum="1"
-        isSelected={isPN1Selected || selectedPaperNum === "1"}
+        isSelected={selectedPaperNum === "1"}
         onSelect={handlePaperSelect}
       />
       <MessagePaperThumbnail
