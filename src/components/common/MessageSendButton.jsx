@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setMessageInput } from "../../store/messageInputSlice";
 import { Button } from "../common/Button";
 import sendIcon from "../../assets/sendIcon.svg";
 import { BASE_URL } from "../../utils/URL";
@@ -11,6 +12,7 @@ const MessageSendButton = () => {
   const messageInput = useSelector((state) => state.messageInput);
   const isAnonymous = useSelector((state) => state.isAnonymous);
   const [isSent, setIsSent] = useState(false);
+  const dispatch = useDispatch();
   // const navigate = useNavigate();
 
   let paramsToSend = {
@@ -33,6 +35,15 @@ const MessageSendButton = () => {
         });
     }
   };
+
+  // 메시지 보내지면 알림창 띄운 후 메시지 상태 초기화
+  useEffect(() => {
+    if (isSent) {
+      alert(`메시지 보내기 완료! 두근두근`);
+      setIsSent(false);
+      dispatch(setMessageInput(""));
+    }
+  }, [isSent]);
 
   return (
     <>
