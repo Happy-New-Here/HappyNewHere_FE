@@ -27,15 +27,16 @@ const MessageSendButton = () => {
   };
 
   useEffect(() => {
-    axios
-      .post(`${BASE_URL}/message/create`, paramsToSend)
-      .then((response) => {
-        console.log(`Your message has been sent successfuly.`);
-        navigate("/");
-      })
-      .catch((error) => {
-        console.error(`An error occured while sending the message.`);
-      });
+    if (isSent) {
+      axios
+        .post(`${BASE_URL}/message/create`, paramsToSend)
+        .then((response) => {
+          console.log(`Your message has been sent successfuly.`);
+        })
+        .catch((error) => {
+          console.error(`An error occured while sending the message.`);
+        });
+    }
   }, [isSent]);
 
   return (
