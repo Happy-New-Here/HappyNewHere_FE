@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { MessagePapersSRC, MessagePapers } from "../../utils/MessagePapersSRC";
 
 const MessagePaperButton = styled.button`
-  width: 64px;
-  height: 64px;
+  width: 60px;
+  height: 60px;
   border: none;
   border-radius: 5px;
   padding: 0px 0px;
@@ -24,7 +24,9 @@ const MessagePaperButton = styled.button`
   ${(props) =>
     props.isSelected &&
     `
-    border: 2px solid black;
+    // border: 2px solid black;
+    width: 70px;
+    height: 70px;
 
     // @media (prefers-color-scheme: dark) {
     //   border: 2px solid #9A0501;

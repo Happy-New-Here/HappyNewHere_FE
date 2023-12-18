@@ -10,7 +10,7 @@ const MessagePaperContainer = styled.div`
   height: auto;
   display: flex;
   justify-content: space-between;
-  // padding: 0 32px;
+  align-items: center;
 `;
 
 const MessagePaperSelect = () => {
