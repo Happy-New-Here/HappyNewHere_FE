@@ -44,11 +44,14 @@ const Message = () => {
     // 메시지뷰어 꺼지고 메시지리스트 다시 나오게
   };
 
+  const today = new Date();
+  const day = today.getDay(); // 일요일: 0 ~ 토요일: 6
+
   return (
     <StyledMessage>
       <CancelIcon src={cancelIcon} alt="cancelIcon" onClick={handleCancelClick} />
 
-      <MessageContainer ref={messageContainerRef} paperNum={selectedPaperNum}>
+      <MessageContainer ref={messageContainerRef} day={day} paperNum={selectedPaperNum}>
         <MessageText fontColor={MessageFontColor(selectedPaperNum)}>
           <TextArea fontColor={MessageFontColor(selectedPaperNum)}>
             안녕. <br /> 새해에는 좋은 일이 생기게 해주세요. <br /> Happy New Year!

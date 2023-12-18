@@ -62,11 +62,14 @@ const Message = () => {
     dispatch(setMessageInput(e.target.value));
   };
 
+  const today = new Date();
+  const day = today.getDay(); // 일요일: 0 ~ 토요일: 6
+
   return (
     <StyledMessage>
       <CancelIcon src={cancelIcon} alt="cancelIcon" onClick={handleCancelClick} />
 
-      <MessageContainer ref={messageContainerRef} paperNum={selectedPaperNum}>
+      <MessageContainer ref={messageContainerRef} day={day} paperNum={selectedPaperNum}>
         <MessageText fontColor={MessageFontColor(selectedPaperNum)}>
           <ReceiverOrSender>To. {receiverNickname}</ReceiverOrSender>
           <TextArea

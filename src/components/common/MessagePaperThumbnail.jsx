@@ -35,8 +35,6 @@ const MessagePaperButton = styled.button`
 `;
 
 const MessagePaperThumbnail = ({ paperNum, isSelected, onSelect }) => {
-  // const colorsOfDays = ["Red", "Navy", "White", "Green", "Brown", "Pink", "Yellow"];
-  // const colorOfDay = colorsOfDays[today.getDay()]; // 요일 인덱스 받아와서 색깔로
   const today = new Date();
   const day = today.getDay(); // 일요일: 0 ~ 토요일: 6
 
