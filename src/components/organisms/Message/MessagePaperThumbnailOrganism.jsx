@@ -16,38 +16,37 @@ const MessagePaperContainer = styled.div`
 const MessagePaperSelect = () => {
   const dispatch = useDispatch();
   const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
-  const [isPN0Selected, setIsPN0Selected] = useState(true); // 디폴트 편지지 1번
+  const [isPN0Selected, setIsPN0Selected] = useState(true); // 디폴트 편지지가 0번
 
   const handlePaperSelect = (paperNum) => {
-    setIsPN0Selected(false); // 0번 편지지 선택 해제
+    if (isPN0Selected) {
+      setIsPN0Selected(false); // 0번 편지지 선택 해제
+    }
     dispatch(setSelectedPaperNum(paperNum));
+    // console.log(`paper ${selectedPaperNum} is selected.`);
   };
-
-  useEffect(() => {
-    console.log(`paper ${selectedPaperNum} is selected.`);
-  }, [selectedPaperNum]);
 
   return (
     <MessagePaperContainer>
       <MessagePaperThumbnail
         paperNum="0"
         isSelected={isPN0Selected || selectedPaperNum === "0"}
-        onSelect={handlePaperSelect}
+        onSelect={() => handlePaperSelect(paperNum)}
       />
       <MessagePaperThumbnail
         paperNum="1"
         isSelected={selectedPaperNum === "1"}
-        onSelect={handlePaperSelect}
+        onSelect={() => handlePaperSelect(paperNum)}
       />
       <MessagePaperThumbnail
         paperNum="2"
         isSelected={selectedPaperNum === "2"}
-        onSelect={handlePaperSelect}
+        onSelect={() => handlePaperSelect(paperNum)}
       />
       <MessagePaperThumbnail
         paperNum="3"
         isSelected={selectedPaperNum === "3"}
-        onSelect={handlePaperSelect}
+        onSelect={() => handlePaperSelect(paperNum)}
       />
     </MessagePaperContainer>
   );
