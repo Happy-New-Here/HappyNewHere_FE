@@ -63,11 +63,11 @@ export const ContentLayout = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
-  height: auto;
+  height: calc(100vh - 76px - 77px);
   gap: 32px;
-  padding: 0px 32px;
+  padding: 0 32px 32px; //상 좌우 하
 
-  overflow: scroll;
+  overflow: auto;
 
   @media (min-width: 768px) {
     flex-direction: row;
