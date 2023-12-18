@@ -7,15 +7,7 @@ import envelopeIconRed from "../../assets/envelopeIconRed.svg";
 import envelopeIconWhite from "../../assets/envelopeIconWhite.svg";
 import styled from "styled-components";
 
-const EnvelopeIcon = styled.img`
-   {
-    /*${(props) =>
-      props.hover &&
-      `
-        fill: white;
-    `}*/
-  }
-`;
+const EnvelopeIcon = styled.img``;
 
 const MessageWriteButton = () => {
   const [hover, setHover] = useState(false);
@@ -25,6 +17,7 @@ const MessageWriteButton = () => {
   const accessToken = localStorage.getItem("accessToken"); // 로컬스토리지의 엑세스토큰 불러오기
 
   const handleMessageWriteButtonClick = () => {
+    // 액세스토큰 여부 확인하고 처리
     if (accessToken) {
       dispatch(setIsMessageWriteVisible(true));
     } else {
