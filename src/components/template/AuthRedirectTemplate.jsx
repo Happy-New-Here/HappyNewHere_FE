@@ -45,7 +45,7 @@ const AuthRedirectTemplate = () => {
 
   useEffect(() => {
     // 로컬스토리지에 저장된 currentPage 값 가져오기
-    const localCurrentPage = JSON.parse(localStorage.getItem("CurrentPage"));
+    const localCurrentPage = JSON.parse(localStorage.getItem("currentPage"));
     if (localCurrentPage) {
       dispatch(setCurrentPage(localCurrentPage)); // 로컬스토리지에 저장된 currentPage 값으로 상태를 업데이트
     }
