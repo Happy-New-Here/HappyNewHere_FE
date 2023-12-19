@@ -54,6 +54,8 @@ const ChattingTemplate = () => {
     localStorage.setItem("currentPage", JSON.stringify(currentPage));
   }, [currentPage]);
 
+  const accessToken = localStorage.getItem("accessToken"); // 로컬스토리지의 엑세스토큰 불러오기
+
   return (
     <>
       {/* 데탑창입니다. */}
@@ -63,28 +65,40 @@ const ChattingTemplate = () => {
             <Header />
             <Footer currentPage="chat" isPc={isPc} />
           </InsideLayoutPC>
-          <ChattingInsideLayoutPC>
-            <StyledChattingPageDeco src={ChattingPageDeco} alt="ChattingPageDeco" />
+          {accessToken ? (
+            <ChattingInsideLayoutPC>
+              <StyledChattingPageDeco src={ChattingPageDeco} alt="ChattingPageDeco" />
+              <SmallText fontSize="20px" fontWeight="600" lineHeight="48px" textAlign="center">
+                아직 지원되지 않는 기능입니다. <br />
+              </SmallText>
+              <SmallText fontSize="16px" color="grey" lineHeight="24px" textAlign="center">
+                더 나은 서비스를 위해 조금만 기다려주세요!
+              </SmallText>
+            </ChattingInsideLayoutPC>
+          ) : (
             <SmallText fontSize="20px" fontWeight="600" lineHeight="48px" textAlign="center">
-              아직 지원되지 않는 기능입니다. <br />
+              로그인 후 이용 가능해요.
             </SmallText>
-            <SmallText fontSize="16px" color="grey" lineHeight="24px" textAlign="center">
-              더 나은 서비스를 위해 조금만 기다려주세요!
-            </SmallText>
-          </ChattingInsideLayoutPC>
+          )}
         </ResponsiveLayoutPC>
       ) : (
         <ResponsiveLayoutMobile>
           <Header />
-          <ChattingInsideLayoutMobile>
-            <StyledChattingPageDeco src={ChattingPageDeco} alt="ChattingPageDeco" />
+          {accessToken ? (
+            <ChattingInsideLayoutMobile>
+              <StyledChattingPageDeco src={ChattingPageDeco} alt="ChattingPageDeco" />
+              <SmallText fontSize="20px" fontWeight="600" lineHeight="48px" textAlign="center">
+                아직 지원되지 않는 기능입니다.
+              </SmallText>
+              <SmallText fontSize="16px" color="grey" lineHeight="24px" textAlign="center">
+                더 나은 서비스를 위해 조금만 기다려주세요!
+              </SmallText>
+            </ChattingInsideLayoutMobile>
+          ) : (
             <SmallText fontSize="20px" fontWeight="600" lineHeight="48px" textAlign="center">
-              아직 지원되지 않는 기능입니다.
+              로그인 후 이용 가능해요.
             </SmallText>
-            <SmallText fontSize="16px" color="grey" lineHeight="24px" textAlign="center">
-              더 나은 서비스를 위해 조금만 기다려주세요!
-            </SmallText>
-          </ChattingInsideLayoutMobile>
+          )}
           <Footer currentPage="chat" isPc={isPc} />
         </ResponsiveLayoutMobile>
       )}
