@@ -11,4 +11,5 @@ const currentPage = createSlice({
 });
 
 export const { setCurrentPage } = currentPage.actions;
+
 export default currentPage.reducer;
