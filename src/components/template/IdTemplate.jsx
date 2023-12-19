@@ -1,87 +1,109 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 
-import logo from '../../assets/happynewhere_logo 1.svg';
-import idSlice, { inInputActions } from '../../store/id-Slice';
-import { idResult } from '../../store/id-action';
-import Header from '../common/Header';
+import { setId, setStateMsg } from '../../store/User-Slice';
+import { idResult } from '../../store/User-action';
+
+import { DecoWrapper, IdResponsiveLayout, SnowManWrapper, TextWrapper } from '../organisms/UserInfo/IdPcStyle';
+import { BackGround } from '../organisms/UserInfo/IdMobileStyle';
+import { SmallText } from '../../styles/text';
+import IdSubmitButton from '../organisms/UserInfo/IdSubmitButton';
+import StateInputBar from '../organisms/UserInfo/StateInputBar';
+import IdInputBar from '../organisms/UserInfo/IdInputBar';
+
+import HappyHaedalLogo from '../../assets/HappyHaedalLogo.svg';
+import logo from '../../assets/logo.svg';
+import AuthPageDeco from '../../assets/AuthPageDeco.svg';
+import SnowMan from '../../assets/SnowMan.svg';
+import IdInputBarPC from '../organisms/UserInfo/IdinputBarPc';
+import { IdInputContainer } from '../organisms/UserInfo/IdInputContainer';
+import { IdInputForm } from '../organisms/UserInfo/IdInputForm';
 
 const IdTemplate = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const userId = useSelector((state) => state.id.id);
-    const paging = 0;
+    const [idInput, setIdInput] = useState('');
+    const [stateMsgInput, setStateMsgInput] = useState('');
 
-    const idInputHandler = () => {
-        dispatch(inInputActions.Id({ id: 'test' }));
+    const accessToken = localStorage.getItem('accessToken');
+
+    const isPc = useMediaQuery({
+        query: '(min-width:768px)',
+    });
+
+    /** 아이디 입력 event */
+    const handleIdChange = (e) => {
+        const myId = e.target.value;
+        setIdInput(myId);
+        dispatch(setId.Id(e.target.value));
+
+        localStorage.setItem('userId', myId);
     };
 
-    const [idValue, setIdValue] = useState('');
+    /** 상태메세지 입력 event */
+    const handleStateMsgChange = (e) => {
+        const myStateMsg = e.target.value;
+        setStateMsgInput(myStateMsg);
+        dispatch(setStateMsg.Id(e.target.value));
 
-    const saveUserId = (e) => {
-        dispatch(inInputActions.Id({ id: e.target.value }));
+        localStorage.setItem('userId', myStateMsg);
     };
 
-    // const idSubmit = async () => {
-    //     //console.log(formData);
-    //     // idResult(userId, paging);
-    // };
+    /** 버튼 입력 event */
+    const handleStartClick = (e) => {
+        e.preventDefault();
 
-    const idSubmit = () => {
-        dispatch;
+        const savedId = localStorage.getItem('userId');
+
+        dispatch(setId.Id(savedId));
     };
 
     return (
         <>
-            <section className="mx-auto">
-                <div className="p-16 bg-amber-50">
-                    <div className="w-[180px] h-12 mb-10 mx-auto relative">
-                        <Header />
-                    </div>
-                    <p className="text-center text-lg">
-                        HappyNewHere에서 사용하실 <br />
-                        아이디를 알려주세요!
-                    </p>
-                    <form className="mt-8">
-                        {' '}
-                        {/*onSubmit={handleSubmit(onSubmit)}> */}
-                        <div className="input-container">
-                            <div className="w-full h-11 p-2.5 mb-3 bg-white rounded-[10px] border border-red-800 justify-start items-center gap-2.5 inline-flex">
-                                {/* 아이디 입력창 */}
-                                <input
-                                    type="id"
-                                    id="id"
-                                    placeholder="아이디를 입력해주세요(필수)"
-                                    className="w-full"
-                                    value={idValue}
-                                    onChange={(e) => setIdValue(e.target.value)}
-                                />
-                            </div>
-                            <div className="w-full h-11 p-2.5 mb-3 bg-white rounded-[10px] border border-red-800 justify-start items-center gap-2.5 inline-flex">
-                                {/* 상태메세지 입력창 */}
-                                <input
-                                    type="text"
-                                    id="state"
-                                    placeholder="상태메세지를 입력해주세요(선택)"
-                                    className="w-full"
-                                />
-                            </div>
-                            <div>
-                                <button
-                                    type="submit"
-                                    className="w-full mt-4 bg-red-800 py-2 rounded-full font-semibold text-white transition duration-200 hover:bg-red-700 hover:border-red-700"
-                                    onClick={() => {
-                                        idSubmit();
-                                    }}
-                                >
-                                    시작하기
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </section>
+            {isPc ? (
+                <IdResponsiveLayout>
+                    <DecoWrapper>
+                        <img src={AuthPageDeco} alt="AuthPageDeco" />
+                    </DecoWrapper>
+                    <img src={HappyHaedalLogo} alt="HappyHaedalLogo" />
+                    <TextWrapper>
+                        <SmallText className="justify-center text-center font-bold">
+                            HappyNewHere에서 사용하실 아이디를 알려주세요!
+                        </SmallText>
+                    </TextWrapper>
+                    <IdInputForm>
+                        <IdInputContainer>
+                            <IdInputBarPC onChange={handleIdChange} value={idInput} />
+                            <IdSubmitButton onClick={handleStartClick} />
+                        </IdInputContainer>
+                    </IdInputForm>
+                    <SnowManWrapper>
+                        <img src={SnowMan} alt="SnowMan" />
+                    </SnowManWrapper>
+                </IdResponsiveLayout>
+            ) : (
+                <BackGround>
+                    <IdResponsiveLayout>
+                        <img className="mb-7" src={logo} alt="HappyHaedalLogo" />
+                        <SmallText className="justify-center text-center font-bold">
+                            HappyNewHere에서 사용하실
+                        </SmallText>
+                        <SmallText className="justify-center text-center font-bold">아이디를 알려주세요!</SmallText>
+                        {/* <form className="mt-3"> */}
+                        <IdInputForm>
+                            <IdInputContainer className="p-5">
+                                <IdInputBar onChange={handleIdChange} value={idInput} />
+                                <StateInputBar onChange={handleStateMsgChange} value={stateMsgInput} />
+                                <IdSubmitButton onClick={handleStartClick} />
+                            </IdInputContainer>
+                        </IdInputForm>
+                        {/* </form> */}
+                    </IdResponsiveLayout>
+                </BackGround>
+            )}
         </>
     );
 };
