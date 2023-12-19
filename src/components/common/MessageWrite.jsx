@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsMessageWriteVisible } from "../../store/isMessageWriteVisibleSlice";
 import { setMessageInput } from "../../store/messageInputSlice";
-import messagePaperSRC, { messageFontColor } from "../../utils/messagePaperSRC";
+import { MessagePapersSRC, MessageFontColor } from "../../utils/MessagePapersSRC";
 import cancelIcon from "../../assets/cancelIcon.svg";
 import styled from "styled-components";
 import {
@@ -51,9 +51,16 @@ const Message = () => {
   const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
 
   const handleCancelClick = () => {
-    const isConfirmed = confirm("메시지 작성을 취소하시겠어요?");
+    if (messageInput) {
+      const isConfirmed = confirm(
+        "메시지 쓰기를 취소하시겠어요? 작성하신 메시지는 저장되지 않아요. "
+      );
 
-    if (isConfirmed) {
+      if (isConfirmed) {
+        dispatch(setIsMessageWriteVisible(false));
+        dispatch(setMessageInput(""));
+      }
+    } else {
       dispatch(setIsMessageWriteVisible(false));
     }
   };
@@ -61,18 +68,19 @@ const Message = () => {
   const handleMessageInputChange = (e) => {
     dispatch(setMessageInput(e.target.value));
   };
-
+  const today = new Date();
+  const day = today.getDay(); // 일요일: 0 ~ 토요일: 6
   return (
     <StyledMessage>
       <CancelIcon src={cancelIcon} alt="cancelIcon" onClick={handleCancelClick} />
 
-      <MessageContainer ref={messageContainerRef} paperNum={selectedPaperNum}>
-        <MessageText fontColor={messageFontColor(selectedPaperNum)}>
+      <MessageContainer ref={messageContainerRef} day={day} paperNum={selectedPaperNum}>
+        <MessageText fontColor={MessageFontColor(selectedPaperNum)}>
           <ReceiverOrSender>To. {receiverNickname}</ReceiverOrSender>
           <TextArea
             placeholder="여기에 메시지를 입력하세요"
             value={messageInput}
-            fontColor={messageFontColor(selectedPaperNum)}
+            fontColor={MessageFontColor(selectedPaperNum)}
             onChange={handleMessageInputChange}
           />
         </MessageText>

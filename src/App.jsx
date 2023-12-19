@@ -1,32 +1,32 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import HomePage from './pages/Home';
-import SearchPage from './pages/Search';
-import IdPage from './pages/Id';
-import AuthPage from './pages/Auth';
-import FriendPage from './pages/Friend';
-import Root from './pages/Root';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import RootLayout from "./pages/Root";
+import HomePage from "./pages/Home";
+import AuthPage from "./pages/Auth";
+import AuthRedirectPage from "./pages/AuthRedirectPage";
+import IdPage from "./pages/Id";
+import SearchPage from "./pages/Search";
+import FriendPage from "./pages/Friend";
+import ChattingPage from "./pages/Chatting";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Root />,
         children: [
-            { index: true, path: '', element: <HomePage /> },
-            {
-                path: 'auth',
-                children: [
-                    { path: '', element: <AuthPage /> },
-                    { path: 'kakao/callback', element: <AuthPage /> },
-                    { path: 'id', element: <IdPage /> },
-                ],
-            },
-            {
-                path: 'friend',
-                children: [{ path: '', element: <FriendPage /> }],
-            },
-            { path: 'search', element: <SearchPage /> },
+          { path: "", element: <AuthPage /> },
+          { path: "kakao/callback", element: <AuthRedirectPage /> },
+          { path: "id/input", element: <IdPage /> },
+          { path: "search", element: <SearchPage /> },
+          { path: "chatting", element: <ChattingPage /> },
         ],
-    },
+      },
+      { path: "search", element: <SearchPage /> },
+      {
+        path: "friend",
+        children: [{ path: "", element: <FriendPage /> }],
+      },
+    ],
+  },
 ]);
 
 function App() {
