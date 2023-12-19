@@ -1,11 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./pages/Home";
-import SearchPage from "./pages/Search";
-import IdInputPage from "./pages/IdInput";
-import AuthPage from "./pages/Auth";
-import FriendPage from "./pages/Friend";
 import RootLayout from "./pages/Root";
+import HomePage from "./pages/Home";
+import AuthPage from "./pages/Auth";
 import AuthRedirectPage from "./pages/AuthRedirectPage";
+import IdInputPage from "./pages/IdInput";
+import SearchPage from "./pages/Search";
+import FriendPage from "./pages/Friend";
+import ChattingPage from "./pages/Chatting";
 
 const router = createBrowserRouter([
   {
@@ -20,13 +21,14 @@ const router = createBrowserRouter([
           { path: "kakao/callback", element: <AuthRedirectPage /> },
           { path: "id/input", element: <IdInputPage /> },
           { path: "search", element: <SearchPage /> },
+          { path: "chatting", element: <ChattingPage /> },
         ],
       },
+      { path: "search", element: <SearchPage /> },
       {
         path: "friend",
         children: [{ path: "", element: <FriendPage /> }],
       },
-      { path: "search", element: <SearchPage /> },
     ],
   },
 ]);
