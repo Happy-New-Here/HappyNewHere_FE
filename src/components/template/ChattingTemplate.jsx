@@ -19,6 +19,11 @@ const ChattingInsideLayoutMobile = styled(InsideLayoutMobile)`
   align-items: center;
 `;
 
+const ChattingInsideLayoutPC = styled(InsideLayoutPC)`
+  justify-content: center;
+  align-items: center;
+`;
+
 const StyledChattingPageDeco = styled.img`
   width: 180px;
   height: 180px;
@@ -57,7 +62,7 @@ const ChattingTemplate = () => {
             <Header />
             <Footer currentPage="chat" isPc={isPc} />
           </InsideLayoutPC>
-          <InsideLayoutPC>
+          <ChattingInsideLayoutPC>
             <StyledChattingPageDeco src={ChattingPageDeco} alt="ChattingPageDeco" />
             <SmallText fontSize="20px" font-weight="600" margin="0 0 0 1rem">
               아직 지원되지 않는 기능입니다. <br />
@@ -65,7 +70,7 @@ const ChattingTemplate = () => {
             <SmallText fontSize="16px" margin="0 0 0 1rem">
               더 나은 서비스를 위해 조금만 기다려주세요!
             </SmallText>
-          </InsideLayoutPC>
+          </ChattingInsideLayoutPC>
         </ResponsiveLayoutPC>
       ) : (
         <ResponsiveLayoutMobile>
