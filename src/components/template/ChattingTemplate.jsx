@@ -27,6 +27,7 @@ const ChattingInsideLayoutPC = styled(InsideLayoutPC)`
 const StyledChattingPageDeco = styled.img`
   width: 180px;
   height: 180px;
+  margin: 16px;
 
   @media (min-width: 768px) {
     width: 180px;
@@ -64,10 +65,10 @@ const ChattingTemplate = () => {
           </InsideLayoutPC>
           <ChattingInsideLayoutPC>
             <StyledChattingPageDeco src={ChattingPageDeco} alt="ChattingPageDeco" />
-            <SmallText fontSize="20px" font-weight="600" margin="0 0 0 1rem">
+            <SmallText fontSize="20px" fontWeight="600" lineHeight="48px" textAlign="center">
               아직 지원되지 않는 기능입니다. <br />
             </SmallText>
-            <SmallText fontSize="16px" margin="0 0 0 1rem">
+            <SmallText fontSize="16px" color="grey" lineHeight="24px" textAlign="center">
               더 나은 서비스를 위해 조금만 기다려주세요!
             </SmallText>
           </ChattingInsideLayoutPC>
@@ -77,10 +78,10 @@ const ChattingTemplate = () => {
           <Header />
           <ChattingInsideLayoutMobile>
             <StyledChattingPageDeco src={ChattingPageDeco} alt="ChattingPageDeco" />
-            <SmallText fontSize="18px" font-weight="600" margin="0 0 0 1rem">
+            <SmallText fontSize="20px" fontWeight="600" lineHeight="48px" textAlign="center">
               아직 지원되지 않는 기능입니다.
             </SmallText>
-            <SmallText fontSize="16px" margin="0 0 0 1rem">
+            <SmallText fontSize="16px" color="grey" lineHeight="24px" textAlign="center">
               더 나은 서비스를 위해 조금만 기다려주세요!
             </SmallText>
           </ChattingInsideLayoutMobile>
