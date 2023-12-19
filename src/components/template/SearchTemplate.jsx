@@ -8,7 +8,7 @@ import { SmallText } from "../../styles/text";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch, useSelector } from "react-redux";
 import { SearchAction } from "../../store/searchSlice";
-import { setPreviousPage } from "../../store/previousPageSlice";
+import { setCurrentPage } from "../../store/currentPageSlice";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 
@@ -26,20 +26,20 @@ const SearchTemplate = () => {
 
   const dispatch = useDispatch();
   const formData = useSelector((state) => state.search.search);
-  const previousPage = useSelector((state) => state.previousPage);
+  const currentPage = useSelector((state) => state.currentPage);
   const [inputValue, setInputValue] = useState("");
   const paging = 0;
 
-  // previousPage를 search로 설정하는 코드
-  // 최초 마운트시에(만) setPreviousPage를 디스패치
+  // currentPage(로그인 후 돌아올 페이지)를 설정하는 코드
+  // 최초 마운트시에(만) setCurrentPage를 디스패치
   useEffect(() => {
-    dispatch(setPreviousPage("/search"));
+    dispatch(setCurrentPage("/search"));
   }, [dispatch]);
 
-  // 로컬스토리지에 previousPage 값을 저장 (앱 리렌더링 시에도 값 보존 위해서)
+  // 로컬스토리지에 currentPage 값을 저장 (앱 리렌더링 시에도 값 보존 위해서)
   useEffect(() => {
-    localStorage.setItem("previousPage", JSON.stringify(previousPage));
-  }, [previousPage]);
+    localStorage.setItem("currentPage", JSON.stringify(currentPage));
+  }, [currentPage]);
 
   const onClickCount = () => {
     //페이지 카운트

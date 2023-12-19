@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setPreviousPage } from "../../store/previousPageSlice";
+import { setCurrentPage } from "../../store/currentPageSlice";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
 import ChattingPageDeco from "../../assets/ChattingPageDeco.svg";
@@ -40,18 +40,18 @@ const ChattingTemplate = () => {
   });
 
   const dispatch = useDispatch();
-  const previousPage = useSelector((state) => state.previousPage);
+  const currentPage = useSelector((state) => state.currentPage);
 
-  // previousPage를 search로 설정하는 코드
-  // 최초 마운트시에(만) setPreviousPage를 디스패치
+  // currentPage(로그인 후 돌아올 페이지)를 설정하는 코드
+  // 최초 마운트시에(만) setCurrentPage를 디스패치
   useEffect(() => {
-    dispatch(setPreviousPage("/search"));
+    dispatch(setCurrentPage("/auth/chatting"));
   }, [dispatch]);
 
-  // 로컬스토리지에 previousPage 값을 저장 (앱 리렌더링 시에도 값 보존 위해서)
+  // 로컬스토리지에 currentPage 값을 저장 (앱 리렌더링 시에도 값 보존 위해서)
   useEffect(() => {
-    localStorage.setItem("previousPage", JSON.stringify(previousPage));
-  }, [previousPage]);
+    localStorage.setItem("currentPage", JSON.stringify(currentPage));
+  }, [currentPage]);
 
   return (
     <>
