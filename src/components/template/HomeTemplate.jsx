@@ -2,11 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage } from "../../store/currentPageSlice";
+import Header from "../common/Header";
+import Footer from "../common/Footer";
+import Profile from "../common/Profile";
 import GiftBox from "../common/GiftBox";
+import { Calendar } from "../common/Calendar";
 import MessageList from "../organisms/Message/MessageList";
 import MessageViewOrganism from "../organisms/Message/MessageViewOrganism";
-import { Calendar } from "../common/Calendar";
-import Footer from "../common/Footer";
+
+import {
+  ResponsiveLayoutPC,
+  ResponsiveLayoutMobile,
+  InsideLayoutPC,
+  InsideLayoutMobile,
+} from "../../styles/utils";
 
 const HomeTemplate = () => {
   const isPc = useMediaQuery({
@@ -35,26 +44,37 @@ const HomeTemplate = () => {
 
   return (
     <>
-      홈 템플릿입니다.
-      <Calendar.wrapper>
-        {weekDates.map((date, index) => (
-          <Calendar.item
-            key={index}
-            day={date.getDay()}
-            date={date.getDate()}
-            onClick={() => handleDateClick(date)}
-          />
-        ))}
-      </Calendar.wrapper>
-      <GiftBox />
-      {selectedDate && (
-        <div>
-          선택한 날짜: {selectedDate.toDateString()}
-          {/* 선택한 날짜에 따른 메시지 목록 또는 내용을 여기에 표시 */}
-        </div>
+      {isPc ? (
+        <ResponsiveLayoutPC>
+          <InsideLayoutPC>
+            <Header />
+            <Footer currentPage="home" isPc={isPc} />
+          </InsideLayoutPC>
+        </ResponsiveLayoutPC>
+      ) : (
+        <>
+          <Header />
+          <Calendar.wrapper>
+            {weekDates.map((date, index) => (
+              <Calendar.item
+                key={index}
+                day={date.getDay()}
+                date={date.getDate()}
+                onClick={() => handleDateClick(date)}
+              />
+            ))}
+          </Calendar.wrapper>
+          <GiftBox />
+          {selectedDate && (
+            <div>
+              선택한 날짜: {selectedDate.toDateString()}
+              {/* 선택한 날짜에 따른 메시지 목록 또는 내용을 여기에 표시 */}
+            </div>
+          )}
+          <MessageViewOrganism />
+          <Footer currentPage="home" isPc={isPc} />
+        </>
       )}
-      <MessageViewOrganism />
-      <Footer currentPage="home" isPc={isPc} />
     </>
   );
 };
