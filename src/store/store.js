@@ -6,6 +6,7 @@ import isMessageWriteVisibleSlice from './isMessageWriteVisibleSlice';
 import isAnonymousSlice from './isAnonymousSlice';
 import searchSlice from './searchSlice';
 import userSlice from './User-Slice';
+import currentPageSlice from './currentPageSlice';
 
 export const store = configureStore({
     reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
         isAnonymous: isAnonymousSlice,
         search: searchSlice.reducer,
         user: userSlice.reducer,
+        currentPage: currentPageSlice,
     },
 });
