@@ -9,9 +9,13 @@ import FriendPage from "./pages/Friend";
 import ChattingPage from "./pages/Chatting";
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <Root />,
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      { index: true, path: "", element: <HomePage /> },
+      {
+        path: "auth",
         children: [
           { path: "", element: <AuthPage /> },
           { path: "kakao/callback", element: <AuthRedirectPage /> },
@@ -28,6 +32,7 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 
 function App() {
     return (

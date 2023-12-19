@@ -1,6 +1,5 @@
 import styled from "styled-components";
-
-const REST_API_KEY = import.meta.env.VITE_APP_REST_API_KEY;
+import { REST_API_KEY } from "../../../utils/URL";
 
 const KakaoLoginBtn = () => {
   const REDIRECT_URI = "http://127.0.0.1:5173/auth/kakao/callback";
