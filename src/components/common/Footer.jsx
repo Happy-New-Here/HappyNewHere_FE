@@ -32,6 +32,10 @@ const Footer = (props) => {
     navigate("/search");
   };
 
+  const togoChatting = () => {
+    navigate("/auth/chatting");
+  };
+
   const { currentPage = "home", isPc } = props;
   console.log(currentPage);
 
@@ -197,7 +201,10 @@ const Footer = (props) => {
               </p>
             </button>
 
-            <button className="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-[7px]">
+            <button
+              className="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-[7px]"
+              onClick={togoChatting}
+            >
               <svg
                 width={21}
                 height={18}
