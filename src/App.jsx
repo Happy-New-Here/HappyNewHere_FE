@@ -3,7 +3,7 @@ import RootLayout from "./pages/Root";
 import HomePage from "./pages/Home";
 import AuthPage from "./pages/Auth";
 import AuthRedirectPage from "./pages/AuthRedirectPage";
-import IdInputPage from "./pages/IdInput";
+import IdPage from "./pages/Id";
 import SearchPage from "./pages/Search";
 import FriendPage from "./pages/Friend";
 import ChattingPage from "./pages/Chatting";
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         children: [
           { path: "", element: <AuthPage /> },
           { path: "kakao/callback", element: <AuthRedirectPage /> },
-          { path: "id/input", element: <IdInputPage /> },
+          { path: "id/input", element: <IdPage /> },
           { path: "search", element: <SearchPage /> },
           { path: "chatting", element: <ChattingPage /> },
         ],
@@ -33,12 +33,13 @@ const router = createBrowserRouter([
   },
 ]);
 
+
 function App() {
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
-  );
+    return (
+        <>
+            <RouterProvider router={router} />
+        </>
+    );
 }
 
 export default App;

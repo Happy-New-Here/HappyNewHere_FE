@@ -1,6 +1,6 @@
 import IdTemplate from '../components/template/IdTemplate';
 
-const IdInputPage = () => {
+const IdPage = () => {
     return (
         <>
             <IdTemplate />
@@ -8,4 +8,4 @@ const IdInputPage = () => {
     );
 };
 
-export default IdInputPage;
+export default IdPage;

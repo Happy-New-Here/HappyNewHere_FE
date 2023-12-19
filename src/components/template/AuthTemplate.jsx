@@ -1,12 +1,12 @@
-import { useMediaQuery } from "react-responsive";
-import styled from "styled-components";
-import { SmallText } from "../../styles/text";
+import { useMediaQuery } from 'react-responsive';
+import styled from 'styled-components';
+import { SmallText } from '../../styles/text';
 
-import KakaoLoginBtn from "../common/Button/KakaoLoginBtn";
-import HappyHaedalLogo from "../../assets/HappyHaedalLogo.svg";
-import logo from "../../assets/logo.svg";
-import AuthPageDeco from "../../assets/AuthPageDeco.svg";
-import SnowMan from "../../assets/SnowMan.svg";
+import KakaoLoginBtn from '../common/Button/KakaoLoginBtn';
+import HappyHaedalLogo from '../../assets/HappyHaedalLogo.svg';
+import logo from '../../assets/logo.svg';
+import AuthPageDeco from '../../assets/AuthPageDeco.svg';
+import SnowMan from '../../assets/SnowMan.svg';
 
 const AuthTemplate = () => {
   const isPc = useMediaQuery({
@@ -77,15 +77,15 @@ const AuthTemplate = () => {
 export default AuthTemplate;
 
 const AuthResponsiveLayout = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  max-width: 1024px;
-  max-height: 550px;
-  position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    max-width: 1024px;
+    max-height: 550px;
+    position: relative;
 
   @media (max-width: 768px) {
     max-width: 360px;
@@ -126,10 +126,10 @@ const SnowManWrapper = styled.div`
 `;
 
 const TextWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem 0.625rem 2rem 0.625rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0.625rem 2rem 0.625rem;
 `;
 
 const ButtonWrapper = styled.div`

@@ -17,5 +17,6 @@ export const store = configureStore({
     isAnonymous: isAnonymousSlice,
     search: searchSlice.reducer,
     currentPage: currentPageSlice,
+    user: userSlice.reducer,
   },
 });
