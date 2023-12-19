@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { setCurrentPage } from "../../store/currentPageSlice";
 import Header from "../common/Header";
 import Profile from "../common/Profile";
 import TodayQuestionOrganism from "../organisms/Message/TodayQuestionOrganism";
@@ -18,6 +19,9 @@ import { useSpring, animated } from "react-spring"; // 애니메이션
 import { useMediaQuery } from "react-responsive";
 
 const MessageWriteTemplate = () => {
+  const dispatch = useDispatch();
+  const currentPage = useSelector((state) => state.currentPage);
+
   const isMessageWriteVisible = useSelector((state) => state.isMessageWriteVisible);
   // const animationProps = useSpring({
   //   opacity: isMessageWriteVisible ? 1 : 0,
@@ -29,8 +33,19 @@ const MessageWriteTemplate = () => {
   });
 
   const isPc = useMediaQuery({
-    query: "(min-width:768px)"
+    query: "(min-width:768px)",
   });
+
+  // currentPage(로그인 후 돌아올 페이지)를 설정하는 코드
+  // 최초 마운트시에(만) setCurrentPage를 디스패치
+  useEffect(() => {
+    dispatch(setCurrentPage("/friend")); // 특정 친구 페이지로 이동하도록 추후 수정
+  }, [dispatch]);
+
+  // 로컬스토리지에 currentPage 값을 저장 (앱 리렌더링 시에도 값 보존 위해서)
+  useEffect(() => {
+    localStorage.setItem("currentPage", JSON.stringify(currentPage));
+  }, [currentPage]);
 
   return (
     <ResponsiveLayout>
@@ -38,7 +53,7 @@ const MessageWriteTemplate = () => {
         <>
           <Leftside>
             <Header />
-            <Footer currentPage="home" isPc = {isPc} />
+            <Footer currentPage="home" isPc={isPc} />
           </Leftside>
           <ContentLayout>
             <Center>
@@ -82,7 +97,7 @@ const MessageWriteTemplate = () => {
               <MessageWriteButtonOrganism />
             )}
           </ContentLayout>
-          <Footer currentPage="home"/>
+          <Footer currentPage="home" />
         </>
       )}
     </ResponsiveLayout>
