@@ -102,7 +102,10 @@ const Footer = (props) => {
             </button>
 
             {/* 대화 */}
-            <button className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]">
+            <button
+              className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]"
+              onClick={togoChatting}
+            >
               <svg
                 width={12}
                 height={12}
