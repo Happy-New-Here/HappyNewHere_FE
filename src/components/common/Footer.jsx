@@ -101,7 +101,7 @@ const Footer = (props) => {
               </p>
             </button>
 
-            {/* 대화 */}
+            {/* 채팅 */}
             <button
               className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]"
               onClick={togoChatting}
@@ -117,14 +117,16 @@ const Footer = (props) => {
               >
                 <path
                   d="M6 10.9004C9.3135 10.9004 12 8.54989 12 5.65039C12 2.75089 9.3135 0.400391 6 0.400391C2.6865 0.400391 0 2.75089 0 5.65039C0 6.97039 0.55725 8.17789 1.4775 9.10039C1.40475 9.86239 1.16475 10.6979 0.89925 11.3249C0.84 11.4644 0.95475 11.6204 1.104 11.5964C2.796 11.3189 3.80175 10.8929 4.239 10.6709C4.81343 10.8241 5.40549 10.9013 6 10.9004Z"
-                  fill={currentPage === "chat" ? "#9a0501" : "#909090"}
+                  fill={currentPage === "chatting" ? "#9a0501" : "#909090"}
                 />
               </svg>
               <p
-                className={`${currentPage === "chat" ? "text-[#9a0501]" : "text-[#909090]"} 
+                className={`${
+                  currentPage === "chatting" ? "text-[#9a0501]" : "text-[#909090]"
+                } 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
               >
-                대화
+                채팅
               </p>
             </button>
 
@@ -149,6 +151,7 @@ const Footer = (props) => {
       ) : (
         <MobileFooter className="flex h-screen">
           <div className="flex justify-between items-center w-full px-8 py-4 fixed bottom-0 left-0 right-0 bg-white border-t border-gray">
+            {/* 홈 */}
             <button
               className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
               onClick={togoHome}
@@ -175,6 +178,7 @@ const Footer = (props) => {
               </p>
             </button>
 
+            {/* 검색 */}
             <button
               className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
               onClick={togoSearch}
@@ -204,6 +208,7 @@ const Footer = (props) => {
               </p>
             </button>
 
+            {/* 채팅  */}
             <button
               className="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-[7px]"
               onClick={togoChatting}
@@ -219,17 +224,20 @@ const Footer = (props) => {
               >
                 <path
                   d="M10.6667 0C16.1667 0 20.6667 3.58 20.6667 8C20.6667 12.42 16.1667 16 10.6667 16C9.42669 16 8.23669 15.82 7.13669 15.5C4.21669 18 0.666687 18 0.666687 18C2.99669 15.67 3.36669 14.1 3.41669 13.5C1.71669 12.07 0.666687 10.13 0.666687 8C0.666687 3.58 5.16669 0 10.6667 0Z"
-                  fill={currentPage === "chat" ? "#9a0501" : "#909090"}
+                  fill={currentPage === "chatting" ? "#9a0501" : "#909090"}
                 />
               </svg>
               <p
-                className={`${currentPage === "chat" ? "text-[#9a0501]" : "text-[#909090]"} 
+                className={`${
+                  currentPage === "chatting" ? "text-[#9a0501]" : "text-[#909090]"
+                } 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
               >
-                대화
+                채팅
               </p>
             </button>
 
+            {/* My */}
             <button className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[7px]">
               <img
                 className="flex-grow-0 flex-shrink-0 rounded-[50px]"
