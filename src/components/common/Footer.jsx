@@ -36,8 +36,16 @@ const Footer = (props) => {
     navigate("/auth/chatting");
   };
 
+  const togoMypage = () => {};
+
+  const handleLoginIconClick = () => {
+    navigate("/auth");
+  };
+
   const { currentPage = "home", isPc } = props;
   console.log(currentPage);
+
+  const accessToken = localStorage.getItem("accessToken"); // 로컬스토리지의 엑세스토큰 불러오기
 
   return (
     <>
@@ -77,8 +85,8 @@ const Footer = (props) => {
               onClick={togoSearch}
             >
               <svg
-                width={14}
-                height={14}
+                width={12}
+                height={12}
                 viewBox="0 0 14 14"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -130,23 +138,52 @@ const Footer = (props) => {
               </p>
             </button>
 
-            {/* 마이페이지 */}
-            <button className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]">
-              <img
-                className="flex-grow-0 flex-shrink-0 rounded-[50px]"
-                src={profileImg}
-                width={12}
-                height={12}
-              />
-              <p
-                className={`${currentPage === "myPage" ? "text-[#9a0501]" : "text-[#909090]"} 
+            {/* My / 로그인 */}
+            {accessToken ? (
+              <button className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]">
+                <img
+                  className="flex-grow-0 flex-shrink-0 rounded-[50px]"
+                  src={profileImg}
+                  width={12}
+                  height={12}
+                />
+                <p
+                  className={`${
+                    currentPage === "myPage" ? "text-[#9a0501]" : "text-[#909090]"
+                  } 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
+                >
+                  마이페이지
+                </p>
+              </button>
+            ) : (
+              <button
+                className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]"
+                onClick={handleLoginIconClick}
               >
-                마이페이지
-              </p>
-            </button>
+                <svg
+                  width={12}
+                  height={12}
+                  viewBox="0 0 21 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="flex-grow-0 flex-shrink-0"
+                  preserveAspectRatio="none"
+                >
+                  <path d="M14 1H21V19H14" stroke="#909090" stroke-width="2" />
+                  <path
+                    d="M15.7071 11.2364C16.0976 10.8459 16.0976 10.2127 15.7071 9.82219L9.34315 3.45823C8.95262 3.0677 8.31946 3.0677 7.92893 3.45823C7.53841 3.84875 7.53841 4.48192 7.92893 4.87244L13.5858 10.5293L7.92893 16.1862C7.53841 16.5767 7.53841 17.2098 7.92893 17.6004C8.31946 17.9909 8.95262 17.9909 9.34315 17.6004L15.7071 11.2364ZM0 11.5293H15V9.5293H0V11.5293Z"
+                    fill="#909090"
+                  />
+                </svg>
+                <p
+                  className={`text-[#909090] flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
+                >
+                  로그인
+                </p>
+              </button>
+            )}
           </div>
-          ;
         </PCFooter>
       ) : (
         <MobileFooter className="flex h-screen">
@@ -237,21 +274,54 @@ const Footer = (props) => {
               </p>
             </button>
 
-            {/* My */}
-            <button className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[7px]">
-              <img
-                className="flex-grow-0 flex-shrink-0 rounded-[50px]"
-                src={profileImg}
-                width={24}
-                height={24}
-              />
-              <p
-                className={`${currentPage === "myPage" ? "text-[#9a0501]" : "text-[#909090]"} 
-                        flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
+            {/* My / 로그인 */}
+            {accessToken ? (
+              <button
+                className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
+                onClick={togoMypage}
               >
-                My
-              </p>
-            </button>
+                <img
+                  className="flex-grow-0 flex-shrink-0 rounded-[50px]"
+                  src={profileImg}
+                  width={24}
+                  height={24}
+                />
+                <p
+                  className={`${
+                    currentPage === "myPage" ? "text-[#9a0501]" : "text-[#909090]"
+                  } 
+                        flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
+                >
+                  My
+                </p>
+              </button>
+            ) : (
+              <button
+                className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
+                onClick={handleLoginIconClick}
+              >
+                <svg
+                  width={21}
+                  height={18}
+                  viewBox="0 0 21 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="flex-grow-0 flex-shrink-0"
+                  preserveAspectRatio="none"
+                >
+                  <path d="M14 1H21V19H14" stroke="#909090" stroke-width="2" />
+                  <path
+                    d="M15.7071 11.2364C16.0976 10.8459 16.0976 10.2127 15.7071 9.82219L9.34315 3.45823C8.95262 3.0677 8.31946 3.0677 7.92893 3.45823C7.53841 3.84875 7.53841 4.48192 7.92893 4.87244L13.5858 10.5293L7.92893 16.1862C7.53841 16.5767 7.53841 17.2098 7.92893 17.6004C8.31946 17.9909 8.95262 17.9909 9.34315 17.6004L15.7071 11.2364ZM0 11.5293H15V9.5293H0V11.5293Z"
+                    fill="#909090"
+                  />
+                </svg>
+                <p
+                  className={`text-[#909090] flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
+                >
+                  로그인
+                </p>
+              </button>
+            )}
           </div>
         </MobileFooter>
       )}
