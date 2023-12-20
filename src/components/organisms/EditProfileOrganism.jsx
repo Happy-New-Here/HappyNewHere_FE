@@ -106,14 +106,17 @@ const UserInfoType = styled.div`
 `;
 
 const UserInfo = styled(PlaceLeftColumn)`
-  // width: 100%;
-  gap: 3px;
+  width: 100%;
+  flex: 1; // 나머지 공간 차지
+  gap: 5px;
+  align-items: flex-end;
 `;
 
 const EditUserInfo = () => {
   const userId = useSelector((state) => state.user.userId);
   const nickname = useSelector((state) => state.user.nickname);
   const stateMsg = useSelector((state) => state.user.stateMsg);
+  const stateMsgMaxLength = 40; // 상태메시지 최대 글자수
 
   // 저장 전 인풋 임시 저장할 곳
   const [nicknameInput, setNicknameInput] = useState(nickname);
@@ -151,7 +154,8 @@ const EditUserInfo = () => {
             onChange={handleNicknameInputChange}
             placeholder="닉네임을 입력하세요"
             // style={{ width: "100%" }}
-          ></input>
+            className="w-full border-b border-black hover:border-b-2 hover:border-[#9a0501] outline-none"
+          />
           {!nicknameInput && (
             <SmallText fontSize="12px" color="#9A0501">
               닉네임은 필수 항목입니다.
@@ -169,9 +173,15 @@ const EditUserInfo = () => {
             type="text"
             defaultValue={stateMsgInput}
             value={stateMsgInput}
+            maxLength={stateMsgMaxLength}
             onChange={handleStateMsgInputChange}
             placeholder="상태메시지를 입력하세요"
-          ></input>
+            // style={{ width: "100%" }}
+            className="w-full border-b border-black hover:border-b-2 hover:border-[#9a0501] outline-none"
+          />
+          <SmallText fontSize="12px">
+            {stateMsgInput.length}/{stateMsgMaxLength}자
+          </SmallText>
         </UserInfo>
       </UserInfoContainer>
     </StyledEditUserInfo>
