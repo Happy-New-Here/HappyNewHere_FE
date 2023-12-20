@@ -42,7 +42,7 @@ const StyledDiv = styled.div`
 const StyledText = styled.span`
   color: ${(props) =>
     props.type === "white" || props.type === "yellow" ? "#000000" : "#ffffff"};
-  font-weight: bold;
+  font-weight: 800;
   position: absolute;
   top: 30%;
   left: 50%;
