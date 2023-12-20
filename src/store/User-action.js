@@ -46,7 +46,10 @@ export const GetUserInfo = (dispatch) => {
         `Brought user info successfully. nickname: ${response.data.nickname}, profileImg: ${response.data.profileImg}`
       );
       dispatch(userAction.setNickname(response.data.nickname));
-      dispatch(userAction.setProfileImg(response.data.profileImg));
+      {
+        response.data.profileImg &&
+          dispatch(userAction.setProfileImg(response.data.profileImg));
+      }
     })
     .catch((error) => {
       console.error(`Failed to get user info.`);
