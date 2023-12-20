@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage } from "../../store/currentPageSlice";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
+import EditProfileTab from "../common/EditProfileTab";
 import { useMediaQuery } from "react-responsive";
 import {
   PlaceCenter,
@@ -43,12 +44,15 @@ const EditProfileTemplate = () => {
             <Footer currentPage="mypage" isPc={isPc} />
           </Leftside>
           <ContentLayout>
-            <Center></Center>
+            <Center>
+              <EditProfileTab />
+            </Center>
             <Rightside></Rightside>
           </ContentLayout>
         </>
       ) : (
         <>
+          <EditProfileTab />
           <ContentLayout></ContentLayout>
 
           <Footer currentPage="mypage" isPc={isPc} />
