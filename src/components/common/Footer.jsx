@@ -49,7 +49,6 @@ const Footer = (props) => {
   };
 
   const { currentPage = "home", isPc } = props;
-  console.log(currentPage);
 
   const accessToken = localStorage.getItem("accessToken"); // 로컬스토리지의 엑세스토큰 불러오기
 
