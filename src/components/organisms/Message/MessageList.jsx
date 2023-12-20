@@ -38,16 +38,20 @@ const MessageList = () => {
   //       });
   //   }, []);
 
+  const today = new Date();
+  const day = today.getDay(); // 일요일: 0 ~ 토요일: 6
+
   return (
     <StyledMessageList>
-      <MessageThumbnail paperNum="1" />
-      <MessageThumbnail paperNum="2" />
-      <MessageThumbnail paperNum="3" />
+      <MessageThumbnail day={day} paperNum="1" />
+      <MessageThumbnail day={day} paperNum="2" />
+      <MessageThumbnail day={day} paperNum="3" />
+      <MessageThumbnail day={day} paperNum="4" />
     </StyledMessageList>
     // <>
     //   {responseData.messages.map((message, index) => (
     //     <StyledMessageList key={index}>
-    //       <MessageThumbnail paperNum={message["편지지 번호"]} />
+    //       <MessageThumbnail day={day} paperNum={message["편지지 번호"]} />
     //     </StyledMessageList>
     //   ))}
     // </>

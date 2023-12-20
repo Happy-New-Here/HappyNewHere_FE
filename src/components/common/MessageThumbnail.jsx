@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { MessagePapersSRC } from "../../utils/MessagePapersSRC";
+import {
+  MessageThumbnailsSRC,
+  MessagePapers,
+  MessageFontColor,
+} from "../../utils/MessagePapersSRC";
 import { PlaceLeftRow } from "../../styles/utils";
 
 const StyledMessageThumbnail = styled(PlaceLeftRow)`
@@ -10,7 +14,10 @@ const StyledMessageThumbnail = styled(PlaceLeftRow)`
   //   border: 1px solid black;
   border-radius: 5px;
   font-size: 12px;
-  background: ${(props) => `url(${MessagePapersSRC[props.paperNum]})`};
+  background: ${(props) =>
+    `url(${MessageThumbnailsSRC}/${MessagePapers[props.day].color}/${
+      MessagePapers[props.day].name[props.paperNum]
+    })`};
   background-size: 100%;
 
   @media (min-width: 768px) {
@@ -18,10 +25,12 @@ const StyledMessageThumbnail = styled(PlaceLeftRow)`
 `;
 
 const MessageThumbnail = (props) => {
-  const sender = "민주";
+  const sender = "민주"; // 임의
 
   return (
-    <StyledMessageThumbnail paperNum={props.paperNum}>From. {sender}</StyledMessageThumbnail>
+    <StyledMessageThumbnail day={props.day} paperNum={props.paperNum}>
+      From. {sender}
+    </StyledMessageThumbnail>
   );
 };
 
