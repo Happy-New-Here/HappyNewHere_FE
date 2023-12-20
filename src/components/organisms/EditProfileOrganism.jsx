@@ -59,7 +59,13 @@ const EditProfileImg = () => {
 
   return (
     <StyledEditProfileImg>
-      <ProfileImg backgroundImg={profileImgInput} widthDesktop="80px" heightDesktop="80px" />
+      <ProfileImg
+        backgroundImg={profileImgInput}
+        widthMobile="64px"
+        heightMobile="64px"
+        widthDesktop="80px"
+        heightDesktop="80px"
+      />
       <EditProfileImgButtonContainer>
         <EditProfileImgButton>
           <SmallText fontSize="12px" color="#9A0501">
