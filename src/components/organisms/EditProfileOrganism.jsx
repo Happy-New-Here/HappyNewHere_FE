@@ -47,14 +47,16 @@ const EditProfileImgButton = styled.button`
 const EditProfileImg = () => {
   const dispatch = useDispatch();
   const profileImg = useSelector((state) => state.user.profileImg);
+  const [profileImgInput, setProfileImgInput] = useState(profileImg); // 완료 전 임시 저장용
 
   const handleClickDefaultProfileImg = () => {
-    dispatch(userAction.setProfileImg(DefaultProfileImg));
+    // dispatch(userAction.setProfileImg(DefaultProfileImg));
+    setProfileImgInput(DefaultProfileImg);
   };
 
   return (
     <StyledEditProfileImg>
-      <ProfileImg backgroundImg={profileImg} />
+      <ProfileImg backgroundImg={profileImgInput} />
       <EditProfileImgButtonContainer>
         <EditProfileImgButton>
           <SmallText fontSize="12px" color="#9A0501">
