@@ -297,7 +297,7 @@ const Footer = (props) => {
             </button>
           ) : (
             <button
-              className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
+              className="w-1/4 h-full flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
               onClick={handleLoginIconClick}
             >
               <svg
