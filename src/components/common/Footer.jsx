@@ -13,9 +13,12 @@ const FooterProfileImg = styled.img`
 `;
 
 const Footer = () => {
-  const navigate = useNavigate();
+  const accessToken = localStorage.getItem("accessToken"); // 로컬스토리지의 엑세스토큰 불러오기
 
   const profileImg = useSelector((state) => state.user.profileImg);
+  const currentPage = useSelector((state) => state.currentPage);
+
+  const navigate = useNavigate();
 
   const togoHome = () => {
     navigate("/");
@@ -36,10 +39,6 @@ const Footer = () => {
   const handleLoginIconClick = () => {
     navigate("/auth");
   };
-
-  const currentPage = useSelector((state) => state.currentPage);
-
-  const accessToken = localStorage.getItem("accessToken"); // 로컬스토리지의 엑세스토큰 불러오기
 
   const isPc = useMediaQuery({
     query: "(min-width:768px)",
