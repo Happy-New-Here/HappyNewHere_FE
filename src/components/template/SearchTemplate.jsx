@@ -28,8 +28,8 @@ const SearchTemplate = () => {
   const formData = useSelector((state) => state.search.search);
   const currentPage = useSelector((state) => state.currentPage);
   const [inputValue, setInputValue] = useState("");
-  const [ resultData, setResultData] = useState([]);
-  const paging = 0;
+  const [resultData, setResultData] = useState([]);
+  const [pageNum, setPageNum] = useState(0);
 
   // currentPage(로그인 후 돌아올 페이지)를 설정하는 코드
   // 최초 마운트시에(만) setCurrentPage를 디스패치
@@ -42,22 +42,31 @@ const SearchTemplate = () => {
     localStorage.setItem("currentPage", JSON.stringify(currentPage));
   }, [currentPage]);
 
-  const onClickCount = () => {
+  const onClickCount = async () => {
     //페이지 카운트
-    paging++;
+    try {
+      const result = await searchResult(formData, pageNum + 1);
+      console.log('Search result:', result.content);
+      setResultData((prevResult) => [...prevResult, ...result.content]);
+      setPageNum((prevPageNum) => prevPageNum + 1);
+    } catch (error) {
+      // 오류 처리
+      console.error(error);
+    }
   };
 
   const onClickSearch = async () => {
     try {
-        const result = await searchResult(formData, paging);
-        console.log('Search result:', result.content);
-        setResultData(result.content);
-        return result.content;
+      setPageNum(0);
+      const result = await searchResult(formData, pageNum);
+      console.log('Search result:', result.content);
+      setResultData(result.content);
+      return result.content;
     } catch (error) {
-        // 오류 처리
-        console.error(error);
+      // 오류 처리
+      console.error(error);
     }
-};
+  };
 
   const handleResetSearch = (e) => {
     setInputValue("");
@@ -122,7 +131,7 @@ const SearchTemplate = () => {
                 </SmallText>
               </TextWrapper>
             </SearchTemplateWrapper>
-            {formData.length > 0 ? <ResultSearch searchResult={resultData} onClick={onClickCount}/> : <RecentSearch />}
+            {formData.length > 0 ? <ResultSearch searchResult={resultData} onClick={onClickCount} /> : <RecentSearch />}
             <Footer currentPage="search" isPc={isPc} />
           </InsideLayoutMobile>
         </ResponsiveLayoutMobile>
