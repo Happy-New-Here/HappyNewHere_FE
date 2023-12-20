@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import backwardIcon from "../../assets/backwardIcon.svg";
 import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
@@ -20,6 +21,8 @@ const StyledEditProfileTab = styled(PlaceCenter)`
 `;
 
 const EditProfileTab = () => {
+  const navigate = useNavigate();
+
   const isPc = useMediaQuery({
     query: "(min-width:768px)",
   });
@@ -30,7 +33,7 @@ const EditProfileTab = () => {
         <SmallText fontSize="20px">프로필 편집</SmallText>
       ) : (
         <>
-          <img src={backwardIcon} alt="backwardIcon" />
+          <img src={backwardIcon} alt="backwardIcon" onClick={() => navigate(-1)} />
           <SmallText>프로필 편집</SmallText>
           <SmallText color="#909090">완료</SmallText>
         </>
