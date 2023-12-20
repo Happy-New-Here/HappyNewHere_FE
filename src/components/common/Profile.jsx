@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector, useDispatch } from "react-redux";
 import { GetUserInfo } from "../../store/User-action";
 import styled from "styled-components";
 import { PlaceLeftColumn, PlaceLeftRow } from "../../styles/utils";
@@ -8,17 +8,16 @@ import editIcon from "../../assets/editIcon.svg";
 
 const StyledProfile = styled(PlaceLeftRow)`
   width: 100%;
-  gap: 10px;
+  gap: 12px;
 `;
 
-const Photo = styled.div`
-  width: 48px;
-  height: 48px;
-  margin: 10px 10px;
+const ProfileImg = styled.div`
+  width: 54px;
+  height: 54px;
+  // margin: 10px 10px;
   border-radius: 50%;
-  border: 1px solid #909090;
-  background: ${(props) => props.profileImg};
-  background-size: 100% 100%;
+  border: 0.5px solid #909090;
+  background: url(${(props) => props.backgroundImg}) center/cover;
 `;
 
 const NicknameAndStatus = styled(PlaceLeftColumn)`
@@ -40,33 +39,26 @@ const EditIcon = styled.img`
 `;
 
 const Profile = () => {
-  // const nickname = "주쓰";
-  // const statusMsg = "I bring, I bring all the drama-ma-ma-ma";
+  const dispatch = useDispatch();
+
   const userId = useSelector((state) => state.user.userId);
   const nickname = useSelector((state) => state.user.nickname);
   const stateMsg = useSelector((state) => state.user.stateMsg);
   const profileImg = useSelector((state) => state.user.profileImg);
+  // const profileImg = {
+  //   url: useSelector((state) => state.user.profileImg),
+  //   alt: "profileImg",
+  // };
 
   useEffect(() => {
-    const FetchData = async () => {
-      await GetUserInfo();
-    };
+    GetUserInfo(dispatch);
 
-    FetchData();
-  }, [nickname, stateMsg, profileImg]);
-
-  const handleStartClick = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await dispatch(idResult(userId));
-      navigate("/");
-      return response.data;
-    } catch (error) {
-      console.log(error);
-    }
-
-    console.log("버튼 입력시 로그", userId);
-  };
+    // 또는 아래와 같이 GetUserInfo 함수를 직접 호출할 수도 있습니다.
+    // const fetchUserInfo = async () => {
+    //   await GetUserInfo(dispatch);
+    // };
+    // fetchUserInfo();
+  }, [dispatch]);
 
   const handleEditClick = () => {
     // 프로필 편집
@@ -74,10 +66,16 @@ const Profile = () => {
 
   return (
     <StyledProfile>
-      <Photo background={profileImg} />
+      <ProfileImg backgroundImg={profileImg} />
       <NicknameAndStatus>
-        <Nickname>{nickname}</Nickname>
-        <StateMsg>{stateMsg}</StateMsg>
+        {stateMsg ? (
+          <>
+            <Nickname>{nickname}</Nickname>
+            <StateMsg>{stateMsg}</StateMsg>
+          </>
+        ) : (
+          <Nickname>{nickname}</Nickname>
+        )}
       </NicknameAndStatus>
       {/* 편집아이콘 나일 땐 보이고 다른 사람일 땐 안 보이게 */}
       {/* <EditIcon src={editIcon} alt="edit icon" onClick={handleEditClick} /> */}

@@ -1,8 +1,8 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
-import profileImg from "../../assets/MessagePapers/Brown/Puppy.svg";
-import { useNavigate } from "react-router-dom";
-import React from "react";
 
 const PCFooter = styled.div`
   display: flex;
@@ -23,6 +23,8 @@ const MobileFooter = styled.div`
 
 const Footer = (props) => {
   const navigate = useNavigate();
+
+  const profileImg = useSelector((state) => state.user.profileImg);
 
   const togoHome = () => {
     navigate("/");
