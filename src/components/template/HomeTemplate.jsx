@@ -99,21 +99,21 @@ const HomeTemplate = () => {
   const AfterOpen = () => {
     return (
       <>
-        <MessageList />
-        <MessageViewOrganism />
         {selectedDate && (
           <div>
             {/* 선택한 날짜: {selectedDate.toDateString()} */}
             {/* 선택한 날짜에 따른 메시지 목록 또는 내용을 여기에 표시 */}
           </div>
         )}
+        <MessageList />
+        {/* <MessageViewOrganism /> */}
       </>
     );
   };
 
   return (
     <ResponsiveLayout>
-      {window.innerWidth >= 768 ? (
+      {isPc ? (
         <>
           <Leftside>
             <Header />
@@ -131,13 +131,12 @@ const HomeTemplate = () => {
                   />
                 ))}
               </Calendar.wrapper>
-
-              {/* 오픈일 이후 메시지 목록 공개 */}
-              {today > targetDate ? <AfterOpen /> : <BeforeOpen />}
             </Center>
 
             <Rightside>
               <Profile />
+              {/* 오픈일 이후 메시지 목록 공개 */}
+              {today > targetDate ? <AfterOpen /> : <BeforeOpen />}
             </Rightside>
           </ContentLayout>
         </>
