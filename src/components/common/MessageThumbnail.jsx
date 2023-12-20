@@ -1,10 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  MessageThumbnailsSRC,
-  MessagePapers,
-  MessageFontColor,
-} from "../../utils/MessagePapersSRC";
+import { MessageThumbnailsSRC, MessagePapers } from "../../utils/MessagePapersSRC";
 import { PlaceLeftRow } from "../../styles/utils";
 import { SmallText } from "../../styles/text";
 
