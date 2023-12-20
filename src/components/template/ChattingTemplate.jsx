@@ -63,7 +63,7 @@ const ChattingTemplate = () => {
         <ResponsiveLayoutPC>
           <InsideLayoutPC>
             <Header />
-            <Footer currentPage="chatting" isPc={isPc} />
+            <Footer />
           </InsideLayoutPC>
           {accessToken ? (
             <ChattingInsideLayoutPC>
@@ -99,7 +99,7 @@ const ChattingTemplate = () => {
               로그인 후 이용 가능해요.
             </SmallText>
           )}
-          <Footer currentPage="chatting" isPc={isPc} />
+          <Footer />
         </ResponsiveLayoutMobile>
       )}
     </>

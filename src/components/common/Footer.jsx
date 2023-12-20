@@ -12,7 +12,7 @@ const FooterProfileImg = styled.img`
   background: url(${(props) => props.backgroundImg}) center/cover;
 `;
 
-const Footer = (props) => {
+const Footer = () => {
   const navigate = useNavigate();
 
   const profileImg = useSelector((state) => state.user.profileImg);
@@ -37,9 +37,13 @@ const Footer = (props) => {
     navigate("/auth");
   };
 
-  const { currentPage = "home", isPc } = props;
+  const currentPage = useSelector((state) => state.currentPage);
 
   const accessToken = localStorage.getItem("accessToken"); // 로컬스토리지의 엑세스토큰 불러오기
+
+  const isPc = useMediaQuery({
+    query: "(min-width:768px)",
+  });
 
   return (
     <>
@@ -61,11 +65,11 @@ const Footer = (props) => {
             >
               <path
                 d="M0.857143 12.9088H4.02171V7.86454H7.97829V12.9088H11.1429V5.19454L6 1.30483L0.857143 5.19454V12.9088ZM0 13.766V4.76597L6 0.233398L12 4.76597V13.766H7.12114V8.72168H4.87886V13.766H0Z"
-                fill={currentPage === "home" ? "#9a0501" : "#909090"}
+                fill={currentPage === "/" ? "#9a0501" : "#909090"}
               />
             </svg>
             <p
-              className={`${currentPage === "home" ? "text-[#9a0501]" : "text-[#909090]"} 
+              className={`${currentPage === "/" ? "text-[#9a0501]" : "text-[#909090]"} 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               홈
@@ -88,14 +92,14 @@ const Footer = (props) => {
             >
               <path
                 d="M13 13L9 9M1 5.66667C1 6.2795 1.12071 6.88634 1.35523 7.45252C1.58975 8.01871 1.93349 8.53316 2.36683 8.9665C2.80018 9.39984 3.31462 9.74358 3.88081 9.97811C4.447 10.2126 5.05383 10.3333 5.66667 10.3333C6.2795 10.3333 6.88634 10.2126 7.45252 9.97811C8.01871 9.74358 8.53316 9.39984 8.9665 8.9665C9.39984 8.53316 9.74358 8.01871 9.97811 7.45252C10.2126 6.88634 10.3333 6.2795 10.3333 5.66667C10.3333 5.05383 10.2126 4.447 9.97811 3.88081C9.74358 3.31462 9.39984 2.80018 8.9665 2.36683C8.53316 1.93349 8.01871 1.58975 7.45252 1.35523C6.88634 1.12071 6.2795 1 5.66667 1C5.05383 1 4.447 1.12071 3.88081 1.35523C3.31462 1.58975 2.80018 1.93349 2.36683 2.36683C1.93349 2.80018 1.58975 3.31462 1.35523 3.88081C1.12071 4.447 1 5.05383 1 5.66667Z"
-                stroke={currentPage === "search" ? "#9a0501" : "#909090"}
+                stroke={currentPage === "/search" ? "#9a0501" : "#909090"}
                 stroke-width={2}
                 stroke-linecap="round"
                 stroke-linejoin="round"
               />
             </svg>
             <p
-              className={`${currentPage === "search" ? "text-[#9a0501]" : "text-[#909090]"} 
+              className={`${currentPage === "/search" ? "text-[#9a0501]" : "text-[#909090]"} 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               검색
@@ -118,11 +122,13 @@ const Footer = (props) => {
             >
               <path
                 d="M6 10.9004C9.3135 10.9004 12 8.54989 12 5.65039C12 2.75089 9.3135 0.400391 6 0.400391C2.6865 0.400391 0 2.75089 0 5.65039C0 6.97039 0.55725 8.17789 1.4775 9.10039C1.40475 9.86239 1.16475 10.6979 0.89925 11.3249C0.84 11.4644 0.95475 11.6204 1.104 11.5964C2.796 11.3189 3.80175 10.8929 4.239 10.6709C4.81343 10.8241 5.40549 10.9013 6 10.9004Z"
-                fill={currentPage === "chatting" ? "#9a0501" : "#909090"}
+                fill={currentPage === "/auth/chatting" ? "#9a0501" : "#909090"}
               />
             </svg>
             <p
-              className={`${currentPage === "chatting" ? "text-[#9a0501]" : "text-[#909090]"} 
+              className={`${
+                currentPage === "/auth/chatting" ? "text-[#9a0501]" : "text-[#909090]"
+              } 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               채팅
@@ -137,17 +143,17 @@ const Footer = (props) => {
             >
               <FooterProfileImg
                 className={`${
-                  currentPage === "mypage"
+                  currentPage === "/auth/editprofile"
                     ? "border-[1px] border-[#9a0501]"
                     : "border-[0.3px] border-[#909090]"
                 } flex-grow-0 flex-shrink-0 rounded-[50px] border-solid `}
-                width={`${currentPage === "mypage" ? "13" : 12}`}
-                height={`${currentPage === "mypage" ? "13" : 12}`}
+                width={`${currentPage === "/auth/editprofile" ? "13" : 12}`}
+                height={`${currentPage === "/auth/editprofile" ? "13" : 12}`}
                 backgroundImg={profileImg}
               />
               <p
                 className={`${
-                  currentPage === "mypage" ? "text-[#9a0501]" : "text-[#909090]"
+                  currentPage === "/auth/editprofile" ? "text-[#9a0501]" : "text-[#909090]"
                 } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
               >
                 마이페이지
@@ -200,12 +206,12 @@ const Footer = (props) => {
             >
               <path
                 d="M2 16H5V10H11V16H14V7L8 2.5L2 7V16ZM0 18V6L8 0L16 6V18H9V12H7V18H0Z"
-                fill={currentPage === "home" ? "#9a0501" : "#909090"}
+                fill={currentPage === "/" ? "#9a0501" : "#909090"}
               />
             </svg>
             <p
               className={`${
-                currentPage === "home" ? "text-[#9a0501]" : "text-[#909090]"
+                currentPage === "/" ? "text-[#9a0501]" : "text-[#909090]"
               } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               홈
@@ -228,7 +234,7 @@ const Footer = (props) => {
             >
               <path
                 d="M19.8334 19L13.8334 13M1.83337 8C1.83337 8.91925 2.01443 9.82951 2.36622 10.6788C2.718 11.5281 3.23362 12.2997 3.88363 12.9497C4.53364 13.5998 5.30531 14.1154 6.15459 14.4672C7.00387 14.8189 7.91412 15 8.83337 15C9.75263 15 10.6629 14.8189 11.5122 14.4672C12.3614 14.1154 13.1331 13.5998 13.7831 12.9497C14.4331 12.2997 14.9487 11.5281 15.3005 10.6788C15.6523 9.82951 15.8334 8.91925 15.8334 8C15.8334 7.08075 15.6523 6.1705 15.3005 5.32122C14.9487 4.47194 14.4331 3.70026 13.7831 3.05025C13.1331 2.40024 12.3614 1.88463 11.5122 1.53284C10.6629 1.18106 9.75263 1 8.83337 1C7.91412 1 7.00387 1.18106 6.15459 1.53284C5.30531 1.88463 4.53364 2.40024 3.88363 3.05025C3.23362 3.70026 2.718 4.47194 2.36622 5.32122C2.01443 6.1705 1.83337 7.08075 1.83337 8Z"
-                stroke={currentPage === "search" ? "#9a0501" : "#909090"}
+                stroke={currentPage === "/search" ? "#9a0501" : "#909090"}
                 stroke-width={2}
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -236,7 +242,7 @@ const Footer = (props) => {
             </svg>
             <p
               className={`${
-                currentPage === "search" ? "text-[#9a0501]" : "text-[#909090]"
+                currentPage === "/search" ? "text-[#9a0501]" : "text-[#909090]"
               } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               검색
@@ -259,12 +265,12 @@ const Footer = (props) => {
             >
               <path
                 d="M10.6667 0C16.1667 0 20.6667 3.58 20.6667 8C20.6667 12.42 16.1667 16 10.6667 16C9.42669 16 8.23669 15.82 7.13669 15.5C4.21669 18 0.666687 18 0.666687 18C2.99669 15.67 3.36669 14.1 3.41669 13.5C1.71669 12.07 0.666687 10.13 0.666687 8C0.666687 3.58 5.16669 0 10.6667 0Z"
-                fill={currentPage === "chatting" ? "#9a0501" : "#909090"}
+                fill={currentPage === "/auth/chatting" ? "#9a0501" : "#909090"}
               />
             </svg>
             <p
               className={`${
-                currentPage === "chatting" ? "text-[#9a0501]" : "text-[#909090]"
+                currentPage === "/auth/chatting" ? "text-[#9a0501]" : "text-[#909090]"
               } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               채팅
@@ -279,17 +285,17 @@ const Footer = (props) => {
             >
               <FooterProfileImg
                 className={`${
-                  currentPage === "mypage"
+                  currentPage === "/auth/editprofile"
                     ? "border-[2px] border-[#9a0501]"
                     : "border-[0.3px] border-[#909090]"
                 } flex-grow-0 flex-shrink-0 rounded-[50px] border-solid `}
-                width={`${currentPage === "mypage" ? "26" : 24}`}
-                height={`${currentPage === "mypage" ? "26" : 24}`}
+                width={`${currentPage === "/auth/editprofile" ? "26" : 24}`}
+                height={`${currentPage === "/auth/editprofile" ? "26" : 24}`}
                 backgroundImg={profileImg}
               />
               <p
                 className={`${
-                  currentPage === "mypage" ? "text-[#9a0501]" : "text-[#909090]"
+                  currentPage === "/auth/editprofile" ? "text-[#9a0501]" : "text-[#909090]"
                 } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
               >
                 My

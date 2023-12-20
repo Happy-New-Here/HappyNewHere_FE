@@ -42,7 +42,7 @@ const EditProfileTemplate = () => {
         <>
           <Leftside>
             <Header />
-            <Footer currentPage="mypage" isPc={isPc} />
+            <Footer />
           </Leftside>
           <ContentLayout>
             <Center>
@@ -59,7 +59,7 @@ const EditProfileTemplate = () => {
             <EditProfileOrganism />
           </ContentLayout>
 
-          <Footer currentPage="mypage" isPc={isPc} />
+          <Footer />
         </>
       )}
     </ResponsiveLayout>

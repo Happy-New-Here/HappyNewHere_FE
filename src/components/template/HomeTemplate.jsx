@@ -117,7 +117,7 @@ const HomeTemplate = () => {
         <>
           <Leftside>
             <Header />
-            <Footer currentPage="home" isPc={isPc} />
+            <Footer />
           </Leftside>
           <ContentLayout>
             <Center>
@@ -160,7 +160,7 @@ const HomeTemplate = () => {
             {today > targetDate ? <AfterOpen /> : <BeforeOpen />}
           </ContentLayout>
 
-          <Footer currentPage="home" isPc={isPc} />
+          <Footer />
         </>
       )}
     </ResponsiveLayout>
