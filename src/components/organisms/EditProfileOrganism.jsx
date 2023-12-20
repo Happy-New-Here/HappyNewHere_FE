@@ -35,16 +35,17 @@ const StyledEditProfileImg = styled(PlaceCenter)`
     justify-content: flex-start;
     padding: 24px 0;
     border: none;
+    gap: 28px;
   }
 `;
 
 const EditProfileImgButtonContainer = styled(PlaceCenter)`
   justify-content: space-between;
-  // gap: 16px;
+  gap: 20px;
 `;
 
 const EditProfileImgButton = styled.button`
-  width: 80px;
+  // width: 80px;
 `;
 
 const EditProfileImg = () => {
@@ -87,8 +88,8 @@ const EditProfileImg = () => {
       />
       <EditProfileImgButtonContainer>
         <EditProfileImgButton onClick={handleUploadProfileImg}>
-          <SmallText fontSize="12px" color="#9A0501">
-            사진 업로드
+          <SmallText fontSize="14px" color="#9A0501">
+            업로드
           </SmallText>
         </EditProfileImgButton>
         <input
@@ -98,12 +99,10 @@ const EditProfileImg = () => {
           style={{ display: "none" }}
           onChange={onFileChange}
         />
-        <SmallText fontSize="12px" color="#4F4E4E">
-          |
-        </SmallText>
+
         <EditProfileImgButton onClick={handleClickDefaultProfileImg}>
-          <SmallText fontSize="12px" color="#4F4E4E">
-            기본 이미지
+          <SmallText fontSize="14px" color="#4F4E4E">
+            삭제
           </SmallText>
         </EditProfileImgButton>
       </EditProfileImgButtonContainer>
