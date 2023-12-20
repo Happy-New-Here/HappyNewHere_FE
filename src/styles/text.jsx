@@ -10,4 +10,5 @@ export const SmallText = styled.span`
   margin: ${(props) => props.margin || "0"};
   text-align: ${(props) => props.textAlign || "left"};
   justify-content: ${(props) => props.justifyContent || "left"};
+  cursor: ${(props) => props.cursor};
 `;
