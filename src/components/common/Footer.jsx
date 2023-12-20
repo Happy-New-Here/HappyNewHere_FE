@@ -144,20 +144,23 @@ const Footer = (props) => {
               </p>
             </button>
 
-            {/* My / 로그인 */}
+            {/* 마이페이지 / 로그인 */}
             {accessToken ? (
               <button className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]">
                 <FooterProfileImg
-                  className="flex-grow-0 flex-shrink-0 rounded-[50px] border-[0.3px] border-solid border-gray-380"
+                  className={`${
+                    currentPage === "mypage"
+                      ? "border-[2px] border-[#9a0501]"
+                      : "border-[0.3px] border-[#909090]"
+                  } flex-grow-0 flex-shrink-0 rounded-[50px] border-solid `}
                   width={12}
                   height={12}
                   backgroundImg={profileImg}
                 />
                 <p
                   className={`${
-                    currentPage === "myPage" ? "text-[#9a0501]" : "text-[#909090]"
-                  } 
-                        flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
+                    currentPage === "mypage" ? "text-[#9a0501]" : "text-[#909090]"
+                  } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
                 >
                   마이페이지
                 </p>
@@ -280,23 +283,26 @@ const Footer = (props) => {
               </p>
             </button>
 
-            {/* My / 로그인 */}
+            {/* 마이페이지 / 로그인 */}
             {accessToken ? (
               <button
                 className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
                 onClick={togoMypage}
               >
                 <FooterProfileImg
-                  className="flex-grow-0 flex-shrink-0 rounded-[50px] border-[0.3px] border-solid border-gray-380"
+                  className={`${
+                    currentPage === "mypage"
+                      ? "border-[2px] border-[#9a0501]"
+                      : "border-[0.3px] border-[#909090]"
+                  } flex-grow-0 flex-shrink-0 rounded-[50px] border-solid `}
                   width={24}
                   height={24}
                   backgroundImg={profileImg}
                 />
                 <p
                   className={`${
-                    currentPage === "myPage" ? "text-[#9a0501]" : "text-[#909090]"
-                  } 
-                        flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
+                    currentPage === "mypage" ? "text-[#9a0501]" : "text-[#909090]"
+                  } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
                 >
                   My
                 </p>
