@@ -43,10 +43,10 @@ const MessageList = () => {
 
   return (
     <StyledMessageList>
+      <MessageThumbnail day={day} paperNum="0" />
       <MessageThumbnail day={day} paperNum="1" />
       <MessageThumbnail day={day} paperNum="2" />
       <MessageThumbnail day={day} paperNum="3" />
-      <MessageThumbnail day={day} paperNum="4" />
     </StyledMessageList>
     // <>
     //   {responseData.messages.map((message, index) => (
