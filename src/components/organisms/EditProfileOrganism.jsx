@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { userAction } from "../../store/User-Slice";
+import DefaultProfileImg from "../../assets/DefaultProfileImg.png";
 import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 import {
@@ -33,15 +35,41 @@ const StyledEditProfileImg = styled(PlaceCenter)`
   }
 `;
 
+const EditProfileImgButtonContainer = styled(PlaceCenter)`
+  justify-content: space-between;
+  // gap: 16px;
+`;
+
+const EditProfileImgButton = styled.button`
+  width: 80px;
+`;
+
 const EditProfileImg = () => {
+  const dispatch = useDispatch();
   const profileImg = useSelector((state) => state.user.profileImg);
+
+  const handleClickDefaultProfileImg = () => {
+    dispatch(userAction.setProfileImg(DefaultProfileImg));
+  };
 
   return (
     <StyledEditProfileImg>
       <ProfileImg backgroundImg={profileImg} />
-      <SmallText fontSize="12px" color="#9A0501">
-        프로필 사진 변경
-      </SmallText>
+      <EditProfileImgButtonContainer>
+        <EditProfileImgButton>
+          <SmallText fontSize="12px" color="#9A0501">
+            사진 변경
+          </SmallText>
+        </EditProfileImgButton>
+        <SmallText fontSize="12px" color="#4F4E4E">
+          |
+        </SmallText>
+        <EditProfileImgButton onClick={handleClickDefaultProfileImg}>
+          <SmallText fontSize="12px" color="#4F4E4E">
+            기본 이미지
+          </SmallText>
+        </EditProfileImgButton>
+      </EditProfileImgButtonContainer>
     </StyledEditProfileImg>
   );
 };
