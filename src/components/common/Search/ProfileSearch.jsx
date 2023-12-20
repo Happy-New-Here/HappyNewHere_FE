@@ -9,7 +9,7 @@ const ProfileSearch = ({ userId, nickname, profileImg }) => {
     return (
         <>
             <ProfileSearchWrapper
-                onClick= {()=>
+                onClick={() =>
                     navigate("/friend")
                 }
             >

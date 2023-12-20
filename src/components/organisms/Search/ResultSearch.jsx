@@ -6,9 +6,6 @@ import ProfileSearch from '../../common/Search/ProfileSearch';
 
 const ResultSearch = ({ onClick, searchResult }) => {
 
-    // console.log(DUMMY_DATA);
-    //console.log("검색 결과데이터", searchResult);
-
     return (
         <>
             <SmallText margin="0px 0px 32px 0px" fontWeight="600">검색 결과</SmallText>
