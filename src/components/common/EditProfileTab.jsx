@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import ProfileSubmitButton from "./ProfileSubmitButton";
 import backwardIcon from "../../assets/backwardIcon.svg";
 import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
@@ -35,7 +36,7 @@ const EditProfileTab = () => {
         <>
           <img src={backwardIcon} alt="backwardIcon" onClick={() => navigate(-1)} />
           <SmallText>프로필 편집</SmallText>
-          <SmallText color="#909090">완료</SmallText>
+          <ProfileSubmitButton />
         </>
       )}
     </StyledEditProfileTab>

@@ -5,6 +5,7 @@ import Header from "../common/Header";
 import Footer from "../common/Footer";
 import EditProfileTab from "../common/EditProfileTab";
 import EditProfileOrganism from "../organisms/EditProfileOrganism";
+import ProfileSubmitButton from "../common/ProfileSubmitButton";
 import { useMediaQuery } from "react-responsive";
 import {
   PlaceCenter,
@@ -48,6 +49,7 @@ const EditProfileTemplate = () => {
             <Center>
               <EditProfileTab />
               <EditProfileOrganism />
+              <ProfileSubmitButton />
             </Center>
             <Rightside></Rightside>
           </ContentLayout>

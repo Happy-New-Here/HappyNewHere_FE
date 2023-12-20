@@ -12,6 +12,12 @@ export const PlaceLeftRow = styled.div`
   align-items: center;
 `;
 
+export const PlaceRightRow = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
 export const PlaceLeftColumn = styled.div`
   display: flex;
   flex-direction: column;
