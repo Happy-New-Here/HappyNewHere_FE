@@ -1,10 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import RootLayout from "./pages/Root";
 import HomePage from "./pages/Home";
-import SearchPage from "./pages/Search";
-import NicknamePage from "./pages/Nickname";
 import AuthPage from "./pages/Auth";
-import MailSelectPage from "./pages/MailSelect";
-import MailWritePage from "./pages/MailWrite";
+import AuthRedirectPage from "./pages/AuthRedirectPage";
+import IdPage from "./pages/Id";
+import SearchPage from "./pages/Search";
+import FriendPage from "./pages/Friend";
+import ChattingPage from "./pages/Chatting";
 
 const router = createBrowserRouter([
   {
@@ -16,27 +18,28 @@ const router = createBrowserRouter([
         path: "auth",
         children: [
           { path: "", element: <AuthPage /> },
-          { path: "nickname", element: <NicknamePage /> },
-        ],
-      },
-      {
-        path: "mail",
-        children: [
-          { path: "", element: <MailSelectPage /> },
-          { path: "write", element: <MailWritePage /> },
+          { path: "kakao/callback", element: <AuthRedirectPage /> },
+          { path: "id/input", element: <IdPage /> },
+          { path: "search", element: <SearchPage /> },
+          { path: "chatting", element: <ChattingPage /> },
         ],
       },
       { path: "search", element: <SearchPage /> },
+      {
+        path: "friend",
+        children: [{ path: "", element: <FriendPage /> }],
+      },
     ],
   },
 ]);
 
+
 function App() {
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
-  );
+    return (
+        <>
+            <RouterProvider router={router} />
+        </>
+    );
 }
 
 export default App;
