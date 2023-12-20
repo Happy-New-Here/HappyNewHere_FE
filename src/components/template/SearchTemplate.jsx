@@ -27,8 +27,15 @@ const SearchTemplate = () => {
   const dispatch = useDispatch();
   const formData = useSelector((state) => state.search.search);
   const currentPage = useSelector((state) => state.currentPage);
+  // const recentSearchHistory = useSelector((state) => state.search.history);
   const [inputValue, setInputValue] = useState("");
-  const paging = 0;
+  const [resultData, setResultData] = useState([]);
+  const [pageNum, setPageNum] = useState(0);
+
+  useEffect(() => {
+    const savedHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+    dispatch(SearchAction.addSearchToHistory(savedHistory));
+  }, [dispatch]);
 
   // currentPage(로그인 후 돌아올 페이지)를 설정하는 코드
   // 최초 마운트시에(만) setCurrentPage를 디스패치
@@ -41,18 +48,52 @@ const SearchTemplate = () => {
     localStorage.setItem("currentPage", JSON.stringify(currentPage));
   }, [currentPage]);
 
-  const onClickCount = () => {
+  const onClickCount = async () => {
     //페이지 카운트
+    try {
+      const result = await searchResult(formData, pageNum + 1);
+      console.log('Search result:', result.content);
+      setResultData((prevResult) => [...prevResult, ...result.content]);
+      setPageNum((prevPageNum) => prevPageNum + 1);
+    } catch (error) {
+      // 오류 처리
+      throw new Error(error);
+      // console.error(error);
+    }
   };
 
   const onClickSearch = async () => {
-    //console.log(formData);
-    searchResult(formData, paging);
+    try {
+      setResultData([]);
+      setPageNum(0);
+      const result = await searchResult(formData, pageNum);
+      //console.log('Search result:', result.content);
+      const newResultData = result.content;
+
+      const searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+      if (!searchHistory.includes(formData)) {
+        searchHistory.unshift(formData);
+        if (searchHistory.length > 10) {
+          searchHistory.pop();
+        }
+        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+        dispatch(SearchAction.addSearchToHistory({ searchItem: formData }));
+      }
+
+      setResultData(newResultData);
+
+      return newResultData;
+    } catch (error) {
+      // 오류 처리
+      throw new Error(error)
+      // console.error(error);
+    }
   };
 
   const handleResetSearch = (e) => {
     setInputValue("");
     dispatch(SearchAction.resetSearch(e.target.value));
+    setResultData([]);
   };
 
   return (
@@ -76,17 +117,21 @@ const SearchTemplate = () => {
                 onChange={(e) => {
                   setInputValue(e.target.value);
                   dispatch(SearchAction.setSearch(e.target.value));
+                  setResultData([]);
                 }}
                 onReset={handleResetSearch}
                 value={inputValue}
               />
               <TextWrapper>
-                <SmallText fontSize="0.8rem" margin="0 0 0 1rem" onClick={handleResetSearch}>
+                <SmallText fontSize="0.8rem" margin="0 0 0 1rem" onClick={handleResetSearch} cursor="pointer">
                   취소
                 </SmallText>
               </TextWrapper>
             </SearchTemplateWrapper>
-            {formData.length > 0 ? <ResultSearch onClick={onClickCount} /> : <RecentSearch />}
+            {formData.length > 0 ?
+              <ResultSearch searchResult={resultData} onClick={onClickCount} />
+              : <RecentSearch />
+            }
           </InsideLayoutPC>
         </ResponsiveLayoutPC>
       ) : (
@@ -103,17 +148,21 @@ const SearchTemplate = () => {
                 onChange={(e) => {
                   setInputValue(e.target.value);
                   dispatch(SearchAction.setSearch(e.target.value));
+                  setResultData([]);
                 }}
                 onReset={handleResetSearch}
                 value={inputValue}
               />
               <TextWrapper>
-                <SmallText fontSize="0.8rem" margin="0 0 0 1rem" onClick={handleResetSearch}>
+                <SmallText fontSize="0.8rem" margin="0 0 0 1rem" onClick={handleResetSearch} cursor="pointer">
                   취소
                 </SmallText>
               </TextWrapper>
             </SearchTemplateWrapper>
-            {formData.length > 0 ? <ResultSearch /> : <RecentSearch />}
+            {formData.length > 0 ?
+              <ResultSearch searchResult={resultData} onClick={onClickCount} />
+              : <RecentSearch />
+            }
             <Footer currentPage="search" isPc={isPc} />
           </InsideLayoutMobile>
         </ResponsiveLayoutMobile>

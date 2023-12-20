@@ -4,11 +4,9 @@ import axios from "axios";
 export const searchResult = async (search, paging) => {
     try {
         //카카오 로그인 액세스 토큰 받아와야함.
-
-
         const response = await axios.get(`${BASE_URL}/find/${search}?page=${paging}&size=10&sort=nickname,asc`, {
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
                 "Content-Type": "application/json",
             },
         });
@@ -17,6 +15,7 @@ export const searchResult = async (search, paging) => {
             throw new Error("검색 결과가 없습니다.");
         }
 
+        console.log("redux search console", response.data)
         return response.data;
 
     } catch (error) {

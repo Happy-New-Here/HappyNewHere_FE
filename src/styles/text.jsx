@@ -8,6 +8,7 @@ export const SmallText = styled.span`
   font-weight: ${(props) => props.fontWeight || "400"};
   line-height: ${(props) => props.lineHeight || "normal"};
   margin: ${(props) => props.margin || "0"};
+  padding: ${(props) => props.padding || "0"};
   text-align: ${(props) => props.textAlign || "left"};
   justify-content: ${(props) => props.justifyContent || "left"};
   cursor: ${(props) => props.cursor};
