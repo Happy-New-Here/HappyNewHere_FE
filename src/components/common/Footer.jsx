@@ -21,6 +21,10 @@ const MobileFooter = styled.div`
   align-items: center;
 `;
 
+const FooterProfileImg = styled.img`
+  background: url(${(props) => props.backgroundImg}) center/cover;
+`;
+
 const Footer = (props) => {
   const navigate = useNavigate();
 
@@ -143,11 +147,11 @@ const Footer = (props) => {
             {/* My / 로그인 */}
             {accessToken ? (
               <button className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]">
-                <img
-                  className="flex-grow-0 flex-shrink-0 rounded-[50px]"
-                  src={profileImg}
+                <FooterProfileImg
+                  className="flex-grow-0 flex-shrink-0 rounded-[50px] border-[0.3px] border-solid border-gray-380"
                   width={12}
                   height={12}
+                  backgroundImg={profileImg}
                 />
                 <p
                   className={`${
@@ -282,11 +286,11 @@ const Footer = (props) => {
                 className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
                 onClick={togoMypage}
               >
-                <img
-                  className="flex-grow-0 flex-shrink-0 rounded-[50px]"
-                  src={profileImg}
+                <FooterProfileImg
+                  className="flex-grow-0 flex-shrink-0 rounded-[50px] border-[0.3px] border-solid border-gray-380"
                   width={24}
                   height={24}
+                  backgroundImg={profileImg}
                 />
                 <p
                   className={`${
