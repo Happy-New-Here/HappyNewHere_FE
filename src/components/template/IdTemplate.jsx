@@ -14,10 +14,10 @@ import { userAction } from '../../store/User-Slice';
 import { idResult } from '../../store/User-action';
 import { SmallText } from '../../styles/text';
 
-import HappyHaedalLogo from '../../assets/HappyHaedalLogo.svg';
 import AuthPageDeco from '../../assets/AuthPageDeco.svg';
 import SnowMan from '../../assets/SnowMan.svg';
 import logo from '../../assets/logo.svg';
+import LogoWrapper from '../organisms/UserInfo/LogoWrapper';
 
 const IdTemplate = () => {
     const dispatch = useDispatch();
@@ -58,10 +58,10 @@ const IdTemplate = () => {
         <>
             {isPc ? (
                 <IdResponsiveLayout>
-                    <DecoWrapper>
+                    <DecoWrapper className="mb-2">
                         <img src={AuthPageDeco} alt="AuthPageDeco" />
                     </DecoWrapper>
-                    <img src={HappyHaedalLogo} alt="HappyHaedalLogo" />
+                    <LogoWrapper />
                     <TextWrapper>
                         <SmallText className="justify-center text-center font-bold">
                             HappyNewHere에서 사용하실 아이디를 알려주세요!
