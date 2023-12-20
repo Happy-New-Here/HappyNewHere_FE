@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { userAction } from "../../store/User-Slice";
 import DefaultProfileImg from "../../assets/DefaultProfileImg.png";
@@ -52,6 +52,25 @@ const EditProfileImg = () => {
   const profileImg = useSelector((state) => state.user.profileImg);
   const [profileImgInput, setProfileImgInput] = useState(profileImg); // 완료 전 임시 저장용
 
+  // 프로필 사진 업로드
+  const profileImgInputRef = useRef(null);
+
+  const handleUploadProfileImg = () => {
+    profileImgInputRef.current.click();
+  };
+
+  const onFileChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      const uploadedImage = reader.result || null;
+      setProfileImgInput(uploadedImage);
+    };
+  };
+
+  // 프로필 사진 기본 이미지로
   const handleClickDefaultProfileImg = () => {
     // dispatch(userAction.setProfileImg(DefaultProfileImg));
     setProfileImgInput(DefaultProfileImg);
@@ -67,11 +86,18 @@ const EditProfileImg = () => {
         heightDesktop="80px"
       />
       <EditProfileImgButtonContainer>
-        <EditProfileImgButton>
+        <EditProfileImgButton onClick={handleUploadProfileImg}>
           <SmallText fontSize="12px" color="#9A0501">
-            사진 변경
+            사진 업로드
           </SmallText>
         </EditProfileImgButton>
+        <input
+          ref={profileImgInputRef}
+          accept="image/*"
+          type="file"
+          style={{ display: "none" }}
+          onChange={onFileChange}
+        />
         <SmallText fontSize="12px" color="#4F4E4E">
           |
         </SmallText>
