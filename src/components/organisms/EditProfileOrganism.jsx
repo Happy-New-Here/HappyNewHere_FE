@@ -31,7 +31,10 @@ const StyledEditProfileImg = styled(PlaceCenter)`
   border-bottom: 0.5px solid #959595;
 
   @media (min-width: 768px) {
-    border-botton: none;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 24px 0;
+    border: none;
   }
 `;
 
@@ -56,7 +59,7 @@ const EditProfileImg = () => {
 
   return (
     <StyledEditProfileImg>
-      <ProfileImg backgroundImg={profileImgInput} />
+      <ProfileImg backgroundImg={profileImgInput} widthDesktop="80px" heightDesktop="80px" />
       <EditProfileImgButtonContainer>
         <EditProfileImgButton>
           <SmallText fontSize="12px" color="#9A0501">
