@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { GetUserInfo } from "../../store/User-action";
 import styled from "styled-components";
@@ -20,11 +21,18 @@ const ProfileImg = styled.div`
   background: url(${(props) => props.backgroundImg}) center/cover;
 `;
 
-const NicknameAndStatus = styled(PlaceLeftColumn)`
+const NicknameAndStatemsg = styled(PlaceLeftColumn)`
   flex: 1; // Photo 뺀 나머지 공간 차지하도록
   gap: 7px;
   font-style: normal;
   line-height: normal;
+`;
+
+const NicknameContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const Nickname = styled(SmallText)``;
@@ -39,16 +47,12 @@ const EditIcon = styled.img`
 `;
 
 const Profile = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const userId = useSelector((state) => state.user.userId);
   const nickname = useSelector((state) => state.user.nickname);
   const stateMsg = useSelector((state) => state.user.stateMsg);
   const profileImg = useSelector((state) => state.user.profileImg);
-  // const profileImg = {
-  //   url: useSelector((state) => state.user.profileImg),
-  //   alt: "profileImg",
-  // };
 
   useEffect(() => {
     GetUserInfo(dispatch);
@@ -62,23 +66,21 @@ const Profile = () => {
 
   const handleEditClick = () => {
     // 프로필 편집
+    navigate("/friend"); // 경로 추후 수정
   };
 
   return (
     <StyledProfile>
       <ProfileImg backgroundImg={profileImg} />
-      <NicknameAndStatus>
-        {stateMsg ? (
-          <>
-            <Nickname>{nickname}</Nickname>
-            <StateMsg>{stateMsg}</StateMsg>
-          </>
-        ) : (
+      <NicknameAndStatemsg>
+        <NicknameContainer>
           <Nickname>{nickname}</Nickname>
-        )}
-      </NicknameAndStatus>
-      {/* 편집아이콘 나일 땐 보이고 다른 사람일 땐 안 보이게 */}
-      {/* <EditIcon src={editIcon} alt="edit icon" onClick={handleEditClick} /> */}
+          {/* 편집아이콘 나일 땐 보이고 다른 사람일 땐 안 보이게
+          url을 확인을 하든 id를 확인을 하든 검증 로직 필요*/}
+          <EditIcon src={editIcon} alt="edit icon" onClick={handleEditClick} />
+        </NicknameContainer>
+        {stateMsg && <StateMsg>{stateMsg}</StateMsg>}
+      </NicknameAndStatemsg>
     </StyledProfile>
   );
 };
