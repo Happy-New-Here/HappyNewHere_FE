@@ -12,7 +12,7 @@ const StyledProfile = styled(PlaceLeftRow)`
   gap: 12px;
 `;
 
-const ProfileImg = styled.div`
+export const ProfileImg = styled.div`
   width: 54px;
   height: 54px;
   // margin: 10px 10px;

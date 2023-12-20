@@ -4,6 +4,7 @@ import { setCurrentPage } from "../../store/currentPageSlice";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
 import EditProfileTab from "../common/EditProfileTab";
+import EditProfileOrganism from "../organisms/EditProfileOrganism";
 import { useMediaQuery } from "react-responsive";
 import {
   PlaceCenter,
@@ -46,6 +47,7 @@ const EditProfileTemplate = () => {
           <ContentLayout>
             <Center>
               <EditProfileTab />
+              <EditProfileOrganism />
             </Center>
             <Rightside></Rightside>
           </ContentLayout>
@@ -53,7 +55,9 @@ const EditProfileTemplate = () => {
       ) : (
         <>
           <EditProfileTab />
-          <ContentLayout></ContentLayout>
+          <ContentLayout>
+            <EditProfileOrganism />
+          </ContentLayout>
 
           <Footer currentPage="mypage" isPc={isPc} />
         </>
