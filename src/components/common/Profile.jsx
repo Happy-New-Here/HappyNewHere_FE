@@ -66,7 +66,7 @@ const Profile = () => {
 
   const handleEditClick = () => {
     // 프로필 편집
-    navigate("/friend"); // 경로 추후 수정
+    navigate("/auth/editprofile");
   };
 
   return (
