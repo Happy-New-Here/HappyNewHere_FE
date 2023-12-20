@@ -11,8 +11,7 @@ import { SmallText } from "../../styles/text";
 const StyledMessageThumbnail = styled(PlaceLeftRow)`
   width: 100%;
   height: 33px;
-  padding: 0px 20px;
-  //   border: 1px solid black;
+  padding: 0px 16px;
   border-radius: 5px;
   font-size: 12px;
   background: ${(props) =>
@@ -20,18 +19,23 @@ const StyledMessageThumbnail = styled(PlaceLeftRow)`
       MessagePapers[props.day].name[props.paperNum]
     })`};
   background-size: cover;
+  background-position: right;
 
   @media (min-width: 768px) {
+    padding: 0px 8px;
   }
 `;
 
 const TextArea = styled(PlaceLeftRow)`
   width: 70%;
   height: 48%;
-  padding-left: 3px;
+  padding-left: 4px;
   background-color: rgb(255, 255, 255, 0.4);
   border-radius: 2px;
   box-shadow: 0 0 4px rgb(255, 255, 255, 0.8);
+
+  @media (min-width: 768px) {
+  }
 `;
 
 const MessageThumbnail = (props) => {
