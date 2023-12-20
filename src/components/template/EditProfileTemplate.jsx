@@ -1,7 +1,19 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage } from "../../store/currentPageSlice";
+import Header from "../common/Header";
+import Footer from "../common/Footer";
 import { useMediaQuery } from "react-responsive";
+import {
+  PlaceCenter,
+  ResponsiveLayout,
+  ContentLayout,
+  Leftside,
+  Center,
+  Rightside,
+} from "../../styles/utils";
+import { SmallText } from "../../styles/text";
+import styled from "styled-components";
 
 const EditProfileTemplate = () => {
   const isPc = useMediaQuery({
@@ -22,7 +34,28 @@ const EditProfileTemplate = () => {
     localStorage.setItem("currentPage", JSON.stringify(currentPage));
   }, [currentPage]);
 
-  return <div>EditProfileTemplate</div>;
+  return (
+    <ResponsiveLayout>
+      {isPc ? (
+        <>
+          <Leftside>
+            <Header />
+            <Footer currentPage="mypage" isPc={isPc} />
+          </Leftside>
+          <ContentLayout>
+            <Center></Center>
+            <Rightside></Rightside>
+          </ContentLayout>
+        </>
+      ) : (
+        <>
+          <ContentLayout></ContentLayout>
+
+          <Footer currentPage="mypage" isPc={isPc} />
+        </>
+      )}
+    </ResponsiveLayout>
+  );
 };
 
 export default EditProfileTemplate;
