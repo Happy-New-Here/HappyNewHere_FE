@@ -13,13 +13,7 @@ const PCFooter = styled.div`
   gap: 20px;
 `;
 
-const MobileFooter = styled.div`
-  display: flex;
-  max-width: 767px;
-  padding: 32px 16px;
-  justify-content: space-between;
-  align-items: center;
-`;
+const MobileFooter = styled.div``;
 
 const FooterProfileImg = styled.img`
   background: url(${(props) => props.backgroundImg}) center/cover;
@@ -147,15 +141,18 @@ const Footer = (props) => {
 
             {/* 마이페이지 / 로그인 */}
             {accessToken ? (
-              <button className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]">
+              <button
+                className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]"
+                onClick={togoMypage}
+              >
                 <FooterProfileImg
                   className={`${
                     currentPage === "mypage"
-                      ? "border-[2px] border-[#9a0501]"
+                      ? "border-[1px] border-[#9a0501]"
                       : "border-[0.3px] border-[#909090]"
                   } flex-grow-0 flex-shrink-0 rounded-[50px] border-solid `}
-                  width={12}
-                  height={12}
+                  width={`${currentPage === "mypage" ? "13" : 12}`}
+                  height={`${currentPage === "mypage" ? "13" : 12}`}
                   backgroundImg={profileImg}
                 />
                 <p
@@ -196,69 +193,123 @@ const Footer = (props) => {
           </div>
         </PCFooter>
       ) : (
-        <MobileFooter className="flex h-screen">
-          <div className="flex justify-between items-center w-full px-8 py-4 fixed bottom-0 left-0 right-0 bg-white border-t border-gray">
-            {/* 홈 */}
-            <button
-              className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
-              onClick={togoHome}
+        // 모바일 화면
+        <MobileFooter className="w-full h-[77px] flex justify-between items-center fixed bottom-0 left-0 right-0 bg-white border-t border-gray">
+          {/* 홈 */}
+          <button
+            className="w-1/4 h-full flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
+            onClick={togoHome}
+          >
+            <svg
+              width={16}
+              height={18}
+              viewBox="0 0 16 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="flex-grow-0 flex-shrink-0"
+              preserveAspectRatio="none"
             >
-              <svg
-                width={16}
-                height={18}
-                viewBox="0 0 16 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="flex-grow-0 flex-shrink-0"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M2 16H5V10H11V16H14V7L8 2.5L2 7V16ZM0 18V6L8 0L16 6V18H9V12H7V18H0Z"
-                  fill={currentPage === "home" ? "#9a0501" : "#909090"}
-                />
-              </svg>
+              <path
+                d="M2 16H5V10H11V16H14V7L8 2.5L2 7V16ZM0 18V6L8 0L16 6V18H9V12H7V18H0Z"
+                fill={currentPage === "home" ? "#9a0501" : "#909090"}
+              />
+            </svg>
+            <p
+              className={`${
+                currentPage === "home" ? "text-[#9a0501]" : "text-[#909090]"
+              } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
+            >
+              홈
+            </p>
+          </button>
+
+          {/* 검색 */}
+          <button
+            className="w-1/4 h-full flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
+            onClick={togoSearch}
+          >
+            <svg
+              width={21}
+              height={20}
+              viewBox="0 0 21 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="flex-grow-0 flex-shrink-0"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M19.8334 19L13.8334 13M1.83337 8C1.83337 8.91925 2.01443 9.82951 2.36622 10.6788C2.718 11.5281 3.23362 12.2997 3.88363 12.9497C4.53364 13.5998 5.30531 14.1154 6.15459 14.4672C7.00387 14.8189 7.91412 15 8.83337 15C9.75263 15 10.6629 14.8189 11.5122 14.4672C12.3614 14.1154 13.1331 13.5998 13.7831 12.9497C14.4331 12.2997 14.9487 11.5281 15.3005 10.6788C15.6523 9.82951 15.8334 8.91925 15.8334 8C15.8334 7.08075 15.6523 6.1705 15.3005 5.32122C14.9487 4.47194 14.4331 3.70026 13.7831 3.05025C13.1331 2.40024 12.3614 1.88463 11.5122 1.53284C10.6629 1.18106 9.75263 1 8.83337 1C7.91412 1 7.00387 1.18106 6.15459 1.53284C5.30531 1.88463 4.53364 2.40024 3.88363 3.05025C3.23362 3.70026 2.718 4.47194 2.36622 5.32122C2.01443 6.1705 1.83337 7.08075 1.83337 8Z"
+                stroke={currentPage === "search" ? "#9a0501" : "#909090"}
+                stroke-width={2}
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <p
+              className={`${
+                currentPage === "search" ? "text-[#9a0501]" : "text-[#909090]"
+              } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
+            >
+              검색
+            </p>
+          </button>
+
+          {/* 채팅  */}
+          <button
+            className="w-1/4 h-full flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
+            onClick={togoChatting}
+          >
+            <svg
+              width={21}
+              height={18}
+              viewBox="0 0 21 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="flex-grow-0 flex-shrink-0"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M10.6667 0C16.1667 0 20.6667 3.58 20.6667 8C20.6667 12.42 16.1667 16 10.6667 16C9.42669 16 8.23669 15.82 7.13669 15.5C4.21669 18 0.666687 18 0.666687 18C2.99669 15.67 3.36669 14.1 3.41669 13.5C1.71669 12.07 0.666687 10.13 0.666687 8C0.666687 3.58 5.16669 0 10.6667 0Z"
+                fill={currentPage === "chatting" ? "#9a0501" : "#909090"}
+              />
+            </svg>
+            <p
+              className={`${
+                currentPage === "chatting" ? "text-[#9a0501]" : "text-[#909090]"
+              } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
+            >
+              채팅
+            </p>
+          </button>
+
+          {/* 마이페이지 / 로그인 */}
+          {accessToken ? (
+            <button
+              className="w-1/4 h-full flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
+              onClick={togoMypage}
+            >
+              <FooterProfileImg
+                className={`${
+                  currentPage === "mypage"
+                    ? "border-[2px] border-[#9a0501]"
+                    : "border-[0.3px] border-[#909090]"
+                } flex-grow-0 flex-shrink-0 rounded-[50px] border-solid `}
+                width={`${currentPage === "mypage" ? "26" : 24}`}
+                height={`${currentPage === "mypage" ? "26" : 24}`}
+                backgroundImg={profileImg}
+              />
               <p
-                className={`${currentPage === "home" ? "text-[#9a0501]" : "text-[#909090]"} 
-                        flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
+                className={`${
+                  currentPage === "mypage" ? "text-[#9a0501]" : "text-[#909090]"
+                } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
               >
-                홈
+                My
               </p>
             </button>
-
-            {/* 검색 */}
+          ) : (
             <button
               className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
-              onClick={togoSearch}
-            >
-              <svg
-                width={21}
-                height={20}
-                viewBox="0 0 21 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="flex-grow-0 flex-shrink-0"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M19.8334 19L13.8334 13M1.83337 8C1.83337 8.91925 2.01443 9.82951 2.36622 10.6788C2.718 11.5281 3.23362 12.2997 3.88363 12.9497C4.53364 13.5998 5.30531 14.1154 6.15459 14.4672C7.00387 14.8189 7.91412 15 8.83337 15C9.75263 15 10.6629 14.8189 11.5122 14.4672C12.3614 14.1154 13.1331 13.5998 13.7831 12.9497C14.4331 12.2997 14.9487 11.5281 15.3005 10.6788C15.6523 9.82951 15.8334 8.91925 15.8334 8C15.8334 7.08075 15.6523 6.1705 15.3005 5.32122C14.9487 4.47194 14.4331 3.70026 13.7831 3.05025C13.1331 2.40024 12.3614 1.88463 11.5122 1.53284C10.6629 1.18106 9.75263 1 8.83337 1C7.91412 1 7.00387 1.18106 6.15459 1.53284C5.30531 1.88463 4.53364 2.40024 3.88363 3.05025C3.23362 3.70026 2.718 4.47194 2.36622 5.32122C2.01443 6.1705 1.83337 7.08075 1.83337 8Z"
-                  stroke={currentPage === "search" ? "#9a0501" : "#909090"}
-                  stroke-width={2}
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <p
-                className={`${currentPage === "search" ? "text-[#9a0501]" : "text-[#909090]"} 
-                        flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
-              >
-                검색
-              </p>
-            </button>
-
-            {/* 채팅  */}
-            <button
-              className="flex flex-col justify-start items-start flex-grow-0 flex-shrink-0 relative gap-[7px]"
-              onClick={togoChatting}
+              onClick={handleLoginIconClick}
             >
               <svg
                 width={21}
@@ -269,73 +320,19 @@ const Footer = (props) => {
                 className="flex-grow-0 flex-shrink-0"
                 preserveAspectRatio="none"
               >
+                <path d="M14 1H21V19H14" stroke="#909090" stroke-width="2" />
                 <path
-                  d="M10.6667 0C16.1667 0 20.6667 3.58 20.6667 8C20.6667 12.42 16.1667 16 10.6667 16C9.42669 16 8.23669 15.82 7.13669 15.5C4.21669 18 0.666687 18 0.666687 18C2.99669 15.67 3.36669 14.1 3.41669 13.5C1.71669 12.07 0.666687 10.13 0.666687 8C0.666687 3.58 5.16669 0 10.6667 0Z"
-                  fill={currentPage === "chatting" ? "#9a0501" : "#909090"}
+                  d="M15.7071 11.2364C16.0976 10.8459 16.0976 10.2127 15.7071 9.82219L9.34315 3.45823C8.95262 3.0677 8.31946 3.0677 7.92893 3.45823C7.53841 3.84875 7.53841 4.48192 7.92893 4.87244L13.5858 10.5293L7.92893 16.1862C7.53841 16.5767 7.53841 17.2098 7.92893 17.6004C8.31946 17.9909 8.95262 17.9909 9.34315 17.6004L15.7071 11.2364ZM0 11.5293H15V9.5293H0V11.5293Z"
+                  fill="#909090"
                 />
               </svg>
               <p
-                className={`${
-                  currentPage === "chatting" ? "text-[#9a0501]" : "text-[#909090]"
-                } 
-                        flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
+                className={`text-[#909090] flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
               >
-                채팅
+                로그인
               </p>
             </button>
-
-            {/* 마이페이지 / 로그인 */}
-            {accessToken ? (
-              <button
-                className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
-                onClick={togoMypage}
-              >
-                <FooterProfileImg
-                  className={`${
-                    currentPage === "mypage"
-                      ? "border-[2px] border-[#9a0501]"
-                      : "border-[0.3px] border-[#909090]"
-                  } flex-grow-0 flex-shrink-0 rounded-[50px] border-solid `}
-                  width={24}
-                  height={24}
-                  backgroundImg={profileImg}
-                />
-                <p
-                  className={`${
-                    currentPage === "mypage" ? "text-[#9a0501]" : "text-[#909090]"
-                  } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
-                >
-                  My
-                </p>
-              </button>
-            ) : (
-              <button
-                className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
-                onClick={handleLoginIconClick}
-              >
-                <svg
-                  width={21}
-                  height={18}
-                  viewBox="0 0 21 18"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="flex-grow-0 flex-shrink-0"
-                  preserveAspectRatio="none"
-                >
-                  <path d="M14 1H21V19H14" stroke="#909090" stroke-width="2" />
-                  <path
-                    d="M15.7071 11.2364C16.0976 10.8459 16.0976 10.2127 15.7071 9.82219L9.34315 3.45823C8.95262 3.0677 8.31946 3.0677 7.92893 3.45823C7.53841 3.84875 7.53841 4.48192 7.92893 4.87244L13.5858 10.5293L7.92893 16.1862C7.53841 16.5767 7.53841 17.2098 7.92893 17.6004C8.31946 17.9909 8.95262 17.9909 9.34315 17.6004L15.7071 11.2364ZM0 11.5293H15V9.5293H0V11.5293Z"
-                    fill="#909090"
-                  />
-                </svg>
-                <p
-                  className={`text-[#909090] flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
-                >
-                  로그인
-                </p>
-              </button>
-            )}
-          </div>
+          )}
         </MobileFooter>
       )}
     </>
