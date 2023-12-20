@@ -7,6 +7,7 @@ import IdPage from "./pages/Id";
 import SearchPage from "./pages/Search";
 import FriendPage from "./pages/Friend";
 import ChattingPage from "./pages/Chatting";
+import EditProfilePage from "./pages/EditProfile";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
           { path: "id/input", element: <IdPage /> },
           { path: "search", element: <SearchPage /> },
           { path: "chatting", element: <ChattingPage /> },
+          { path: "editprofile", element: <EditProfilePage /> },
         ],
       },
       { path: "search", element: <SearchPage /> },
@@ -33,13 +35,12 @@ const router = createBrowserRouter([
   },
 ]);
 
-
 function App() {
-    return (
-        <>
-            <RouterProvider router={router} />
-        </>
-    );
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
 export default App;

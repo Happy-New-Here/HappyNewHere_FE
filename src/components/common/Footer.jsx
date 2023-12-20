@@ -42,7 +42,9 @@ const Footer = (props) => {
     navigate("/auth/chatting");
   };
 
-  const togoMypage = () => {};
+  const togoMypage = () => {
+    navigate("/auth/editprofile");
+  };
 
   const handleLoginIconClick = () => {
     navigate("/auth");
