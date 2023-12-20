@@ -37,6 +37,7 @@ export const Calendar = {
   item: ({ day, date, onClick }) => {
     // 현재 요일에 따라 type 값을 설정
     let type = "navy";
+    console.log({ date } + "get it");
 
     switch (day % 7) {
       case 0: // 일요일

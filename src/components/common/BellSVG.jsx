@@ -1,9 +1,11 @@
 import React from "react";
+import styled from "styled-components";
+import GlobalFont from "../../styles/fonts";
 
 const BellSVG = ({ type = "navy", date = 1, onClick }) => {
   const handleClick = () => {
     if (onClick) {
-      console.log("click");
+      // console.log("click");
       onClick(date);
     }
   };
@@ -21,11 +23,30 @@ const BellSVG = ({ type = "navy", date = 1, onClick }) => {
   const imageSrc = BellSVGSRC[type] || BellSVGSRC[1]; // 기본값은 1
 
   return (
-    <div onClick={handleClick}>
-      <img src={imageSrc} alt="Bell" />
-      <text>{date}</text>
-    </div>
+    <>
+      <GlobalFont />
+      <StyledDiv onClick={handleClick}>
+        <img src={imageSrc} alt="Bell" />
+        <StyledText type={type}>{date}</StyledText>
+      </StyledDiv>
+    </>
   );
 };
+
+const StyledDiv = styled.div`
+  font-family: "GrandifloraOne-Regular", sans-serif;
+  position: relative;
+  /* 다른 스타일 속성도 필요하다면 여기에 추가 */
+`;
+
+const StyledText = styled.span`
+  color: ${(props) =>
+    props.type === "white" || props.type === "yellow" ? "#000000" : "#ffffff"};
+  font-weight: bold;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+`;
 
 export default BellSVG;
