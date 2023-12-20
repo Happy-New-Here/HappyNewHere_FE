@@ -17,8 +17,8 @@ const ProfileSearch = ({ userId, nickname, profileImg }) => {
                     <Img
                         width="48px"
                         height="48px"
-                        boxShadow="0px 0px 4px rgba(0, 0, 0, 0.25)"
-                        borderRadius="50%"
+                        boxshadow="0px 0px 4px rgba(0, 0, 0, 0.25)"
+                        borderradius="50%"
                         margin="0px 20px 0px 0px"
                         src={profileImg}
                         alt="이미지"
