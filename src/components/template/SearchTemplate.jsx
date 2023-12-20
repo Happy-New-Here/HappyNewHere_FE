@@ -28,6 +28,7 @@ const SearchTemplate = () => {
   const formData = useSelector((state) => state.search.search);
   const currentPage = useSelector((state) => state.currentPage);
   const [inputValue, setInputValue] = useState("");
+  const [ resultData, setResultData] = useState([]);
   const paging = 0;
 
   // currentPage(로그인 후 돌아올 페이지)를 설정하는 코드
@@ -43,12 +44,20 @@ const SearchTemplate = () => {
 
   const onClickCount = () => {
     //페이지 카운트
+    paging++;
   };
 
   const onClickSearch = async () => {
-    //console.log(formData);
-    searchResult(formData, paging);
-  };
+    try {
+        const result = await searchResult(formData, paging);
+        console.log('Search result:', result.content);
+        setResultData(result.content);
+        return result.content;
+    } catch (error) {
+        // 오류 처리
+        console.error(error);
+    }
+};
 
   const handleResetSearch = (e) => {
     setInputValue("");
@@ -86,7 +95,7 @@ const SearchTemplate = () => {
                 </SmallText>
               </TextWrapper>
             </SearchTemplateWrapper>
-            {formData.length > 0 ? <ResultSearch onClick={onClickCount} /> : <RecentSearch />}
+            {formData.length > 0 ? <ResultSearch searchResult={resultData} onClick={onClickCount} /> : <RecentSearch />}
           </InsideLayoutPC>
         </ResponsiveLayoutPC>
       ) : (
@@ -113,7 +122,7 @@ const SearchTemplate = () => {
                 </SmallText>
               </TextWrapper>
             </SearchTemplateWrapper>
-            {formData.length > 0 ? <ResultSearch /> : <RecentSearch />}
+            {formData.length > 0 ? <ResultSearch searchResult={resultData} onClick={onClickCount}/> : <RecentSearch />}
             <Footer currentPage="search" isPc={isPc} />
           </InsideLayoutMobile>
         </ResponsiveLayoutMobile>
