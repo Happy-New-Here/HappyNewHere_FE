@@ -1,8 +1,8 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
-import profileImg from "../../assets/MessagePapers/Brown/Puppy.svg";
-import { useNavigate } from "react-router-dom";
-import React from "react";
 
 const PCFooter = styled.div`
   display: flex;
@@ -21,8 +21,14 @@ const MobileFooter = styled.div`
   align-items: center;
 `;
 
+const FooterProfileImg = styled.img`
+  background: url(${(props) => props.backgroundImg}) center/cover;
+`;
+
 const Footer = (props) => {
   const navigate = useNavigate();
+
+  const profileImg = useSelector((state) => state.user.profileImg);
 
   const togoHome = () => {
     navigate("/");
@@ -43,7 +49,6 @@ const Footer = (props) => {
   };
 
   const { currentPage = "home", isPc } = props;
-  console.log(currentPage);
 
   const accessToken = localStorage.getItem("accessToken"); // 로컬스토리지의 엑세스토큰 불러오기
 
@@ -138,20 +143,23 @@ const Footer = (props) => {
               </p>
             </button>
 
-            {/* My / 로그인 */}
+            {/* 마이페이지 / 로그인 */}
             {accessToken ? (
               <button className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]">
-                <img
-                  className="flex-grow-0 flex-shrink-0 rounded-[50px]"
-                  src={profileImg}
+                <FooterProfileImg
+                  className={`${
+                    currentPage === "mypage"
+                      ? "border-[2px] border-[#9a0501]"
+                      : "border-[0.3px] border-[#909090]"
+                  } flex-grow-0 flex-shrink-0 rounded-[50px] border-solid `}
                   width={12}
                   height={12}
+                  backgroundImg={profileImg}
                 />
                 <p
                   className={`${
-                    currentPage === "myPage" ? "text-[#9a0501]" : "text-[#909090]"
-                  } 
-                        flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
+                    currentPage === "mypage" ? "text-[#9a0501]" : "text-[#909090]"
+                  } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
                 >
                   마이페이지
                 </p>
@@ -274,23 +282,26 @@ const Footer = (props) => {
               </p>
             </button>
 
-            {/* My / 로그인 */}
+            {/* 마이페이지 / 로그인 */}
             {accessToken ? (
               <button
                 className="flex flex-col justify-start items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
                 onClick={togoMypage}
               >
-                <img
-                  className="flex-grow-0 flex-shrink-0 rounded-[50px]"
-                  src={profileImg}
+                <FooterProfileImg
+                  className={`${
+                    currentPage === "mypage"
+                      ? "border-[2px] border-[#9a0501]"
+                      : "border-[0.3px] border-[#909090]"
+                  } flex-grow-0 flex-shrink-0 rounded-[50px] border-solid `}
                   width={24}
                   height={24}
+                  backgroundImg={profileImg}
                 />
                 <p
                   className={`${
-                    currentPage === "myPage" ? "text-[#9a0501]" : "text-[#909090]"
-                  } 
-                        flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
+                    currentPage === "mypage" ? "text-[#9a0501]" : "text-[#909090]"
+                  } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
                 >
                   My
                 </p>
