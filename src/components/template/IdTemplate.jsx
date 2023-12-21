@@ -1,14 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
-
-import { DecoWrapper, IdResponsiveLayout, SnowManWrapper, TextWrapper } from '../organisms/UserInfo/IdPcStyle';
-import { IdInputContainer } from '../organisms/UserInfo/IdInputContainer';
+import {
+    DecoWrapper,
+    IdResponsiveLayout,
+    SnowManWrapper,
+    TextWrapper,
+    IdInputContainer,
+    IdInputForm,
+    BackGround
+} from '../../styles/idStyle';
 import IdSubmitButton from '../organisms/UserInfo/IdSubmitButton';
-import { BackGround } from '../organisms/UserInfo/IdMobileStyle';
 import StateInputBar from '../organisms/UserInfo/StateInputBar';
-import { IdInputForm } from '../organisms/UserInfo/IdInputForm';
-import IdInputBarPC from '../organisms/UserInfo/IdinputBarPc';
 import IdInputBar from '../organisms/UserInfo/IdInputBar';
 import { userAction } from '../../store/User-Slice';
 import { idResult } from '../../store/User-action';
@@ -24,7 +27,7 @@ const IdTemplate = () => {
     const navigate = useNavigate();
 
     const userId = useSelector((state) => state.user.userId);
-    const statemessage = useSelector((state) => state.user.stateMsg);
+    const stateMsg = useSelector((state) => state.user.stateMsg);
 
     const isPc = useMediaQuery({
         query: '(min-width:768px)',
@@ -43,15 +46,10 @@ const IdTemplate = () => {
     /** 버튼 입력 event */
     const handleStartClick = async (e) => {
         e.preventDefault();
-        try {
-            const response = await dispatch(idResult(userId));
-            navigate('/');
-            return response.data;
-        } catch (error) {
-            console.log(error);
-        }
+        await dispatch(idResult(userId, stateMsg));
+        navigate('/');
 
-        console.log('버튼 입력시 로그', userId);
+        //console.log('버튼 입력시 로그', userId);
     };
 
     return (
@@ -69,7 +67,8 @@ const IdTemplate = () => {
                     </TextWrapper>
                     <IdInputForm>
                         <IdInputContainer>
-                            <IdInputBarPC onChange={handleIdChange} />
+                            <IdInputBar onChange={handleIdChange} />
+                            <StateInputBar onChange={handleStateMsgChange} />
                             <IdSubmitButton onClick={handleStartClick} />
                         </IdInputContainer>
                     </IdInputForm>

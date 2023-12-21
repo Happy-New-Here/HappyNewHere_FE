@@ -2,7 +2,6 @@ import { Img } from "../../../styles/Img";
 import { SmallText } from "../../../styles/text";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 const ProfileSearch = ({ userId, nickname, profileImg }) => {
     const navigate = useNavigate();
