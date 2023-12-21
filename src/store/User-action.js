@@ -21,7 +21,7 @@ export const idResult = (userId, stateMessage) => {
       dispatch(userAction.setStateMsg( response.message));
 
     } catch (error) {
-      // alert("아이디 생성을 실패했습니다.");
+      alert("아이디 생성을 실패했습니다.");
       throw new Error(error.message);
     }
   };
