@@ -39,7 +39,7 @@ const Footer = (props) => {
   };
 
   const togoChatting = () => {
-    navigate("/auth/chatting");
+    navigate("/chatting");
   };
 
   const togoMypage = () => {};
