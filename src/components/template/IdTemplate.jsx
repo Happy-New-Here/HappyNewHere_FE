@@ -27,7 +27,7 @@ const IdTemplate = () => {
     const navigate = useNavigate();
 
     const userId = useSelector((state) => state.user.userId);
-    const statemessage = useSelector((state) => state.user.stateMsg);
+    const stateMsg = useSelector((state) => state.user.stateMsg);
 
     const isPc = useMediaQuery({
         query: '(min-width:768px)',
@@ -46,15 +46,10 @@ const IdTemplate = () => {
     /** 버튼 입력 event */
     const handleStartClick = async (e) => {
         e.preventDefault();
-        try {
-            const response = await dispatch(idResult(userId));
-            navigate('/');
-            return response.data;
-        } catch (error) {
-            console.log(error);
-        }
+        await dispatch(idResult(userId, stateMsg));
+        navigate('/');
 
-        console.log('버튼 입력시 로그', userId);
+        //console.log('버튼 입력시 로그', userId);
     };
 
     return (
