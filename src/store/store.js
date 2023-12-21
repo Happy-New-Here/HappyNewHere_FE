@@ -8,7 +8,6 @@ import isAnonymousSlice from "./isAnonymousSlice";
 import searchSlice from "./searchSlice";
 import currentPageSlice from "./currentPageSlice";
 import userSlice from "./User-Slice";
-import searchingRouterSlice from "./searchingRouterSlice";
 
 export const store = configureStore({
     reducer: {
@@ -18,7 +17,6 @@ export const store = configureStore({
         isMessageWriteVisible: isMessageWriteVisibleSlice,
         isAnonymous: isAnonymousSlice,
         search: searchSlice.reducer,
-        routing: searchingRouterSlice.reducer,
         currentPage: currentPageSlice,
         user: userSlice.reducer,
     },
