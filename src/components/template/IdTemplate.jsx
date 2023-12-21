@@ -86,7 +86,7 @@ const IdTemplate = () => {
                         </SmallText>
                         <SmallText className="justify-center text-center font-bold">아이디를 알려주세요!</SmallText>
                         <IdInputForm>
-                            <IdInputContainer className="p-5">
+                            <IdInputContainer>
                                 <IdInputBar onChange={handleIdChange} />
                                 <StateInputBar onChange={handleStateMsgChange} />
                                 <IdSubmitButton onClick={handleStartClick} />
