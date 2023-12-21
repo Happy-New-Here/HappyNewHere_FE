@@ -6,19 +6,11 @@ import styled from "styled-components";
 import { PlaceLeftColumn, PlaceLeftRow } from "../../styles/utils";
 import { SmallText } from "../../styles/text";
 import editIcon from "../../assets/editIcon.svg";
+import { Img } from "../../styles/Img";
 
 const StyledProfile = styled(PlaceLeftRow)`
   width: 100%;
   gap: 12px;
-`;
-
-const ProfileImg = styled.div`
-  width: 54px;
-  height: 54px;
-  // margin: 10px 10px;
-  border-radius: 50%;
-  border: 0.5px solid #909090;
-  background: url(${(props) => props.backgroundImg}) center/cover;
 `;
 
 const NicknameAndStatemsg = styled(PlaceLeftColumn)`
@@ -71,7 +63,14 @@ const Profile = () => {
 
   return (
     <StyledProfile>
-      <ProfileImg backgroundImg={profileImg} />
+      <Img
+        width="54px"
+        height="54px"
+        boxshadow="0px 0px 4px rgba(0, 0, 0, 0.25)"
+        borderradius="50%"
+        border="0.5px solid #909090"
+        src={profileImg}
+      />
       <NicknameAndStatemsg>
         <NicknameContainer>
           <Nickname>{nickname}</Nickname>
