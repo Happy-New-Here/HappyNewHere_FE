@@ -5,6 +5,7 @@ import ProfileSearch from './ProfileSearch';
 
 
 const ResultSearch = ({ onClick, searchResult }) => {
+    console.log("검색결과", searchResult);
 
     return (
         <>
