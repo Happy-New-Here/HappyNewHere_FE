@@ -54,11 +54,13 @@ const EditIcon = styled.img`
 const Profile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.user.userId);
+  // const userId = useSelector((state) => state.user.userId);
   // const nickname = useSelector((state) => state.user.nickname);
-  const stateMsg = useSelector((state) => state.user.stateMsg);
+  // const stateMsg = useSelector((state) => state.user.stateMsg);
   // const profileImg = useSelector((state) => state.user.profileImg);
+  const userId = localStorage.getItem("userId");
   const nickname = localStorage.getItem("nickname");
+  const stateMsg = localStorage.getItem("stateMsg");
   const profileImg = localStorage.getItem("profileImg");
 
   useEffect(() => {

@@ -8,6 +8,7 @@ import isAnonymousSlice from "./isAnonymousSlice";
 import searchSlice from "./searchSlice";
 import currentPageSlice from "./currentPageSlice";
 import userSlice from "./User-Slice";
+import UserInfoInputSlice from "./UserInfoInputSlice";
 
 export const store = configureStore({
   reducer: {
@@ -19,5 +20,6 @@ export const store = configureStore({
     search: searchSlice.reducer,
     currentPage: currentPageSlice,
     user: userSlice.reducer,
+    userInfoInput: UserInfoInputSlice,
   },
 });

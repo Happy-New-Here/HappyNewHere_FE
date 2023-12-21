@@ -14,8 +14,7 @@ const FooterProfileImg = styled.img`
 
 const Footer = () => {
   const accessToken = localStorage.getItem("accessToken"); // 로컬스토리지의 엑세스토큰 불러오기
-
-  const profileImg = useSelector((state) => state.user.profileImg);
+  const profileImg = localStorage.getItem("profileImg");
   const currentPage = useSelector((state) => state.currentPage);
 
   const navigate = useNavigate();
