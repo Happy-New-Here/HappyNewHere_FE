@@ -49,7 +49,7 @@ const AuthRedirectTemplate = () => {
       console.log("3번 해결", userIdFromStore);
       // 여기서 리덕스에 저장한 값 불러와야함
       // userIdFromStore를 사용하여 userId가 null인지 확인
-      if (!userIdFromStore) {
+      if (userIdFromStore === null) {
         navigate("/auth/id/input");
       } else {
         navigate("/");
