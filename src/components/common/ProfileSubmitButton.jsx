@@ -15,8 +15,35 @@ const StyledProfileSubmitButton = styled(PlaceRightRow)`
 `;
 
 const ProfileSubmitButton = () => {
-  const nickname = localStorage.getItem("nickname");
+  const userIdInput = useSelector((state) => state.userInfoInput.userIdInput);
   const nicknameInput = useSelector((state) => state.userInfoInput.nicknameInput);
+  const nickname = localStorage.getItem("nickname");
+  const profileImgInput = useSelector((state) => state.userInfoInput.profileImgInput);
+  const stateMsgInput = useSelector((state) => state.userInfoInput.stateMsgInput);
+
+  const paramsToSubmit = {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+    body: {
+      userId: userIdInput,
+      nickname: nicknameInput,
+      profileImg: profileImgInput,
+      stateMsg: stateMsgInput,
+    },
+  };
+
+  const handleClickProfileSubmit = () => {
+    axios
+      .get(`${BASE_URL}/createAccount`, paramsToSubmit)
+      .then((response) => {
+        console.log(`Submitted user info successfully. `);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error(`Failed to submit user info.`, error);
+      });
+  };
 
   const isPc = useMediaQuery({
     query: "(min-width:768px)",
@@ -30,6 +57,7 @@ const ProfileSubmitButton = () => {
           paddingX="12px"
           paddingY="6px"
           fontSize="16px"
+          onClick={handleClickProfileSubmit}
         >
           완료
         </Button>
@@ -37,6 +65,7 @@ const ProfileSubmitButton = () => {
         <SmallText
           color={nicknameInput ? "#9A0501" : "#909090"}
           cursor={nicknameInput ? "pointer" : "not-allowed"}
+          onClick={handleClickProfileSubmit}
         >
           완료
         </SmallText>
