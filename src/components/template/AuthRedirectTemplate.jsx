@@ -5,52 +5,57 @@ import { BASE_URL } from "../../utils/URL";
 import { useDispatch, useSelector } from "react-redux";
 import { AuthActions } from "../../store/auth-slice";
 import { setCurrentPage } from "../../store/currentPageSlice";
+import { GetUserInfo } from "../../store/User-action";
 
 const AuthRedirectTemplate = () => {
-  const [code, setCode] = useState(null); // 카톡 인가 코드
+  const [code, setCode] = useState(null);
+  const [second, setSecond] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const currentPage = useSelector((state) => state.currentPage);
+  const userIdFromStore = useSelector((state) => state.user.userId);
 
   useEffect(() => {
-    // 코드가 있을 때만 처리
-    if (code) {
-      const handleKakaoLogin = async () => {
+    const fetchData = async () => {
+      try {
+        //카카오 로그인
+        const res = await axios.get(`${BASE_URL}/login/kakao?code=${code}`);
+        const token = res.data;
+
+        dispatch(AuthActions.setSignIn({ status: "success", token: token }));
+        localStorage.setItem("accessToken", token);
+        console.log("1번 해결");
+
         try {
-          const res = await axios.get(`${BASE_URL}/login/kakao?code=${code}`);
-          const token = res.data;
-
-          // Redux store에 로그인 상태 업데이트, 로컬스토리지에 토큰 저장
-          dispatch(AuthActions.setSignIn({ status: "success", token: token }));
-          localStorage.setItem("accessToken", token);
-
-          // 로그인 성공 시 유저 검색
-          const userExist = await axios.get(`${BASE_URL}/userInfo`, {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-          });
-          if (userExist.data.userId === null) {
-            navigate("/auth/id/input");
-          } else {
-            navigate("/");
-          }
-        } catch (e) {
-          console.error(e);
-
-          // Redux store에 로그인 실패 상태 업데이트
-          // dispatch(AuthActions.setSignIn({ status: "success", token: "test" }));
-          dispatch(AuthActions.setSignIn({ status: "failed", token: null }));
-
-          // 로그인 실패 시 페이지 이동
-          navigate("/auth");
+          await GetUserInfo(dispatch);
+          setSecond(true);
+          console.log("2번 해결" + second);
+        } catch {
+          console.log("2번 오류");
         }
-      };
+      } catch (error) {
+        console.error("Failed to get user info:", error);
+        navigate("/auth");
+      }
+    };
 
-      // 코드가 있을 때만 비동기 함수 호출
-      handleKakaoLogin();
+    if (code) {
+      fetchData();
     }
-  }, [code, navigate, dispatch]);
+  }, [code, dispatch, navigate]);
+
+  useEffect(() => {
+    if (second) {
+      console.log("3번 해결", userIdFromStore);
+      // 여기서 리덕스에 저장한 값 불러와야함
+      // userIdFromStore를 사용하여 userId가 null인지 확인
+      if (!userIdFromStore) {
+        navigate("/auth/id/input");
+      } else {
+        navigate("/");
+      }
+    }
+  }, [userIdFromStore, navigate]);
 
   useEffect(() => {
     // 로컬스토리지에 저장된 currentPage 값 가져오기
@@ -61,7 +66,6 @@ const AuthRedirectTemplate = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    // 코드 받아오기
     const codeParam = new URL(window.location.href).searchParams.get("code");
     setCode(codeParam || "");
   }, []);
