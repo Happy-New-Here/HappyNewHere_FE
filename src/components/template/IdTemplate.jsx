@@ -1,13 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
-
-import { DecoWrapper, IdResponsiveLayout, SnowManWrapper, TextWrapper } from '../organisms/UserInfo/IdPcStyle';
-import { IdInputContainer } from '../organisms/UserInfo/IdInputContainer';
+import {
+    DecoWrapper,
+    IdResponsiveLayout,
+    SnowManWrapper,
+    TextWrapper,
+    IdInputContainer,
+    IdInputForm,
+    BackGround
+} from '../../styles/idStyle';
 import IdSubmitButton from '../organisms/UserInfo/IdSubmitButton';
-import { BackGround } from '../organisms/UserInfo/IdMobileStyle';
 import StateInputBar from '../organisms/UserInfo/StateInputBar';
-import { IdInputForm } from '../organisms/UserInfo/IdInputForm';
 import IdInputBarPC from '../organisms/UserInfo/IdinputBarPc';
 import IdInputBar from '../organisms/UserInfo/IdInputBar';
 import { userAction } from '../../store/User-Slice';
@@ -18,6 +22,7 @@ import AuthPageDeco from '../../assets/AuthPageDeco.svg';
 import SnowMan from '../../assets/SnowMan.svg';
 import logo from '../../assets/logo.svg';
 import LogoWrapper from '../organisms/UserInfo/LogoWrapper';
+import StateInputBarPc from "../organisms/UserInfo/StateInputBarPc";
 
 const IdTemplate = () => {
     const dispatch = useDispatch();
@@ -70,6 +75,7 @@ const IdTemplate = () => {
                     <IdInputForm>
                         <IdInputContainer>
                             <IdInputBarPC onChange={handleIdChange} />
+                            <StateInputBarPc onChange={handleStateMsgChange} />
                             <IdSubmitButton onClick={handleStartClick} />
                         </IdInputContainer>
                     </IdInputForm>
