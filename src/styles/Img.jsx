@@ -8,5 +8,6 @@ export const Img = styled.img`
     border: ${(props) => props.border || "none"};
     margin: ${(props) => props.margin || "0"};
     box-shadow: ${(props) => props.boxshadow || "none"};
+    background: ${(props) => props.background || "none"};
 `;
 

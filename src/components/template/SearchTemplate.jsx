@@ -14,7 +14,7 @@ import styled from "styled-components";
 
 import Header from "../common/Header";
 import Footer from "../common/Footer";
-import SearchBar from "../organisms/Search/SearchBar";
+import SearchBar from "../common/Search/SearchBar";
 import RecentSearch from "../organisms/Search/RecentSearch";
 import { searchResult } from "../../store/search-action";
 import ResultSearch from "../organisms/Search/ResultSearch";
