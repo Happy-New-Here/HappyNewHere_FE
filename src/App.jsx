@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import RootLayout from "./pages/Root";
 import HomePage from "./pages/Home";
 import AuthPage from "./pages/Auth";
 import AuthRedirectPage from "./pages/AuthRedirectPage";
@@ -9,28 +8,18 @@ import FriendPage from "./pages/Friend";
 import ChattingPage from "./pages/Chatting";
 
 const router = createBrowserRouter([
+  { index: true, path: "/", element: <HomePage /> },
   {
-    path: "/",
-    element: <RootLayout />,
+    path: "auth",
     children: [
-      { index: true, path: "", element: <HomePage /> },
-      {
-        path: "auth",
-        children: [
-          { path: "", element: <AuthPage /> },
-          { path: "kakao/callback", element: <AuthRedirectPage /> },
-          { path: "id/input", element: <IdPage /> },
-          { path: "search", element: <SearchPage /> },
-          { path: "chatting", element: <ChattingPage /> },
-        ],
-      },
-      { path: "search", element: <SearchPage /> },
-      {
-        path: "friend",
-        children: [{ path: "", element: <FriendPage /> }],
-      },
+      { path: "", element: <AuthPage /> },
+      { path: "kakao/callback", element: <AuthRedirectPage /> },
+      { path: "id/input", element: <IdPage /> },
     ],
   },
+  { path: "search", element: <SearchPage /> },
+  { path: "chatting", element: <ChattingPage /> },
+  { path: "friend", children: [{ path: "", element: <FriendPage /> }] },
 ]);
 
 
