@@ -59,7 +59,6 @@ const EditProfileImg = () => {
   const profileImg = localStorage.getItem("profileImg");
 
   // 편집 완료 전 인풋값 임시 저장할 곳
-  // const [profileImgInput, setProfileImgInput] = useState(profileImg);
   const profileImgInput = useSelector((state) => state.userInfoInput.profileImgInput);
 
   // 프로필 사진 업로드
@@ -76,7 +75,6 @@ const EditProfileImg = () => {
 
     reader.onload = () => {
       let uploadedImage = reader.result || null;
-      // setProfileImgInput(uploadedImage); // 임시 저장
       dispatch(setProfileImgInput(uploadedImage)); // 임시 저장
 
       // Base64 문자열을 디코딩하여 ArrayBuffer를 생성
@@ -103,7 +101,6 @@ const EditProfileImg = () => {
 
   // 프로필 사진 기본 이미지로
   const handleClickDefaultProfileImg = () => {
-    // setProfileImgInput(DefaultProfileImg); // 임시 저장
     dispatch(setProfileImgInput(DefaultProfileImg)); // 임시 저장
     // dispatch(userAction.setProfileImg(DefaultProfileImg)); // test용. post 보낼 때는 null 보내기
   };
@@ -184,8 +181,6 @@ const EditUserInfo = () => {
   const stateMsg = useSelector((state) => state.user.stateMsg);
 
   // 편집 완료 전 인풋값 임시 저장할 곳
-  // const [nicknameInput, setNicknameInput] = useState(nickname);
-  // const [stateMsgInput, setStateMsgInput] = useState(stateMsg);
   const nicknameInput = useSelector((state) => state.userInfoInput.nicknameInput);
   const stateMsgInput = useSelector((state) => state.userInfoInput.stateMsgInput);
 
@@ -196,12 +191,10 @@ const EditUserInfo = () => {
   }, [dispatch]);
 
   const handleNicknameInputChange = (event) => {
-    // setNicknameInput(event.target.value); // 임시 저장
     dispatch(setNicknameInput(event.target.value)); // 임시 저장
   };
 
   const handleStateMsgInputChange = (event) => {
-    // setStateMsgInput(event.target.value); // 임시 저장
     dispatch(setStateMsgInput(event.target.value)); // 임시 저장
   };
 
@@ -264,12 +257,6 @@ const EditUserInfo = () => {
 };
 
 const EditProfileOrganism = () => {
-  const dispatch = useDispatch();
-
-  const isPc = useMediaQuery({
-    query: "(min-width:768px)",
-  });
-
   return (
     <StyledEditProfileOrganism>
       <EditProfileImg />

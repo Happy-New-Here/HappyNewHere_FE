@@ -1,7 +1,6 @@
 import { BASE_URL } from "../utils/URL";
 import { userAction } from "./User-Slice";
 import axios from "axios";
-import { useDispatch } from "react-redux";
 
 export const idResult = (userId, statemessage) => {
   return async (dispatch) => {
@@ -33,7 +32,7 @@ export const idResult = (userId, statemessage) => {
   };
 };
 
-// userInfo 서버에서 받아오기 (nickname, profileImg)
+// userInfo 서버에서 받아오기
 export const GetUserInfo = (dispatch) => {
   axios
     .get(`${BASE_URL}/userInfo`, {
@@ -64,6 +63,6 @@ export const GetUserInfo = (dispatch) => {
       }
     })
     .catch((error) => {
-      console.error(`Failed to get user info.`);
+      console.error(`Failed to get user info. `, error);
     });
 };
