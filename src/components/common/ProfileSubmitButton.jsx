@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import { Button } from "./Button";
 import { useMediaQuery } from "react-responsive";
@@ -14,6 +15,9 @@ const StyledProfileSubmitButton = styled(PlaceRightRow)`
 `;
 
 const ProfileSubmitButton = () => {
+  const nickname = localStorage.getItem("nickname");
+  const nicknameInput = useSelector((state) => state.userInfoInput.nicknameInput);
+
   const isPc = useMediaQuery({
     query: "(min-width:768px)",
   });
@@ -21,11 +25,21 @@ const ProfileSubmitButton = () => {
   return (
     <StyledProfileSubmitButton>
       {isPc ? (
-        <Button type="primary" paddingX="12px" paddingY="6px" fontSize="16px">
+        <Button
+          type={nicknameInput ? "primary" : "disabled"}
+          paddingX="12px"
+          paddingY="6px"
+          fontSize="16px"
+        >
           완료
         </Button>
       ) : (
-        <SmallText color="#909090">완료</SmallText>
+        <SmallText
+          color={nicknameInput ? "#9A0501" : "#909090"}
+          cursor={nicknameInput ? "pointer" : "not-allowed"}
+        >
+          완료
+        </SmallText>
       )}
     </StyledProfileSubmitButton>
   );
