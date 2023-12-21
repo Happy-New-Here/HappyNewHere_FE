@@ -66,15 +66,35 @@ const EditProfileImg = () => {
     reader.readAsDataURL(file);
 
     reader.onload = () => {
-      const uploadedImage = reader.result || null;
+      let uploadedImage = reader.result || null;
       setProfileImgInput(uploadedImage);
+
+      // Base64 문자열을 디코딩하여 ArrayBuffer를 생성
+
+      uploadedImage = uploadedImage.substring(uploadedImage.indexOf(",") + 1);
+
+      const binaryString = atob(uploadedImage);
+      const bytes = new Uint8Array(binaryString.length);
+      for (let i = 0; i < binaryString.length; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+      const arrayBuffer = bytes.buffer;
+
+      // ArrayBuffer를 Blob 객체로 변환
+      const blob = new Blob([arrayBuffer], { type: "image/jpeg" });
+
+      // Blob 객체를 URL로 변환
+      const uploadedImageUrl = URL.createObjectURL(blob).substring(5);
+
+      console.log(`image url to send: ${uploadedImageUrl}`); // test용
+      // dispatch(userAction.setProfileImg(uploadedImageUrl)); // test용
     };
   };
 
   // 프로필 사진 기본 이미지로
   const handleClickDefaultProfileImg = () => {
-    // dispatch(userAction.setProfileImg(DefaultProfileImg));
     setProfileImgInput(DefaultProfileImg);
+    // dispatch(userAction.setProfileImg(DefaultProfileImg)); // test용. post 보낼 때는 null 보내기
   };
 
   return (
