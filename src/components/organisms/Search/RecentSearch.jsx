@@ -57,7 +57,7 @@ const TextWrapper = styled.div`
 const SearchWrapper = styled.div`
     display: flex;
     flex-direction: row;
-    padding: 16px 0px 16px 0px;
+    padding: 10px 0px 10px 0px;
 `;
 
 // const DUMMY_DATA = [

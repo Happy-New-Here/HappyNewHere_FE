@@ -19,7 +19,7 @@ export const searchResult = async (search, paging) => {
         return response.data;
 
     } catch (error) {
-        alert("검색 결과를 불러오는데 실패했습니다.");
+        // alert("검색 결과를 불러오는데 실패했습니다.");
         throw new Error(error.message);
     }
 }

@@ -3,15 +3,11 @@ import { SmallText } from "../../../styles/text";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { searchingRouterAction } from "../../../store/searchingRouterSlice";
 
 const ProfileSearch = ({ userId, nickname, profileImg }) => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const onClickProfile = () => {
         navigate(`/friend/${userId}`);
-        dispatch(searchingRouterAction.setSearching(nickname));
-        // console.log("검색시 드가는router", nickname);
     };
 
     return (
