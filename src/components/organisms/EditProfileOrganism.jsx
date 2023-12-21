@@ -175,10 +175,12 @@ const EditUserInfo = () => {
   const dispatch = useDispatch();
 
   // 가져온 유저 정보 (편집 전 초기값)
-  const userId = useSelector((state) => state.user.userId);
+  // const userId = useSelector((state) => state.user.userId);
   // const nickname = useSelector((state) => state.user.nickname);
+  // const stateMsg = useSelector((state) => state.user.stateMsg);
+  const userId = localStorage.getItem("userId");
   const nickname = localStorage.getItem("nickname");
-  const stateMsg = useSelector((state) => state.user.stateMsg);
+  const stateMsg = localStorage.getItem("stateMsg");
 
   // 편집 완료 전 인풋값 임시 저장할 곳
   const nicknameInput = useSelector((state) => state.userInfoInput.nicknameInput);
