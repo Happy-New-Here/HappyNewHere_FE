@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userAction } from "../../store/User-Slice";
+import { GetUserInfo } from "../../store/User-action";
 import DefaultProfileImg from "../../assets/DefaultProfileImg.png";
 import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
@@ -50,7 +50,8 @@ const EditProfileImgButton = styled.button`
 
 const EditProfileImg = () => {
   const dispatch = useDispatch();
-  const profileImg = useSelector((state) => state.user.profileImg);
+  // const profileImg = useSelector((state) => state.user.profileImg);
+  const profileImg = localStorage.getItem("profileImg");
   const [profileImgInput, setProfileImgInput] = useState(profileImg); // 완료 전 임시 저장용
 
   // 프로필 사진 업로드
@@ -164,18 +165,21 @@ const UserInfo = styled(PlaceLeftColumn)`
 `;
 
 const EditUserInfo = () => {
+  const dispatch = useDispatch();
   const userId = useSelector((state) => state.user.userId);
   // const nickname = useSelector((state) => state.user.nickname);
-  const stateMsg = useSelector((state) => state.user.stateMsg);
-  // const profileImg = useSelector((state) => state.user.profileImg);
   const nickname = localStorage.getItem("nickname");
-  const profileImg = localStorage.getItem("profileImg");
+  const stateMsg = useSelector((state) => state.user.stateMsg);
 
   const stateMsgMaxLength = 40; // 상태메시지 최대 글자수
 
   // 저장 전 인풋 임시 저장할 곳
   const [nicknameInput, setNicknameInput] = useState(nickname);
   const [stateMsgInput, setStateMsgInput] = useState(stateMsg);
+
+  useEffect(() => {
+    GetUserInfo(dispatch); // 유저 정보 get
+  }, [dispatch]);
 
   const handleNicknameInputChange = (event) => {
     setNicknameInput(event.target.value);

@@ -47,10 +47,10 @@ export const GetUserInfo = (dispatch) => {
       );
       // 리덕스 스토어와 로컬 스토리지에 각각 저장
       dispatch(userAction.setNickname(response.data.nickname));
-      localStorage.setItem("userNickname", response.data.nickname);
+      localStorage.setItem("nickname", response.data.nickname);
       if (response.data.profileImg) {
         dispatch(userAction.setProfileImg(response.data.profileImg));
-        localStorage.setItem("userProfileImg", response.data.profileImg);
+        localStorage.setItem("profileImg", response.data.profileImg);
       }
     })
     .catch((error) => {

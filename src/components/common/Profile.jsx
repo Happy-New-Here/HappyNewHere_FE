@@ -62,7 +62,7 @@ const Profile = () => {
   const profileImg = localStorage.getItem("profileImg");
 
   useEffect(() => {
-    // GetUserInfo(dispatch);
+    GetUserInfo(dispatch);
     // 또는 아래와 같이 GetUserInfo 함수를 직접 호출할 수도 있습니다.
     // const fetchUserInfo = async () => {
     //   await GetUserInfo(dispatch);
