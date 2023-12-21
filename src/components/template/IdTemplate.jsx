@@ -12,7 +12,6 @@ import {
 } from '../../styles/idStyle';
 import IdSubmitButton from '../organisms/UserInfo/IdSubmitButton';
 import StateInputBar from '../organisms/UserInfo/StateInputBar';
-import IdInputBarPC from '../organisms/UserInfo/IdinputBarPc';
 import IdInputBar from '../organisms/UserInfo/IdInputBar';
 import { userAction } from '../../store/User-Slice';
 import { idResult } from '../../store/User-action';
@@ -22,7 +21,6 @@ import AuthPageDeco from '../../assets/AuthPageDeco.svg';
 import SnowMan from '../../assets/SnowMan.svg';
 import logo from '../../assets/logo.svg';
 import LogoWrapper from '../organisms/UserInfo/LogoWrapper';
-import StateInputBarPc from "../organisms/UserInfo/StateInputBarPc";
 
 const IdTemplate = () => {
     const dispatch = useDispatch();
@@ -74,8 +72,8 @@ const IdTemplate = () => {
                     </TextWrapper>
                     <IdInputForm>
                         <IdInputContainer>
-                            <IdInputBarPC onChange={handleIdChange} />
-                            <StateInputBarPc onChange={handleStateMsgChange} />
+                            <IdInputBar onChange={handleIdChange} />
+                            <StateInputBar onChange={handleStateMsgChange} />
                             <IdSubmitButton onClick={handleStartClick} />
                         </IdInputContainer>
                     </IdInputForm>
