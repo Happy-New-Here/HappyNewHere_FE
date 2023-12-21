@@ -1,7 +1,7 @@
 import {
     SmallText,
 } from '../../../styles/text';
-import ProfileSearch from '../../common/Search/ProfileSearch';
+import ProfileSearch from './ProfileSearch';
 
 
 const ResultSearch = ({ onClick, searchResult }) => {

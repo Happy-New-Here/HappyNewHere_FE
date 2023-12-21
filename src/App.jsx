@@ -19,11 +19,11 @@ const router = createBrowserRouter([
   },
   { path: "search", element: <SearchPage /> },
   { path: "chatting", element: <ChattingPage /> },
-  { path: "friend", children: [{ path: "", element: <FriendPage /> }] },
+  { path: "friend/:userId", children: [{ path: "", element: <FriendPage /> }] },
 ]);
 
 
-function App() {
+function App() {  
     return (
         <>
             <RouterProvider router={router} />
