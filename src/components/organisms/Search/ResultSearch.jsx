@@ -9,15 +9,20 @@ const ResultSearch = ({ onClick, searchResult }) => {
     return (
         <>
             <SmallText margin="0px 0px 32px 0px" fontWeight="600">검색 결과</SmallText>
-            {searchResult.map((data, index) => (
-                <ProfileSearch
-                    key={index}
-                    id={data.accountId}
-                    userId={data.userId}
-                    nickname={data.nickname}
-                    profileImg={data.profileImg}
-                />
-            ))}
+            {searchResult.length > 0 ? (
+                searchResult.map((data, index) => (
+                    <ProfileSearch
+                        key={index}
+                        id={data.accountId}
+                        userId={data.userId}
+                        nickname={data.nickname}
+                        profileImg={data.profileImg}
+                    />
+                ))
+            ) : (
+                <SmallText>검색결과 없습니다.</SmallText>
+            )}
+
             {searchResult.length === 10 && <button onClick={onClick}>더보기</button>}
         </>
 
