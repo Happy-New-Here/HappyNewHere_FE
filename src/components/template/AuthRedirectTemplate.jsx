@@ -24,8 +24,17 @@ const AuthRedirectTemplate = () => {
           dispatch(AuthActions.setSignIn({ status: "success", token: token }));
           localStorage.setItem("accessToken", token);
 
-          // 로그인 성공 시 페이지 이동
-          navigate(currentPage);
+          // 로그인 성공 시 유저 검색
+          const userExist = await axios.get(`${BASE_URL}/userInfo`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          });
+          if (userExist.data.userId === null) {
+            navigate("/auth/id/input");
+          } else {
+            navigate("/");
+          }
         } catch (e) {
           console.error(e);
 
