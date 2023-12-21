@@ -55,13 +55,14 @@ const Profile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.user.userId);
-  const nickname = useSelector((state) => state.user.nickname);
+  // const nickname = useSelector((state) => state.user.nickname);
   const stateMsg = useSelector((state) => state.user.stateMsg);
-  const profileImg = useSelector((state) => state.user.profileImg);
+  // const profileImg = useSelector((state) => state.user.profileImg);
+  const nickname = localStorage.getItem("nickname");
+  const profileImg = localStorage.getItem("profileImg");
 
   useEffect(() => {
-    GetUserInfo(dispatch);
-
+    // GetUserInfo(dispatch);
     // 또는 아래와 같이 GetUserInfo 함수를 직접 호출할 수도 있습니다.
     // const fetchUserInfo = async () => {
     //   await GetUserInfo(dispatch);

@@ -43,12 +43,14 @@ export const GetUserInfo = (dispatch) => {
     })
     .then((response) => {
       console.log(
-        `Brought user info successfully. nickname: ${response.data.nickname}, profileImg: ${response.data.profileImg}`
+        `Brought user info successfully. accountId: ${response.data.accountId}, userId: ${response.data.userId}, nickname: ${response.data.nickname}, profileImg: ${response.data.profileImg}`
       );
+      // 리덕스 스토어와 로컬 스토리지에 각각 저장
       dispatch(userAction.setNickname(response.data.nickname));
-      {
-        response.data.profileImg &&
-          dispatch(userAction.setProfileImg(response.data.profileImg));
+      localStorage.setItem("userNickname", response.data.nickname);
+      if (response.data.profileImg) {
+        dispatch(userAction.setProfileImg(response.data.profileImg));
+        localStorage.setItem("userProfileImg", response.data.profileImg);
       }
     })
     .catch((error) => {

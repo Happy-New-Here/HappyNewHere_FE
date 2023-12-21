@@ -165,8 +165,12 @@ const UserInfo = styled(PlaceLeftColumn)`
 
 const EditUserInfo = () => {
   const userId = useSelector((state) => state.user.userId);
-  const nickname = useSelector((state) => state.user.nickname);
+  // const nickname = useSelector((state) => state.user.nickname);
   const stateMsg = useSelector((state) => state.user.stateMsg);
+  // const profileImg = useSelector((state) => state.user.profileImg);
+  const nickname = localStorage.getItem("nickname");
+  const profileImg = localStorage.getItem("profileImg");
+
   const stateMsgMaxLength = 40; // 상태메시지 최대 글자수
 
   // 저장 전 인풋 임시 저장할 곳
