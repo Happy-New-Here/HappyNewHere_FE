@@ -23,6 +23,7 @@ export const DecoWrapper = styled.div`
     position: absolute;
     top: 5%;
     left: 60%;
+    margin-bottom: 1rem;
     @media (max-width: 768px) {
         top: 10%;
     }
@@ -45,5 +46,5 @@ export const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2rem 0.625rem 2rem 0.625rem;
+    margin: 0.7rem 0.625rem 1.5rem 0;
 `;
