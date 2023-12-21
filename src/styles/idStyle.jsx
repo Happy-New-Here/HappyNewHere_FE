@@ -1,5 +1,32 @@
 import styled from 'styled-components';
 
+export const IdInputForm = styled.div`
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    @media (max-width: 768px) {
+        width: 80%;
+    }
+`;
+
+export const IdInputContainer = styled.div`
+    margin-top: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+`;
+
+export const BackGround = styled.div`
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: #fffbee;
+`;
+
 export const IdResponsiveLayout = styled.div`
     display: flex;
     flex-direction: column;
