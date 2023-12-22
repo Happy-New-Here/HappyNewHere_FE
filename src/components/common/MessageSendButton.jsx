@@ -23,32 +23,33 @@ const MessageSendButton = () => {
   // }, [messageInput]);
 
   let paramsToSend = {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    },
-    body: {
-      context: messageInput,
-      receiver: receiver,
-      paperNum: selectedPaperNum,
-      anonymous: isAnonymous,
-    },
+    context: messageInput,
+    receiver: receiver,
+    paperNum: selectedPaperNum,
+    anonymous: isAnonymous,
   };
 
   const handleSendButton = () => {
-    if (messageInput) {
+    const userConfirmed = confirm(`메시지를 전송하시겠어요?`);
+
+    if (userConfirmed) {
       axios
-        .post(`${BASE_URL}/message/create`, paramsToSend)
+        .post(`${BASE_URL}/message/create`, paramsToSend, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
         .then((response) => {
-          console.log(`Your message has been sent successfuly.`);
+          console.log(`Your message has been sent successfully.`);
           setIsSent(true);
         })
         .catch((error) => {
-          console.error(`An error occured while sending the message.`);
+          console.error(`An error occurred while sending the message.`, error);
         });
     }
   };
 
-  // 메시지 보내지면 알림창 띄운 후 메시지 상태 초기화
+  // 메시지 전송 컨펌, 메시지 보내지면 알림창 띄운 후 메시지 상태 초기화
   useEffect(() => {
     if (isSent) {
       alert(`메시지 전송이 완료되었어요! 두근두근`);
