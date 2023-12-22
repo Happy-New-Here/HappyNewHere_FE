@@ -36,7 +36,7 @@ const IdTemplate = () => {
 
   /** 아이디 입력 event */
   const handleIdChange = (e) => {
-    dispatch(userAction.setId(e.target.value));
+    dispatch(userAction.setUserId(e.target.value));
   };
 
   /** 상태메세지 입력 event */

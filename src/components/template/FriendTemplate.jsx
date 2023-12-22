@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentPage } from '../../store/currentPageSlice';
 import Header from '../common/Header';
@@ -13,7 +13,8 @@ import { useMediaQuery } from 'react-responsive';
 import ProfileSearching from '../common/ProfileSearcing';
 import { useParams } from 'react-router';
 import { searchResult } from '../../store/search-action';
-import { userAction } from '../../store/User-Slice';
+// import { userAction } from '../../store/User-Slice';
+import { searchUserAction } from '../../store/searchUserSlice';
 
 const MessageWriteTemplate = () => {
 
@@ -54,9 +55,9 @@ const MessageWriteTemplate = () => {
     const axiosUserInfo = async () => {
       const result = await searchResult(userId, 0);
       // console.log('Search result:', result.content);
-      dispatch(userAction.setSearchingNickname(result.content[0].nickname));
-      dispatch(userAction.setSearchingProfileImg(result.content[0].profileImg));
-      dispatch(userAction.setSearchingStateMsg(result.content[0].stateMsg));
+      dispatch(searchUserAction.setSearchingNickname(result.content[0].nickname));
+      dispatch(searchUserAction.setSearchingProfileImg(result.content[0].profileImg));
+      dispatch(searchUserAction.setSearchingStateMsg(result.content[0].stateMsg));
     }
     axiosUserInfo();
   }, [userId])
