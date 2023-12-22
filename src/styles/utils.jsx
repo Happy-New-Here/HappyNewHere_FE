@@ -1,60 +1,71 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const PlaceCenter = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const PlaceLeftRow = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+`;
+
+export const PlaceRightRow = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
 `;
 
 export const PlaceLeftColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 `;
 
 export const PlaceTopColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 `;
 
+/** 코드 재사용성을 높이기 위해 주석처리 */
 // 템플릿 전체 레이아웃: 기본 좌상단, 데탑버전 중앙
-export const ResponsiveLayout = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  top: 0;
-  left: 0;
+// export const ResponsiveLayout = styled.div`
+//     display: grid;
+//     grid-template-rows: 1fr;
+//     grid-template-columns: 1fr 2fr 1fr;
+//     flex-direction: column;
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     min-width: 768px;
+//     width: 100vh;
+//     height: 100vh;
+//     @media (min-width: 768px) {
+//         // 중앙 정렬
+//         left: 50%;
+//         transform: translateX(-50%);
 
-  @media (min-width: 768px) {
-    // 중앙 정렬
-    left: 50%;
-    transform: translateX(-50%);
-
-    flex-direction: row;
-    margin-top: 32px;
-    gap: 32px;
-  }
-`;
+//         flex-direction: row;
+//         margin-top: 32px;
+//         gap: 32px;
+//     }
+// `;
 
 // 헤더 영역 레이아웃
 export const HeaderLayout = styled(PlaceLeftRow)`
-  width: 100vw;
-  height: 76px;
-  padding: 20px 20px;
+    width: 100vw;
+    height: 76px;
+    padding: 20px 20px;
 
-  @media (min-width: 768px) {
-    width: 156px; // 임의
-    height: auto;
-    padding: 0 0;
-  }
+    @media (min-width: 768px) {
+        width: 156px; // 임의
+        height: auto;
+        padding: 0 0;
+    }
 `;
 
 // 컨텐트 영역 레이아웃: 좌우 패딩 32px씩
@@ -91,62 +102,63 @@ export const ContentLayout = styled.div`
 
 // 데탑 버전 좌, 중앙, 우
 export const Leftside = styled.div`
-  @media (min-width: 768px) {
-    order: 0;
-    flex-direction: column;
-  }
+    @media (min-width: 768px) {
+        order: 0;
+        flex-direction: column;
+    }
 `;
 
 export const Center = styled.div`
-  @media (min-width: 768px) {
-    order: 1;
+    @media (min-width: 768px) {
+        order: 1;
 
-    width: 400px; // 임의
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 32px;
+        width: 400px; // 임의
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        /* gsap: 32px; */
 
-    // overflow: scroll;
-  }
+        // overflow: scroll;
+    }
 `;
 
 export const Rightside = styled(PlaceTopColumn)`
-  @media (min-width: 768px) {
-    order: 2;
-    width: 176px; // 임의
-    gap: 32px;
-  }
+    @media (min-width: 768px) {
+        order: 2;
+        width: 176px; // 임의
+        gap: 32px;
+    }
 `;
 
 // Search Template 반응형 레이아웃 파트입니다.
 export const ResponsiveLayoutPC = styled.div`
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 2fr 1fr;
-  justify-content: center;
-  align-items: start;
-  min-width: 768px;
-  width: 100%;
-  height: 550px;
-  margin-top: 0;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
+    justify-content: center;
+    align-items: start;
+    min-width: 768px;
+    gap: 32px;
+    width: 100vh;
+    height: 100vh;
+    margin-top: 2rem;
 `;
 
 export const InsideLayoutPC = styled.div`
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 `;
 
 export const ResponsiveLayoutMobile = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  max-width: 768px;
-  height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    max-width: 768px;
+    height: 550px;
 `;
 
 export const InsideLayoutMobile = styled.div`
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 `;

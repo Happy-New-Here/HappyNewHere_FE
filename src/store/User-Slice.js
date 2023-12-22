@@ -5,12 +5,8 @@ const userSlice = createSlice({
   name: "user",
   initialState: { userId: "", stateMsg: "", nickname: "", profileImg: DefaultProfileImg },
   reducers: {
-    setId(state, action) {
+    setUserId(state, action) {
       state.userId = action.payload;
-    },
-
-    setStateMsg(state, action) {
-      state.stateMsg = action.payload;
     },
 
     setNickname(state, action) {
@@ -19,6 +15,10 @@ const userSlice = createSlice({
 
     setProfileImg(state, action) {
       state.profileImg = action.payload;
+    },
+
+    setStateMsg(state, action) {
+      state.stateMsg = action.payload;
     },
   },
 });
