@@ -14,13 +14,16 @@ const MessageSendButton = () => {
   const isAnonymous = useSelector((state) => state.isAnonymous);
   const [isSent, setIsSent] = useState(false);
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
 
   let paramsToSend = {
-    context: messageInput,
-    paperNum: selectedPaperNum,
-    // Header Authorization
-    anonymous: isAnonymous,
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+    body: {
+      context: messageInput,
+      paperNum: selectedPaperNum,
+      anonymous: isAnonymous,
+    },
   };
 
   const handleSendButton = () => {
