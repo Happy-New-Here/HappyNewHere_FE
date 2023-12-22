@@ -23,9 +23,9 @@ const AnonymousCheckbox = () => {
   };
 
   // 확인용
-  useEffect(() => {
-    console.log(`isAnonymous: ${isAnonymous}`);
-  }, [isAnonymous]);
+  // useEffect(() => {
+  //   console.log(`isAnonymous: ${isAnonymous}`);
+  // }, [isAnonymous]);
 
   return (
     <StyledAnonymousCheckbox>

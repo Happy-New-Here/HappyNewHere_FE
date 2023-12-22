@@ -28,6 +28,7 @@ const MessageSendButton = () => {
     paperNum: selectedPaperNum,
     anonymous: isAnonymous,
   };
+  ㄴ;
 
   const handleSendButton = () => {
     const userConfirmed = confirm(`메시지를 전송하시겠어요?`);
