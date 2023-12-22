@@ -40,10 +40,6 @@ const MessageWriteTemplate = () => {
     config: { duration: 300 }, // 속도
   });
 
-  const isPc = useMediaQuery({
-    query: "(min-width:768px)",
-  });
-
   // currentPage(로그인 후 돌아올 페이지)를 설정하는 코드
   // 최초 마운트시에(만) setCurrentPage를 디스패치
   useEffect(() => {
@@ -73,7 +69,7 @@ const MessageWriteTemplate = () => {
         <>
           <Leftside>
             <Header />
-            <Footer currentPage="home" isPc={isPc} />
+            <Footer />
           </Leftside>
           <ContentLayout>
             <Center>
@@ -125,7 +121,7 @@ const MessageWriteTemplate = () => {
               <MessageWriteButtonOrganism />
             )}
           </ContentLayout>
-          <Footer currentPage="home" />
+          <Footer />
         </>
       )}
     </ResponsiveLayout>

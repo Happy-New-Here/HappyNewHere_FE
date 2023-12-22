@@ -1,10 +1,25 @@
 import styled from "styled-components";
 import { PlaceLeftColumn, PlaceLeftRow } from "./utils";
 import { SmallText } from "./text";
+import { Img } from "./Img";
 
 export const StyledProfile = styled(PlaceLeftRow)`
   width: 100%;
   gap: 12px;
+`;
+
+export const ProfileImg = styled(Img)`
+  width: ${(props) => props.widthMobile || "54px"};
+  height: ${(props) => props.heightMobile || "54px"};
+  border-radius: 50%;
+  border: 0.5px solid #909090;
+  boxshadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  background: url(${(props) => props.backgroundImg}) center/cover;
+
+  @media (min-width: 768px) {
+    width: ${(props) => props.widthDesktop || "46px"};
+    height: ${(props) => props.heightDesktop || "46px"};
+  }
 `;
 
 export const NicknameAndStatemsg = styled(PlaceLeftColumn)`

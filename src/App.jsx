@@ -6,6 +6,7 @@ import IdPage from "./pages/Id";
 import SearchPage from "./pages/Search";
 import FriendPage from "./pages/Friend";
 import ChattingPage from "./pages/Chatting";
+import EditProfilePage from "./pages/EditProfile";
 
 const router = createBrowserRouter([
   { index: true, path: "/", element: <HomePage /> },
@@ -18,17 +19,17 @@ const router = createBrowserRouter([
     ],
   },
   { path: "search", element: <SearchPage /> },
-  { path: "chatting", element: <ChattingPage /> },
   { path: "friend/:userId", element: <FriendPage /> },
+  { path: "chatting", element: <ChattingPage /> },
+  { path: "editprofile", element: <EditProfilePage /> },
 ]);
 
-
-function App() {  
-    return (
-        <>
-            <RouterProvider router={router} />
-        </>
-    );
+function App() {
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  );
 }
 
 export default App;
