@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { BASE_URL } from "../../utils/URL";
 import { Button } from "./Button";
 import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
