@@ -6,6 +6,7 @@ const calendarSlice = createSlice({
     calendar: null,
     messagesList: [],
     owner: false,
+    selectedMessageIndex: null,
   },
   reducers: {
     setCalendar: (state, action) => {
@@ -17,9 +18,17 @@ const calendarSlice = createSlice({
     setOwner: (state, action) => {
       state.owner = action.payload;
     },
+    setSelectedMessageIndex: (state, action) => {
+      state.selectedMessageIndex = action.payload;
+    },
   },
 });
 
-export const { setCalendar, setMessagesList, setOwner } = calendarSlice.actions;
+export const {
+  setCalendar,
+  setMessagesList,
+  setOwner,
+  setSelectedMessageIndex,
+} = calendarSlice.actions;
 
 export default calendarSlice.reducer;

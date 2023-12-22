@@ -9,6 +9,7 @@ import GiftBox from "../common/GiftBox";
 import { Calendar } from "../common/Calendar";
 import MessageList from "../organisms/Message/MessageList";
 import MessageViewOrganism from "../organisms/Message/MessageViewOrganism";
+import MessageView from "../common/MessageView";
 import {
   PlaceCenter,
   // ResponsiveLayout,
@@ -50,6 +51,9 @@ const HomeTemplate = () => {
   const selectedMessageList = useSelector(
     (state) => state.calendar.messagesList
   );
+  const selectedMessageIndex = useSelector(
+    (state) => state.calendar.selectedMessageIndex
+  );
 
   // currentPage(로그인 후 돌아올 페이지)를 설정하는 코드
   // 최초 마운트시에(만) setCurrentPage를 디스패치
@@ -64,26 +68,38 @@ const HomeTemplate = () => {
 
   // 유저 메세지 전체 불러오기
   useEffect(() => {
-    axios
-      .get(`${BASE_URL}/calender/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
-      .then((res) => {
-        console.log("Response Data:");
-        console.log(res.data);
-        const data = res.data;
-        dispatch(setCalendar(data.calendar));
-        dispatch(setMessagesList(data.messagesList));
-        dispatch(setOwner(data.owner));
-      })
-      .catch((error) => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/calender/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        });
+
+        if (response.data) {
+          // 응답이 성공적으로 도착한 경우 데이터를 처리하고 Redux 상태를 업데이트
+          console.log("Response Data:");
+          console.log(response.data);
+          const data = response.data;
+          dispatch(setCalendar(data.calendar));
+          dispatch(setMessagesList(data.messagesList));
+          dispatch(setOwner(data.owner));
+        } else {
+          // 응답이 도착하지 않은 경우 다시 요청
+          console.log("Response Data is empty, retrying...");
+          setTimeout(fetchData, 5000); // 5초 후에 다시 요청 (원하는 대기 시간으로 조절 가능)
+        }
+      } catch (error) {
+        // 에러 처리
         alert("편지가 오는 중입니다. 새로고침으로 받아보세요 !");
         console.error("Error fetching user messages:", error);
-      });
-  }, [userId]);
-  //selectedDate 임시로 넣어둠, 빼야함
+      }
+    };
+
+    // 컴포넌트가 마운트될 때 최초 요청 시작
+    fetchData();
+  }, [userId, selectedDate]);
+  //selectedDate 는 임시로 넣어둬서 빼야함
 
   // 메시지 읽기 오픈일 설정
   const targetDate = new Date("2023-01-01"); // 오픈일
@@ -147,11 +163,14 @@ const HomeTemplate = () => {
             {/* 선택한 날짜에 따른 메시지 목록 또는 내용을 여기에 표시 */}
           </div>
         )}
+        {/* <MessageList
+          messageList={selectedMessageList}
+          selectedDate={selectedDate}
+        /> */}
         <MessageList
           messageList={selectedMessageList}
           selectedDate={selectedDate}
         />
-        {/* <MessageViewOrganism /> */}
       </>
     );
   };
@@ -176,6 +195,15 @@ const HomeTemplate = () => {
                   />
                 ))}
               </Calendar.wrapper>
+              <MessageView
+                // Pass the selected message details as props
+                context={selectedMessageList[selectedMessageIndex]?.context}
+                senderNickName={
+                  selectedMessageList[selectedMessageIndex]?.senderNickName
+                }
+                paperNum={selectedMessageList[selectedMessageIndex]?.paperNum}
+                anonymous={selectedMessageList[selectedMessageIndex]?.anonymous}
+              />
             </Center>
           </ContentLayout>
 

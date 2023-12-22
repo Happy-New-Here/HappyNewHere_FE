@@ -4,6 +4,8 @@ import MessageThumbnail from "../../common/MessageThumbnail";
 // import axios from "axios";
 // import { BASE_URL } from "../../../utils/URL";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { setSelectedMessageIndex } from "../../../store/calendar-slice";
 
 const StyledMessageList = styled.label`
   display: flex;
@@ -15,6 +17,8 @@ const StyledMessageList = styled.label`
 const MessageList = ({ messageList, selectedDate }) => {
   console.log("도착한메세지", messageList, selectedDate);
 
+  const dispatch = useDispatch();
+
   const today = new Date(); // 일요일: 0 ~ 토요일: 6
   const filteredDate = new Date(selectedDate).getDate();
   const selectedDay = new Date(selectedDate).getDay();
@@ -25,25 +29,29 @@ const MessageList = ({ messageList, selectedDate }) => {
     return messageDay == filteredDate;
   });
 
+  const handleThumbnailClick = (index) => {
+    // Dispatch the action to store the selected message index
+    dispatch(setSelectedMessageIndex(index));
+  };
+
   console.log("filteredMessages:", filteredMessages);
 
   return (
-    // <StyledMessageList>
-    //   <MessageThumbnail day={day} paperNum="0" />
-    //   <MessageThumbnail day={day} paperNum="1" />
-    //   <MessageThumbnail day={day} paperNum="2" />
-    //   <MessageThumbnail day={day} paperNum="3" />
-    // </StyledMessageList>
     <>
       <StyledMessageList>
-        {filteredMessages.map((message, index) => (
-          <MessageThumbnail
-            key={index}
-            day={selectedDay}
-            paperNum={message.paperNum}
-            sender={message.senderNickname}
-          />
-        ))}
+        {filteredMessages.map((message, index) => {
+          const originalIndex = messageList.indexOf(message);
+          return (
+            <MessageThumbnail
+              key={index}
+              day={selectedDay}
+              paperNum={message.paperNum}
+              sender={message.senderNickname}
+              // messageList의 특정 메세지 선택
+              onClick={() => handleThumbnailClick(originalIndex)}
+            />
+          );
+        })}
       </StyledMessageList>
     </>
   );

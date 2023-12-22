@@ -29,7 +29,7 @@ const TextArea = styled.p`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #C0C0C0; /* Scrollbar color */
+    background-color: #c0c0c0; /* Scrollbar color */
     border-radius: 4px; /* Round the corners of the scrollbar */
   }
 
@@ -38,7 +38,7 @@ const TextArea = styled.p`
   }
 `;
 
-const Message = () => {
+const MessageView = ({ context, senderNickName, paperNum, anonymous }) => {
   // MessageContainer height width에 따라 동적 적용
   const messageContainerRef = useRef(null);
 
@@ -63,12 +63,22 @@ const Message = () => {
 
   return (
     <StyledMessage>
-      <CancelIcon src={cancelIcon} alt="cancelIcon" onClick={handleCancelClick} />
+      <CancelIcon
+        src={cancelIcon}
+        alt="cancelIcon"
+        onClick={handleCancelClick}
+      />
 
-      <MessageContainer ref={messageContainerRef} day={day} paperNum={selectedPaperNum}>
-        <MessageText fontColor={MessageFontColor(selectedPaperNum)}>
-          <TextArea fontColor={MessageFontColor(selectedPaperNum)}>
-            안녕. <br /> 새해에는 좋은 일이 생기게 해주세요. <br /> Happy New Year!
+      <MessageContainer
+        ref={messageContainerRef}
+        day={day}
+        paperNum={selectedPaperNum}
+      >
+        <MessageText fontColor="#000000">
+          <TextArea fontColor="#000000">
+            {context}
+            {/* { 안녕. <br /> 새해에는 좋은 일이 생기게 해주세요. <br /> Happy New
+            Year!} */}
           </TextArea>
           <ReceiverOrSender>From. {senderNickname}</ReceiverOrSender>
         </MessageText>
@@ -77,4 +87,4 @@ const Message = () => {
   );
 };
 
-export default Message;
+export default MessageView;
