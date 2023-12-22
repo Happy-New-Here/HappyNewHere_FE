@@ -29,7 +29,7 @@ const EditProfileTemplate = () => {
 
   // 최초 마운트시에(만) 실행
   useEffect(() => {
-    dispatch(setCurrentPage("/auth/editprofile")); // currentPage(로그인 후 돌아올 페이지) 설정
+    dispatch(setCurrentPage("/editprofile")); // currentPage(로그인 후 돌아올 페이지) 설정
     // GetUserInfo(dispatch); // 유저 정보 get
   }, [dispatch]);
 

@@ -32,7 +32,7 @@ const Footer = () => {
   };
 
   const togoMypage = () => {
-    navigate("/auth/editprofile");
+    navigate("/editprofile");
   };
 
   const handleLoginIconClick = () => {
@@ -120,13 +120,11 @@ const Footer = () => {
             >
               <path
                 d="M6 10.9004C9.3135 10.9004 12 8.54989 12 5.65039C12 2.75089 9.3135 0.400391 6 0.400391C2.6865 0.400391 0 2.75089 0 5.65039C0 6.97039 0.55725 8.17789 1.4775 9.10039C1.40475 9.86239 1.16475 10.6979 0.89925 11.3249C0.84 11.4644 0.95475 11.6204 1.104 11.5964C2.796 11.3189 3.80175 10.8929 4.239 10.6709C4.81343 10.8241 5.40549 10.9013 6 10.9004Z"
-                fill={currentPage === "/auth/chatting" ? "#9a0501" : "#909090"}
+                fill={currentPage === "/chatting" ? "#9a0501" : "#909090"}
               />
             </svg>
             <p
-              className={`${
-                currentPage === "/auth/chatting" ? "text-[#9a0501]" : "text-[#909090]"
-              } 
+              className={`${currentPage === "/chatting" ? "text-[#9a0501]" : "text-[#909090]"} 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               채팅
@@ -141,17 +139,17 @@ const Footer = () => {
             >
               <FooterProfileImg
                 className={`${
-                  currentPage === "/auth/editprofile"
+                  currentPage === "/editprofile"
                     ? "border-[1px] border-[#9a0501]"
                     : "border-[0.3px] border-[#909090]"
                 } flex-grow-0 flex-shrink-0 rounded-[50px] border-solid `}
-                width={`${currentPage === "/auth/editprofile" ? "13" : 12}`}
-                height={`${currentPage === "/auth/editprofile" ? "13" : 12}`}
+                width={`${currentPage === "/editprofile" ? "13" : 12}`}
+                height={`${currentPage === "/editprofile" ? "13" : 12}`}
                 backgroundImg={profileImg}
               />
               <p
                 className={`${
-                  currentPage === "/auth/editprofile" ? "text-[#9a0501]" : "text-[#909090]"
+                  currentPage === "/editprofile" ? "text-[#9a0501]" : "text-[#909090]"
                 } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
               >
                 마이페이지
@@ -263,12 +261,12 @@ const Footer = () => {
             >
               <path
                 d="M10.6667 0C16.1667 0 20.6667 3.58 20.6667 8C20.6667 12.42 16.1667 16 10.6667 16C9.42669 16 8.23669 15.82 7.13669 15.5C4.21669 18 0.666687 18 0.666687 18C2.99669 15.67 3.36669 14.1 3.41669 13.5C1.71669 12.07 0.666687 10.13 0.666687 8C0.666687 3.58 5.16669 0 10.6667 0Z"
-                fill={currentPage === "/auth/chatting" ? "#9a0501" : "#909090"}
+                fill={currentPage === "/chatting" ? "#9a0501" : "#909090"}
               />
             </svg>
             <p
               className={`${
-                currentPage === "/auth/chatting" ? "text-[#9a0501]" : "text-[#909090]"
+                currentPage === "/chatting" ? "text-[#9a0501]" : "text-[#909090]"
               } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               채팅
@@ -283,17 +281,17 @@ const Footer = () => {
             >
               <FooterProfileImg
                 className={`${
-                  currentPage === "/auth/editprofile"
+                  currentPage === "/editprofile"
                     ? "border-[2px] border-[#9a0501]"
                     : "border-[0.3px] border-[#909090]"
                 } flex-grow-0 flex-shrink-0 rounded-[50px] border-solid `}
-                width={`${currentPage === "/auth/editprofile" ? "26" : 24}`}
-                height={`${currentPage === "/auth/editprofile" ? "26" : 24}`}
+                width={`${currentPage === "/editprofile" ? "26" : 24}`}
+                height={`${currentPage === "/editprofile" ? "26" : 24}`}
                 backgroundImg={profileImg}
               />
               <p
                 className={`${
-                  currentPage === "/auth/editprofile" ? "text-[#9a0501]" : "text-[#909090]"
+                  currentPage === "/editprofile" ? "text-[#9a0501]" : "text-[#909090]"
                 } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
               >
                 My
