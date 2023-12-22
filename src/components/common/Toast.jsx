@@ -1,6 +1,7 @@
 import React from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import styled from "styled-components";
 
 export default function Toast({ messageType = "default", type = "error" }) {
   const getMessageByType = () => {
@@ -8,7 +9,7 @@ export default function Toast({ messageType = "default", type = "error" }) {
       case "default":
         return "기본 메시지";
       case "duplicateID":
-        return "이미 사용 중인 아이디입니다.";
+        return "이미 사용 중인 ID입니다.";
       case "loginRequired":
         return "로그인이 필요한 서비스입니다.";
       case "profileUpdateError":
@@ -41,16 +42,16 @@ export default function Toast({ messageType = "default", type = "error" }) {
 
     switch (toastType) {
       case "error":
-        toast.error(message);
+        toast.error(<CustomStyledToast>{message}</CustomStyledToast>);
         break;
       case "info":
-        toast.info(message);
+        toast.info(<CustomStyledToast>{message}</CustomStyledToast>);
         break;
       case "success":
-        toast.success(message);
+        toast.success(<CustomStyledToast>{message}</CustomStyledToast>);
         break;
       case "warning":
-        toast.warning(message);
+        toast.warning(<CustomStyledToast>{message}</CustomStyledToast>);
         break;
       default:
         toast.error("알 수 없는 타입의 메시지");
@@ -74,3 +75,8 @@ export default function Toast({ messageType = "default", type = "error" }) {
     </>
   );
 }
+
+const CustomStyledToast = styled.div`
+  padding-left: 0.5rem; /* 토스트 메시지의 안쪽 여백 설정 */
+  font-family: pretandard, sans-serif;
+`;
