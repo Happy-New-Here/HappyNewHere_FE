@@ -21,7 +21,6 @@ import AuthPageDeco from "../../assets/AuthPageDeco.svg";
 import SnowMan from "../../assets/SnowMan.svg";
 import logo from "../../assets/logo.svg";
 import LogoWrapper from "../organisms/UserInfo/LogoWrapper";
-
 import Toast from "../common/Toast";
 
 const IdTemplate = () => {
@@ -61,7 +60,6 @@ const IdTemplate = () => {
     await dispatch(idResult(userId, stateMsg));
     navigate("/");
   };
-
   return (
     <>
       {isPc ? (
@@ -72,7 +70,7 @@ const IdTemplate = () => {
           <LogoWrapper />
           <TextWrapper>
             <SmallText className="justify-center text-center font-bold">
-              HappyNewHere에서 사용하실 ID를 알려주세요!
+              HappyNewHere에서 사용하실 아이디를 알려주세요!
             </SmallText>
           </TextWrapper>
           <IdInputForm>
@@ -94,7 +92,7 @@ const IdTemplate = () => {
               HappyNewHere에서 사용하실
             </SmallText>
             <SmallText className="justify-center text-center font-bold">
-              ID를 알려주세요!
+              아이디를 알려주세요!
             </SmallText>
             <IdInputForm>
               <IdInputContainer>

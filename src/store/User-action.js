@@ -27,7 +27,8 @@ export const idResult = (userId, stateMessage) => {
   };
 };
 
-// userInfo 서버에서 받아오기
+// userInfo 서버에서 받아오기 (nickname, profileImg, userId)
+
 export const GetUserInfo = async (dispatch) => {
   axios
     .get(`${BASE_URL}/userInfo`, {
