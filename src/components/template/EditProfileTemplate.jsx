@@ -19,6 +19,10 @@ import {
 import { SmallText } from "../../styles/text";
 import styled from "styled-components";
 
+const ContentLayoutNoFooter = styled(ContentLayout)`
+  height: auto;
+`;
+
 const EditProfileTemplate = () => {
   const isPc = useMediaQuery({
     query: "(min-width: 768px)",
@@ -58,11 +62,12 @@ const EditProfileTemplate = () => {
       ) : (
         <>
           <EditProfileTab />
-          <ContentLayout>
+          <ContentLayoutNoFooter>
             <EditProfileOrganism />
-          </ContentLayout>
+            <ProfileSubmitButton />
+          </ContentLayoutNoFooter>
 
-          <Footer />
+          {/* <Footer /> */}
         </>
       )}
     </ResponsiveLayout>
