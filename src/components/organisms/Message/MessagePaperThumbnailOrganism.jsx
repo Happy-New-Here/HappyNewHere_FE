@@ -25,11 +25,11 @@ const MessagePaperSelect = () => {
     dispatch(setSelectedPaperNum(paperNum));
   };
 
-  // 테스트용
+  // 확인용
   // dispatch setSelectedPaperNum 실행 이후 실행되도록
-  // useEffect(() => {
-  //   console.log(`paper no.${selectedPaperNum} is selected.`);
-  // }, [selectedPaperNum]);
+  useEffect(() => {
+    console.log(`selectedPaperNum: ${selectedPaperNum}`);
+  }, [selectedPaperNum]);
 
   return (
     <MessagePaperContainer>
