@@ -22,6 +22,8 @@ import SnowMan from "../../assets/SnowMan.svg";
 import logo from "../../assets/logo.svg";
 import LogoWrapper from "../organisms/UserInfo/LogoWrapper";
 
+import Toast from "../common/Toast";
+
 const IdTemplate = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -52,6 +54,10 @@ const IdTemplate = () => {
       alert("Id 값을 입력해주세요!");
       return; // 함수 실행을 중단
     }
+
+    // 아이디 중복방지 toast 추가
+    // <Toast text={"아이디 중복방지"}></Toast>;
+
     await dispatch(idResult(userId, stateMsg));
     navigate("/");
   };
@@ -88,13 +94,18 @@ const IdTemplate = () => {
               HappyNewHere에서 사용하실
             </SmallText>
             <SmallText className="justify-center text-center font-bold">
-              아이디를 알려주세요!
+              ID를 알려주세요!
             </SmallText>
             <IdInputForm>
               <IdInputContainer>
                 <IdInputBar onChange={handleIdChange} />
                 <StateInputBar onChange={handleStateMsgChange} />
                 <IdSubmitButton onClick={handleStartClick} />
+                <Toast type="duplicateID"></Toast>
+                <Toast type="default"></Toast>
+                <Toast type="loginRequired"></Toast>
+                <Toast type="profileUpdateError"></Toast>
+                <Toast type="others"></Toast>
               </IdInputContainer>
             </IdInputForm>
           </IdResponsiveLayout>
