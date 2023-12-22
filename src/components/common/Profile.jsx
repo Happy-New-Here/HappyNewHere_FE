@@ -1,8 +1,4 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { GetUserInfo } from "../../store/User-action";
-import editIcon from "../../assets/editIcon.svg";
 import {
   StyledProfile,
   ProfileImg,
@@ -10,9 +6,13 @@ import {
   NicknameContainer,
   Nickname,
   StateMsg,
-  EditIcon,
+  EditIcon
 } from "../../styles/profileStyle";
 import { Img } from "../../styles/Img";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { GetUserInfo } from "../../store/User-action";
+import editIcon from "../../assets/editIcon.svg";
 
 const Profile = () => {
   // const navigate = useNavigate();
