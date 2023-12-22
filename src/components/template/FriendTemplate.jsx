@@ -25,9 +25,9 @@ const MessageWriteTemplate = () => {
   const params = useParams();
   const userId = params.userId;
   const dispatch = useDispatch();
-  const nickname = useSelector((state) => state.user.nickname);
-  const stateMsg = useSelector((state) => state.user.stateMsg);
-  const profileImg = useSelector((state) => state.user.profileImg);
+  const nickname = useSelector((state) => state.searchUser.nickname);
+  const stateMsg = useSelector((state) => state.searchUser.stateMsg);
+  const profileImg = useSelector((state) => state.searchUser.profileImg);
   const currentPage = useSelector((state) => state.currentPage);
 
   const isMessageWriteVisible = useSelector((state) => state.isMessageWriteVisible);
@@ -59,9 +59,9 @@ const MessageWriteTemplate = () => {
     const axiosUserInfo = async () => {
       const result = await searchResult(userId, 0);
       // console.log('Search result:', result.content);
-      dispatch(userAction.setNickname(result.content[0].nickname));
-      dispatch(userAction.setProfileImg(result.content[0].profileImg));
-      dispatch(userAction.setStateMsg(result.content[0].stateMsg));
+      dispatch(userAction.setSearchingNickname(result.content[0].nickname));
+      dispatch(userAction.setSearchingProfileImg(result.content[0].profileImg));
+      dispatch(userAction.setSearchingStateMsg(result.content[0].stateMsg));
     }
     axiosUserInfo();
   }, [userId])
