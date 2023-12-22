@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { AuthSlice } from "./auth-slice";
 import messageInputSlice from "./messageInputSlice";
-import selectedPaperNumSlice from "./SelectedPaperNumSlice";
+import selectedPaperNumSlice from "./selectedPaperNumSlice";
 import isMessageWriteVisibleSlice from "./isMessageWriteVisibleSlice";
 import isAnonymousSlice from "./isAnonymousSlice";
 import searchSlice from "./searchSlice";
