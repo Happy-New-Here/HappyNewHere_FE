@@ -21,6 +21,7 @@ import AuthPageDeco from "../../assets/AuthPageDeco.svg";
 import SnowMan from "../../assets/SnowMan.svg";
 import logo from "../../assets/logo.svg";
 import LogoWrapper from "../organisms/UserInfo/LogoWrapper";
+import Toast from "../common/Toast";
 
 const IdTemplate = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,7 @@ const IdTemplate = () => {
 
   /** 아이디 입력 event */
   const handleIdChange = (e) => {
-    dispatch(userAction.setId(e.target.value));
+    dispatch(userAction.setUserId(e.target.value));
   };
 
   /** 상태메세지 입력 event */
@@ -52,10 +53,13 @@ const IdTemplate = () => {
       alert("Id 값을 입력해주세요!");
       return; // 함수 실행을 중단
     }
+
+    // 아이디 중복방지 toast 추가
+    // <Toast text={"아이디 중복방지"}></Toast>;
+
     await dispatch(idResult(userId, stateMsg));
     navigate("/");
   };
-
   return (
     <>
       {isPc ? (
@@ -95,6 +99,7 @@ const IdTemplate = () => {
                 <IdInputBar onChange={handleIdChange} />
                 <StateInputBar onChange={handleStateMsgChange} />
                 <IdSubmitButton onClick={handleStartClick} />
+                <Toast messageType="duplicateID" type="error"></Toast>
               </IdInputContainer>
             </IdInputForm>
           </IdResponsiveLayout>

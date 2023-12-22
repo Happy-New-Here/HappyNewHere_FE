@@ -17,9 +17,8 @@ export const idResult = (userId, stateMessage) => {
         }
       );
 
-      dispatch(userAction.setId( response.id ));
-      dispatch(userAction.setStateMsg( response.message));
-
+      dispatch(userAction.setUserId(response.id));
+      dispatch(userAction.setStateMsg(response.message));
     } catch (error) {
       alert("아이디 생성을 실패했습니다.");
       throw new Error(error.message);
@@ -27,7 +26,8 @@ export const idResult = (userId, stateMessage) => {
   };
 };
 
-// userInfo 서버에서 받아오기
+// userInfo 서버에서 받아오기 (nickname, profileImg, userId)
+
 export const GetUserInfo = async (dispatch) => {
   axios
     .get(`${BASE_URL}/userInfo`, {
