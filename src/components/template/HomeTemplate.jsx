@@ -85,9 +85,7 @@ const HomeTemplate = () => {
           dispatch(setMessagesList(data.messagesList));
           dispatch(setOwner(data.owner));
         } else {
-          // 응답이 도착하지 않은 경우 다시 요청
-          console.log("Response Data is empty, retrying...");
-          setTimeout(fetchData, 5000); // 5초 후에 다시 요청 (원하는 대기 시간으로 조절 가능)
+          setTimeout(fetchData, 10000); // 10초 후에 다시 요청 (원하는 대기 시간으로 조절 가능)
         }
       } catch (error) {
         // 에러 처리
@@ -196,10 +194,9 @@ const HomeTemplate = () => {
                 ))}
               </Calendar.wrapper>
               <MessageView
-                // Pass the selected message details as props
                 context={selectedMessageList[selectedMessageIndex]?.context}
-                senderNickName={
-                  selectedMessageList[selectedMessageIndex]?.senderNickName
+                senderNickname={
+                  selectedMessageList[selectedMessageIndex]?.senderNickname
                 }
                 paperNum={selectedMessageList[selectedMessageIndex]?.paperNum}
                 anonymous={selectedMessageList[selectedMessageIndex]?.anonymous}

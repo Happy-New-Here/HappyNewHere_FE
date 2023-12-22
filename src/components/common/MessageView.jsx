@@ -38,9 +38,12 @@ const TextArea = styled.p`
   }
 `;
 
-const MessageView = ({ context, senderNickName, paperNum, anonymous }) => {
+const MessageView = ({ context, senderNickname, paperNum, anonymous }) => {
   // MessageContainer height width에 따라 동적 적용
   const messageContainerRef = useRef(null);
+  console.log("test: ", context, senderNickname, paperNum, anonymous);
+
+  const displayName = anonymous ? "익명의 산타" : senderNickname;
 
   useEffect(() => {
     const messageContainer = messageContainerRef.current;
@@ -49,9 +52,7 @@ const MessageView = ({ context, senderNickName, paperNum, anonymous }) => {
     messageContainer.style.height = `${height}px`;
   }, []);
 
-  const senderNickname = ""; // 카카오톡 닉네임
   const dispatch = useDispatch();
-  const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
 
   const handleCancelClick = () => {
     //   dispatch(setIsMessageWriteVisible(false));
@@ -69,18 +70,10 @@ const MessageView = ({ context, senderNickName, paperNum, anonymous }) => {
         onClick={handleCancelClick}
       />
 
-      <MessageContainer
-        ref={messageContainerRef}
-        day={day}
-        paperNum={selectedPaperNum}
-      >
+      <MessageContainer ref={messageContainerRef} day={day} paperNum={paperNum}>
         <MessageText fontColor="#000000">
-          <TextArea fontColor="#000000">
-            {context}
-            {/* { 안녕. <br /> 새해에는 좋은 일이 생기게 해주세요. <br /> Happy New
-            Year!} */}
-          </TextArea>
-          <ReceiverOrSender>From. {senderNickname}</ReceiverOrSender>
+          <TextArea fontColor="#000000">{context}</TextArea>
+          <ReceiverOrSender>From. {displayName}</ReceiverOrSender>
         </MessageText>
       </MessageContainer>
     </StyledMessage>

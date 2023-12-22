@@ -20,6 +20,10 @@ const StyledMessageThumbnail = styled(PlaceLeftRow)`
   background-size: cover;
   background-position: right;
 
+  &.active {
+    background-color: rgba(128, 128, 128, 0.3); // 회색, Alpha 값 0.3로 설정
+  }
+
   @media (min-width: 768px) {
     padding: 0px 8px;
   }
@@ -38,24 +42,15 @@ const TextArea = styled(PlaceLeftRow)`
 `;
 
 const MessageThumbnail = (props) => {
-  const sender = "민주"; // 임의
-  console.log(props);
+  const { day, paperNum, sender, onClick } = props;
 
   return (
-    <StyledMessageThumbnail day={props.day} paperNum={props.paperNum}>
+    <StyledMessageThumbnail day={day} paperNum={paperNum} onClick={onClick}>
       <TextArea>
-        <SmallText
-          fontSize="12px"
-          fontWeight="600"
-          // color={
-          //   props.paperNum === 1 || props.paperNum === 2 || props.paperNum === 3
-          //     ? "white"
-          //     : "undefined"
-          // }
-        >
+        <SmallText fontSize="12px" fontWeight="600">
           From.&nbsp;
         </SmallText>
-        <SmallText fontSize="12px">{props.sender}</SmallText>
+        <SmallText fontSize="12px">{sender}</SmallText>
       </TextArea>
     </StyledMessageThumbnail>
   );
