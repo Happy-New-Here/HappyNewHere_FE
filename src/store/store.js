@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
 
 import { AuthSlice } from "./auth-slice";
 import messageInputSlice from "./messageInputSlice";
@@ -9,6 +9,7 @@ import searchSlice from "./searchSlice";
 import currentPageSlice from "./currentPageSlice";
 import userSlice from "./User-Slice";
 import UserInfoInputSlice from "./UserInfoInputSlice";
+import calendarSlice from "./calendar-slice";
 
 export const store = configureStore({
   reducer: {
@@ -21,5 +22,6 @@ export const store = configureStore({
     currentPage: currentPageSlice,
     user: userSlice.reducer,
     userInfoInput: UserInfoInputSlice,
+    calendar: calendarSlice,
   },
 });
