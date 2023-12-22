@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
@@ -58,9 +58,13 @@ export default function Toast({ messageType = "default", type = "error" }) {
     }
   };
 
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때 notify 함수를 호출하여 알림 표시
+    notify();
+  }, []); // 빈 배열을 두어 한 번만 호출되도록 설정
+
   return (
     <>
-      <button onClick={notify}>{messageType}</button>
       <ToastContainer
         position="top-right"
         autoClose={8000}
