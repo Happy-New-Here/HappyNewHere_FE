@@ -22,7 +22,11 @@ import { SmallText } from "../../styles/text";
 import styled from "styled-components";
 import axios from "axios";
 import { BASE_URL } from "../../utils/URL";
-import { setCalendar, setMessagesList, setOwner } from "./calendarSlice";
+import {
+  setCalendar,
+  setMessagesList,
+  setOwner,
+} from "../../store/calendar-slice";
 
 const StyledBeforeOpen = styled(PlaceCenter)`
   flex-direction: column;
@@ -38,11 +42,14 @@ const HomeTemplate = () => {
     query: "(min-width:768px)",
   });
 
-  let weekDates = Calendar.getWeekDates(25); // 이벤트 시작날짜 설정
+  let weekDates = Calendar.getWeekDates(22); // 이벤트 시작날짜 설정
   const [selectedDate, setSelectedDate] = useState(null);
   const dispatch = useDispatch();
   const currentPage = useSelector((state) => state.currentPage);
   const userId = useSelector((state) => state.user.userId);
+  const selectedMessageList = useSelector(
+    (state) => state.calendar.messagesList
+  );
 
   // currentPage(로그인 후 돌아올 페이지)를 설정하는 코드
   // 최초 마운트시에(만) setCurrentPage를 디스패치
@@ -72,12 +79,14 @@ const HomeTemplate = () => {
         dispatch(setOwner(data.owner));
       })
       .catch((error) => {
+        console.alert("선물이 오는 중입니다. 새로고침하세요 !");
         console.error("Error fetching user messages:", error);
       });
   }, [userId]);
+  //selectedDate 임시로 넣어둠, 빼야함
 
   // 메시지 읽기 오픈일 설정
-  const targetDate = new Date("2023-12-18"); // 오픈일
+  const targetDate = new Date("2023-01-01"); // 오픈일
   const today = new Date(); // 오늘
 
   const handleDateClick = (date) => {
@@ -138,7 +147,10 @@ const HomeTemplate = () => {
             {/* 선택한 날짜에 따른 메시지 목록 또는 내용을 여기에 표시 */}
           </div>
         )}
-        <MessageList />
+        <MessageList
+          messageList={selectedMessageList}
+          selectedDate={selectedDate}
+        />
         {/* <MessageViewOrganism /> */}
       </>
     );

@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { MessageThumbnailsSRC, MessagePapers } from "../../utils/MessagePapersSRC";
+import {
+  MessageThumbnailsSRC,
+  MessagePapers,
+} from "../../utils/MessagePapersSRC";
 import { PlaceLeftRow } from "../../styles/utils";
 import { SmallText } from "../../styles/text";
 
@@ -36,6 +39,7 @@ const TextArea = styled(PlaceLeftRow)`
 
 const MessageThumbnail = (props) => {
   const sender = "민주"; // 임의
+  console.log(props);
 
   return (
     <StyledMessageThumbnail day={props.day} paperNum={props.paperNum}>
@@ -51,7 +55,7 @@ const MessageThumbnail = (props) => {
         >
           From.&nbsp;
         </SmallText>
-        <SmallText fontSize="12px">{sender}</SmallText>
+        <SmallText fontSize="12px">{props.sender}</SmallText>
       </TextArea>
     </StyledMessageThumbnail>
   );

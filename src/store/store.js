@@ -22,6 +22,6 @@ export const store = configureStore({
     currentPage: currentPageSlice,
     user: userSlice.reducer,
     userInfoInput: UserInfoInputSlice,
-    calendar: calendarSlice.reducer,
+    calendar: calendarSlice,
   },
 });

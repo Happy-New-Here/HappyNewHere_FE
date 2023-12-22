@@ -12,49 +12,40 @@ const StyledMessageList = styled.label`
   overflow: auto;
 `;
 
-const MessageList = () => {
-  //   const userId = "mj"; // 조회할 아이디, 임의
-  //   let paramsToRequest = {
-  //     // Header Authorization → jwt 토큰,
-  //   };
-  //   const [responseData, setResponseData] = useState({
-  //     isOwner: false,
-  //     calanderStyle: "",
-  //     messages: [],
-  //   }); // 서버에서 가져온 데이터
+const MessageList = ({ messageList, selectedDate }) => {
+  console.log("도착한메세지", messageList, selectedDate);
 
-  //   useEffect(() => {
-  //     axios
-  //       .get(`${BASE_URL}/calender/${userId}`, paramsToRequest)
-  //       .then((response) => {
-  //         console.log(`The message list has been gotten successfuly.`);
+  const today = new Date(); // 일요일: 0 ~ 토요일: 6
+  const filteredDate = new Date(selectedDate).getDate();
+  const selectedDay = new Date(selectedDate).getDay();
+  const filteredMessages = messageList.filter((message) => {
+    const messageDate = message.day.split("T")[0];
+    // 연-월-일 중에서 일(day) 부분만 추출합니다.
+    const messageDay = messageDate.split("-")[2];
+    return messageDay == filteredDate;
+  });
 
-  //         const { isOwner, calanderStyle, messages } = response.data;
-  //         console.log(`isOwner: ${isOwner}, question: ${calanderStyle}, messages: ${messages}`);
-  //         setResponseData({ isOwner, calanderStyle, messages });
-  //       })
-  //       .catch((error) => {
-  //         console.error(`An error occured while fetching the message list.`);
-  //       });
-  //   }, []);
-
-  const today = new Date();
-  const day = today.getDay(); // 일요일: 0 ~ 토요일: 6
+  console.log("filteredMessages:", filteredMessages);
 
   return (
-    <StyledMessageList>
-      <MessageThumbnail day={day} paperNum="0" />
-      <MessageThumbnail day={day} paperNum="1" />
-      <MessageThumbnail day={day} paperNum="2" />
-      <MessageThumbnail day={day} paperNum="3" />
-    </StyledMessageList>
-    // <>
-    //   {responseData.messages.map((message, index) => (
-    //     <StyledMessageList key={index}>
-    //       <MessageThumbnail day={day} paperNum={message["편지지 번호"]} />
-    //     </StyledMessageList>
-    //   ))}
-    // </>
+    // <StyledMessageList>
+    //   <MessageThumbnail day={day} paperNum="0" />
+    //   <MessageThumbnail day={day} paperNum="1" />
+    //   <MessageThumbnail day={day} paperNum="2" />
+    //   <MessageThumbnail day={day} paperNum="3" />
+    // </StyledMessageList>
+    <>
+      <StyledMessageList>
+        {filteredMessages.map((message, index) => (
+          <MessageThumbnail
+            key={index}
+            day={selectedDay}
+            paperNum={message.paperNum}
+            sender={message.senderNickname}
+          />
+        ))}
+      </StyledMessageList>
+    </>
   );
 };
 
