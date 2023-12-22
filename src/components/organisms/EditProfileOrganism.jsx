@@ -152,7 +152,7 @@ const UserInfoContainer = styled(PlaceLeftColumn)`
   justify-content: flex-start;
   width: 100%;
   height: 96px;
-  gap: 0; // UserInfoType과 UserInfo 사이
+  // gap: 0; // UserInfoType과 UserInfo 사이
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -176,8 +176,8 @@ const UserInfoType = styled(PlaceLeftRow)`
 const UserInfo = styled(PlaceLeftColumn)`
   width: 100%;
   flex: 1; // 나머지 공간 차지
-  // gap: 4px;
   align-items: flex-end;
+  justify-content: flex-start;
 `;
 
 const EditUserInfo = () => {
@@ -217,7 +217,6 @@ const EditUserInfo = () => {
           <SmallText fontWeight="600">ID</SmallText>
         </UserInfoType>
         <UserInfo>
-          {/* <SmallText>{userId}</SmallText> */}
           <input
             type="text"
             defaultValue={userId}
