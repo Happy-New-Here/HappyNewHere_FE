@@ -79,7 +79,7 @@ const HomeTemplate = () => {
         dispatch(setOwner(data.owner));
       })
       .catch((error) => {
-        console.alert("선물이 오는 중입니다. 새로고침하세요 !");
+        alert("편지가 오는 중입니다. 새로고침으로 받아보세요 !");
         console.error("Error fetching user messages:", error);
       });
   }, [userId]);
