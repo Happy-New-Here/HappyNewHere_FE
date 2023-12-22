@@ -10,7 +10,7 @@ import ProfileSubmitButton from "../common/ProfileSubmitButton";
 import { useMediaQuery } from "react-responsive";
 import {
   PlaceCenter,
-  ResponsiveLayout,
+  ResponsiveLayoutPC,
   ContentLayout,
   Leftside,
   Center,
@@ -43,7 +43,7 @@ const EditProfileTemplate = () => {
   }, [currentPage]);
 
   return (
-    <ResponsiveLayout>
+    <ResponsiveLayoutPC>
       {isPc ? (
         <>
           <Leftside>
@@ -70,7 +70,7 @@ const EditProfileTemplate = () => {
           {/* <Footer /> */}
         </>
       )}
-    </ResponsiveLayout>
+    </ResponsiveLayoutPC>
   );
 };
 
