@@ -1,18 +1,19 @@
 import styled from "styled-components";
 import { PlaceLeftColumn, PlaceLeftRow } from "./utils";
 import { SmallText } from "./text";
+import { Img } from "../../styles/Img";
 
 export const StyledProfile = styled(PlaceLeftRow)`
   width: 100%;
   gap: 12px;
 `;
 
-export const ProfileImg = styled.div`
+export const ProfileImg = styled(Img)`
   width: ${(props) => props.widthMobile || "54px"};
   height: ${(props) => props.heightMobile || "54px"};
-  // margin: 10px 10px;
   border-radius: 50%;
   border: 0.5px solid #909090;
+  boxshadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   background: url(${(props) => props.backgroundImg}) center/cover;
 
   @media (min-width: 768px) {

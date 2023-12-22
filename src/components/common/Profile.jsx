@@ -1,17 +1,18 @@
 import React, { useEffect } from "react";
-import {
-  StyledProfile,
-  NicknameAndStatemsg,
-  NicknameContainer,
-  Nickname,
-  StateMsg,
-  EditIcon
-} from "../../styles/profileStyle";
-import { Img } from "../../styles/Img";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { GetUserInfo } from "../../store/User-action";
 import editIcon from "../../assets/editIcon.svg";
+import {
+  StyledProfile,
+  ProfileImg,
+  NicknameAndStatemsg,
+  NicknameContainer,
+  Nickname,
+  StateMsg,
+  EditIcon,
+} from "../../styles/profileStyle";
+import { Img } from "../../styles/Img";
 
 const Profile = () => {
   // const navigate = useNavigate();
