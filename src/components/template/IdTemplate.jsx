@@ -101,11 +101,13 @@ const IdTemplate = () => {
                 <IdInputBar onChange={handleIdChange} />
                 <StateInputBar onChange={handleStateMsgChange} />
                 <IdSubmitButton onClick={handleStartClick} />
-                <Toast type="duplicateID"></Toast>
-                <Toast type="default"></Toast>
-                <Toast type="loginRequired"></Toast>
-                <Toast type="profileUpdateError"></Toast>
-                <Toast type="others"></Toast>
+                toast.success
+                <Toast messageType="duplicateID" type="error"></Toast>
+                <Toast messageType="default"></Toast>
+                <Toast messageType="loginRequired" type="error"></Toast>
+                <Toast messageType="profileUpdateError" type="error"></Toast>
+                <Toast messageType="success" type="success"></Toast>
+                <Toast messageType="others" type="info"></Toast>
               </IdInputContainer>
             </IdInputForm>
           </IdResponsiveLayout>
