@@ -54,8 +54,10 @@ const ProfileSubmitButton = () => {
       {isPc ? (
         <Button
           type={nicknameInput ? "primary" : "disabled"}
-          paddingX="12px"
-          paddingY="6px"
+          width="60px"
+          height="44px"
+          // paddingX="12px"
+          // paddingY="6px"
           fontSize="16px"
           onClick={handleClickProfileSubmit}
         >
