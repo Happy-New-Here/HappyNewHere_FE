@@ -24,6 +24,15 @@ export const idResult = (userId, stateMessage) => {
             throw new Error(error.message);
         }
     };
+      );
+
+      dispatch(userAction.setUserId(response.id));
+      dispatch(userAction.setStateMsg(response.message));
+    } catch (error) {
+      alert("아이디 생성을 실패했습니다.");
+      throw new Error(error.message);
+    }
+  };
 };
 
 // userInfo 서버에서 받아오기 (nickname, profileImg, userId)

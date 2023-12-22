@@ -17,11 +17,11 @@ import { userAction } from '../../store/User-Slice';
 import { idResult } from '../../store/User-action';
 import { SmallText } from '../../styles/text';
 
-import AuthPageDeco from '../../assets/AuthPageDeco.svg';
-import SnowMan from '../../assets/SnowMan.svg';
-import logo from '../../assets/logo.svg';
-import LogoWrapper from '../organisms/UserInfo/LogoWrapper';
-import Toast from '../common/Toast';
+import AuthPageDeco from "../../assets/AuthPageDeco.svg";
+import SnowMan from "../../assets/SnowMan.svg";
+import logo from "../../assets/logo.svg";
+import LogoWrapper from "../organisms/UserInfo/LogoWrapper";
+import Toast from "../common/Toast";
 
 const IdTemplate = () => {
     const dispatch = useDispatch();
