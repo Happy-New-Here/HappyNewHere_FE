@@ -14,6 +14,7 @@ import RecentSearch from '../organisms/Search/RecentSearch';
 import { searchResult } from '../../store/search-action';
 import ResultSearch from '../organisms/Search/ResultSearch';
 
+
 const SearchTemplate = () => {
     const isPc = useMediaQuery({
         query: '(min-width:768px)',

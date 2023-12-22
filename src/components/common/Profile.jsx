@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import {
   StyledProfile,
+  ProfileImg,
   NicknameAndStatemsg,
   NicknameContainer,
   Nickname,
@@ -13,17 +14,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { GetUserInfo } from "../../store/User-action";
 import editIcon from "../../assets/editIcon.svg";
 
-
 const Profile = () => {
   // const navigate = useNavigate();
   const dispatch = useDispatch();
-  const nickname = useSelector((state) => state.user.nickname);
-  const stateMsg = useSelector((state) => state.user.stateMsg);
-  const profileImg = useSelector((state) => state.user.profileImg);
+
+  // const userId = useSelector((state) => state.user.userId);
+  // const nickname = useSelector((state) => state.user.nickname);
+  // const stateMsg = useSelector((state) => state.user.stateMsg);
+  // const profileImg = useSelector((state) => state.user.profileImg);
+  const userId = localStorage.getItem("userId");
+  const nickname = localStorage.getItem("nickname");
+  const stateMsg = localStorage.getItem("stateMsg");
+  const profileImg = localStorage.getItem("profileImg");
 
   useEffect(() => {
     GetUserInfo(dispatch);
-
     // 또는 아래와 같이 GetUserInfo 함수를 직접 호출할 수도 있습니다.
     // const fetchUserInfo = async () => {
     //   await GetUserInfo(dispatch);
@@ -32,8 +37,8 @@ const Profile = () => {
   }, [dispatch]);
 
   const handleEditClick = () => {
-    // 프로필 편집
-    // navigate("/friend"); // 경로 추후 수정
+    // 프로필 편집 페이지로 이동
+    navigate("/editprofile");
   };
 
   return (

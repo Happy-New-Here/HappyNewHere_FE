@@ -23,7 +23,6 @@ const MessageWriteTemplate = () => {
     const stateMsg = useSelector((state) => state.user.stateMsg);
     const profileImg = useSelector((state) => state.user.profileImg);
     const currentPage = useSelector((state) => state.currentPage);
-
     const isMessageWriteVisible = useSelector((state) => state.isMessageWriteVisible);
     // const animationProps = useSpring({
     //   opacity: isMessageWriteVisible ? 1 : 0,
@@ -63,6 +62,7 @@ const MessageWriteTemplate = () => {
     return (
         <ResponsiveLayoutPC>
             {window.innerWidth >= 768 ? (
+
                 <>
                     <Leftside>
                         <Header />
