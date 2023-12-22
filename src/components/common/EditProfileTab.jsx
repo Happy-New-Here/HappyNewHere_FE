@@ -6,6 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 import { PlaceCenter, PlaceLeftRow, PlaceLeftColumn } from "../../styles/utils";
 import { SmallText } from "../../styles/text";
+import homeIcon from "../../assets/home.svg";
 
 const StyledEditProfileTab = styled(PlaceCenter)`
   width: 100vw;
@@ -19,6 +20,11 @@ const StyledEditProfileTab = styled(PlaceCenter)`
     height: auto;
     padding: 0 0;
   }
+`;
+
+const StyledHomeIcon = styled.img`
+  width: 20px;
+  height: 20px;
 `;
 
 const EditProfileTab = () => {
@@ -36,7 +42,8 @@ const EditProfileTab = () => {
         <>
           <img src={backwardIcon} alt="backwardIcon" onClick={() => navigate(-1)} />
           <SmallText>프로필 편집</SmallText>
-          <ProfileSubmitButton />
+          {/* <ProfileSubmitButton /> */}
+          <StyledHomeIcon src={homeIcon} alt="homeIcon" onClick={() => navigate("/")} />
         </>
       )}
     </StyledEditProfileTab>

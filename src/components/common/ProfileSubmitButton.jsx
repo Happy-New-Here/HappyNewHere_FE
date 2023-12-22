@@ -65,13 +65,24 @@ const ProfileSubmitButton = () => {
           완료
         </Button>
       ) : (
-        <SmallText
-          color={nicknameInput ? "#9A0501" : "#909090"}
-          cursor={nicknameInput ? "pointer" : "not-allowed"}
+        // <SmallText
+        //   color={nicknameInput ? "#9A0501" : "#909090"}
+        //   cursor={nicknameInput ? "pointer" : "not-allowed"}
+        //   onClick={handleClickProfileSubmit}
+        // >
+        //   완료
+        // </SmallText>
+        <Button
+          type={nicknameInput ? "primary" : "disabled"}
+          width="100%"
+          height="44px"
+          // paddingX="12px"
+          // paddingY="6px"
+          fontSize="16px"
           onClick={handleClickProfileSubmit}
         >
           완료
-        </SmallText>
+        </Button>
       )}
     </StyledProfileSubmitButton>
   );
