@@ -200,6 +200,9 @@ const HomeTemplate = () => {
                 }
                 paperNum={selectedMessageList[selectedMessageIndex]?.paperNum}
                 anonymous={selectedMessageList[selectedMessageIndex]?.anonymous}
+                dayColor={new Date(
+                  selectedMessageList[selectedMessageIndex]?.day
+                ).getDay()}
               />
             </Center>
           </ContentLayout>

@@ -38,12 +38,19 @@ const TextArea = styled.p`
   }
 `;
 
-const MessageView = ({ context, senderNickname, paperNum, anonymous }) => {
+const MessageView = ({
+  context,
+  senderNickname,
+  paperNum,
+  anonymous,
+  dayColor,
+}) => {
   // MessageContainer height width에 따라 동적 적용
   const messageContainerRef = useRef(null);
-  console.log("test: ", context, senderNickname, paperNum, anonymous);
+  console.log("test: ", context, senderNickname, paperNum, anonymous, dayColor);
 
   const displayName = anonymous ? "익명의 산타" : senderNickname;
+  const effectiveDayColor = dayColor || 0;
 
   useEffect(() => {
     const messageContainer = messageContainerRef.current;
@@ -59,9 +66,6 @@ const MessageView = ({ context, senderNickname, paperNum, anonymous }) => {
     // 메시지뷰어 꺼지고 메시지리스트 다시 나오게
   };
 
-  const today = new Date();
-  const day = today.getDay(); // 일요일: 0 ~ 토요일: 6
-
   return (
     <StyledMessage>
       <CancelIcon
@@ -70,7 +74,11 @@ const MessageView = ({ context, senderNickname, paperNum, anonymous }) => {
         onClick={handleCancelClick}
       />
 
-      <MessageContainer ref={messageContainerRef} day={day} paperNum={paperNum}>
+      <MessageContainer
+        ref={messageContainerRef}
+        day={effectiveDayColor}
+        paperNum={paperNum}
+      >
         <MessageText fontColor="#000000">
           <TextArea fontColor="#000000">{context}</TextArea>
           <ReceiverOrSender>From. {displayName}</ReceiverOrSender>
