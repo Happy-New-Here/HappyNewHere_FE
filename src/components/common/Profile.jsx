@@ -1,59 +1,22 @@
 import React, { useEffect } from "react";
+import {
+  StyledProfile,
+  NicknameAndStatemsg,
+  NicknameContainer,
+  Nickname,
+  StateMsg,
+  EditIcon
+} from "../../styles/profileStyle";
+import { Img } from "../../styles/Img";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { GetUserInfo } from "../../store/User-action";
-import styled from "styled-components";
-import { PlaceLeftColumn, PlaceLeftRow } from "../../styles/utils";
-import { SmallText } from "../../styles/text";
 import editIcon from "../../assets/editIcon.svg";
 
-const StyledProfile = styled(PlaceLeftRow)`
-  width: 100%;
-  gap: 12px;
-`;
-
-export const ProfileImg = styled.div`
-  width: ${(props) => props.widthMobile || "54px"};
-  height: ${(props) => props.heightMobile || "54px"};
-  // margin: 10px 10px;
-  border-radius: 50%;
-  border: 0.5px solid #909090;
-  background: url(${(props) => props.backgroundImg}) center/cover;
-
-  @media (min-width: 768px) {
-    width: ${(props) => props.widthDesktop || "46px"};
-    height: ${(props) => props.heightDesktop || "46px"};
-  }
-`;
-
-const NicknameAndStatemsg = styled(PlaceLeftColumn)`
-  flex: 1; // Photo 뺀 나머지 공간 차지하도록
-  gap: 7px;
-  font-style: normal;
-  line-height: normal;
-`;
-
-const NicknameContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-const Nickname = styled(SmallText)``;
-
-const StateMsg = styled(SmallText)`
-  font-size: 12px;
-  color: #959595;
-`;
-
-const EditIcon = styled.img`
-  cursor: pointer;
-`;
-
 const Profile = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
+
   // const userId = useSelector((state) => state.user.userId);
   // const nickname = useSelector((state) => state.user.nickname);
   // const stateMsg = useSelector((state) => state.user.stateMsg);
@@ -73,13 +36,20 @@ const Profile = () => {
   }, [dispatch]);
 
   const handleEditClick = () => {
-    // 프로필 편집
-    navigate("/auth/editprofile");
+    // 프로필 편집 페이지로 이동
+    navigate("/editprofile");
   };
 
   return (
     <StyledProfile>
-      <ProfileImg backgroundImg={profileImg} />
+      <Img
+        width="54px"
+        height="54px"
+        boxshadow="0px 0px 4px rgba(0, 0, 0, 0.25)"
+        borderradius="50%"
+        border="0.5px solid #909090"
+        src={profileImg}
+      />
       <NicknameAndStatemsg>
         <NicknameContainer>
           <Nickname>{nickname}</Nickname>

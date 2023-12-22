@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 
 import { AuthSlice } from "./auth-slice";
 import messageInputSlice from "./messageInputSlice";

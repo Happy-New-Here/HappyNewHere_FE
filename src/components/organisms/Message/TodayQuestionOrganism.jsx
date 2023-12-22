@@ -26,8 +26,8 @@ const today = new Date();
 const todayDate = today.getDate();
 // const todayDate = 18; // 테스트용
 
-const TodayQuestionText = () => {
-  const receiverNickname = "민주";
+const TodayQuestionText = ({ nickname }) => {
+  const receiverNickname = nickname;
 
   // console.log(`todayDate: ${todayDate}, nickname: ${receiverNickname}`); // 테스트용
 
@@ -56,24 +56,24 @@ const TodayQuestionText = () => {
   }
 };
 
-const TodayQuestion = () => {
+const TodayQuestion = ({ nickname }) => {
   const formattedToday = `${today.getFullYear()}.${today.getMonth() + 1}.${today.getDate()}`;
   const questionNum =
     todayDate === 18
       ? "첫 번째"
       : todayDate === 19
-      ? "두 번째"
-      : todayDate === 20
-      ? "세 번째"
-      : todayDate === 21
-      ? "네 번째"
-      : todayDate === 22
-      ? "다섯 번째"
-      : todayDate === 23
-      ? "여섯 번째"
-      : todayDate === 24
-      ? "마지막"
-      : "몰랏";
+        ? "두 번째"
+        : todayDate === 20
+          ? "세 번째"
+          : todayDate === 21
+            ? "네 번째"
+            : todayDate === 22
+              ? "다섯 번째"
+              : todayDate === 23
+                ? "여섯 번째"
+                : todayDate === 24
+                  ? "마지막"
+                  : "몰랏";
 
   return (
     <TodayQuestionContainer>
@@ -81,7 +81,7 @@ const TodayQuestion = () => {
         <Today>{formattedToday}</Today>
         <QuestionNum>#{questionNum} 질문</QuestionNum>
       </TodayAndQuestionNum>
-      <TodayQuestionText />
+      <TodayQuestionText nickname={nickname}/>
     </TodayQuestionContainer>
   );
 };

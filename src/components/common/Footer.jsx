@@ -28,7 +28,7 @@ const Footer = () => {
   };
 
   const togoChatting = () => {
-    navigate("/auth/chatting");
+    navigate("/chatting");
   };
 
   const togoMypage = () => {

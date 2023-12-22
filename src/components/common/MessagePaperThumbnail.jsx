@@ -10,8 +10,7 @@ const MessagePaperButton = styled.button`
   border-radius: 5px;
   padding: 0px 0px;
   background: ${(props) =>
-    `url(${MessagePapersSRC}/${MessagePapers[props.day].color}/${
-      MessagePapers[props.day].name[props.paperNum]
+    `url(${MessagePapersSRC}/${MessagePapers[props.day].color}/${MessagePapers[props.day].name[props.paperNum]
     }
   )`}; 
   background-size: 100% 100%;
@@ -32,7 +31,6 @@ const MessagePaperButton = styled.button`
     //   border: 2px solid #9A0501;
     // }
     `}
-  }
   // 이 밑으로 적으면 스타일 적용이 안 됨
 `;
 

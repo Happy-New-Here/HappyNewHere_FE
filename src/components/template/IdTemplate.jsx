@@ -1,34 +1,33 @@
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-import { userAction } from "../../store/User-Slice";
-import { idResult } from "../../store/User-action";
 import {
   DecoWrapper,
   IdResponsiveLayout,
   SnowManWrapper,
   TextWrapper,
-} from "../organisms/UserInfo/IdPcStyle";
-import { BackGround } from "../organisms/UserInfo/IdMobileStyle";
-import { SmallText } from "../../styles/text";
+  IdInputContainer,
+  IdInputForm,
+  BackGround,
+} from "../../styles/idStyle";
 import IdSubmitButton from "../organisms/UserInfo/IdSubmitButton";
 import StateInputBar from "../organisms/UserInfo/StateInputBar";
 import IdInputBar from "../organisms/UserInfo/IdInputBar";
+import { userAction } from "../../store/User-Slice";
+import { idResult } from "../../store/User-action";
+import { SmallText } from "../../styles/text";
 
-import HappyHaedalLogo from "../../assets/HappyHaedalLogo.svg";
-import logo from "../../assets/logo.svg";
 import AuthPageDeco from "../../assets/AuthPageDeco.svg";
 import SnowMan from "../../assets/SnowMan.svg";
-import IdInputBarPC from "../organisms/UserInfo/IdinputBarPc";
-import { IdInputContainer } from "../organisms/UserInfo/IdInputContainer";
-import { IdInputForm } from "../organisms/UserInfo/IdInputForm";
+import logo from "../../assets/logo.svg";
+import LogoWrapper from "../organisms/UserInfo/LogoWrapper";
 
 const IdTemplate = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const userId = useSelector((state) => state.user.userId);
-  const statemessage = useSelector((state) => state.user.stateMsg);
+  const stateMsg = useSelector((state) => state.user.stateMsg);
 
   const isPc = useMediaQuery({
     query: "(min-width:768px)",
@@ -47,27 +46,24 @@ const IdTemplate = () => {
   /** 버튼 입력 event */
   const handleStartClick = async (e) => {
     e.preventDefault();
-    try {
-        const response = await dispatch(
-            idResult(userId)
-        )
-        navigate("/");
-        return response.data;
-    } catch (error) {
-      console.log(error);
-    }
 
-    console.log("버튼 입력시 로그", userId);
+    // 아이디 값이 비어 있으면 경고 메시지 표시
+    if (!userId || userId.trim() === "") {
+      alert("Id 값을 입력해주세요!");
+      return; // 함수 실행을 중단
+    }
+    await dispatch(idResult(userId, stateMsg));
+    navigate("/");
   };
 
   return (
     <>
       {isPc ? (
         <IdResponsiveLayout>
-          <DecoWrapper>
+          <DecoWrapper className="mb-2">
             <img src={AuthPageDeco} alt="AuthPageDeco" />
           </DecoWrapper>
-          <img src={HappyHaedalLogo} alt="HappyHaedalLogo" />
+          <LogoWrapper />
           <TextWrapper>
             <SmallText className="justify-center text-center font-bold">
               HappyNewHere에서 사용하실 아이디를 알려주세요!
@@ -75,7 +71,8 @@ const IdTemplate = () => {
           </TextWrapper>
           <IdInputForm>
             <IdInputContainer>
-              <IdInputBarPC onChange={handleIdChange} />
+              <IdInputBar onChange={handleIdChange} />
+              <StateInputBar onChange={handleStateMsgChange} />
               <IdSubmitButton onClick={handleStartClick} />
             </IdInputContainer>
           </IdInputForm>
@@ -93,15 +90,13 @@ const IdTemplate = () => {
             <SmallText className="justify-center text-center font-bold">
               아이디를 알려주세요!
             </SmallText>
-            {/* <form className="mt-3"> */}
             <IdInputForm>
-              <IdInputContainer className="p-5">
+              <IdInputContainer>
                 <IdInputBar onChange={handleIdChange} />
                 <StateInputBar onChange={handleStateMsgChange} />
                 <IdSubmitButton onClick={handleStartClick} />
               </IdInputContainer>
             </IdInputForm>
-            {/* </form> */}
           </IdResponsiveLayout>
         </BackGround>
       )}
