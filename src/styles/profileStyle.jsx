@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { PlaceLeftColumn, PlaceLeftRow } from "./utils";
 import { SmallText } from "./text";
-import { Img } from "../../styles/Img";
+import { Img } from "./Img";
 
 export const StyledProfile = styled(PlaceLeftRow)`
   width: 100%;
