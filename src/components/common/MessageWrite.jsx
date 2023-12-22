@@ -20,7 +20,7 @@ const TextArea = styled.textarea`
   border: none;
   background: none;
   resize: none;
-  overflow: scroll;
+  overflow: auto;
   font-size: 16px;
   text-align: center;
   color: ${(props) => props.fontColor};
@@ -32,6 +32,20 @@ const TextArea = styled.textarea`
   &:focus {
     outline: none;
   }
+
+  &::-webkit-scrollbar {
+        width: 8px; /* Width of scrollbar */
+        height: 0px; /* Set to 0 for horizontal scrollbar */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #C0C0C0; /* Scrollbar color */
+        border-radius: 4px; /* Round the corners of the scrollbar */
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Color of scrollbar track */
+    }
 `;
 
 const Message = () => {
