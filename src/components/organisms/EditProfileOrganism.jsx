@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { GetUserInfo } from "../../store/User-action";
 import {
@@ -209,75 +210,89 @@ const EditUserInfo = () => {
     dispatch(setStateMsgInput(event.target.value)); // 임시 저장
   };
 
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("accessToken");
+    navigate("/auth");
+  }
+
   return (
-    <StyledEditUserInfo>
-      {/* ID */}
-      <UserInfoContainer>
-        <UserInfoType>
-          <SmallText fontWeight="600">ID</SmallText>
-        </UserInfoType>
-        <UserInfo>
-          <input
-            type="text"
-            defaultValue={userId}
-            value={userId}
-            readOnly
-            // style={{ width: "100%" }}
-            className="w-full h-[44px] p-3 border rounded-md border-black outline-none"
-          />
-        </UserInfo>
-      </UserInfoContainer>
-      {/* nickname */}
-      <UserInfoContainer>
-        <UserInfoType>
-          <SmallText fontWeight="600">닉네임</SmallText>
-        </UserInfoType>
-        <UserInfo>
-          <input
-            type="text"
-            defaultValue={nicknameInput}
-            value={nicknameInput}
-            onChange={handleNicknameInputChange}
-            placeholder="닉네임을 입력하세요"
-            // style={{ width: "100%" }}
-            className="w-full h-[44px] p-3 border rounded-md border-black focus:border-2 focus:border-[#9a0501] outline-none"
-          />
-          {!nicknameInput ? (
+    <>
+      <StyledEditUserInfo>
+        {/* ID */}
+        <UserInfoContainer>
+          <UserInfoType>
+            <SmallText fontWeight="600">ID</SmallText>
+          </UserInfoType>
+          <UserInfo>
+            <input
+              type="text"
+              defaultValue={userId}
+              value={userId}
+              readOnly
+              // style={{ width: "100%" }}
+              className="w-full h-[44px] p-3 border rounded-md border-black outline-none"
+            />
+          </UserInfo>
+        </UserInfoContainer>
+        {/* nickname */}
+        <UserInfoContainer>
+          <UserInfoType>
+            <SmallText fontWeight="600">닉네임</SmallText>
+          </UserInfoType>
+          <UserInfo>
+            <input
+              type="text"
+              defaultValue={nicknameInput}
+              value={nicknameInput}
+              onChange={handleNicknameInputChange}
+              placeholder="닉네임을 입력하세요"
+              // style={{ width: "100%" }}
+              className="w-full h-[44px] p-3 border rounded-md border-black focus:border-2 focus:border-[#9a0501] outline-none"
+            />
+            {!nicknameInput ? (
+              <div className="h-[24px] flex justify-center items-center">
+                <SmallText fontSize="12px" color="#9A0501">
+                  닉네임은 필수 항목입니다.
+                </SmallText>
+              </div>
+            ) : (
+              <div className="h-[24px] flex justify-center items-center"></div>
+            )}
+          </UserInfo>
+        </UserInfoContainer>
+
+        {/* stateMsg */}
+        <UserInfoContainer>
+          <UserInfoType>
+            <SmallText fontWeight="600">상태메시지</SmallText>
+          </UserInfoType>
+          <UserInfo>
+            <input
+              type="text"
+              defaultValue={stateMsgInput}
+              value={stateMsgInput}
+              maxLength={stateMsgMaxLength}
+              onChange={handleStateMsgInputChange}
+              placeholder="상태메시지를 입력하세요"
+              // style={{ width: "100%" }}
+              className="w-full h-[44px] p-3 border rounded-md border-black focus:border-2 focus:border-[#9a0501] outline-none"
+            />
             <div className="h-[24px] flex justify-center items-center">
-              <SmallText fontSize="12px" color="#9A0501">
-                닉네임은 필수 항목입니다.
+              <SmallText fontSize="12px">
+                {stateMsgInput ? `${stateMsgInput.length}` : "0"}/{stateMsgMaxLength}
               </SmallText>
             </div>
-          ) : (
-            <div className="h-[24px] flex justify-center items-center"></div>
-          )}
-        </UserInfo>
-      </UserInfoContainer>
+          </UserInfo>
+        </UserInfoContainer>
+      </StyledEditUserInfo>
 
-      {/* stateMsg */}
-      <UserInfoContainer>
-        <UserInfoType>
-          <SmallText fontWeight="600">상태메시지</SmallText>
-        </UserInfoType>
-        <UserInfo>
-          <input
-            type="text"
-            defaultValue={stateMsgInput}
-            value={stateMsgInput}
-            maxLength={stateMsgMaxLength}
-            onChange={handleStateMsgInputChange}
-            placeholder="상태메시지를 입력하세요"
-            // style={{ width: "100%" }}
-            className="w-full h-[44px] p-3 border rounded-md border-black focus:border-2 focus:border-[#9a0501] outline-none"
-          />
-          <div className="h-[24px] flex justify-center items-center">
-            <SmallText fontSize="12px">
-              {stateMsgInput ? `${stateMsgInput.length}` : "0"}/{stateMsgMaxLength}자
-            </SmallText>
-          </div>
-        </UserInfo>
-      </UserInfoContainer>
-    </StyledEditUserInfo>
+      <button className="flex-grow-0 flex-shrink-0 w-[89px] h-[17px] text-base font-semibold text-left text-[#9a0501] hover:brightness-50"
+      onClick={logout}>
+        로그아웃
+      </button>
+    </>
   );
 };
 
