@@ -98,7 +98,7 @@ const MessageWriteTemplate = () => {
               />
               {isMessageWriteVisible ? (
                 <animated.div style={animationProps}>
-                  <TodayQuestionOrganism />
+                  <TodayQuestionOrganism nickname={nickname}/>
                 </animated.div>
               ) : (
                 <></>

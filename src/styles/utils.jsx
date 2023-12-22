@@ -69,6 +69,20 @@ export const ContentLayout = styled.div`
 
   overflow: auto;
 
+  &::-webkit-scrollbar {
+        width: 8px; /* Width of scrollbar */
+        height: 0px; /* Set to 0 for horizontal scrollbar */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #C0C0C0; /* Scrollbar color */
+        border-radius: 4px; /* Round the corners of the scrollbar */
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Color of scrollbar track */
+    }
+
   @media (min-width: 768px) {
     flex-direction: row;
     padding: 0;
