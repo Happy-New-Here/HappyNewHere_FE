@@ -3,7 +3,7 @@ import { userAction } from "./User-Slice";
 import axios from "axios";
 
 export const idResult = (userId, stateMessage) => {
-  return async () => {
+  return async (dispatch) => {
     try {
       //카카오 로그인 액세스 토큰 받아와야함.
       const response = await axios.post(
@@ -17,8 +17,8 @@ export const idResult = (userId, stateMessage) => {
         }
       );
 
-      // dispatch(userAction.setUserId( response.id ));
-      // dispatch(userAction.setStateMsg( response.message));
+      dispatch(userAction.setUserId(response.data.id));
+      dispatch(userAction.setStateMsg(response.data.message));
       return response.data;
 
     } catch (error) {

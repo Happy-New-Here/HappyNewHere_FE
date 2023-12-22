@@ -2,11 +2,21 @@ import { Img } from "../../../styles/Img";
 import { SmallText } from "../../../styles/text";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 const ProfileSearch = ({ userId, nickname, profileImg }) => {
     const navigate = useNavigate();
+    const myId = useSelector((state) => state.user.userId);
+
     const onClickProfile = () => {
-        navigate(`/friend/${userId}`);
+        // console.log("내 아이디", myId);
+        // console.log("상대방 아이디", userId);
+        if (myId === userId) {
+            alert("자기자신은 검색할 수 없습니다.")
+        } else {
+            navigate(`/friend/${userId}`);
+        }
     };
 
     return (
