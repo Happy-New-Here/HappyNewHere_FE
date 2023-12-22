@@ -217,7 +217,15 @@ const EditUserInfo = () => {
           <SmallText fontWeight="600">ID</SmallText>
         </UserInfoType>
         <UserInfo>
-          <SmallText>{userId}</SmallText>
+          {/* <SmallText>{userId}</SmallText> */}
+          <input
+            type="text"
+            defaultValue={userId}
+            value={userId}
+            readOnly
+            // style={{ width: "100%" }}
+            className="w-full h-[44px] p-3 border rounded-md border-black outline-none"
+          />
         </UserInfo>
       </UserInfoContainer>
       {/* nickname */}
