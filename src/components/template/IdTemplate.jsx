@@ -72,7 +72,7 @@ const IdTemplate = () => {
           <LogoWrapper />
           <TextWrapper>
             <SmallText className="justify-center text-center font-bold">
-              HappyNewHere에서 사용하실 아이디를 알려주세요!
+              HappyNewHere에서 사용하실 ID를 알려주세요!
             </SmallText>
           </TextWrapper>
           <IdInputForm>
