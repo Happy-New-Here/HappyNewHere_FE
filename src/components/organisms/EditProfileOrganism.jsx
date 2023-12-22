@@ -16,7 +16,7 @@ import {
   PlaceTopColumn,
 } from "../../styles/utils";
 import { SmallText } from "../../styles/text";
-import { ProfileImg } from "../common/Profile";
+import { ProfileImg } from "../../styles/profileStyle";
 
 const StyledEditProfileOrganism = styled(PlaceTopColumn)`
   width: 100%;

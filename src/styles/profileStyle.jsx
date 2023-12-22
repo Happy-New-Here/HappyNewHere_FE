@@ -7,6 +7,20 @@ export const StyledProfile = styled(PlaceLeftRow)`
   gap: 12px;
 `;
 
+export const ProfileImg = styled.div`
+  width: ${(props) => props.widthMobile || "54px"};
+  height: ${(props) => props.heightMobile || "54px"};
+  // margin: 10px 10px;
+  border-radius: 50%;
+  border: 0.5px solid #909090;
+  background: url(${(props) => props.backgroundImg}) center/cover;
+
+  @media (min-width: 768px) {
+    width: ${(props) => props.widthDesktop || "46px"};
+    height: ${(props) => props.heightDesktop || "46px"};
+  }
+`;
+
 export const NicknameAndStatemsg = styled(PlaceLeftColumn)`
   flex: 1; // Photo 뺀 나머지 공간 차지하도록
   gap: 7px;
