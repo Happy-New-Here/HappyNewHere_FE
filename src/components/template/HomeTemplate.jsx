@@ -199,10 +199,11 @@ const HomeTemplate = () => {
                 ))}
               </Calendar.wrapper>
 
-              {/* 오늘의 질문 */}
-              <TodayQuestionOrganism nickname={nickname} selectedDateForm={selectedDate} />
-
-              {today > targetDate ? null : <GiftBox />}
+              {today > targetDate ? (
+                <TodayQuestionOrganism nickname={nickname} selectedDateForm={selectedDate} />
+              ) : (
+                <GiftBox />
+              )}
 
               {selectedMessageIndex ? <MessageViewOrganism /> : null}
             </Center>
