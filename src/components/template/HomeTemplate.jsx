@@ -12,7 +12,7 @@ import MessageViewOrganism from "../organisms/Message/MessageViewOrganism";
 import MessageView from "../common/MessageView";
 import {
   PlaceCenter,
-  // ResponsiveLayout,
+  ResponsiveLayout,
   ContentLayout,
   Leftside,
   Center,
@@ -29,6 +29,7 @@ import {
   setOwner,
 } from "../../store/calendar-slice";
 import TodayQuestionOrganism from "../organisms/Message/TodayQuestionOrganism";
+import { ContentLayoutMobile } from "../organisms/Home/ContentLayoutMobile";
 
 const StyledBeforeOpen = styled(PlaceCenter)`
   flex-direction: column;
@@ -47,9 +48,9 @@ const HomeTemplate = () => {
   let weekDates = Calendar.getWeekDates(25); // 이벤트 시작날짜 설정
   const [selectedDate, setSelectedDate] = useState(null);
   const dispatch = useDispatch();
+  const nickname = useSelector((state) => state.user.nickname);
   const currentPage = useSelector((state) => state.currentPage);
   const userId = useSelector((state) => state.user.userId);
-  const nickname = useSelector((state) => state.user.nickname);
   const selectedMessageList = useSelector(
     (state) => state.calendar.messagesList
   );
@@ -171,9 +172,9 @@ const HomeTemplate = () => {
   };
 
   return (
-    <ResponsiveLayoutPC>
+    <>
       {isPc ? (
-        <>
+        <ResponsiveLayoutPC>
           <Leftside>
             <Header />
             <Footer currentPage="home" isPc={isPc} />
@@ -206,11 +207,11 @@ const HomeTemplate = () => {
             {/* 오픈일 이후 메시지 목록 공개 */}
             {today > targetDate ? <AfterOpen /> : <BeforeOpen />}
           </Rightside>
-        </>
+        </ResponsiveLayoutPC>
       ) : (
-        <>
+        <ResponsiveLayout>
           <Header />
-          <ContentLayout>
+          <ContentLayoutMobile>
             <Profile />
             <Calendar.wrapper>
               {weekDates.map((date, index) => (
@@ -225,12 +226,12 @@ const HomeTemplate = () => {
 
             {/* 오픈일 이후 메시지 목록 공개 */}
             {today > targetDate ? <AfterOpen /> : <BeforeOpen />}
-          </ContentLayout>
+          </ContentLayoutMobile>
 
           <Footer currentPage="home" isPc={isPc} />
-        </>
+        </ResponsiveLayout>
       )}
-    </ResponsiveLayoutPC>
+    </>
   );
 };
 

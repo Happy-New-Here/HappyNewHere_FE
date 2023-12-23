@@ -43,36 +43,36 @@ const EditProfileTemplate = () => {
         localStorage.setItem('currentPage', JSON.stringify(currentPage));
     }, [currentPage]);
 
-  return (
-    <ResponsiveLayoutPC>
-      {isPc ? (
+    return (
         <>
-          <Leftside>
-            <Header />
-            <Footer />
-          </Leftside>
-          <ContentLayout>
-            <Center>
-              <EditProfileTab />
-              <EditProfileOrganism />
-              <ProfileSubmitButton />
-            </Center>
-            <Rightside></Rightside>
-          </ContentLayout>
-        </>
-      ) : (
-        <>
-          <EditProfileTab />
-          <ContentLayoutNoFooter>
-            <EditProfileOrganism />
-            <ProfileSubmitButton />
-          </ContentLayoutNoFooter>
+            {isPc ? (
+                <ResponsiveLayoutPC>
+                    <Leftside>
+                        <Header />
+                        <Footer />
+                    </Leftside>
+                    <ContentLayout>
+                        <Center>
+                            <EditProfileTab />
+                            <EditProfileOrganism />
+                            <ProfileSubmitButton />
+                        </Center>
+                        <Rightside></Rightside>
+                    </ContentLayout>
+                </ResponsiveLayoutPC>
+            ) : (
+                <>
+                    <EditProfileTab />
+                    <ContentLayoutNoFooter>
+                        <EditProfileOrganism />
+                        <ProfileSubmitButton />
+                    </ContentLayoutNoFooter>
 
-          {/* <Footer /> */}
+                    {/* <Footer /> */}
+                </>
+            )}
         </>
-      )}
-    </ResponsiveLayoutPC>
-  );
+    );
 };
 
 export default EditProfileTemplate;

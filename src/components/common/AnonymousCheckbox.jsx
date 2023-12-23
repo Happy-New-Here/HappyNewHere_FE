@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { setIsAnonymous } from "../../store/isAnonymousSlice";
@@ -21,6 +21,11 @@ const AnonymousCheckbox = () => {
   const handleCheckAnonymous = () => {
     dispatch(setIsAnonymous(!isAnonymous));
   };
+
+  // 확인용
+  // useEffect(() => {
+  //   console.log(`isAnonymous: ${isAnonymous}`);
+  // }, [isAnonymous]);
 
   return (
     <StyledAnonymousCheckbox>
