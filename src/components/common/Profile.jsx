@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import {
   StyledProfile,
   ProfileImg,
+  ImgAndNickName,
   NicknameAndStatemsg,
   NicknameContainer,
   Nickname,
@@ -13,8 +14,13 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { GetUserInfo } from "../../store/User-action";
 import editIcon from "../../assets/editIcon.svg";
+import { useMediaQuery } from "react-responsive";
 
 const Profile = () => {
+  const isPc = useMediaQuery({
+    query: "(min-width:768px)",
+  });
+
   // const navigate = useNavigate();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -43,25 +49,46 @@ const Profile = () => {
   };
 
   return (
-    <StyledProfile>
-      <Img
-        width="54px"
-        height="54px"
-        boxshadow="0px 0px 4px rgba(0, 0, 0, 0.25)"
-        borderradius="50%"
-        border="0.5px solid #909090"
-        src={profileImg}
-      />
-      <NicknameAndStatemsg>
-        <NicknameContainer>
-          <Nickname>{nickname}</Nickname>
-          {/* 편집아이콘 나일 땐 보이고 다른 사람일 땐 안 보이게
-          url을 확인을 하든 id를 확인을 하든 검증 로직 필요*/}
-          <EditIcon src={editIcon} alt="edit icon" onClick={handleEditClick} />
-        </NicknameContainer>
-        {stateMsg && <StateMsg>{stateMsg}</StateMsg>}
-      </NicknameAndStatemsg>
-    </StyledProfile>
+    <>
+      {isPc ? (
+        <StyledProfile>
+          <ImgAndNickName>
+            <Img
+              width="54px"
+              height="54px"
+              boxshadow="0px 0px 4px rgba(0, 0, 0, 0.25)"
+              borderradius="50%"
+              border="0.5px solid #909090"
+              src={profileImg}
+            />
+            <NicknameContainer>
+              <Nickname>{nickname}</Nickname>
+              <EditIcon src={editIcon} alt="edit icon" onClick={handleEditClick} />
+            </NicknameContainer>
+          </ImgAndNickName>
+          {stateMsg && <StateMsg>{stateMsg}</StateMsg>}
+        </StyledProfile>
+      ) : (
+        <StyledProfile>
+          <Img
+            width="54px"
+            height="54px"
+            boxshadow="0px 0px 4px rgba(0, 0, 0, 0.25)"
+            borderradius="50%"
+            border="0.5px solid #909090"
+            src={profileImg}
+          />
+          <NicknameAndStatemsg>
+            <NicknameContainer>
+              <Nickname>{nickname}</Nickname>
+
+              <EditIcon src={editIcon} alt="edit icon" onClick={handleEditClick} />
+            </NicknameContainer>
+            {stateMsg && <StateMsg>{stateMsg}</StateMsg>}
+          </NicknameAndStatemsg>
+        </StyledProfile>
+      )}{" "}
+    </>
   );
 };
 
