@@ -61,7 +61,7 @@ const Message = () => {
   }, []);
 
   const params = useParams();
-  const receiver = params.nickname;
+  const receiver = params.userId;
   const dispatch = useDispatch();
   const messageInput = useSelector((state) => state.messageInput);
   const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
@@ -89,8 +89,10 @@ const Message = () => {
   const handleMessageInputChange = (e) => {
     dispatch(setMessageInput(e.target.value));
   };
+
   const today = new Date();
   const day = today.getDay(); // 일요일: 0 ~ 토요일: 6
+
   return (
     <StyledMessage>
       <CancelIcon src={cancelIcon} alt="cancelIcon" onClick={handleCancelClick} />
