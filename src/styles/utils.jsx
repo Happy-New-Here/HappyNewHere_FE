@@ -154,7 +154,8 @@ export const ResponsiveLayoutMobile = styled.div`
     justify-content: start;
     align-items: center;
     max-width: 768px;
-    height: 550px;
+    /* height: 550px; */
+    height: 90vh;
 `;
 
 export const InsideLayoutMobile = styled.div`
