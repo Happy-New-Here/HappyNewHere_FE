@@ -12,7 +12,7 @@ import MessageViewOrganism from "../organisms/Message/MessageViewOrganism";
 import MessageView from "../common/MessageView";
 import {
   PlaceCenter,
-  // ResponsiveLayout,
+  ResponsiveLayout,
   ContentLayout,
   Leftside,
   Center,
