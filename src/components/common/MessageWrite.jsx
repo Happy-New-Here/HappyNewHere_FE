@@ -1,6 +1,7 @@
 // 편지 쓰는 칸
 import React, { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import { setIsMessageWriteVisible } from "../../store/isMessageWriteVisibleSlice";
 import { setMessageInput } from "../../store/messageInputSlice";
 import { MessagePapersSRC } from "../../utils/MessagePapersSRC";
@@ -34,18 +35,18 @@ const TextArea = styled.textarea`
   }
 
   &::-webkit-scrollbar {
-        width: 8px; /* Width of scrollbar */
-        height: 0px; /* Set to 0 for horizontal scrollbar */
-    }
+    width: 8px; /* Width of scrollbar */
+    height: 0px; /* Set to 0 for horizontal scrollbar */
+  }
 
-    &::-webkit-scrollbar-thumb {
-        background-color: #C0C0C0; /* Scrollbar color */
-        border-radius: 4px; /* Round the corners of the scrollbar */
-    }
+  &::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0; /* Scrollbar color */
+    border-radius: 4px; /* Round the corners of the scrollbar */
+  }
 
-    &::-webkit-scrollbar-track {
-        background-color: #f1f1f1; /* Color of scrollbar track */
-    }
+  &::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color of scrollbar track */
+  }
 `;
 
 const Message = () => {
@@ -59,7 +60,7 @@ const Message = () => {
     messageContainer.style.height = `${height}px`;
   }, []);
 
-  const receiverNickname = ""; // 카카오톡 닉네임
+  const receiver = useSelector((state) => state.user.nickname);
   const dispatch = useDispatch();
   const messageInput = useSelector((state) => state.messageInput);
   const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
@@ -79,18 +80,25 @@ const Message = () => {
     }
   };
 
+  // 확인용
+  // useEffect(() => {
+  //   console.log(`messageInput: ${messageInput}`);
+  // }, [messageInput]);
+
   const handleMessageInputChange = (e) => {
     dispatch(setMessageInput(e.target.value));
   };
+
   const today = new Date();
   const day = today.getDay(); // 일요일: 0 ~ 토요일: 6
+
   return (
     <StyledMessage>
       <CancelIcon src={cancelIcon} alt="cancelIcon" onClick={handleCancelClick} />
 
       <MessageContainer ref={messageContainerRef} day={day} paperNum={selectedPaperNum}>
         <MessageText>
-          <ReceiverOrSender>To. {receiverNickname}</ReceiverOrSender>
+          <ReceiverOrSender>To. {receiver}</ReceiverOrSender>
           <TextArea
             placeholder="여기에 메시지를 입력하세요"
             value={messageInput}
