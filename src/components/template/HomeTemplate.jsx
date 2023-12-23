@@ -73,7 +73,7 @@ const HomeTemplate = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/calender/${userId}`, {
+        const response = await axios.get(`/api/calender/${userId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
