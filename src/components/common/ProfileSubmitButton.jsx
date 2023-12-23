@@ -23,20 +23,19 @@ const ProfileSubmitButton = () => {
   const stateMsgInput = useSelector((state) => state.userInfoInput.stateMsgInput);
 
   const paramsToSubmit = {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    },
-    body: {
-      userId: userIdInput,
-      nickname: nicknameInput,
-      profileImg: profileImgInput,
-      stateMsg: stateMsgInput,
-    },
+    userId: userIdInput,
+    nickname: nicknameInput,
+    profileImg: profileImgInput,
+    stateMsg: stateMsgInput,
   };
 
   const handleClickProfileSubmit = () => {
     axios
-      .post(`${BASE_URL}/createAccount`, paramsToSubmit)
+      .post(`${BASE_URL}/createAccount`, paramsToSubmit, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
       .then((response) => {
         console.log(`Submitted user info successfully. `);
         navigate("/");
