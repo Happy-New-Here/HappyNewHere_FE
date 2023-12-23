@@ -9,6 +9,9 @@ const StyledMessageList = styled.label`
   flex-direction: column;
   gap: 16px;
   overflow: auto;
+  &.active {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 const MessageList = ({ messageList, selectedDate }) => {
@@ -45,8 +48,7 @@ const MessageList = ({ messageList, selectedDate }) => {
               day={selectedDay}
               paperNum={message.paperNum}
               sender={message.senderNickname}
-              // 클릭 시 activeIndex와 현재 인덱스가 일치하면 active 클래스를 추가
-              className={activeIndex === originalIndex ? "active" : ""}
+              active={activeIndex === originalIndex}
               onClick={() => handleThumbnailClick(originalIndex)}
             />
           );

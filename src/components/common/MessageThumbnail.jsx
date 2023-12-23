@@ -20,9 +20,13 @@ const StyledMessageThumbnail = styled(PlaceLeftRow)`
   background-size: cover;
   background-position: right;
 
-  &.active {
+  /* active prop이 true일 때 그림자 스타일을 추가 */
+  ${(props) =>
+    props.active &&
+    `
     background-color: rgba(128, 128, 128, 0.3); // 회색, Alpha 값 0.3로 설정
-  }
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); // 그림자 스타일
+  `}
 
   @media (min-width: 768px) {
     padding: 0px 8px;
@@ -42,10 +46,16 @@ const TextArea = styled(PlaceLeftRow)`
 `;
 
 const MessageThumbnail = (props) => {
-  const { day, paperNum, sender, onClick } = props;
+  const { day, paperNum, sender, onClick, active } = props;
+  console.log(active);
 
   return (
-    <StyledMessageThumbnail day={day} paperNum={paperNum} onClick={onClick}>
+    <StyledMessageThumbnail
+      day={day}
+      paperNum={paperNum}
+      onClick={onClick}
+      active={active}
+    >
       <TextArea>
         <SmallText fontSize="12px" fontWeight="600">
           From.&nbsp;
