@@ -26,17 +26,17 @@ const ProfileSubmitButton = () => {
   const navigate = useNavigate();
 
   // 확인용
-  useEffect(() => {
-    console.log(`nicknameInput: ${nicknameInput}`);
-  }, [nicknameInput]);
+  // useEffect(() => {
+  //   console.log(`nicknameInput: ${nicknameInput}`);
+  // }, [nicknameInput]);
 
-  useEffect(() => {
-    console.log(`profileImgInput: ${profileImgInput}`);
-  }, [profileImgInput]);
+  // useEffect(() => {
+  //   console.log(`profileImgInput: ${profileImgInput}`);
+  // }, [profileImgInput]);
 
-  useEffect(() => {
-    console.log(`stateMsgInput: ${stateMsgInput}`);
-  }, [stateMsgInput]);
+  // useEffect(() => {
+  //   console.log(`stateMsgInput: ${stateMsgInput}`);
+  // }, [stateMsgInput]);
 
   let paramsToSubmit = {
     userId: userIdInput,

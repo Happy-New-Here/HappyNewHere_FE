@@ -134,22 +134,41 @@ const HomeTemplate = () => {
       <StyledBeforeOpen>
         {!props.isPc && <GiftBox />}
         <SmallText
-          fontSize="20px"
+          fontSize="18px"
           fontWeight="600"
-          lineHeight="48px"
+          lineHeight="24px"
           textAlign="center"
         >
-          메시지함은 1월 1일에 열 수 있어요! <br />
+          메시지함은
+        </SmallText>
+        <SmallText
+          fontSize="16px"
+          fontWeight="600"
+          lineHeight="40px"
+          textAlign="center"
+        >
+          1월 1일에 열 수 있어요!
         </SmallText>
         <SmallText
           fontSize="16px"
           color="#9A0501"
-          lineHeight="24px"
+          lineHeight="40px"
           textAlign="center"
           cursor="pointer"
           onClick={handleShareLink}
         >
-          친구들에게 내 메시지함 링크 공유하기
+          친구들에게 내 메시지함
+        </SmallText>
+        <SmallText
+          fontSize="20px"
+          color="#9A0501"
+          lineHeight="20px"
+          fontWeight="700"
+          textAlign="center"
+          cursor="pointer"
+          onClick={handleShareLink}
+        >
+          링크 공유하기
         </SmallText>
       </StyledBeforeOpen>
     );
