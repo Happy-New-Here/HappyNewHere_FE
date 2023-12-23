@@ -2,13 +2,13 @@ import { Img } from "../../../styles/Img";
 import { SmallText } from "../../../styles/text";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import Toast from "../../common/Toast";
 import { useState } from "react";
 
 const ProfileSearch = ({ userId, nickname, profileImg }) => {
   const navigate = useNavigate();
-  const myId = useSelector((state) => state.user.userId);
+  const myId = localStorage.getItem("userId");
+//   console.log("내 아이디", myId);
   const [toast, setToast] = useState(false);
 
   const onClickProfile = () => {
