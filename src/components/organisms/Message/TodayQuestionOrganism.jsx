@@ -27,11 +27,11 @@ const QuestionNum = styled.span`
 `;
 
 const calculateDate = (
-  selectedDate,
+  selectedDateForm,
   isTest = false,
   testDate = "2024-01-01"
 ) => {
-  const eventStartDate = new Date(2024, 0, 1); // 이벤트 시작 날짜
+  const eventStartDate = new Date(2024, 0, 1); // 이벤트 시작 날짜<< 2024,0,1 여기 수정해야함
 
   let currentDate;
   if (isTest) {
@@ -41,18 +41,18 @@ const calculateDate = (
   }
 
   // 이벤트 시작 날짜 이후인 경우, selectedDate를 반환
-  if (currentDate >= eventStartDate && selectedDate) {
-    return selectedDate; // selectedDate가 이미 날짜 객체인 경우 그대로 사용
+  if (currentDate >= eventStartDate && selectedDateForm) {
+    return selectedDateForm; // selectedDate가 이미 날짜 객체인 경우 그대로 사용
   }
 
   // 그렇지 않은 경우, currentDate 반환
   return currentDate;
 };
 
-const TodayQuestionText = ({ nickname, selectedDate }) => {
+const TodayQuestionText = ({ nickname, selectedDateForm }) => {
   const isTest = false; // 테스트 모드 활성화
   const testDate = "2023-12-25"; // 테스트용 날짜 설정
-  const useDate = calculateDate(selectedDate, isTest, testDate);
+  const useDate = calculateDate(selectedDateForm, isTest, testDate);
   const formattedToday = `${useDate.getFullYear()}.${
     useDate.getMonth() + 1
   }.${useDate.getDate()}`;
@@ -86,10 +86,10 @@ const TodayQuestionText = ({ nickname, selectedDate }) => {
   }
 };
 
-const TodayQuestion = ({ nickname, selectedDate }) => {
+const TodayQuestion = ({ nickname, selectedDateForm }) => {
   const isTest = false; // 테스트 모드 활성화
   const testDate = "2023-12-25"; // 테스트용 날짜 설정
-  const useDate = calculateDate(selectedDate, isTest, testDate);
+  const useDate = calculateDate(selectedDateForm, isTest, testDate);
   const formattedToday = `${useDate.getFullYear()}.${
     useDate.getMonth() + 1
   }.${useDate.getDate()}`;
@@ -118,7 +118,10 @@ const TodayQuestion = ({ nickname, selectedDate }) => {
         <Today>{formattedToday}</Today>
         <QuestionNum>#{questionNum} 질문</QuestionNum>
       </TodayAndQuestionNum>
-      <TodayQuestionText nickname={nickname} selectedDate={selectedDate} />
+      <TodayQuestionText
+        nickname={nickname}
+        selectedDateForm={selectedDateForm}
+      />
     </TodayQuestionContainer>
   );
 };

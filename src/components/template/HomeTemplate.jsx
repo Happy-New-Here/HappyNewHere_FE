@@ -103,7 +103,7 @@ const HomeTemplate = () => {
   //selectedDate 는 임시로 넣어둬서 빼야함
 
   // 메시지 읽기 오픈일 설정
-  const targetDate = new Date("2023-01-01"); // 오픈일
+  const targetDate = new Date("2024-01-01"); // 오픈일
   const today = new Date(); // 오늘
 
   const handleDateClick = (date) => {
@@ -128,10 +128,11 @@ const HomeTemplate = () => {
   };
 
   // 오픈일 이전
-  const BeforeOpen = () => {
+  const BeforeOpen = (props) => {
+    console.log(props.isPc);
     return (
       <StyledBeforeOpen>
-        <GiftBox />
+        {!props.isPc && <GiftBox />}
         <SmallText
           fontSize="20px"
           fontWeight="600"
@@ -165,7 +166,8 @@ const HomeTemplate = () => {
         )}
         <MessageList
           messageList={selectedMessageList}
-          selectedDate={[selectedMessageIndex]?.day}
+          selectedDate={selectedDate}
+          selectedDateForm={[selectedMessageIndex]?.day}
         />
       </>
     );
@@ -195,8 +197,10 @@ const HomeTemplate = () => {
               {/* 오늘의 질문 */}
               <TodayQuestionOrganism
                 nickname={nickname}
-                selectedDate={selectedDate}
+                selectedDateForm={selectedDate}
               />
+
+              {today > targetDate ? null : <GiftBox />}
 
               {selectedMessageIndex ? <MessageViewOrganism /> : null}
             </Center>
@@ -205,7 +209,7 @@ const HomeTemplate = () => {
           <Rightside>
             <Profile />
             {/* 오픈일 이후 메시지 목록 공개 */}
-            {today > targetDate ? <AfterOpen /> : <BeforeOpen />}
+            {today > targetDate ? <AfterOpen /> : <BeforeOpen isPc={isPc} />}
           </Rightside>
         </ResponsiveLayoutPC>
       ) : (
@@ -225,7 +229,7 @@ const HomeTemplate = () => {
             </Calendar.wrapper>
 
             {/* 오픈일 이후 메시지 목록 공개 */}
-            {today > targetDate ? <AfterOpen /> : <BeforeOpen />}
+            {today > targetDate ? <AfterOpen /> : <BeforeOpen isPc={isPc} />}
           </ContentLayoutMobile>
 
           <Footer currentPage="home" isPc={isPc} />
