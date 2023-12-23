@@ -29,7 +29,7 @@ const TextArea = styled.p`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #C0C0C0; /* Scrollbar color */
+    background-color: #c0c0c0; /* Scrollbar color */
     border-radius: 4px; /* Round the corners of the scrollbar */
   }
 
@@ -38,9 +38,19 @@ const TextArea = styled.p`
   }
 `;
 
-const Message = () => {
+const MessageView = ({
+  context,
+  senderNickname,
+  paperNum,
+  anonymous,
+  dayColor,
+}) => {
   // MessageContainer height width에 따라 동적 적용
   const messageContainerRef = useRef(null);
+  console.log("test: ", context, senderNickname, paperNum, anonymous, dayColor);
+
+  const displayName = anonymous ? "익명의 산타" : senderNickname;
+  const effectiveDayColor = dayColor || 0;
 
   useEffect(() => {
     const messageContainer = messageContainerRef.current;
@@ -49,32 +59,33 @@ const Message = () => {
     messageContainer.style.height = `${height}px`;
   }, []);
 
-  const senderNickname = ""; // 카카오톡 닉네임
   const dispatch = useDispatch();
-  const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
 
   const handleCancelClick = () => {
     //   dispatch(setIsMessageWriteVisible(false));
     // 메시지뷰어 꺼지고 메시지리스트 다시 나오게
   };
 
-  const today = new Date();
-  const day = today.getDay(); // 일요일: 0 ~ 토요일: 6
-
   return (
     <StyledMessage>
-      <CancelIcon src={cancelIcon} alt="cancelIcon" onClick={handleCancelClick} />
+      <CancelIcon
+        src={cancelIcon}
+        alt="cancelIcon"
+        onClick={handleCancelClick}
+      />
 
-      <MessageContainer ref={messageContainerRef} day={day} paperNum={selectedPaperNum}>
-        <MessageText fontColor={MessageFontColor(selectedPaperNum)}>
-          <TextArea fontColor={MessageFontColor(selectedPaperNum)}>
-            안녕. <br /> 새해에는 좋은 일이 생기게 해주세요. <br /> Happy New Year!
-          </TextArea>
-          <ReceiverOrSender>From. {senderNickname}</ReceiverOrSender>
+      <MessageContainer
+        ref={messageContainerRef}
+        day={effectiveDayColor}
+        paperNum={paperNum}
+      >
+        <MessageText fontColor="#000000">
+          <TextArea fontColor="#000000">{context}</TextArea>
+          <ReceiverOrSender>From. {displayName}</ReceiverOrSender>
         </MessageText>
       </MessageContainer>
     </StyledMessage>
   );
 };
 
-export default Message;
+export default MessageView;

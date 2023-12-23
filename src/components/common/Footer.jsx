@@ -35,6 +35,11 @@ const Footer = () => {
     navigate("/editprofile");
   };
 
+  const havetoLogin = () => {
+    alert("로그인 후 이용 가능합니다.");
+    navigate("/auth");
+  }
+
   const handleLoginIconClick = () => {
     navigate("/auth");
   };
@@ -50,7 +55,7 @@ const Footer = () => {
           {/* 홈 */}
           <button
             className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]"
-            onClick={togoHome}
+            onClick={accessToken ? togoHome : havetoLogin}
           >
             <svg
               width={12}
@@ -77,7 +82,7 @@ const Footer = () => {
           {/* 검색 */}
           <button
             className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]"
-            onClick={togoSearch}
+            onClick={accessToken ? togoSearch : havetoLogin}
           >
             <svg
               width={12}
@@ -107,7 +112,7 @@ const Footer = () => {
           {/* 채팅 */}
           <button
             className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]"
-            onClick={togoChatting}
+            onClick={accessToken ? togoChatting : havetoLogin}
           >
             <svg
               width={12}
@@ -189,7 +194,7 @@ const Footer = () => {
           {/* 홈 */}
           <button
             className="w-1/4 h-full flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
-            onClick={togoHome}
+            onClick={accessToken ? togoHome : havetoLogin}
           >
             <svg
               width={16}
@@ -217,7 +222,7 @@ const Footer = () => {
           {/* 검색 */}
           <button
             className="w-1/4 h-full flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
-            onClick={togoSearch}
+            onClick={accessToken ? togoSearch : havetoLogin}
           >
             <svg
               width={21}
@@ -248,7 +253,7 @@ const Footer = () => {
           {/* 채팅  */}
           <button
             className="w-1/4 h-full flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
-            onClick={togoChatting}
+            onClick={accessToken ? togoChatting : havetoLogin}
           >
             <svg
               width={21}
