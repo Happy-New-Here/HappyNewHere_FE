@@ -54,14 +54,15 @@ const calculateDate = (
 
 const TodayQuestionText = ({ nickname, selectedDate }) => {
   const isTest = true; // 테스트 모드 활성화
-  const testDate = "2024-1-1"; // 테스트용 날짜 설정
+  const testDate = "2023-12-25"; // 테스트용 날짜 설정
   const useDate = calculateDate(selectedDate, isTest, testDate);
-
-  console.log(useDate);
+  const formattedToday = `${useDate.getFullYear()}.${
+    useDate.getMonth() + 1
+  }.${useDate.getDate()}`;
   const todayDate = useDate.getDate();
   const receiverNickname = nickname;
 
-  console.log(`todayDate: ${todayDate}, nickname: ${receiverNickname}`); // 테스트용
+  // console.log(`todayDate: ${todayDate}, nickname: ${receiverNickname}`); // 테스트용
 
   switch (todayDate) {
     case 25:
@@ -90,7 +91,7 @@ const TodayQuestionText = ({ nickname, selectedDate }) => {
 
 const TodayQuestion = ({ nickname, selectedDate }) => {
   const isTest = true; // 테스트 모드 활성화
-  const testDate = "2024-1-1"; // 테스트용 날짜 설정
+  const testDate = "2023-12-25"; // 테스트용 날짜 설정
   const useDate = calculateDate(selectedDate, isTest, testDate);
   const formattedToday = `${useDate.getFullYear()}.${
     useDate.getMonth() + 1
@@ -120,7 +121,7 @@ const TodayQuestion = ({ nickname, selectedDate }) => {
         <Today>{formattedToday}</Today>
         <QuestionNum>#{questionNum} 질문</QuestionNum>
       </TodayAndQuestionNum>
-      <TodayQuestionText nickname={nickname} />
+      <TodayQuestionText nickname={nickname} selectedDate={selectedDate} />
     </TodayQuestionContainer>
   );
 };
