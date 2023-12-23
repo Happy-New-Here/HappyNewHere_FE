@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import {
   MessageThumbnailsSRC,
@@ -46,14 +46,18 @@ const TextArea = styled(PlaceLeftRow)`
 `;
 
 const MessageThumbnail = (props) => {
-  const { day, paperNum, sender, onClick, active } = props;
-  console.log(active);
+  const { day, paperNum, sender, onClick, originalIndex, active } = props;
+  console.log(active, originalIndex);
+
+  const handleClick = () => {
+    onClick();
+  };
 
   return (
     <StyledMessageThumbnail
       day={day}
       paperNum={paperNum}
-      onClick={onClick}
+      onClick={handleClick}
       active={active}
     >
       <TextArea>
