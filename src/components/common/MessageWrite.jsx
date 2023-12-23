@@ -60,8 +60,7 @@ const Message = () => {
     messageContainer.style.height = `${height}px`;
   }, []);
 
-  const params = useParams();
-  const receiver = params.userId;
+  const receiver = useSelector((state) => state.user.nickname);
   const dispatch = useDispatch();
   const messageInput = useSelector((state) => state.messageInput);
   const selectedPaperNum = useSelector((state) => state.selectedPaperNum);
