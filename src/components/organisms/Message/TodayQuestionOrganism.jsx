@@ -29,15 +29,35 @@ const QuestionNum = styled.span`
 const today = new Date();
 // const todayDate = today.getDate();
 
-// 날짜 계산을 위한 공통 함수
-const calculateDate = (selectedDate) => {
-  const eventStartDate = new Date(2023, 0, 1); //편지 열람 가능 날짜
-  const currentDate = selectedDate ? new Date(selectedDate) : new Date(); // 편지 열람 가능 유무에 따라 오늘의 질문
-  return currentDate >= eventStartDate ? currentDate : new Date();
+const calculateDate = (
+  selectedDate,
+  isTest = false,
+  testDate = "2024-01-01"
+) => {
+  const eventStartDate = new Date(2024, 0, 1); // 이벤트 시작 날짜
+
+  let currentDate;
+  if (isTest) {
+    currentDate = new Date(testDate);
+  } else {
+    currentDate = new Date();
+  }
+
+  // 이벤트 시작 날짜 이후인 경우, selectedDate를 반환
+  if (currentDate >= eventStartDate && selectedDate) {
+    return selectedDate; // selectedDate가 이미 날짜 객체인 경우 그대로 사용
+  }
+
+  // 그렇지 않은 경우, currentDate 반환
+  return currentDate;
 };
 
 const TodayQuestionText = ({ nickname, selectedDate }) => {
-  const useDate = calculateDate(selectedDate);
+  const isTest = true; // 테스트 모드 활성화
+  const testDate = "2024-1-1"; // 테스트용 날짜 설정
+  const useDate = calculateDate(selectedDate, isTest, testDate);
+
+  console.log(useDate);
   const todayDate = useDate.getDate();
   const receiverNickname = nickname;
 
@@ -69,7 +89,9 @@ const TodayQuestionText = ({ nickname, selectedDate }) => {
 };
 
 const TodayQuestion = ({ nickname, selectedDate }) => {
-  const useDate = calculateDate(selectedDate);
+  const isTest = true; // 테스트 모드 활성화
+  const testDate = "2024-1-1"; // 테스트용 날짜 설정
+  const useDate = calculateDate(selectedDate, isTest, testDate);
   const formattedToday = `${useDate.getFullYear()}.${
     useDate.getMonth() + 1
   }.${useDate.getDate()}`;

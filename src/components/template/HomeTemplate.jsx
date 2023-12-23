@@ -164,7 +164,7 @@ const HomeTemplate = () => {
         )}
         <MessageList
           messageList={selectedMessageList}
-          selectedDate={selectedDate}
+          selectedDate={[selectedMessageIndex]?.day}
         />
       </>
     );
