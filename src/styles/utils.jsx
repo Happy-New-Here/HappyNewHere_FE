@@ -33,27 +33,27 @@ export const PlaceTopColumn = styled.div`
 
 /** 코드 재사용성을 높이기 위해 주석처리 */
 // 템플릿 전체 레이아웃: 기본 좌상단, 데탑버전 중앙
-// export const ResponsiveLayout = styled.div`
-//     display: grid;
-//     grid-template-rows: 1fr;
-//     grid-template-columns: 1fr 2fr 1fr;
-//     flex-direction: column;
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     min-width: 768px;
-//     width: 100vh;
-//     height: 100vh;
-//     @media (min-width: 768px) {
-//         // 중앙 정렬
-//         left: 50%;
-//         transform: translateX(-50%);
+export const ResponsiveLayout = styled.div`
+    display: grid;
+    /* grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
+    flex-direction: column; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 768px;
+    width: 100vw;
 
-//         flex-direction: row;
-//         margin-top: 32px;
-//         gap: 32px;
-//     }
-// `;
+    @media (min-width: 768px) {
+        // 중앙 정렬
+        left: 50%;
+        transform: translateX(-50%);
+
+        flex-direction: row;
+        margin-top: 32px;
+        gap: 32px;
+    }
+`;
 
 // 헤더 영역 레이아웃
 export const HeaderLayout = styled(PlaceLeftRow)`
@@ -73,7 +73,7 @@ export const ContentLayout = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 100%;
+    width: 30rem;
     height: calc(100vh - 76px - 77px);
     /* gap: 32px; */
     padding: 0 32px 32px; //상 좌우 하
