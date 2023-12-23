@@ -23,7 +23,7 @@ export const MessageContainer = styled(PlaceTopColumn)`
   )`};
   background-size: 100% 100%;
   margin: 0px 0px 16px;
-  padding: 24px 32px 48px;
+  padding: 30px 32px 80px;
   border-radius: 5px;
 `;
 

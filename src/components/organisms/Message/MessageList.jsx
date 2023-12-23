@@ -14,7 +14,7 @@ const StyledMessageList = styled.label`
   }
 `;
 
-const MessageList = ({ messageList, selectedDate }) => {
+const MessageList = ({ messageList, selectedDate, selectedDateForm }) => {
   const dispatch = useDispatch();
 
   const today = new Date();

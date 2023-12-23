@@ -13,9 +13,9 @@ export const PlaceLeftRow = styled.div`
 `;
 
 export const PlaceRightRow = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 `;
 
 export const PlaceLeftColumn = styled.div`
@@ -33,27 +33,27 @@ export const PlaceTopColumn = styled.div`
 
 /** 코드 재사용성을 높이기 위해 주석처리 */
 // 템플릿 전체 레이아웃: 기본 좌상단, 데탑버전 중앙
-// export const ResponsiveLayout = styled.div`
-//     display: grid;
-//     grid-template-rows: 1fr;
-//     grid-template-columns: 1fr 2fr 1fr;
-//     flex-direction: column;
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     min-width: 768px;
-//     width: 100vh;
-//     height: 100vh;
-//     @media (min-width: 768px) {
-//         // 중앙 정렬
-//         left: 50%;
-//         transform: translateX(-50%);
+export const ResponsiveLayout = styled.div`
+    display: grid;
+    /* grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
+    flex-direction: column; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 768px;
+    width: 100vw;
 
-//         flex-direction: row;
-//         margin-top: 32px;
-//         gap: 32px;
-//     }
-// `;
+    @media (min-width: 768px) {
+        // 중앙 정렬
+        left: 50%;
+        transform: translateX(-50%);
+
+        flex-direction: row;
+        margin-top: 32px;
+        gap: 32px;
+    }
+`;
 
 // 헤더 영역 레이아웃
 export const HeaderLayout = styled(PlaceLeftRow)`
@@ -70,23 +70,23 @@ export const HeaderLayout = styled(PlaceLeftRow)`
 
 // 컨텐트 영역 레이아웃: 좌우 패딩 32px씩
 export const ContentLayout = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 100%;
-  height: calc(100vh - 76px - 77px);
-  gap: 32px;
-  padding: 0 32px 32px; //상 좌우 하
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 30rem;
+    height: calc(100vh - 76px - 77px);
+    /* gap: 32px; */
+    padding: 0 32px 32px; //상 좌우 하
 
-  overflow: auto;
+    overflow: auto;
 
-  &::-webkit-scrollbar {
+    &::-webkit-scrollbar {
         width: 8px; /* Width of scrollbar */
         height: 0px; /* Set to 0 for horizontal scrollbar */
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: #C0C0C0; /* Scrollbar color */
+        background-color: #c0c0c0; /* Scrollbar color */
         border-radius: 4px; /* Round the corners of the scrollbar */
     }
 
@@ -94,10 +94,10 @@ export const ContentLayout = styled.div`
         background-color: #f1f1f1; /* Color of scrollbar track */
     }
 
-  @media (min-width: 768px) {
-    flex-direction: row;
-    padding: 0;
-  }
+    @media (min-width: 768px) {
+        flex-direction: row;
+        padding: 0;
+    }
 `;
 
 // 데탑 버전 좌, 중앙, 우
@@ -116,7 +116,6 @@ export const Center = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        /* gsap: 32px; */
 
         // overflow: scroll;
     }
@@ -155,7 +154,8 @@ export const ResponsiveLayoutMobile = styled.div`
     justify-content: start;
     align-items: center;
     max-width: 768px;
-    height: 550px;
+    /* height: 550px; */
+    height: 90vh;
 `;
 
 export const InsideLayoutMobile = styled.div`

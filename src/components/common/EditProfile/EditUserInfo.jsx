@@ -1,145 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { GetUserInfo } from "../../store/User-action";
-import {
-  setStateMsgInput,
-  setNicknameInput,
-  setProfileImgInput,
-} from "../../store/UserInfoInputSlice";
-import DefaultProfileImg from "../../assets/DefaultProfileImg.png";
+import { GetUserInfo } from "../../../store/User-action";
+import { setStateMsgInput, setNicknameInput } from "../../../store/UserInfoInputSlice";
+import LogoutButton from "../../organisms/EditProfile/LogoutButton";
 import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
-import {
-  PlaceCenter,
-  PlaceLeftColumn,
-  PlaceLeftRow,
-  PlaceTopColumn,
-} from "../../styles/utils";
-import { SmallText } from "../../styles/text";
-import { ProfileImg } from "../../styles/profileStyle";
-
-const StyledEditProfileOrganism = styled(PlaceTopColumn)`
-  width: 100%;
-  height: auto;
-  //   border-bottom: 1px solid black; // 확인용
-
-  @media (min-width: 768px) {
-  }
-`;
-
-const StyledEditProfileImg = styled(PlaceCenter)`
-  width: 100%;
-  height: auto;
-  padding: 32px 0;
-  flex-direction: column;
-  gap: 16px;
-  border-bottom: 0.5px solid #959595;
-
-  @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 24px 0;
-    border: none;
-    gap: 28px;
-  }
-`;
-
-const EditProfileImgButtonContainer = styled(PlaceCenter)`
-  justify-content: space-between;
-  gap: 20px;
-`;
-
-const EditProfileImgButton = styled.button`
-  // width: 80px;
-`;
-
-const EditProfileImg = () => {
-  const dispatch = useDispatch();
-  // const profileImg = useSelector((state) => state.user.profileImg);
-  const profileImg = localStorage.getItem("profileImg");
-
-  // 편집 완료 전 인풋값 임시 저장할 곳
-  const profileImgInput = useSelector((state) => state.userInfoInput.profileImgInput);
-
-  // 프로필 사진 업로드
-  const profileImgInputRef = useRef(null);
-
-  const handleUploadProfileImg = () => {
-    profileImgInputRef.current.click();
-  };
-
-  const onFileChange = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-
-    reader.onload = () => {
-      let uploadedImage = reader.result || null;
-      dispatch(setProfileImgInput(uploadedImage)); // 임시 저장
-
-      // Base64 문자열을 디코딩하여 ArrayBuffer를 생성
-
-      uploadedImage = uploadedImage.substring(uploadedImage.indexOf(",") + 1);
-
-      const binaryString = atob(uploadedImage);
-      const bytes = new Uint8Array(binaryString.length);
-      for (let i = 0; i < binaryString.length; i++) {
-        bytes[i] = binaryString.charCodeAt(i);
-      }
-      const arrayBuffer = bytes.buffer;
-
-      // ArrayBuffer를 Blob 객체로 변환
-      const blob = new Blob([arrayBuffer], { type: "image/jpeg" });
-
-      // Blob 객체를 URL로 변환
-      const uploadedImageUrl = URL.createObjectURL(blob).substring(5);
-
-      console.log(`image url to send: ${uploadedImageUrl}`); // test용
-      // dispatch(userAction.setProfileImg(uploadedImageUrl)); // test용
-    };
-  };
-
-  // 프로필 사진 기본 이미지로
-  const handleClickDefaultProfileImg = () => {
-    dispatch(setProfileImgInput(DefaultProfileImg)); // 임시 저장
-    // dispatch(userAction.setProfileImg(DefaultProfileImg)); // test용. post 보낼 때는 null 보내기
-  };
-
-  return (
-    <StyledEditProfileImg>
-      <ProfileImg
-        backgroundImg={profileImgInput}
-        widthMobile="64px"
-        heightMobile="64px"
-        widthDesktop="80px"
-        heightDesktop="80px"
-      />
-      <EditProfileImgButtonContainer>
-        <EditProfileImgButton onClick={handleUploadProfileImg}>
-          <SmallText fontSize="14px" color="#9A0501">
-            업로드
-          </SmallText>
-        </EditProfileImgButton>
-        <input
-          ref={profileImgInputRef}
-          accept="image/*"
-          type="file"
-          style={{ display: "none" }}
-          onChange={onFileChange}
-        />
-
-        <EditProfileImgButton onClick={handleClickDefaultProfileImg}>
-          <SmallText fontSize="14px" color="#4F4E4E">
-            삭제
-          </SmallText>
-        </EditProfileImgButton>
-      </EditProfileImgButtonContainer>
-    </StyledEditProfileImg>
-  );
-};
-
-//
+import { PlaceLeftColumn, PlaceLeftRow } from "../../../styles/utils";
+import { SmallText } from "../../../styles/text";
 
 const StyledEditUserInfo = styled(PlaceLeftColumn)`
   width: 100%;
@@ -181,6 +49,8 @@ const UserInfo = styled(PlaceLeftColumn)`
   justify-content: flex-start;
 `;
 
+// const UserInfoContainer = () => {};
+
 const EditUserInfo = () => {
   const dispatch = useDispatch();
 
@@ -210,12 +80,12 @@ const EditUserInfo = () => {
     dispatch(setStateMsgInput(event.target.value)); // 임시 저장
   };
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const logout = () => {
-    localStorage.removeItem("accessToken");
-    navigate("/auth");
-  }
+  // const logout = () => {
+  //     localStorage.removeItem('accessToken');
+  //     navigate('/auth');
+  // };
 
   return (
     <>
@@ -236,6 +106,7 @@ const EditUserInfo = () => {
             />
           </UserInfo>
         </UserInfoContainer>
+
         {/* nickname */}
         <UserInfoContainer>
           <UserInfoType>
@@ -287,22 +158,15 @@ const EditUserInfo = () => {
           </UserInfo>
         </UserInfoContainer>
       </StyledEditUserInfo>
-
-      <button className="flex-grow-0 flex-shrink-0 w-[89px] h-[17px] text-base font-semibold text-left text-[#9a0501] hover:brightness-50"
-      onClick={logout}>
-        로그아웃
-      </button>
+      <LogoutButton />
+      {/* <button
+                className="flex-grow-0 flex-shrink-0 w-[89px] h-[17px] text-base font-semibold text-left text-[#9a0501] hover:brightness-50 mb-8"
+                onClick={logout}
+            >
+                로그아웃
+            </button> */}
     </>
   );
 };
 
-const EditProfileOrganism = () => {
-  return (
-    <StyledEditProfileOrganism>
-      <EditProfileImg />
-      <EditUserInfo />
-    </StyledEditProfileOrganism>
-  );
-};
-
-export default EditProfileOrganism;
+export default EditUserInfo;

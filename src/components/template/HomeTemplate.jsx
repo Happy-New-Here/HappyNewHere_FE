@@ -12,7 +12,7 @@ import MessageViewOrganism from "../organisms/Message/MessageViewOrganism";
 import MessageView from "../common/MessageView";
 import {
   PlaceCenter,
-  // ResponsiveLayout,
+  ResponsiveLayout,
   ContentLayout,
   Leftside,
   Center,
@@ -29,6 +29,7 @@ import {
   setOwner,
 } from "../../store/calendar-slice";
 import TodayQuestionOrganism from "../organisms/Message/TodayQuestionOrganism";
+import { ContentLayoutMobile } from "../organisms/Home/ContentLayoutMobile";
 
 const StyledBeforeOpen = styled(PlaceCenter)`
   flex-direction: column;
@@ -44,9 +45,10 @@ const HomeTemplate = () => {
     query: "(min-width:768px)",
   });
 
-  let weekDates = Calendar.getWeekDates(22); // 이벤트 시작날짜 설정
+  let weekDates = Calendar.getWeekDates(25); // 이벤트 시작날짜 설정
   const [selectedDate, setSelectedDate] = useState(null);
   const dispatch = useDispatch();
+  const nickname = useSelector((state) => state.user.nickname);
   const currentPage = useSelector((state) => state.currentPage);
   const userId = useSelector((state) => state.user.userId);
   const selectedMessageList = useSelector(
@@ -97,11 +99,11 @@ const HomeTemplate = () => {
 
     // 컴포넌트가 마운트될 때 최초 요청 시작
     fetchData();
-  }, [userId, selectedDate]);
+  }, [userId]);
   //selectedDate 는 임시로 넣어둬서 빼야함
 
   // 메시지 읽기 오픈일 설정
-  const targetDate = new Date("2023-01-01"); // 오픈일
+  const targetDate = new Date("2024-01-01"); // 오픈일
   const today = new Date(); // 오늘
 
   const handleDateClick = (date) => {
@@ -126,10 +128,11 @@ const HomeTemplate = () => {
   };
 
   // 오픈일 이전
-  const BeforeOpen = () => {
+  const BeforeOpen = (props) => {
+    console.log(props.isPc);
     return (
       <StyledBeforeOpen>
-        <GiftBox />
+        {!props.isPc && <GiftBox />}
         <SmallText
           fontSize="20px"
           fontWeight="600"
@@ -164,15 +167,16 @@ const HomeTemplate = () => {
         <MessageList
           messageList={selectedMessageList}
           selectedDate={selectedDate}
+          selectedDateForm={[selectedMessageIndex]?.day}
         />
       </>
     );
   };
 
   return (
-    <ResponsiveLayoutPC>
+    <>
       {isPc ? (
-        <>
+        <ResponsiveLayoutPC>
           <Leftside>
             <Header />
             <Footer currentPage="home" isPc={isPc} />
@@ -191,7 +195,12 @@ const HomeTemplate = () => {
               </Calendar.wrapper>
 
               {/* 오늘의 질문 */}
-              <TodayQuestionOrganism />
+              <TodayQuestionOrganism
+                nickname={nickname}
+                selectedDateForm={selectedDate}
+              />
+
+              {today > targetDate ? null : <GiftBox />}
 
               {selectedMessageIndex ? <MessageViewOrganism /> : null}
             </Center>
@@ -200,13 +209,13 @@ const HomeTemplate = () => {
           <Rightside>
             <Profile />
             {/* 오픈일 이후 메시지 목록 공개 */}
-            {today > targetDate ? <AfterOpen /> : <BeforeOpen />}
+            {today > targetDate ? <AfterOpen /> : <BeforeOpen isPc={isPc} />}
           </Rightside>
-        </>
+        </ResponsiveLayoutPC>
       ) : (
-        <>
+        <ResponsiveLayout>
           <Header />
-          <ContentLayout>
+          <ContentLayoutMobile>
             <Profile />
             <Calendar.wrapper>
               {weekDates.map((date, index) => (
@@ -220,13 +229,13 @@ const HomeTemplate = () => {
             </Calendar.wrapper>
 
             {/* 오픈일 이후 메시지 목록 공개 */}
-            {today > targetDate ? <AfterOpen /> : <BeforeOpen />}
-          </ContentLayout>
+            {today > targetDate ? <AfterOpen /> : <BeforeOpen isPc={isPc} />}
+          </ContentLayoutMobile>
 
           <Footer currentPage="home" isPc={isPc} />
-        </>
+        </ResponsiveLayout>
       )}
-    </ResponsiveLayoutPC>
+    </>
   );
 };
 
