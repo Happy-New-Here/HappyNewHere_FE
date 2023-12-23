@@ -4,7 +4,7 @@ import { GetUserInfo } from "../../store/User-action";
 import { setCurrentPage } from "../../store/currentPageSlice";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
-import EditProfileTab from "../common/EditProfile/EditProfileTab";
+import EditProfileTab from "../organisms/EditProfile/EditProfileTab";
 import EditProfileOrganism from "../organisms/EditProfile/EditProfileOrganism";
 import ProfileSubmitButton from "../common/EditProfile/ProfileSubmitButton";
 import { useMediaQuery } from "react-responsive";

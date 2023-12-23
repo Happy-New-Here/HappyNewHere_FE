@@ -5,7 +5,7 @@ import {
   StyledEditProfileTab,
   StyledEditProfileTabMobile,
   StyledHomeIcon,
-} from "../../organisms/EditProfile/ProfileHearderBar";
+} from "./ProfileHearderBar";
 import backwardIcon from "../../../assets/backwardIcon.svg";
 import { SmallText } from "../../../styles/text";
 import homeIcon from "../../../assets/home.svg";
