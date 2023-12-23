@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { BASE_URL } from "../../utils/URL";
@@ -21,6 +21,19 @@ const ProfileSubmitButton = () => {
   const nickname = localStorage.getItem("nickname");
   const profileImgInput = useSelector((state) => state.userInfoInput.profileImgInput);
   const stateMsgInput = useSelector((state) => state.userInfoInput.stateMsgInput);
+
+  // 확인용
+  useEffect(() => {
+    console.log(`nicknameInput: ${nicknameInput}`);
+  }, [nicknameInput]);
+
+  useEffect(() => {
+    console.log(`profileImgInput: ${profileImgInput}`);
+  }, [profileImgInput]);
+
+  useEffect(() => {
+    console.log(`stateMsgInput: ${stateMsgInput}`);
+  }, [stateMsgInput]);
 
   const paramsToSubmit = {
     userId: userIdInput,
