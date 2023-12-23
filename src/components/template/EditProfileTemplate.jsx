@@ -1,16 +1,24 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { GetUserInfo } from '../../store/User-action';
-import { setCurrentPage } from '../../store/currentPageSlice';
-import Header from '../common/Header';
-import Footer from '../common/Footer';
-import EditProfileTab from '../common/EditProfileTab';
-import EditProfileOrganism from '../organisms/EditProfileOrganism';
-import ProfileSubmitButton from '../common/ProfileSubmitButton';
-import { useMediaQuery } from 'react-responsive';
-import { PlaceCenter, ResponsiveLayoutPC, ContentLayout, Leftside, Center, Rightside } from '../../styles/utils';
-import { SmallText } from '../../styles/text';
-import styled from 'styled-components';
+
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { GetUserInfo } from "../../store/User-action";
+import { setCurrentPage } from "../../store/currentPageSlice";
+import Header from "../common/Header";
+import Footer from "../common/Footer";
+import EditProfileTab from "../common/EditProfileTab";
+import EditProfileOrganism from "../organisms/EditProfileOrganism";
+import ProfileSubmitButton from "../common/ProfileSubmitButton";
+import { useMediaQuery } from "react-responsive";
+import {
+  PlaceCenter,
+  ResponsiveLayoutPC,
+  ContentLayout,
+  Leftside,
+  Center,
+  Rightside,
+} from "../../styles/utils";
+import { SmallText } from "../../styles/text";
+import styled from "styled-components";
 
 const ContentLayoutNoFooter = styled(ContentLayout)`
     height: auto;

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
@@ -8,6 +8,8 @@ export default function Toast({ messageType = "default", type = "error" }) {
     switch (messageType) {
       case "default":
         return "기본 메시지";
+      case "myId":
+        return "본인의 ID는 검색할 수 없습니다.";
       case "duplicateID":
         return "이미 사용 중인 ID입니다.";
       case "loginRequired":

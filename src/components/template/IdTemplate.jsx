@@ -34,10 +34,10 @@ const IdTemplate = () => {
         query: '(min-width:768px)',
     });
 
-    /** 아이디 입력 event */
-    const handleIdChange = (e) => {
-        dispatch(userAction.setUserId(e.target.value));
-    };
+  /** 아이디 입력 event */
+  const handleIdChange = (e) => {
+    dispatch(userAction.setUserId(e.target.value));
+  };
 
     /** 상태메세지 입력 event */
     const handleStateMsgChange = (e) => {

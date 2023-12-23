@@ -33,11 +33,10 @@ export const Calendar = {
         return weekDates;
     },
 
-    // 날짜 하나
-    item: ({ day, date, onClick }) => {
-        // 현재 요일에 따라 type 값을 설정
-        let type = 'navy';
-        console.log({ date } + 'get it');
+  // 날짜 하나
+  item: ({ day, date, onClick }) => {
+    // 현재 요일에 따라 type 값을 설정
+    let type = "navy";
 
         switch (day % 7) {
             case 0: // 일요일
