@@ -7,7 +7,7 @@ import {
   setNicknameInput,
   setProfileImgInput,
 } from "../../../store/UserInfoInputSlice";
-import DefaultProfileImg from "../../assets/DefaultProfileImg.png";
+import DefaultProfileImg from "../../../assets/DefaultProfileImg.png";
 import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 import {
@@ -104,7 +104,7 @@ const EditProfileImg = () => {
   // 프로필 사진 기본 이미지로
   const handleClickDefaultProfileImg = () => {
     dispatch(setProfileImgInput(DefaultProfileImg)); // 임시 저장
-    // dispatch(userAction.setProfileImg(DefaultProfileImg)); // test용. post 보낼 때는 null 보내기
+    // dispatch(userAction.setProfileImg(DefaultProfileImg)); // test용
   };
 
   return (
@@ -115,6 +115,7 @@ const EditProfileImg = () => {
         heightMobile="64px"
         widthDesktop="80px"
         heightDesktop="80px"
+        boxshadow="0px 0px 4px rgba(0, 0, 0, 0.25)"
       />
       <EditProfileImgButtonContainer>
         <EditProfileImgButton onClick={handleUploadProfileImg}>
