@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../../utils/URL";
 import { Button } from "../Button";
@@ -22,6 +23,8 @@ const ProfileSubmitButton = () => {
   const profileImgInput = useSelector((state) => state.userInfoInput.profileImgInput);
   const stateMsgInput = useSelector((state) => state.userInfoInput.stateMsgInput);
 
+  const navigate = useNavigate();
+
   // 확인용
   useEffect(() => {
     console.log(`nicknameInput: ${nicknameInput}`);
@@ -35,7 +38,7 @@ const ProfileSubmitButton = () => {
     console.log(`stateMsgInput: ${stateMsgInput}`);
   }, [stateMsgInput]);
 
-  const paramsToSubmit = {
+  let paramsToSubmit = {
     userId: userIdInput,
     nickname: nicknameInput,
     profileImg: profileImgInput,
