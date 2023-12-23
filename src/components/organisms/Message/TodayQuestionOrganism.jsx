@@ -27,13 +27,21 @@ const QuestionNum = styled.span`
 `;
 
 const today = new Date();
-const todayDate = today.getDate();
-// const todayDate = 18; // 테스트용
+// const todayDate = today.getDate();
 
-const TodayQuestionText = ({ nickname, todayDate }) => {
+// 날짜 계산을 위한 공통 함수
+const calculateDate = (selectedDate) => {
+  const eventStartDate = new Date(2023, 0, 1); //편지 열람 가능 날짜
+  const currentDate = selectedDate ? new Date(selectedDate) : new Date(); // 편지 열람 가능 유무에 따라 오늘의 질문
+  return currentDate >= eventStartDate ? currentDate : new Date();
+};
+
+const TodayQuestionText = ({ nickname, selectedDate }) => {
+  const useDate = calculateDate(selectedDate);
+  const todayDate = useDate.getDate();
   const receiverNickname = nickname;
 
-  // console.log(`todayDate: ${todayDate}, nickname: ${receiverNickname}`); // 테스트용
+  console.log(`todayDate: ${todayDate}, nickname: ${receiverNickname}`); // 테스트용
 
   switch (todayDate) {
     case 25:
@@ -60,10 +68,13 @@ const TodayQuestionText = ({ nickname, todayDate }) => {
   }
 };
 
-const TodayQuestion = ({ nickname }) => {
-  const formattedToday = `${today.getFullYear()}.${
-    today.getMonth() + 1
-  }.${today.getDate()}`;
+const TodayQuestion = ({ nickname, selectedDate }) => {
+  const useDate = calculateDate(selectedDate);
+  const formattedToday = `${useDate.getFullYear()}.${
+    useDate.getMonth() + 1
+  }.${useDate.getDate()}`;
+  const todayDate = useDate.getDate();
+
   const questionNum =
     todayDate === 25
       ? "첫 번째"

@@ -44,11 +44,12 @@ const HomeTemplate = () => {
     query: "(min-width:768px)",
   });
 
-  let weekDates = Calendar.getWeekDates(22); // 이벤트 시작날짜 설정
+  let weekDates = Calendar.getWeekDates(25); // 이벤트 시작날짜 설정
   const [selectedDate, setSelectedDate] = useState(null);
   const dispatch = useDispatch();
   const currentPage = useSelector((state) => state.currentPage);
   const userId = useSelector((state) => state.user.userId);
+  const nickname = useSelector((state) => state.user.nickname);
   const selectedMessageList = useSelector(
     (state) => state.calendar.messagesList
   );
@@ -191,7 +192,10 @@ const HomeTemplate = () => {
               </Calendar.wrapper>
 
               {/* 오늘의 질문 */}
-              <TodayQuestionOrganism />
+              <TodayQuestionOrganism
+                nickname={nickname}
+                selectedDate={selectedDate}
+              />
 
               {selectedMessageIndex ? <MessageViewOrganism /> : null}
             </Center>
