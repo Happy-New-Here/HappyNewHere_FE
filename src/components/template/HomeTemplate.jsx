@@ -103,9 +103,8 @@ const HomeTemplate = () => {
   };
 
   const handleShareLink = () => {
-    // 현재 경로를 클립보드에 복사. 'navigator.clipboard' API 사용
-    // const url = window.location.href;
-    const url = `${window.location.href}friend/${userId}`;
+    // 현재 경로/userId를 클립보드에 복사. 'navigator.clipboard' API 사용
+    const url = `${window.location.href}${userId}`;
 
     navigator.clipboard
       .writeText(url)
