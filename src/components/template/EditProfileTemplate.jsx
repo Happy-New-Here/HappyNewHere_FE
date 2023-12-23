@@ -6,7 +6,7 @@ import Header from "../common/Header";
 import Footer from "../common/Footer";
 import EditProfileTab from "../common/EditProfile/EditProfileTab";
 import EditProfileOrganism from "../organisms/EditProfile/EditProfileOrganism";
-import ProfileSubmitButton from "../common/ProfileSubmitButton";
+import ProfileSubmitButton from "../common/EditProfile/ProfileSubmitButton";
 import { useMediaQuery } from "react-responsive";
 import {
   PlaceCenter,
