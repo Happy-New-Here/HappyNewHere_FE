@@ -28,6 +28,7 @@ import {
   setMessagesList,
   setOwner,
 } from "../../store/calendar-slice";
+import TodayQuestionOrganism from "../organisms/Message/TodayQuestionOrganism";
 
 const StyledBeforeOpen = styled(PlaceCenter)`
   flex-direction: column;
@@ -188,6 +189,10 @@ const HomeTemplate = () => {
                   />
                 ))}
               </Calendar.wrapper>
+
+              {/* 오늘의 질문 */}
+              <TodayQuestionOrganism />
+
               {selectedMessageIndex ? <MessageViewOrganism /> : null}
             </Center>
           </ContentLayout>
