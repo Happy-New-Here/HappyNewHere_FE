@@ -23,11 +23,7 @@ import { SmallText } from "../../styles/text";
 import styled from "styled-components";
 import axios from "axios";
 import { BASE_URL } from "../../utils/URL";
-import {
-  setCalendar,
-  setMessagesList,
-  setOwner,
-} from "../../store/calendar-slice";
+import { setCalendar, setMessagesList, setOwner } from "../../store/calendar-slice";
 import TodayQuestionOrganism from "../organisms/Message/TodayQuestionOrganism";
 import { ContentLayoutMobile } from "../organisms/Home/ContentLayoutMobile";
 
@@ -51,12 +47,8 @@ const HomeTemplate = () => {
   const nickname = useSelector((state) => state.user.nickname);
   const currentPage = useSelector((state) => state.currentPage);
   const userId = useSelector((state) => state.user.userId);
-  const selectedMessageList = useSelector(
-    (state) => state.calendar.messagesList
-  );
-  const selectedMessageIndex = useSelector(
-    (state) => state.calendar.selectedMessageIndex
-  );
+  const selectedMessageList = useSelector((state) => state.calendar.messagesList);
+  const selectedMessageIndex = useSelector((state) => state.calendar.selectedMessageIndex);
 
   // currentPage(로그인 후 돌아올 페이지)를 설정하는 코드
   // 최초 마운트시에(만) setCurrentPage를 디스패치
@@ -111,16 +103,14 @@ const HomeTemplate = () => {
   };
 
   const handleShareLink = () => {
-    // 내 메시지함 링크를 클립보드에 복사. 'navigator.clipboard' API 사용
-    const url = window.location.href;
+    // 현재 경로/userId를 클립보드에 복사. 'navigator.clipboard' API 사용
+    const url = `${window.location.href}${userId}`;
 
     navigator.clipboard
       .writeText(url)
       .then(() => {
         // console.log(`링크 복사 성공: ${url}`);
-        alert(
-          `링크가 클립보드에 복사되었어요. 이제 링크를 원하는 곳에 붙여넣을 수 있어요.`
-        );
+        alert(`링크가 클립보드에 복사되었어요. 이제 링크를 원하는 곳에 붙여넣을 수 있어요.`);
       })
       .catch((err) => {
         console.error("링크 복사 실패:", err);
@@ -133,20 +123,10 @@ const HomeTemplate = () => {
     return (
       <StyledBeforeOpen>
         {!props.isPc && <GiftBox />}
-        <SmallText
-          fontSize="18px"
-          fontWeight="600"
-          lineHeight="24px"
-          textAlign="center"
-        >
+        <SmallText fontSize="18px" fontWeight="600" lineHeight="24px" textAlign="center">
           메시지함은
         </SmallText>
-        <SmallText
-          fontSize="16px"
-          fontWeight="600"
-          lineHeight="40px"
-          textAlign="center"
-        >
+        <SmallText fontSize="16px" fontWeight="600" lineHeight="40px" textAlign="center">
           1월 1일에 열 수 있어요!
         </SmallText>
         <SmallText
@@ -179,9 +159,7 @@ const HomeTemplate = () => {
     return (
       <>
         {selectedDate && (
-          <div>
-            {/* 선택한 날짜에 따른 메시지 목록 또는 내용을 여기에 표시 */}
-          </div>
+          <div>{/* 선택한 날짜에 따른 메시지 목록 또는 내용을 여기에 표시 */}</div>
         )}
         <MessageList
           messageList={selectedMessageList}
@@ -214,10 +192,7 @@ const HomeTemplate = () => {
               </Calendar.wrapper>
 
               {/* 오늘의 질문 */}
-              <TodayQuestionOrganism
-                nickname={nickname}
-                selectedDateForm={selectedDate}
-              />
+              <TodayQuestionOrganism nickname={nickname} selectedDateForm={selectedDate} />
 
               {today > targetDate ? null : <GiftBox />}
 
