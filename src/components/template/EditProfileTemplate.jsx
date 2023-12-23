@@ -36,9 +36,9 @@ const EditProfileTemplate = () => {
     }, [currentPage]);
 
     return (
-        <ResponsiveLayoutPC>
+        <>
             {isPc ? (
-                <>
+                <ResponsiveLayoutPC>
                     <Leftside>
                         <Header />
                         <Footer />
@@ -51,7 +51,7 @@ const EditProfileTemplate = () => {
                         </Center>
                         <Rightside></Rightside>
                     </ContentLayout>
-                </>
+                </ResponsiveLayoutPC>
             ) : (
                 <>
                     <EditProfileTab />
@@ -63,7 +63,7 @@ const EditProfileTemplate = () => {
                     {/* <Footer /> */}
                 </>
             )}
-        </ResponsiveLayoutPC>
+        </>
     );
 };
 
