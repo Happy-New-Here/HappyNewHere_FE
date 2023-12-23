@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { BASE_URL } from "../../utils/URL";
-import { Button } from "./Button";
+import { BASE_URL } from "../../../utils/URL";
+import { Button } from "../Button";
 import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
-import { PlaceRightRow } from "../../styles/utils";
-import { SmallText } from "../../styles/text";
+import { PlaceRightRow } from "../../../styles/utils";
+import { SmallText } from "../../../styles/text";
 
 const StyledProfileSubmitButton = styled(PlaceRightRow)`
   @media (min-height: 768px) {
@@ -22,21 +22,33 @@ const ProfileSubmitButton = () => {
   const profileImgInput = useSelector((state) => state.userInfoInput.profileImgInput);
   const stateMsgInput = useSelector((state) => state.userInfoInput.stateMsgInput);
 
+  // 확인용
+  useEffect(() => {
+    console.log(`nicknameInput: ${nicknameInput}`);
+  }, [nicknameInput]);
+
+  useEffect(() => {
+    console.log(`profileImgInput: ${profileImgInput}`);
+  }, [profileImgInput]);
+
+  useEffect(() => {
+    console.log(`stateMsgInput: ${stateMsgInput}`);
+  }, [stateMsgInput]);
+
   const paramsToSubmit = {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    },
-    body: {
-      userId: userIdInput,
-      nickname: nicknameInput,
-      profileImg: profileImgInput,
-      stateMsg: stateMsgInput,
-    },
+    userId: userIdInput,
+    nickname: nicknameInput,
+    profileImg: profileImgInput,
+    stateMsg: stateMsgInput,
   };
 
   const handleClickProfileSubmit = () => {
     axios
-      .get(`${BASE_URL}/createAccount`, paramsToSubmit)
+      .post(`${BASE_URL}/createAccount`, paramsToSubmit, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
       .then((response) => {
         console.log(`Submitted user info successfully. `);
         navigate("/");
