@@ -36,7 +36,7 @@ const ProfileSubmitButton = () => {
 
   const handleClickProfileSubmit = () => {
     axios
-      .get(`${BASE_URL}/createAccount`, paramsToSubmit)
+      .post(`${BASE_URL}/createAccount`, paramsToSubmit)
       .then((response) => {
         console.log(`Submitted user info successfully. `);
         navigate("/");
