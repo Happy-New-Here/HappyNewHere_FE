@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 
+.GiftBox-wrapper{
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    height: 100%; /* 높이를 부모 컨테이너의 높이로 설정 */
+}
+
 body {
     height: 100vh;
     display: grid;
