@@ -9,6 +9,9 @@ const StyledMessageList = styled.label`
   flex-direction: column;
   gap: 16px;
   overflow: auto;
+  &.active {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 const MessageList = ({ messageList, selectedDate }) => {
@@ -17,7 +20,7 @@ const MessageList = ({ messageList, selectedDate }) => {
   const today = new Date();
   const filteredDate = new Date(selectedDate).getDate();
   const selectedDay = new Date(selectedDate).getDay();
-  const [activeIndex, setActiveIndex] = useState(-1); // 선택된 인덱스를 관리하는 상태
+  const [activeIndex, setActiveIndex] = useState(-1);
 
   const filteredMessages = messageList.filter((message) => {
     const messageDate = message.day.split("T")[0];
@@ -26,13 +29,17 @@ const MessageList = ({ messageList, selectedDate }) => {
   });
 
   const handleThumbnailClick = (index) => {
-    // 현재 클릭한 버튼의 인덱스와 다른 버튼의 활성화를 취소
     console.log("click", index);
     if (index !== activeIndex) {
-      dispatch(setSelectedMessageIndex(index));
       setActiveIndex(index);
     }
   };
+
+  useEffect(() => {
+    if (activeIndex !== -1) {
+      dispatch(setSelectedMessageIndex(activeIndex));
+    }
+  }, [activeIndex, dispatch]);
 
   return (
     <>
@@ -45,8 +52,8 @@ const MessageList = ({ messageList, selectedDate }) => {
               day={selectedDay}
               paperNum={message.paperNum}
               sender={message.senderNickname}
-              // 클릭 시 activeIndex와 현재 인덱스가 일치하면 active 클래스를 추가
-              className={activeIndex === originalIndex ? "active" : ""}
+              originalIndex={originalIndex}
+              active={activeIndex === originalIndex}
               onClick={() => handleThumbnailClick(originalIndex)}
             />
           );

@@ -28,6 +28,7 @@ import {
   setMessagesList,
   setOwner,
 } from "../../store/calendar-slice";
+import TodayQuestionOrganism from "../organisms/Message/TodayQuestionOrganism";
 
 const StyledBeforeOpen = styled(PlaceCenter)`
   flex-direction: column;
@@ -157,14 +158,9 @@ const HomeTemplate = () => {
       <>
         {selectedDate && (
           <div>
-            {/* 선택한 날짜: {selectedDate.toDateString()} */}
             {/* 선택한 날짜에 따른 메시지 목록 또는 내용을 여기에 표시 */}
           </div>
         )}
-        {/* <MessageList
-          messageList={selectedMessageList}
-          selectedDate={selectedDate}
-        /> */}
         <MessageList
           messageList={selectedMessageList}
           selectedDate={selectedDate}
@@ -193,17 +189,11 @@ const HomeTemplate = () => {
                   />
                 ))}
               </Calendar.wrapper>
-              <MessageView
-                context={selectedMessageList[selectedMessageIndex]?.context}
-                senderNickname={
-                  selectedMessageList[selectedMessageIndex]?.senderNickname
-                }
-                paperNum={selectedMessageList[selectedMessageIndex]?.paperNum}
-                anonymous={selectedMessageList[selectedMessageIndex]?.anonymous}
-                dayColor={new Date(
-                  selectedMessageList[selectedMessageIndex]?.day
-                ).getDay()}
-              />
+
+              {/* 오늘의 질문 */}
+              <TodayQuestionOrganism />
+
+              {selectedMessageIndex ? <MessageViewOrganism /> : null}
             </Center>
           </ContentLayout>
 
