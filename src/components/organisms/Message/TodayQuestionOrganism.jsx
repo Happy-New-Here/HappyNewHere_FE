@@ -26,9 +26,6 @@ const QuestionNum = styled.span`
   font-size: 12px;
 `;
 
-const today = new Date();
-// const todayDate = today.getDate();
-
 const calculateDate = (
   selectedDate,
   isTest = false,
@@ -53,7 +50,7 @@ const calculateDate = (
 };
 
 const TodayQuestionText = ({ nickname, selectedDate }) => {
-  const isTest = true; // 테스트 모드 활성화
+  const isTest = false; // 테스트 모드 활성화
   const testDate = "2023-12-25"; // 테스트용 날짜 설정
   const useDate = calculateDate(selectedDate, isTest, testDate);
   const formattedToday = `${useDate.getFullYear()}.${
@@ -90,7 +87,7 @@ const TodayQuestionText = ({ nickname, selectedDate }) => {
 };
 
 const TodayQuestion = ({ nickname, selectedDate }) => {
-  const isTest = true; // 테스트 모드 활성화
+  const isTest = false; // 테스트 모드 활성화
   const testDate = "2023-12-25"; // 테스트용 날짜 설정
   const useDate = calculateDate(selectedDate, isTest, testDate);
   const formattedToday = `${useDate.getFullYear()}.${

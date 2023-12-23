@@ -98,7 +98,7 @@ const HomeTemplate = () => {
 
     // 컴포넌트가 마운트될 때 최초 요청 시작
     fetchData();
-  }, [userId, selectedDate]);
+  }, [userId]);
   //selectedDate 는 임시로 넣어둬서 빼야함
 
   // 메시지 읽기 오픈일 설정
