@@ -21,6 +21,8 @@ body {
     position: relative;
     width: 10em;
     height: 10em;
+    left: -5rem;
+    top: 5rem;
 }
 
 .box-tape,
