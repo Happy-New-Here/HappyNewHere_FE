@@ -20,6 +20,7 @@ export const store = configureStore({
     isAnonymous: isAnonymousSlice,
     search: searchSlice.reducer,
     currentPage: currentPageSlice,
+    searchUser: searchUserSlice.reducer,
     user: userSlice.reducer,
     userInfoInput: UserInfoInputSlice,
     calendar: calendarSlice,
