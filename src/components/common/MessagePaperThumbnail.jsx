@@ -28,6 +28,11 @@ const MessagePaperButton = styled.button`
     width: 70px;
     height: 70px;
 
+    @media (min-width: 768px) {
+      width: 90px;
+      height: 90px;
+    }
+
     // @media (prefers-color-scheme: dark) {
     //   border: 2px solid #9A0501;
     // }
