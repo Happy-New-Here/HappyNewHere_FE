@@ -4,7 +4,7 @@ import axios from "axios";
 export const searchResult = async (search, paging) => {
     try {
         //카카오 로그인 액세스 토큰 받아와야함.
-        const response = await axios.get(`/api/find/${search}?page=${paging}&size=10&sort=nickname,asc`, {
+        const response = await axios.get(`${BASE_URL}/find/${search}?page=${paging}&size=10&sort=nickname,asc`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
                 "Content-Type": "application/json",

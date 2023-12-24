@@ -7,7 +7,7 @@ export const idResult = (userId, stateMessage) => {
         try {
             //카카오 로그인 액세스 토큰 받아와야함.
             const response = await axios.post(
-                `/api/personalInfo?userId=${userId}&stateMsg=${stateMessage}`,
+                `${BASE_URL}/personalInfo?userId=${userId}&stateMsg=${stateMessage}`,
                 { userId, stateMessage },
                 {
                     headers: {
@@ -30,7 +30,7 @@ export const idResult = (userId, stateMessage) => {
 
 export const GetUserInfo = async (dispatch) => {
     axios
-        .get(`/api/userInfo`, {
+        .get(`${BASE_URL}/userInfo`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
             },

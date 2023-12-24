@@ -47,7 +47,7 @@ const ProfileSubmitButton = () => {
 
   const handleClickProfileSubmit = () => {
     axios
-      .post(`/api/createAccount`, paramsToSubmit, {
+      .post(`${BASE_URL}/createAccount`, paramsToSubmit, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
