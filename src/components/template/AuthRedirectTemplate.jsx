@@ -19,7 +19,7 @@ const AuthRedirectTemplate = () => {
     const fetchData = async () => {
       try {
         //카카오 로그인
-        const res = await axios.get(`/api/login/kakao?code=${code}`);
+        const res = await axios.get(`${BASE_URL}/login/kakao?code=${code}`);
         const token = res.data;
 
         dispatch(AuthActions.setSignIn({ status: "success", token: token }));
