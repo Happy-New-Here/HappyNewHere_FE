@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import GlobalFont from "../../styles/fonts";
 
+
 const BellSVG = ({ type = "navy", date = 1, onClick }) => {
   const [isActive, setIsActive] = useState(false);
 
@@ -19,13 +20,13 @@ const BellSVG = ({ type = "navy", date = 1, onClick }) => {
   };
 
   const BellSVGSRC = {
-    navy: "/src/assets/bell_navy.svg",
-    maroon: "/src/assets/bell_maroon.svg",
-    green: "/src/assets/bell_green.svg",
-    pink: "/src/assets/bell_pink.svg",
-    red: "/src/assets/bell_red.svg",
-    white: "/src/assets/bell_white.svg",
-    yellow: "/src/assets/bell_yellow.svg",
+    navy: "../../assets/bell_navy.svg",
+    maroon: "../../assets/bell_maroon.svg",
+    green: "../../assets/bell_maroon.svg",
+    pink: "../../assets/bell_pink.svg",
+    red: "../../assets/bell_red.svg",
+    white: "../../assets/bell_white.svg",
+    yellow: "../../assets/bell_yellow.svg",
   };
 
   const imageSrc = BellSVGSRC[type] || BellSVGSRC[1]; // 기본값은 1
