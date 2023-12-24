@@ -1,34 +1,32 @@
-import {
-    SmallText,
-} from '../../../styles/text';
-import ProfileSearch from './ProfileSearch';
-
+import { SmallText } from "../../../styles/text";
+import ProfileSearch from "./ProfileSearch";
 
 const ResultSearch = ({ onClick, searchResult }) => {
-    console.log("검색결과", searchResult);
+  console.log("검색 결과", searchResult);
 
-    return (
-        <>
-            <SmallText margin="0px 0px 32px 0px" fontWeight="600">검색 결과</SmallText>
-            {searchResult.length > 0 ? (
-                searchResult.map((data, index) => (
-                    <ProfileSearch
-                        key={index}
-                        id={data.accountId}
-                        userId={data.userId}
-                        nickname={data.nickname}
-                        profileImg={data.profileImg}
-                    />
-                ))
-            ) : (
-                <SmallText>검색결과 없습니다.</SmallText>
-            )}
+  return (
+    <>
+      <SmallText margin="0px 0px 32px 0px" fontWeight="600">
+        검색 결과
+      </SmallText>
+      {searchResult.length > 0 ? (
+        searchResult.map((data, index) => (
+          <ProfileSearch
+            key={index}
+            id={data.accountId}
+            userId={data.userId}
+            nickname={data.nickname}
+            profileImg={data.profileImg}
+          />
+        ))
+      ) : (
+        <SmallText>검색 결과가 없습니다.</SmallText>
+      )}
 
-            {searchResult.length === 10 && <button onClick={onClick}>더보기</button>}
-        </>
-
-    )
-}
+      {searchResult.length === 10 && <button onClick={onClick}>더 보기</button>}
+    </>
+  );
+};
 
 export default ResultSearch;
 
