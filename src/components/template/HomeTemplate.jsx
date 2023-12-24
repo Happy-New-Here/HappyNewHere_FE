@@ -31,9 +31,9 @@ const StyledBeforeOpen = styled(PlaceCenter)`
   flex-direction: column;
   height: 100%;
 
-  // @media (min-width: 768px) {
-  //   height: auto;
-  // }
+  @media (min-width: 768px) {
+    gap: 8px;
+  }
 `;
 
 const HomeTemplate = () => {
@@ -123,33 +123,41 @@ const HomeTemplate = () => {
     return (
       <StyledBeforeOpen>
         {!props.isPc && <GiftBox />}
-        <SmallText fontSize="18px" fontWeight="600" lineHeight="24px" textAlign="center">
-          메시지함은
-        </SmallText>
-        <SmallText fontSize="16px" fontWeight="600" lineHeight="40px" textAlign="center">
-          1월 1일에 열 수 있어요!
-        </SmallText>
-        <SmallText
-          fontSize="16px"
-          color="#9A0501"
-          lineHeight="40px"
-          textAlign="center"
-          cursor="pointer"
-          onClick={handleShareLink}
-        >
-          친구들에게 내 메시지함
-        </SmallText>
-        <SmallText
-          fontSize="20px"
-          color="#9A0501"
-          lineHeight="20px"
-          fontWeight="700"
-          textAlign="center"
-          cursor="pointer"
-          onClick={handleShareLink}
-        >
-          링크 공유하기
-        </SmallText>
+        {props.isPc ? (
+          <>
+            <SmallText fontSize="16px" fontWeight="600" lineHeight="24px" textAlign="center">
+              메시지함은 <br /> 1월 1일에 열 수 있어요!
+            </SmallText>
+            <SmallText
+              fontSize="16px"
+              color="#9A0501"
+              lineHeight="24px"
+              textAlign="center"
+              cursor="pointer"
+              onClick={handleShareLink}
+            >
+              친구들에게 내 메시지함
+              <br />
+              <strong>링크 공유하기</strong>
+            </SmallText>
+          </>
+        ) : (
+          <>
+            <SmallText fontSize="16px" fontWeight="600" lineHeight="40px" textAlign="center">
+              메시지함은 1월 1일에 열 수 있어요!
+            </SmallText>
+            <SmallText
+              fontSize="16px"
+              color="#9A0501"
+              lineHeight="24px"
+              textAlign="center"
+              cursor="pointer"
+              onClick={handleShareLink}
+            >
+              친구들에게 내 메시지함 <strong>링크 공유하기</strong>
+            </SmallText>
+          </>
+        )}
       </StyledBeforeOpen>
     );
   };
@@ -191,10 +199,11 @@ const HomeTemplate = () => {
                 ))}
               </Calendar.wrapper>
 
-              {/* 오늘의 질문 */}
-              <TodayQuestionOrganism nickname={nickname} selectedDateForm={selectedDate} />
-
-              {today > targetDate ? null : <GiftBox />}
+              {today > targetDate ? (
+                <TodayQuestionOrganism nickname={nickname} selectedDateForm={selectedDate} />
+              ) : (
+                <GiftBox />
+              )}
 
               {selectedMessageIndex ? <MessageViewOrganism /> : null}
             </Center>
