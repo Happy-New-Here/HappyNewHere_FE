@@ -22,7 +22,7 @@ const BellSVG = ({ type = "navy", date = 1, onClick }) => {
   const BellSVGSRC = {
     navy: "../../assets/bell_navy.svg",
     maroon: "../../assets/bell_maroon.svg",
-    green: "../../assets/bell_maroon.svg",
+    green: "../../assets/bell_green.svg",
     pink: "../../assets/bell_pink.svg",
     red: "../../assets/bell_red.svg",
     white: "../../assets/bell_white.svg",
