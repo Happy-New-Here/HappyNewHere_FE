@@ -1,6 +1,9 @@
-export const MessagePapersSRC = "/src/assets/MessagePapers";
+import MessagePaperSvg from "../assets/MessagePapers";
+import MessageThumbnailsSVG from "../assets/MessageThumbnails";
 
-export const MessageThumbnailsSRC = "/src/assets/MessageThumbnails";
+export const MessagePapersSRC = MessagePaperSvg;
+
+export const MessageThumbnailsSRC = MessageThumbnailsSVG;
 
 // 편지지 컬러별 정렬
 export const MessagePapers = [
