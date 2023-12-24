@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage } from "../../store/currentPageSlice";
@@ -49,6 +49,8 @@ const HomeTemplate = () => {
   const userId = useSelector((state) => state.user.userId);
   const selectedMessageList = useSelector((state) => state.calendar.messagesList);
   const selectedMessageIndex = useSelector((state) => state.calendar.selectedMessageIndex);
+
+  const urlRef = useRef(null);
 
   // currentPage(로그인 후 돌아올 페이지)를 설정하는 코드
   // 최초 마운트시에(만) setCurrentPage를 디스패치
@@ -103,18 +105,22 @@ const HomeTemplate = () => {
   };
 
   const handleShareLink = () => {
-    // 현재 경로/userId를 클립보드에 복사. 'navigator.clipboard' API 사용
-    const url = `${window.location.href}${userId}`;
+    // 현재 경로/userId를 클립보드에 복사.
+    const urlToCopy = `http://happynewhere.kro.kr/${userId}`; // 공유할 링크
 
-    navigator.clipboard
-      .writeText(url)
-      .then(() => {
-        // console.log(`링크 복사 성공: ${url}`);
-        alert(`링크가 클립보드에 복사되었어요. 이제 링크를 원하는 곳에 붙여넣을 수 있어요.`);
-      })
-      .catch((err) => {
-        console.error("링크 복사 실패:", err);
-      });
+    // urlRef의 current 속성을 지정된 요소로 설정
+    urlRef.current = document.createElement("textarea");
+    urlRef.current.value = urlToCopy;
+    document.body.appendChild(urlRef.current);
+
+    // 요소의 내용을 선택하고 클립보드에 복사
+    urlRef.current.select();
+    document.execCommand("copy");
+
+    // 요소를 삭제
+    document.body.removeChild(urlRef.current);
+
+    alert(`링크가 복사되었어요. 이제 링크를 원하는 곳에 붙여넣을 수 있어요.`);
   };
 
   // 오픈일 이전
