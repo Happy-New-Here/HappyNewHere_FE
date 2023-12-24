@@ -9,12 +9,14 @@ import MessagePaperThumbnailOrganism from "../organisms/Message/MessagePaperThum
 import MessageWriteOrganism from "../organisms/Message/MessageWriteOrganism";
 import Footer from "../common/Footer";
 import {
-  ResponsiveLayoutPC,
-  Leftside,
-  Center,
-  Rightside,
-  ContentLayout,
-} from "../../styles/utils";
+    ResponsiveLayoutPC,
+    Leftside,
+    Center,
+    Rightside,
+    ContentLayout,
+    ResponsiveLayoutMobile,
+    ResponsiveLayout,
+} from '../../styles/utils';
 import { useSpring, animated } from "react-spring"; // 애니메이션
 import { useMediaQuery } from "react-responsive";
 import ProfileSearching from "../common/ProfileSearching";
