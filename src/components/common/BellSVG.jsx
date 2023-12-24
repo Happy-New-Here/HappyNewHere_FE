@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import GlobalFont from "../../styles/fonts";
-import navyBell from "../../assets/bell_navy.svg";
-import maroonBell from "../../assets/bell_maroon.svg";
-import greenBell from "../../assets/bell_green.svg";
-import pinkBell from "../../assets/bell_pink.svg";
-import redBell from "../../assets/bell_red.svg";
-import whiteBell from "../../assets/bell_white.svg";
-import yellowBell from "../../assets/bell_yellow.svg";
 
-
+import bell_navy from "../../assets/bell_navy.svg";
+import bell_maroon from "../../assets/bell_maroon.svg";
+import bell_green from "../../assets/bell_green.svg";
+import bell_pink from "../../assets/bell_pink.svg";
+import bell_red from "../../assets/bell_red.svg";
+import bell_white from "../../assets/bell_white.svg";
+import bell_yellow from "../../assets/bell_yellow.svg";
 
 const BellSVG = ({ type = "navy", date = 1, onClick }) => {
   const [isActive, setIsActive] = useState(false);
@@ -28,13 +27,13 @@ const BellSVG = ({ type = "navy", date = 1, onClick }) => {
   };
 
   const BellSVGSRC = {
-    navy: navyBell,
-    maroon: maroonBell,
-    green: greenBell,
-    pink: pinkBell,
-    red: redBell,
-    white: whiteBell,
-    yellow: yellowBell,
+    navy: bell_navy,
+    maroon: bell_maroon,
+    green: bell_green,
+    pink: bell_pink,
+    red: bell_red,
+    white: bell_white,
+    yellow: bell_yellow,
   };
 
   const imageSrc = BellSVGSRC[type] || BellSVGSRC[1]; // 기본값은 1
