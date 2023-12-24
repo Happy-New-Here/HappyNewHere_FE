@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { PlaceCenter, PlaceLeftRow, PlaceLeftColumn } from "../../../styles/utils";
 
@@ -49,7 +50,7 @@ const TodayQuestionText = ({ nickname, selectedDateForm }) => {
     useDate.getMonth() + 1
   }.${useDate.getDate()}`;
   const todayDate = useDate.getDate();
-  const receiverNickname = nickname;
+  const receiverNickname = useSelector((state) => state.searchUser.nickname);
 
   // console.log(`todayDate: ${todayDate}, nickname: ${receiverNickname}`); // 테스트용
 
