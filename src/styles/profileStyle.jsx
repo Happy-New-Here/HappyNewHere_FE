@@ -43,6 +43,8 @@ export const NicknameAndStatemsg = styled(PlaceLeftColumn)`
 `;
 
 export const NicknameContainer = styled.div`
+  flex: 1; // Photo 뺀 나머지 공간 차지하도록
+
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -56,7 +58,7 @@ export const NicknameContainer = styled.div`
 export const Nickname = styled(SmallText)``;
 
 export const StateMsg = styled(SmallText)`
-  font-size: 12px;
+  font-size: 14px;
   color: #959595;
 `;
 
