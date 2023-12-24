@@ -1,4 +1,4 @@
-import { MessagePapersSRC, MessagePapers } from "../utils/MessagePapersSRC";
+// import { MessagePapersSRC, MessagePapers } from "../utils/MessagePapersSRC";
 import { PlaceTopColumn } from "./utils";
 import styled from "styled-components";
 

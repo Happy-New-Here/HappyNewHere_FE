@@ -131,7 +131,7 @@ const HomeTemplate = () => {
         {!props.isPc && <GiftBox />}
         {props.isPc ? (
           <>
-            <SmallText fontSize="16px" fontWeight="600" lineHeight="24px" textAlign="center">
+            <SmallText fontSize="20px" fontWeight="600" lineHeight="24px" textAlign="center">
               메시지함은 <br /> 1월 1일에 열 수 있어요!
             </SmallText>
             <SmallText
@@ -142,14 +142,12 @@ const HomeTemplate = () => {
               cursor="pointer"
               onClick={handleShareLink}
             >
-              친구들에게 내 메시지함
-              <br />
-              <strong>링크 공유하기</strong>
+              친구들에게 내 메시지함 <br /> 링크 공유하기
             </SmallText>
           </>
         ) : (
           <>
-            <SmallText fontSize="16px" fontWeight="600" lineHeight="40px" textAlign="center">
+            <SmallText fontSize="20px" fontWeight="600" lineHeight="40px" textAlign="center">
               메시지함은 1월 1일에 열 수 있어요!
             </SmallText>
             <SmallText
@@ -160,7 +158,7 @@ const HomeTemplate = () => {
               cursor="pointer"
               onClick={handleShareLink}
             >
-              친구들에게 내 메시지함 <strong>링크 공유하기</strong>
+              친구들에게 내 메시지함 링크 공유하기
             </SmallText>
           </>
         )}
