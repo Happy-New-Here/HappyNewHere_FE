@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     ],
   },
   { path: "search", element: <SearchPage /> },
-  { path: "friend/:userId", element: <FriendPage /> },
+  { path: ":userId", element: <FriendPage /> },
   { path: "chatting", element: <ChattingPage /> },
   { path: "editprofile", element: <EditProfilePage /> },
 ]);

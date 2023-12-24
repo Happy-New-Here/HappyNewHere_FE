@@ -8,7 +8,7 @@ import { useState } from "react";
 const ProfileSearch = ({ userId, nickname, profileImg }) => {
   const navigate = useNavigate();
   const myId = localStorage.getItem("userId");
-//   console.log("내 아이디", myId);
+  //   console.log("내 아이디", myId);
   const [toast, setToast] = useState(false);
 
   const onClickProfile = () => {
@@ -20,7 +20,7 @@ const ProfileSearch = ({ userId, nickname, profileImg }) => {
     }
 
     // 다른 동작 처리
-    navigate(`/friend/${userId}`);
+    navigate(`/${userId}`);
   };
 
   return (
