@@ -56,20 +56,20 @@ const TodayQuestionText = ({ nickname, selectedDateForm }) => {
 
   switch (todayDate) {
     case 25:
-      return <p>{receiverNickname}의 매력은 무엇인가요?</p>;
+      return <p>{receiverNickname} 님의 매력이나 장점은 무엇인가요?</p>;
     case 26:
-      return <p>{receiverNickname}의 첫인상은 어땠나요?</p>;
+      return <p>{receiverNickname} 님의 첫인상은 어땠나요?</p>;
     case 27:
-      return <p>{receiverNickname}와/과의 특별한 추억이 있나요?</p>;
+      return <p>{receiverNickname} 님과의 특별한 추억이 있나요?</p>;
     case 28:
-      return <p>{receiverNickname}에게 감동받았던 에피소드가 있나요?</p>;
+      return <p>{receiverNickname} 님에게 감동받았던 에피소드가 있나요?</p>;
     case 29:
-      return <p>{receiverNickname}을/를 떠올렸을 때 생각나는 색깔은?</p>;
+      return <p>{receiverNickname} 님을 떠올렸을 때 생각나는 색깔은?</p>;
     case 30:
-      return <p>내가 아는 {receiverNickname}의 반전스러운 특징이나 모습?</p>;
+      return <p>내가 아는 {receiverNickname} 님의 반전스러운 면?</p>;
     case 31:
       return (
-        <p>곧 맞이할 새해를 기념해서 {receiverNickname}에게 하고싶은 말을 남겨주세요 :)</p>
+        <p>곧 맞이할 새해를 기념해서 {receiverNickname} 님에게 하고싶은 말을 남겨주세요 :)</p>
       );
     default:
       return <p>다음 이벤트 질문을 만들고 있어요! </p>;
