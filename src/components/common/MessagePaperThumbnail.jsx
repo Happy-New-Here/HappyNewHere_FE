@@ -44,12 +44,19 @@ const StyledMessagePaperThumbnail = styled.img`
   border: none;
   border-radius: 5px;
   padding: 0px 0px;
+  cursor: pointer;
+
+  /* Hover 효과: 약간 위로 이동 */
+  transition: transform 0.3s;
+  &:hover {
+    transform: translateY(-4px);
+  }
 
   ${(props) =>
     props.isSelected &&
     `
-    width: 70px;
-    height: 70px;
+    transform: translateY(-4px);
+    z-index: 1;
   `}
 
   @media (min-width: 768px) {
@@ -59,8 +66,8 @@ const StyledMessagePaperThumbnail = styled.img`
     ${(props) =>
       props.isSelected &&
       `
-      width: 90px;
-      height: 90px;
+      transform: translateY(-4px);
+      z-index: 1;
     `}
   }
 `;
