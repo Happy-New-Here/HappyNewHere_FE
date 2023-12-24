@@ -1,7 +1,6 @@
 export const MessagePapersSRC = "/src/assets/MessagePapers";
 export const MessageThumbnailsSRC = "/src/assets/MessageThumbnails";
 
-
 // 편지지 컬러별 정렬
 export const MessagePapers = [
   {
@@ -40,16 +39,3 @@ export const MessagePapers = [
     name: ["Puppy.svg", "Santa.svg", "Together.svg", "Town.svg"],
   },
 ];
-
-// 편지지 바탕색에 따라 메시지 폰트 컬러 적용
-// export const MessageFontColor = (selectedPaperNum) => {
-//   switch (selectedPaperNum) {
-//     case 1:
-//     case 3:
-//       return "black";
-//     case 2:
-//       return "white";
-//     default:
-//       return "unknown";
-//   }
-// };
