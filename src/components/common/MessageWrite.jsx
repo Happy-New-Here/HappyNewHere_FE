@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { setIsMessageWriteVisible } from "../../store/isMessageWriteVisibleSlice";
 import { setMessageInput } from "../../store/messageInputSlice";
-import { MessagePapersSRC } from "../../utils/MessagePapersSRC";
+import { MessagePapersSRC, MessagePapers } from "../../utils/MessagePapersSRC";
 import cancelIcon from "../../assets/cancelIcon.svg";
 import styled from "styled-components";
 import {
@@ -92,12 +92,18 @@ const Message = () => {
 
   const today = new Date();
   const day = today.getDay(); // 일요일: 0 ~ 토요일: 6
+  const imageSRC = `${MessagePapersSRC}/${MessagePapers[day].color}/${MessagePapers[day].name[selectedPaperNum]}`;
 
   return (
     <StyledMessage>
       <CancelIcon src={cancelIcon} alt="cancelIcon" onClick={handleCancelClick} />
 
-      <MessageContainer ref={messageContainerRef} day={day} paperNum={selectedPaperNum}>
+      <MessageContainer
+        ref={messageContainerRef}
+        // day={day}
+        // paperNum={selectedPaperNum}
+        src={imageSRC}
+      >
         <MessageText>
           <ReceiverOrSender>To. {receiver}</ReceiverOrSender>
           <TextArea
