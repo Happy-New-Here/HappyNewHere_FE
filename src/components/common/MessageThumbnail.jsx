@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-// import { MessageThumbnailsSRC, MessagePapers } from "../../utils/MessagePapersSRC";
+import { MessageThumbnailsSRC, MessagePapers } from "../../utils/MessagePapersSRC";
 import { PlaceLeftRow } from "../../styles/utils";
 import { SmallText } from "../../styles/text";
 
@@ -90,21 +90,7 @@ const MessageThumbnail = (props) => {
   };
   const dayColor = dayColorMapping[day];
 
-  const MessagePapersSRC = {
-    Navy: { 0: NavyPuppy, 1: NavySanta, 2: NavyTogether, 3: NavyTown },
-    Brown: { 0: BrownPuppy, 1: BrownSanta, 2: BrownTogether, 3: BrownTown },
-    Green: { 0: GreenPuppy, 1: GreenSanta, 2: GreenTogether, 3: GreenTown },
-    Pink: { 0: PinkPuppy, 1: PinkSanta, 2: PinkTogether, 3: PinkTown },
-    Red: { 0: RedPuppy, 1: RedSanta, 2: RedTogether, 3: RedTown },
-    White: { 0: WhitePuppy, 1: WhiteSanta, 2: WhiteTogether, 3: WhiteTown },
-    Yellow: {
-      0: YellowPuppy,
-      1: YellowSanta,
-      2: YellowTogether,
-      3: YellowTown,
-    },
-  };
-  const imageSRC = MessagePapersSRC[dayColor]?.[paperNum] || NavyPuppy; // 기본값으로 NavyPuppy
+  const imageSRC = MessagePapers[dayColor]?.[paperNum] || NavyPuppy; // 기본값으로 NavyPuppy
 
   const handleClick = () => {
     onClick();

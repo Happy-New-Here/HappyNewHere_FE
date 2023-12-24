@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { setIsMessageWriteVisible } from "../../store/isMessageWriteVisibleSlice";
 import { setMessageInput } from "../../store/messageInputSlice";
-// import { MessagePapersSRC, MessagePapers } from "../../utils/MessagePapersSRC";
+import { MessagePapersSRC, MessagePapers } from "../../utils/MessagePapersSRC";
 import cancelIcon from "../../assets/cancelIcon.svg";
 import styled from "styled-components";
 import {
@@ -139,21 +139,7 @@ const Message = () => {
   };
   const dayColor = dayColorMapping[day];
 
-  const MessagePapersSRC = {
-    Navy: { 0: NavyPuppy, 1: NavySanta, 2: NavyTogether, 3: NavyTown },
-    Brown: { 0: BrownPuppy, 1: BrownSanta, 2: BrownTogether, 3: BrownTown },
-    Green: { 0: GreenPuppy, 1: GreenSanta, 2: GreenTogether, 3: GreenTown },
-    Pink: { 0: PinkPuppy, 1: PinkSanta, 2: PinkTogether, 3: PinkTown },
-    Red: { 0: RedPuppy, 1: RedSanta, 2: RedTogether, 3: RedTown },
-    White: { 0: WhitePuppy, 1: WhiteSanta, 2: WhiteTogether, 3: WhiteTown },
-    Yellow: {
-      0: YellowPuppy,
-      1: YellowSanta,
-      2: YellowTogether,
-      3: YellowTown,
-    },
-  };
-  const imageSRC = MessagePapersSRC[dayColor]?.[selectedPaperNum] || NavyPuppy; // 기본값으로 NavyPuppy
+  const imageSRC = MessagePapers[dayColor]?.[selectedPaperNum] || NavyPuppy; // 기본값으로 NavyPuppy
 
   return (
     <StyledMessage>
