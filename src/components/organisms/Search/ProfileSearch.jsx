@@ -38,7 +38,7 @@ const ProfileSearch = ({ userId, nickname, profileImg }) => {
             alt="이미지"
           />
         )}
-        <TextWrapper>
+        <TextWrapper className="flex justify-start">
           <SmallText fontSize="0.75rem" margin="0px 0px 10px 0px">
             {userId}
           </SmallText>
