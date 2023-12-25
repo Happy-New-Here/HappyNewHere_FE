@@ -44,11 +44,15 @@ const AuthTemplate = () => {
             <TextWrapper>
               <SmallText fontWeight="600" justifycontent="center" textalign="center">
                 가장 추운 계절에 만나는
-                <br /> 따뜻한 시작,
+              </SmallText>
+              <SmallText fontWeight="600" justifycontent="center" textalign="center">
+                따뜻한 시작,
               </SmallText>
               <SmallText fontWeight="600" justifycontent="center" textalign="center">
                 바로 여기, 해피뉴히어에서
-                <br /> 친구에게 따뜻한 마음을 전해보세요!
+              </SmallText>
+              <SmallText fontWeight="600" justifycontent="center" textalign="center">
+                친구에게 따뜻한 마음을 전해보세요!
               </SmallText>
             </TextWrapper>
             <ButtonWrapper>
