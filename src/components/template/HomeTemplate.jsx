@@ -131,7 +131,7 @@ const HomeTemplate = () => {
         {!props.isPc && <GiftBox />}
         {props.isPc ? (
           <>
-            <SmallText fontSize="20px" fontWeight="600" lineHeight="24px" textAlign="center">
+            <SmallText fontSize="18px" fontWeight="600" lineHeight="24px" textAlign="center">
               메시지함은 <br /> 1월 1일에 열 수 있어요!
             </SmallText>
             <SmallText
