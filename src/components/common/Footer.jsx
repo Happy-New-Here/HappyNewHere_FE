@@ -24,7 +24,6 @@ const Footer = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const togoHome = () => {
     if (messageInput) {
@@ -132,9 +131,7 @@ const Footer = () => {
               />
             </svg>
             <p
-              className={`${
-                currentPage === "/" ? "text-[#9a0501]" : "text-[#909090]"
-              } 
+              className={`${currentPage === "/" ? "text-[#9a0501]" : "text-[#909090]"} 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               홈
@@ -164,9 +161,7 @@ const Footer = () => {
               />
             </svg>
             <p
-              className={`${
-                currentPage === "/search" ? "text-[#9a0501]" : "text-[#909090]"
-              } 
+              className={`${currentPage === "/search" ? "text-[#9a0501]" : "text-[#909090]"} 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               검색
@@ -193,11 +188,7 @@ const Footer = () => {
               />
             </svg>
             <p
-              className={`${
-                currentPage === "/chatting"
-                  ? "text-[#9a0501]"
-                  : "text-[#909090]"
-              } 
+              className={`${currentPage === "/chatting" ? "text-[#9a0501]" : "text-[#909090]"} 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               채팅
@@ -222,9 +213,7 @@ const Footer = () => {
               />
             </svg>
             <p
-              className={`${
-                currentPage === "/manual" ? "text-[#9a0501]" : "text-[#909090]"
-              } 
+              className={`${currentPage === "/manual" ? "text-[#9a0501]" : "text-[#909090]"} 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               도움말
@@ -249,9 +238,7 @@ const Footer = () => {
               />
               <p
                 className={`${
-                  currentPage === "/editprofile"
-                    ? "text-[#9a0501]"
-                    : "text-[#909090]"
+                  currentPage === "/editprofile" ? "text-[#9a0501]" : "text-[#909090]"
                 } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
               >
                 마이페이지
@@ -368,9 +355,7 @@ const Footer = () => {
             </svg>
             <p
               className={`${
-                currentPage === "/chatting"
-                  ? "text-[#9a0501]"
-                  : "text-[#909090]"
+                currentPage === "/chatting" ? "text-[#9a0501]" : "text-[#909090]"
               } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               채팅
@@ -395,9 +380,7 @@ const Footer = () => {
               />
               <p
                 className={`${
-                  currentPage === "/editprofile"
-                    ? "text-[#9a0501]"
-                    : "text-[#909090]"
+                  currentPage === "/editprofile" ? "text-[#9a0501]" : "text-[#909090]"
                 } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
               >
                 My
