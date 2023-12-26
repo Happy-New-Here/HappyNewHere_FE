@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { REST_API_KEY } from "../../../utils/URL";
 
 const KakaoLoginBtn = () => {
-  const REDIRECT_URI = "http://happynewhere.kro.kr/auth/kakao/callback";
+  const REDIRECT_URI = "http://3.39.29.176/auth/kakao/callback";
   const KAKAO_AUTH_URI = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   return (
