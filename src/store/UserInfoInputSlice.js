@@ -6,14 +6,16 @@ const nickname = localStorage.getItem("nickname");
 const profileImg = localStorage.getItem("profileImg");
 const stateMsg = localStorage.getItem("stateMsg");
 
+const initialState = {
+  userIdInput: userId,
+  nicknameInput: nickname,
+  profileImgInput: profileImg,
+  stateMsgInput: stateMsg,
+};
+
 const UserInfoInputSlice = createSlice({
   name: "userInfoInput",
-  initialState: {
-    userIdInput: userId,
-    nicknameInput: nickname,
-    profileImgInput: profileImg,
-    stateMsgInput: stateMsg,
-  },
+  initialState: initialState,
   reducers: {
     setUserIdInput(state, action) {
       state.userIdInput = action.payload;
@@ -30,9 +32,18 @@ const UserInfoInputSlice = createSlice({
     setStateMsgInput(state, action) {
       state.stateMsgInput = action.payload;
     },
+
+    resetUserInfoInput(state) {
+      return initialState;
+    },
   },
 });
 
-export const { setUserIdInput, setNicknameInput, setProfileImgInput, setStateMsgInput } =
-  UserInfoInputSlice.actions;
+export const {
+  setUserIdInput,
+  setNicknameInput,
+  setProfileImgInput,
+  setStateMsgInput,
+  resetUserInfoInput,
+} = UserInfoInputSlice.actions;
 export default UserInfoInputSlice.reducer;

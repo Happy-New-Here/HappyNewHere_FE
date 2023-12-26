@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setCurrentPage } from "../../store/currentPageSlice";
+import { setMessageInput } from "../../store/messageInputSlice";
+import { setIsAnonymous } from "../../store/isAnonymousSlice";
+import { setSelectedPaperNum } from "../../store/selectedPaperNumSlice";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
 
@@ -17,24 +20,69 @@ const Footer = () => {
   const accessToken = localStorage.getItem("accessToken"); // 로컬스토리지의 엑세스토큰 불러오기
   const profileImg = localStorage.getItem("profileImg");
   const currentPage = useSelector((state) => state.currentPage);
+  const messageInput = useSelector((state) => state.messageInput);
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const togoHome = () => {
-    navigate("/");
+    if (messageInput) {
+      const isConfirmed = confirm(
+        "메시지 쓰기를 취소하시겠어요? 작성하신 메시지는 저장되지 않아요. "
+      );
+
+      if (isConfirmed) {
+        navigate("/");
+        dispatch(setMessageInput(""));
+        dispatch(setIsAnonymous(false));
+        dispatch(setSelectedPaperNum(0));
+      }
+    } else navigate("/");
   };
 
   const togoSearch = () => {
-    navigate("/search");
+    if (messageInput) {
+      const isConfirmed = confirm(
+        "메시지 쓰기를 취소하시겠어요? 작성하신 메시지는 저장되지 않아요. "
+      );
+
+      if (isConfirmed) {
+        navigate("/search");
+        dispatch(setMessageInput(""));
+        dispatch(setIsAnonymous(false));
+        dispatch(setSelectedPaperNum(0));
+      }
+    } else navigate("/search");
   };
 
   const togoChatting = () => {
-    navigate("/chatting");
+    if (messageInput) {
+      const isConfirmed = confirm(
+        "메시지 쓰기를 취소하시겠어요? 작성하신 메시지는 저장되지 않아요. "
+      );
+
+      if (isConfirmed) {
+        navigate("/chatting");
+        dispatch(setMessageInput(""));
+        dispatch(setIsAnonymous(false));
+        dispatch(setSelectedPaperNum(0));
+      }
+    } else navigate("/chatting");
   };
 
   const togoMypage = () => {
-    navigate("/editprofile");
+    if (messageInput) {
+      const isConfirmed = confirm(
+        "메시지 쓰기를 취소하시겠어요? 작성하신 메시지는 저장되지 않아요. "
+      );
+
+      if (isConfirmed) {
+        navigate("/editprofile");
+        dispatch(setMessageInput(""));
+        dispatch(setIsAnonymous(false));
+        dispatch(setSelectedPaperNum(0));
+      }
+    } else navigate("/editprofile");
   };
 
   const togoInfo = () => {
@@ -83,9 +131,7 @@ const Footer = () => {
               />
             </svg>
             <p
-              className={`${
-                currentPage === "/" ? "text-[#9a0501]" : "text-[#909090]"
-              } 
+              className={`${currentPage === "/" ? "text-[#9a0501]" : "text-[#909090]"} 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               홈
@@ -115,9 +161,7 @@ const Footer = () => {
               />
             </svg>
             <p
-              className={`${
-                currentPage === "/search" ? "text-[#9a0501]" : "text-[#909090]"
-              } 
+              className={`${currentPage === "/search" ? "text-[#9a0501]" : "text-[#909090]"} 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               검색
@@ -144,11 +188,7 @@ const Footer = () => {
               />
             </svg>
             <p
-              className={`${
-                currentPage === "/chatting"
-                  ? "text-[#9a0501]"
-                  : "text-[#909090]"
-              } 
+              className={`${currentPage === "/chatting" ? "text-[#9a0501]" : "text-[#909090]"} 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               채팅
@@ -173,9 +213,7 @@ const Footer = () => {
               />
             </svg>
             <p
-              className={`${
-                currentPage === "/manual" ? "text-[#9a0501]" : "text-[#909090]"
-              } 
+              className={`${currentPage === "/manual" ? "text-[#9a0501]" : "text-[#909090]"} 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               도움말
@@ -200,9 +238,7 @@ const Footer = () => {
               />
               <p
                 className={`${
-                  currentPage === "/editprofile"
-                    ? "text-[#9a0501]"
-                    : "text-[#909090]"
+                  currentPage === "/editprofile" ? "text-[#9a0501]" : "text-[#909090]"
                 } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
               >
                 마이페이지
@@ -319,9 +355,7 @@ const Footer = () => {
             </svg>
             <p
               className={`${
-                currentPage === "/chatting"
-                  ? "text-[#9a0501]"
-                  : "text-[#909090]"
+                currentPage === "/chatting" ? "text-[#9a0501]" : "text-[#909090]"
               } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               채팅
@@ -346,9 +380,7 @@ const Footer = () => {
               />
               <p
                 className={`${
-                  currentPage === "/editprofile"
-                    ? "text-[#9a0501]"
-                    : "text-[#909090]"
+                  currentPage === "/editprofile" ? "text-[#9a0501]" : "text-[#909090]"
                 } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
               >
                 My
