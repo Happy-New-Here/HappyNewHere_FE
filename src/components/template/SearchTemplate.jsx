@@ -27,13 +27,15 @@ const SearchTemplate = () => {
   const dispatch = useDispatch();
   const formData = useSelector((state) => state.search.search);
   const currentPage = useSelector((state) => state.currentPage);
+  // const search = useSelector((state) => state.search.search);
   // const recentSearchHistory = useSelector((state) => state.search.history);
   const [inputValue, setInputValue] = useState("");
   const [resultData, setResultData] = useState([]);
   const [pageNum, setPageNum] = useState(0);
 
   useEffect(() => {
-    const savedHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+    const savedHistory =
+      JSON.parse(localStorage.getItem("searchHistory")) || [];
     dispatch(SearchAction.addSearchToHistory(savedHistory));
   }, [dispatch]);
 
@@ -62,6 +64,10 @@ const SearchTemplate = () => {
     }
   };
 
+  useEffect(() => {
+    onClickSearch();
+  }, [formData]);
+
   const onClickSearch = async () => {
     try {
       setResultData([]);
@@ -69,18 +75,31 @@ const SearchTemplate = () => {
       const result = await searchResult(formData, pageNum);
       //console.log('Search result:', result.content);
       const newResultData = result.content;
-
-      const searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
-      if (!searchHistory.includes(formData)) {
-        searchHistory.unshift(formData);
-        if (searchHistory.length > 10) {
-          searchHistory.pop();
+      if (result.content.length > 0) {
+        const searchHistory =
+          JSON.parse(localStorage.getItem("searchHistory")) || [];
+        if (!searchHistory.includes(formData)) {
+          searchHistory.unshift(formData);
+          if (searchHistory.length > 10) {
+            searchHistory.pop();
+          }
+          localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+          dispatch(SearchAction.addSearchToHistory({ searchItem: formData }));
         }
-        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-        dispatch(SearchAction.addSearchToHistory({ searchItem: formData }));
-      }
 
-      setResultData(newResultData);
+        setResultData(newResultData);
+      }
+      // const searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+      // if (!searchHistory.includes(formData)) {
+      //   searchHistory.unshift(formData);
+      //   if (searchHistory.length > 10) {
+      //     searchHistory.pop();
+      //   }
+      //   localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+      //   dispatch(SearchAction.addSearchToHistory({ searchItem: formData }));
+      // }
+
+      // setResultData(newResultData);
 
       return newResultData;
     } catch (error) {
@@ -91,7 +110,7 @@ const SearchTemplate = () => {
   };
 
   const handleResetSearch = (e) => {
-    setInputValue("");
+    // setInputValue("");
     dispatch(SearchAction.resetSearch(e.target.value));
     setResultData([]);
   };
@@ -108,19 +127,19 @@ const SearchTemplate = () => {
           <InsideLayoutPC>
             <SearchTemplateWrapper>
               <SearchBar
-                onClick={onClickSearch}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    onClickSearch();
-                  }
-                }}
+                // onClick={onClickSearch}
+                // onKeyDown={(e) => {
+                //   if (e.key === "Enter") {
+                //     onClickSearch();
+                //   }
+                // }}
                 onChange={(e) => {
-                  setInputValue(e.target.value);
+                  // setInputValue(e.target.value);
                   dispatch(SearchAction.setSearch(e.target.value));
                   setResultData([]);
                 }}
                 onReset={handleResetSearch}
-                value={inputValue}
+                value={formData}
               />
               <TextWrapper>
                 <SmallText
@@ -145,19 +164,19 @@ const SearchTemplate = () => {
           <InsideLayoutMobile>
             <SearchTemplateWrapper>
               <SearchBar
-                onClick={onClickSearch}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    onClickSearch();
-                  }
-                }}
+                // onClick={onClickSearch}
+                // onKeyDown={(e) => {
+                //   if (e.key === "Enter") {
+                //     onClickSearch();
+                //   }
+                // }}
                 onChange={(e) => {
-                  setInputValue(e.target.value);
+                  // setInputValue(e.target.value);
                   dispatch(SearchAction.setSearch(e.target.value));
                   setResultData([]);
                 }}
                 onReset={handleResetSearch}
-                value={inputValue}
+                value={formData}
               />
               <TextWrapper>
                 <SmallText
