@@ -98,7 +98,7 @@ const IdTemplate = () => {
             <img className="mb-7" src={logo} alt="HappyHaedalLogo" />
             <div className="flex justify-center">
               <SmallText lineHeight="24px" className="justify-center text-center font-bold">
-                해피뉴히어에서 사용하실
+                해피뉴히어에서 사용하실&nbsp;
               </SmallText>
               <SmallText lineHeight="24px" className="justify-center text-center font-bold">
                 프로필을 설정해주세요!
