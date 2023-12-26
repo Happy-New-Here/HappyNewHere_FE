@@ -1,7 +1,7 @@
 import { SmallText } from "../../../styles/text";
 import ProfileSearch from "./ProfileSearch";
 
-const ResultSearch = ({ onClick, searchResult }) => {
+const ResultSearch = ({ onClick, searchResult, setResultData }) => {
   console.log("검색 결과", searchResult);
 
   return (
@@ -17,6 +17,7 @@ const ResultSearch = ({ onClick, searchResult }) => {
             userId={data.userId}
             nickname={data.nickname}
             profileImg={data.profileImg}
+            setResultData={setResultData}
           />
         ))
       ) : (
