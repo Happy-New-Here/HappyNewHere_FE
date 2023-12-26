@@ -7,6 +7,7 @@ import SearchPage from "./pages/Search";
 import FriendPage from "./pages/Friend";
 import ChattingPage from "./pages/Chatting";
 import EditProfilePage from "./pages/EditProfile";
+import InfoPage from "./pages/Info";
 
 const router = createBrowserRouter([
   { index: true, path: "/", element: <HomePage /> },
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
   { path: ":userId", element: <FriendPage /> },
   { path: "chatting", element: <ChattingPage /> },
   { path: "editprofile", element: <EditProfilePage /> },
+  { path: "manual", element: <InfoPage /> },
 ]);
 
 function App() {
