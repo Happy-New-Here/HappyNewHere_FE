@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
+import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage } from "../../store/currentPageSlice";
 import Header from "../common/Header";
 import Footer from "../common/Footer";
@@ -31,6 +32,12 @@ const InfoTemplate = ({ isPC }) => {
   const isPc = useMediaQuery({
     query: "(min-width:768px)",
   });
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setCurrentPage("/manual"));
+  }, [dispatch]);
 
   return (
     <>

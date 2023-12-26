@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setCurrentPage } from "../../store/currentPageSlice";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
 
@@ -18,6 +19,7 @@ const Footer = () => {
   const currentPage = useSelector((state) => state.currentPage);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const togoHome = () => {
     navigate("/");
@@ -51,6 +53,10 @@ const Footer = () => {
   const isPc = useMediaQuery({
     query: "(min-width:768px)",
   });
+
+  useEffect(() => {
+    dispatch(setCurrentPage("/"));
+  }, [dispatch]);
 
   return (
     <>
