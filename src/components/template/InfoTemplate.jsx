@@ -16,7 +16,7 @@ import { SmallText } from "../../styles/text";
 import styled from "styled-components";
 import { ContentLayoutMobile } from "../organisms/Home/ContentLayoutMobile";
 
-import manual from "../../assets/manual.png";
+import manual from "../../assets/manual.svg";
 
 const StyledBeforeOpen = styled(PlaceCenter)`
   flex-direction: column;
@@ -27,7 +27,7 @@ const StyledBeforeOpen = styled(PlaceCenter)`
   }
 `;
 
-const InfoTemplate = () => {
+const InfoTemplate = ({ isPC }) => {
   const isPc = useMediaQuery({
     query: "(min-width:768px)",
   });
