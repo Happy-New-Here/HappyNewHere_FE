@@ -70,7 +70,7 @@ const IdTemplate = () => {
           <LogoWrapper />
           <TextWrapper>
             <SmallText lineHeight="24px" className="justify-center text-center font-bold">
-              Happy New Here에서 사용하실 ID를 알려주세요!
+              해피뉴히어에서 사용하실 프로필을 설정해주세요!
             </SmallText>
             <SmallText
               fontSize="14px"
@@ -78,7 +78,7 @@ const IdTemplate = () => {
               lineHeight="24px"
               className="justify-center text-center"
             >
-              한 번 설정한 ID는 변경할 수 없어요.
+              * 한 번 설정한 ID는 변경할 수 없어요.
             </SmallText>
           </TextWrapper>
           <IdInputForm>
@@ -98,10 +98,10 @@ const IdTemplate = () => {
             <img className="mb-7" src={logo} alt="HappyHaedalLogo" />
             <div className="flex justify-center">
               <SmallText lineHeight="24px" className="justify-center text-center font-bold">
-                Happy New Here에서 사용하실
+                해피뉴히어에서 사용하실&nbsp;
               </SmallText>
               <SmallText lineHeight="24px" className="justify-center text-center font-bold">
-                ID를 알려주세요!
+                프로필을 설정해주세요!
               </SmallText>
             </div>
             <SmallText
@@ -110,7 +110,7 @@ const IdTemplate = () => {
               lineHeight="24px"
               className="justify-center text-center"
             >
-              한 번 설정한 ID는 변경할 수 없어요.
+              * 한 번 설정한 ID는 변경할 수 없어요.
             </SmallText>
             <IdInputForm>
               <IdInputContainer>

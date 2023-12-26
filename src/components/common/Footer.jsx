@@ -41,12 +41,13 @@ const Footer = () => {
     navigate("/manual");
   };
 
-  const havetoLogin = () => {
-    alert("로그인 후 이용 가능합니다.");
+  const togoAuth = () => {
     navigate("/auth");
   };
 
-  const handleLoginIconClick = () => {
+  //로그인 알림을 위한 함수
+  const havetoLogin = () => {
+    alert("로그인 후 이용 가능합니다.");
     navigate("/auth");
   };
 
@@ -65,7 +66,7 @@ const Footer = () => {
           {/* 홈 */}
           <button
             className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]"
-            onClick={accessToken ? togoHome : havetoLogin}
+            onClick={accessToken ? togoHome : togoAuth}
           >
             <svg
               width={12}
@@ -94,7 +95,7 @@ const Footer = () => {
           {/* 검색 */}
           <button
             className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]"
-            onClick={accessToken ? togoSearch : havetoLogin}
+            onClick={togoSearch}
           >
             <svg
               width={12}
@@ -126,7 +127,7 @@ const Footer = () => {
           {/* 채팅 */}
           <button
             className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]"
-            onClick={accessToken ? togoChatting : havetoLogin}
+            onClick={accessToken ? togoChatting : togoAuth}
           >
             <svg
               width={12}
@@ -210,7 +211,7 @@ const Footer = () => {
           ) : (
             <button
               className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]"
-              onClick={handleLoginIconClick}
+              onClick={togoAuth}
             >
               <svg
                 width={12}
@@ -241,7 +242,7 @@ const Footer = () => {
           {/* 홈 */}
           <button
             className="w-1/4 h-full flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
-            onClick={accessToken ? togoHome : havetoLogin}
+            onClick={accessToken ? togoHome : togoAuth}
           >
             <svg
               width={16}
@@ -269,7 +270,7 @@ const Footer = () => {
           {/* 검색 */}
           <button
             className="w-1/4 h-full flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
-            onClick={accessToken ? togoSearch : havetoLogin}
+            onClick={togoSearch}
           >
             <svg
               width={21}
@@ -300,7 +301,7 @@ const Footer = () => {
           {/* 채팅  */}
           <button
             className="w-1/4 h-full flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
-            onClick={accessToken ? togoChatting : havetoLogin}
+            onClick={accessToken ? togoChatting : togoAuth}
           >
             <svg
               width={21}
@@ -356,7 +357,7 @@ const Footer = () => {
           ) : (
             <button
               className="w-1/4 h-full flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
-              onClick={handleLoginIconClick}
+              onClick={togoAuth}
             >
               <svg
                 width={21}
