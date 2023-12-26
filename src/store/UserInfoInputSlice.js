@@ -30,9 +30,18 @@ const UserInfoInputSlice = createSlice({
     setStateMsgInput(state, action) {
       state.stateMsgInput = action.payload;
     },
+
+    resetUserInfoInput(state) {
+      return initialState;
+    },
   },
 });
 
-export const { setUserIdInput, setNicknameInput, setProfileImgInput, setStateMsgInput } =
-  UserInfoInputSlice.actions;
+export const {
+  setUserIdInput,
+  setNicknameInput,
+  setProfileImgInput,
+  setStateMsgInput,
+  resetUserInfoInput,
+} = UserInfoInputSlice.actions;
 export default UserInfoInputSlice.reducer;
