@@ -6,7 +6,6 @@ import { setIsAnonymous } from "../../store/isAnonymousSlice";
 import { setSelectedPaperNum } from "../../store/selectedPaperNumSlice";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
-import { setIsAnonymous } from "../../store/isAnonymousSlice";
 
 const PCFooter = styled.div``;
 
