@@ -29,15 +29,15 @@ const SearchTemplate = () => {
   const currentPage = useSelector((state) => state.currentPage);
   // const search = useSelector((state) => state.search.search);
   // const recentSearchHistory = useSelector((state) => state.search.history);
-  const [inputValue, setInputValue] = useState("");
+  // const [inputValue, setInputValue] = useState("");
   const [resultData, setResultData] = useState([]);
   const [pageNum, setPageNum] = useState(0);
 
-  useEffect(() => {
-    const savedHistory =
-      JSON.parse(localStorage.getItem("searchHistory")) || [];
-    dispatch(SearchAction.addSearchToHistory(savedHistory));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   const savedHistory =
+  //     JSON.parse(localStorage.getItem("searchHistory")) || [];
+  //   dispatch(SearchAction.addSearchToHistory(savedHistory));
+  // }, [dispatch]);
 
   // currentPage(로그인 후 돌아올 페이지)를 설정하는 코드
   // 최초 마운트시에(만) setCurrentPage를 디스패치
@@ -75,20 +75,20 @@ const SearchTemplate = () => {
       const result = await searchResult(formData, pageNum);
       //console.log('Search result:', result.content);
       const newResultData = result.content;
-      if (result.content.length > 0) {
-        const searchHistory =
-          JSON.parse(localStorage.getItem("searchHistory")) || [];
-        if (!searchHistory.includes(formData)) {
-          searchHistory.unshift(formData);
-          if (searchHistory.length > 10) {
-            searchHistory.pop();
-          }
-          localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-          dispatch(SearchAction.addSearchToHistory({ searchItem: formData }));
-        }
+      // if (result.content.length > 0) {
+      //   const searchHistory =
+      //     JSON.parse(localStorage.getItem("searchHistory")) || [];
+      //   if (!searchHistory.includes(formData)) {
+      //     searchHistory.unshift(formData);
+      //     if (searchHistory.length > 10) {
+      //       searchHistory.pop();
+      //     }
+      //     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+      //     dispatch(SearchAction.addSearchToHistory({ searchItem: formData }));
+      //   }
 
-        setResultData(newResultData);
-      }
+      //   setResultData(newResultData);
+      // }
       // const searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
       // if (!searchHistory.includes(formData)) {
       //   searchHistory.unshift(formData);
@@ -99,7 +99,7 @@ const SearchTemplate = () => {
       //   dispatch(SearchAction.addSearchToHistory({ searchItem: formData }));
       // }
 
-      // setResultData(newResultData);
+      setResultData(newResultData);
 
       return newResultData;
     } catch (error) {
@@ -153,7 +153,7 @@ const SearchTemplate = () => {
               </TextWrapper>
             </SearchTemplateWrapper>
             {formData.length > 0 ? (
-              <ResultSearch searchResult={resultData} onClick={onClickCount} />
+              <ResultSearch searchResult={resultData} onClick={onClickCount}/>
             ) : (
               <RecentSearch />
             )}
