@@ -9,14 +9,14 @@ import MessagePaperThumbnailOrganism from "../organisms/Message/MessagePaperThum
 import MessageWriteOrganism from "../organisms/Message/MessageWriteOrganism";
 import Footer from "../common/Footer";
 import {
-    ResponsiveLayoutPC,
-    Leftside,
-    Center,
-    Rightside,
-    ContentLayout,
-    ResponsiveLayoutMobile,
-    ResponsiveLayout,
-} from '../../styles/utils';
+  ResponsiveLayoutPC,
+  Leftside,
+  Center,
+  Rightside,
+  ContentLayout,
+  ResponsiveLayoutMobile,
+  ResponsiveLayout,
+} from "../../styles/utils";
 import { useSpring, animated } from "react-spring"; // 애니메이션
 import { useMediaQuery } from "react-responsive";
 import ProfileSearching from "../common/ProfileSearching";
@@ -50,7 +50,7 @@ const MessageWriteTemplate = () => {
   // currentPage(로그인 후 돌아올 페이지)를 설정하는 코드
   // 최초 마운트시에(만) setCurrentPage를 디스패치
   useEffect(() => {
-    dispatch(setCurrentPage("/:userId")); // 특정 친구 페이지로 이동하도록 추후 수정
+    dispatch(setCurrentPage(`/${userId}`));
   }, [dispatch]);
 
   // 로컬스토리지에 currentPage 값을 저장 (앱 리렌더링 시에도 값 보존 위해서)
