@@ -71,7 +71,7 @@ const Footer = () => {
             <svg
               width={12}
               height={14}
-              viewBox="0 0 16 16"
+              viewBox="0 0 12 14"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className="flex-grow-0 flex-shrink-0"
@@ -100,7 +100,7 @@ const Footer = () => {
             <svg
               width={12}
               height={12}
-              viewBox="0 0 16 16"
+              viewBox="0 0 12 12"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className="flex-grow-0 flex-shrink-0"
@@ -132,7 +132,7 @@ const Footer = () => {
             <svg
               width={12}
               height={12}
-              viewBox="0 0 16 16"
+              viewBox="0 0 12 12"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className="flex-grow-0 flex-shrink-0"
@@ -163,8 +163,8 @@ const Footer = () => {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width={12}
-              height={12}
-              viewBox="0 0 16 16"
+              height={16}
+              viewBox="0 0 16 12"
               fill="none"
             >
               <path
@@ -216,7 +216,7 @@ const Footer = () => {
               <svg
                 width={12}
                 height={12}
-                viewBox="0 0 26 24"
+                viewBox="0 0 22 22"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className="flex-grow-0 flex-shrink-0"
@@ -360,9 +360,9 @@ const Footer = () => {
               onClick={togoAuth}
             >
               <svg
-                width={21}
-                height={19}
-                viewBox="0 0 25 21"
+                width={24}
+                height={20}
+                viewBox="0 0 24 20"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className="flex-grow-0 flex-shrink-0"
