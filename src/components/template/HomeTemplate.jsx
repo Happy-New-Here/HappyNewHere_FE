@@ -23,7 +23,11 @@ import { SmallText } from "../../styles/text";
 import styled from "styled-components";
 import axios from "axios";
 import { BASE_URL } from "../../utils/URL";
-import { setCalendar, setMessagesList, setOwner } from "../../store/calendar-slice";
+import {
+  setCalendar,
+  setMessagesList,
+  setOwner,
+} from "../../store/calendar-slice";
 import TodayQuestionOrganism from "../organisms/Message/TodayQuestionOrganism";
 import { ContentLayoutMobile } from "../organisms/Home/ContentLayoutMobile";
 
@@ -47,8 +51,12 @@ const HomeTemplate = () => {
   const nickname = useSelector((state) => state.user.nickname);
   const currentPage = useSelector((state) => state.currentPage);
   const userId = useSelector((state) => state.user.userId);
-  const selectedMessageList = useSelector((state) => state.calendar.messagesList);
-  const selectedMessageIndex = useSelector((state) => state.calendar.selectedMessageIndex);
+  const selectedMessageList = useSelector(
+    (state) => state.calendar.messagesList
+  );
+  const selectedMessageIndex = useSelector(
+    (state) => state.calendar.selectedMessageIndex
+  );
 
   const urlRef = useRef(null);
 
@@ -86,7 +94,7 @@ const HomeTemplate = () => {
         }
       } catch (error) {
         // 에러 처리
-        alert("편지가 오는 중입니다. 새로고침으로 받아보세요 !");
+        // alert("편지가 오는 중입니다. 새로고침으로 받아보세요 !");
         console.error("Error fetching user messages:", error);
       }
     };
@@ -131,7 +139,12 @@ const HomeTemplate = () => {
         {!props.isPc && <GiftBox />}
         {props.isPc ? (
           <>
-            <SmallText fontSize="18px" fontWeight="600" lineHeight="24px" textAlign="center">
+            <SmallText
+              fontSize="18px"
+              fontWeight="600"
+              lineHeight="24px"
+              textAlign="center"
+            >
               메시지함은 <br /> 1월 1일에 열 수 있어요!
             </SmallText>
             <SmallText
@@ -147,7 +160,12 @@ const HomeTemplate = () => {
           </>
         ) : (
           <>
-            <SmallText fontSize="20px" fontWeight="600" lineHeight="40px" textAlign="center">
+            <SmallText
+              fontSize="20px"
+              fontWeight="600"
+              lineHeight="40px"
+              textAlign="center"
+            >
               메시지함은 1월 1일에 열 수 있어요!
             </SmallText>
             <SmallText
@@ -171,7 +189,9 @@ const HomeTemplate = () => {
     return (
       <>
         {selectedDate && (
-          <div>{/* 선택한 날짜에 따른 메시지 목록 또는 내용을 여기에 표시 */}</div>
+          <div>
+            {/* 선택한 날짜에 따른 메시지 목록 또는 내용을 여기에 표시 */}
+          </div>
         )}
         <MessageList
           messageList={selectedMessageList}
@@ -204,7 +224,10 @@ const HomeTemplate = () => {
               </Calendar.wrapper>
 
               {today > targetDate ? (
-                <TodayQuestionOrganism nickname={nickname} selectedDateForm={selectedDate} />
+                <TodayQuestionOrganism
+                  nickname={nickname}
+                  selectedDateForm={selectedDate}
+                />
               ) : (
                 <GiftBox />
               )}
