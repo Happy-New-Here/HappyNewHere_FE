@@ -35,10 +35,14 @@ const Footer = () => {
     navigate("/editprofile");
   };
 
+  const togoInfo = () => {
+    navigate("/manual");
+  };
+
   const havetoLogin = () => {
     alert("로그인 후 이용 가능합니다.");
     navigate("/auth");
-  }
+  };
 
   const handleLoginIconClick = () => {
     navigate("/auth");
@@ -72,7 +76,9 @@ const Footer = () => {
               />
             </svg>
             <p
-              className={`${currentPage === "/" ? "text-[#9a0501]" : "text-[#909090]"} 
+              className={`${
+                currentPage === "/" ? "text-[#9a0501]" : "text-[#909090]"
+              } 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               홈
@@ -102,7 +108,9 @@ const Footer = () => {
               />
             </svg>
             <p
-              className={`${currentPage === "/search" ? "text-[#9a0501]" : "text-[#909090]"} 
+              className={`${
+                currentPage === "/search" ? "text-[#9a0501]" : "text-[#909090]"
+              } 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               검색
@@ -129,10 +137,43 @@ const Footer = () => {
               />
             </svg>
             <p
-              className={`${currentPage === "/chatting" ? "text-[#9a0501]" : "text-[#909090]"} 
+              className={`${
+                currentPage === "/chatting"
+                  ? "text-[#9a0501]"
+                  : "text-[#909090]"
+              } 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               채팅
+            </p>
+          </button>
+
+          {/* 도움말 */}
+          <button
+            className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]"
+            onClick={togoInfo}
+          >
+            <svg
+              width={12}
+              height={12}
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="flex-grow-0 flex-shrink-0"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <path
+                d="M6 10.9004C9.3135 10.9004 12 8.54989 12 5.65039C12 2.75089 9.3135 0.400391 6 0.400391C2.6865 0.400391 0 2.75089 0 5.65039C0 6.97039 0.55725 8.17789 1.4775 9.10039C1.40475 9.86239 1.16475 10.6979 0.89925 11.3249C0.84 11.4644 0.95475 11.6204 1.104 11.5964C2.796 11.3189 3.80175 10.8929 4.239 10.6709C4.81343 10.8241 5.40549 10.9013 6 10.9004Z"
+                fill={currentPage === "/manual" ? "#9a0501" : "#909090"}
+              />
+            </svg>
+            <p
+              className={`${
+                currentPage === "/manual" ? "text-[#9a0501]" : "text-[#909090]"
+              } 
+                        flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
+            >
+              도움말
             </p>
           </button>
 
@@ -154,7 +195,9 @@ const Footer = () => {
               />
               <p
                 className={`${
-                  currentPage === "/editprofile" ? "text-[#9a0501]" : "text-[#909090]"
+                  currentPage === "/editprofile"
+                    ? "text-[#9a0501]"
+                    : "text-[#909090]"
                 } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
               >
                 마이페이지
@@ -271,7 +314,9 @@ const Footer = () => {
             </svg>
             <p
               className={`${
-                currentPage === "/chatting" ? "text-[#9a0501]" : "text-[#909090]"
+                currentPage === "/chatting"
+                  ? "text-[#9a0501]"
+                  : "text-[#909090]"
               } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               채팅
@@ -296,7 +341,9 @@ const Footer = () => {
               />
               <p
                 className={`${
-                  currentPage === "/editprofile" ? "text-[#9a0501]" : "text-[#909090]"
+                  currentPage === "/editprofile"
+                    ? "text-[#9a0501]"
+                    : "text-[#909090]"
                 } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
               >
                 My
