@@ -66,8 +66,6 @@ const EditProfileTemplate = () => {
             <EditProfileOrganism />
             <ProfileSubmitButton />
           </ContentLayoutNoFooter>
-
-          {/* <Footer /> */}
         </>
       )}
     </>

@@ -75,7 +75,7 @@ const MessageWriteTemplate = () => {
         <ResponsiveLayoutPC>
           <Leftside>
             <Header />
-            <Footer currentPage="home" isPc={isPc} />
+            <Footer />
           </Leftside>
           <>
             <Center>
@@ -127,7 +127,7 @@ const MessageWriteTemplate = () => {
               <MessageWriteButtonOrganism />
             )}
           </ContentLayout>
-          <Footer currentPage="home" />
+          <Footer />
         </>
       )}
     </>
