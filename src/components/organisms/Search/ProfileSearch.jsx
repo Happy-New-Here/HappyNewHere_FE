@@ -38,7 +38,7 @@ const ProfileSearch = ({ userId, nickname, profileImg }) => {
             alt="이미지"
           />
         )}
-        <TextWrapper className="flex justify-start">
+        <TextWrapper>
           <SmallText fontSize="0.75rem" margin="0px 0px 10px 0px">
             {userId}
           </SmallText>
@@ -64,5 +64,5 @@ const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 `;
