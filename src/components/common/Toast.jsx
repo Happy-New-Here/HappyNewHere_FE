@@ -18,6 +18,8 @@ export default function Toast({ messageType = "default", type = "error" }) {
         return "프로필 페이지 수정 중 오류가 발생했습니다.";
       case "success":
         return `성공`;
+      case "errId":
+        return "설정하지 않은 닉네임은 접속이 불가합니다.";
       default:
         return "알 수 없는 유형의 메시지";
     }

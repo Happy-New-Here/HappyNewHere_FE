@@ -4,12 +4,14 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Toast from "../../common/Toast";
 import { useState } from "react";
+import { searchResult } from "../../../store/search-action";
 
 const ProfileSearch = ({ userId, nickname, profileImg }) => {
   const navigate = useNavigate();
   const myId = localStorage.getItem("userId");
   //   console.log("내 아이디", myId);
   const [toast, setToast] = useState(false);
+  const [errToast, setErrToast] = useState(false);
 
   const onClickProfile = () => {
     console.log("내 아이디", myId);
@@ -18,7 +20,13 @@ const ProfileSearch = ({ userId, nickname, profileImg }) => {
       setToast((prevToast) => !prevToast); // 토글
       return;
     }
-
+    // const result = searchResult(userId, 0);
+    // const searchingId = result.content[0].userId;
+    // console.log(searchingId);
+    if (userId === null) {
+      setErrToast((prevToast) => !prevToast); // 토글
+      return;
+    }
     // 다른 동작 처리
     navigate(`/${userId}`);
   };
@@ -27,6 +35,7 @@ const ProfileSearch = ({ userId, nickname, profileImg }) => {
     <>
       <ProfileSearchWrapper onClick={onClickProfile}>
         {toast && <Toast messageType="myId" type="error" />}
+        {errToast && <Toast messageType="errId" type="error" />}
         {profileImg && (
           <Img
             width="48px"
