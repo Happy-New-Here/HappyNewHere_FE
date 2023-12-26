@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 
@@ -29,23 +30,27 @@ const EditProfileTab = () => {
 
   const handleClickBackward = () => {
     if (nickname != nicknameInput || stateMsg != stateMsgInput) {
-      const userConfirm = confirm(`프로필 편집을 취소하시겠어요? 변경값은 저장되지 않아요.`);
+      const isConfirmed = confirm(`프로필 편집을 취소하시겠어요? 변경값은 저장되지 않아요.`);
 
-      if (userConfirm) {
+      if (isConfirmed) {
         navigate(-1);
         dispatch(resetUserInfoInput());
       }
+    } else {
+      navigate(-1);
     }
   };
 
   const handleClickHome = () => {
     if (nickname != nicknameInput || stateMsg != stateMsgInput) {
-      const userConfirm = confirm(`프로필 편집을 취소하시겠어요? 변경값은 저장되지 않아요.`);
+      const isConfirmed = confirm(`프로필 편집을 취소하시겠어요? 변경값은 저장되지 않아요.`);
 
-      if (userConfirm) {
+      if (isConfirmed) {
         navigate("/");
         dispatch(resetUserInfoInput());
       }
+    } else {
+      navigate("/");
     }
   };
 
