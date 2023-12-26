@@ -21,7 +21,9 @@ const EditProfileTab = () => {
   const userId = localStorage.getItem("userId");
   const nickname = localStorage.getItem("nickname");
   const stateMsg = localStorage.getItem("stateMsg");
+
   // 편집 완료 전 인풋값 임시 저장할 곳
+  const userIdInput = useSelector((state) => state.userInfoInput.userIdInput);
   const nicknameInput = useSelector((state) => state.userInfoInput.nicknameInput);
   const stateMsgInput = useSelector((state) => state.userInfoInput.stateMsgInput);
 
@@ -29,7 +31,7 @@ const EditProfileTab = () => {
   const dispatch = useDispatch();
 
   const handleClickBackward = () => {
-    if (nickname != nicknameInput || stateMsg != stateMsgInput) {
+    if (userId != userIdInput || nickname != nicknameInput || stateMsg != stateMsgInput) {
       const isConfirmed = confirm(`프로필 편집을 취소하시겠어요? 변경값은 저장되지 않아요.`);
 
       if (isConfirmed) {
@@ -42,7 +44,7 @@ const EditProfileTab = () => {
   };
 
   const handleClickHome = () => {
-    if (nickname != nicknameInput || stateMsg != stateMsgInput) {
+    if (userId != userIdInput || nickname != nicknameInput || stateMsg != stateMsgInput) {
       const isConfirmed = confirm(`프로필 편집을 취소하시겠어요? 변경값은 저장되지 않아요.`);
 
       if (isConfirmed) {
