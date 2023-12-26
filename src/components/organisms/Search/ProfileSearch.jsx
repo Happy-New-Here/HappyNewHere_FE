@@ -4,12 +4,24 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Toast from "../../common/Toast";
 import { useState } from "react";
+import { searchResult } from "../../../store/search-action";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { SearchAction } from "../../../store/searchSlice";
 
 const ProfileSearch = ({ userId, nickname, profileImg }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const myId = localStorage.getItem("userId");
   //   console.log("내 아이디", myId);
   const [toast, setToast] = useState(false);
+  const [errToast, setErrToast] = useState(false);
+
+  useEffect(() => {
+    const savedHistory =
+      JSON.parse(localStorage.getItem("searchHistory")) || [];
+    dispatch(SearchAction.addSearchToHistory(savedHistory));
+  }, [dispatch]);
 
   const onClickProfile = () => {
     console.log("내 아이디", myId);
@@ -18,6 +30,26 @@ const ProfileSearch = ({ userId, nickname, profileImg }) => {
       setToast((prevToast) => !prevToast); // 토글
       return;
     }
+    // const result = searchResult(userId, 0);
+    // const searchingId = result.content[0].userId;
+    // console.log(searchingId);
+    if (userId === null) {
+      setErrToast((prevToast) => !prevToast); // 토글
+      return;
+    }
+
+    const searchHistory =
+      JSON.parse(localStorage.getItem("searchHistory")) || [];
+    if (!searchHistory.includes(userId)) {
+      searchHistory.unshift(userId);
+      if (searchHistory.length > 10) {
+        searchHistory.pop();
+      }
+      localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+      dispatch(SearchAction.addSearchToHistory({ searchItem: userId }));
+    }
+
+    // setResultData(newResultData);
 
     // 다른 동작 처리
     navigate(`/${userId}`);
@@ -27,6 +59,7 @@ const ProfileSearch = ({ userId, nickname, profileImg }) => {
     <>
       <ProfileSearchWrapper onClick={onClickProfile}>
         {toast && <Toast messageType="myId" type="error" />}
+        {errToast && <Toast messageType="errId" type="error" />}
         {profileImg && (
           <Img
             width="48px"

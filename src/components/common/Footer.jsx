@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { setCurrentPage } from "../../store/currentPageSlice";
 import { setMessageInput } from "../../store/messageInputSlice";
 import { setIsAnonymous } from "../../store/isAnonymousSlice";
 import { setSelectedPaperNum } from "../../store/selectedPaperNumSlice";
@@ -23,6 +24,7 @@ const Footer = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const togoHome = () => {
     if (messageInput) {
@@ -84,13 +86,27 @@ const Footer = () => {
     } else navigate("/editprofile");
   };
 
+  const togoInfo = () => {
+    navigate("/manual");
+  };
+
   const togoAuth = () => {
+    navigate("/auth");
+  };
+
+  //로그인 알림을 위한 함수
+  const havetoLogin = () => {
+    alert("로그인 후 이용 가능합니다.");
     navigate("/auth");
   };
 
   const isPc = useMediaQuery({
     query: "(min-width:768px)",
   });
+
+  useEffect(() => {
+    dispatch(setCurrentPage("/"));
+  }, [dispatch]);
 
   return (
     <>
@@ -116,7 +132,9 @@ const Footer = () => {
               />
             </svg>
             <p
-              className={`${currentPage === "/" ? "text-[#9a0501]" : "text-[#909090]"} 
+              className={`${
+                currentPage === "/" ? "text-[#9a0501]" : "text-[#909090]"
+              } 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               홈
@@ -131,7 +149,7 @@ const Footer = () => {
             <svg
               width={12}
               height={12}
-              viewBox="0 0 14 14"
+              viewBox="0 0 12 12"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className="flex-grow-0 flex-shrink-0"
@@ -146,7 +164,9 @@ const Footer = () => {
               />
             </svg>
             <p
-              className={`${currentPage === "/search" ? "text-[#9a0501]" : "text-[#909090]"} 
+              className={`${
+                currentPage === "/search" ? "text-[#9a0501]" : "text-[#909090]"
+              } 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               검색
@@ -173,10 +193,41 @@ const Footer = () => {
               />
             </svg>
             <p
-              className={`${currentPage === "/chatting" ? "text-[#9a0501]" : "text-[#909090]"} 
+              className={`${
+                currentPage === "/chatting"
+                  ? "text-[#9a0501]"
+                  : "text-[#909090]"
+              } 
                         flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               채팅
+            </p>
+          </button>
+
+          {/* 도움말 */}
+          <button
+            className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]"
+            onClick={togoInfo}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={12}
+              height={16}
+              viewBox="0 0 16 12"
+              fill="none"
+            >
+              <path
+                d="M7.96659 11.9997C8.19992 11.9997 8.39725 11.919 8.55859 11.7577C8.71992 11.5963 8.80036 11.3992 8.79992 11.1663C8.79992 10.933 8.71947 10.7357 8.55859 10.5743C8.3977 10.413 8.20036 10.3326 7.96659 10.333C7.73325 10.333 7.53614 10.4137 7.37525 10.575C7.21436 10.7363 7.1337 10.9335 7.13325 11.1663C7.13325 11.3997 7.21392 11.597 7.37525 11.7583C7.53659 11.9197 7.7337 12.0001 7.96659 11.9997ZM7.36659 9.43301H8.59992C8.59992 9.06634 8.6417 8.77745 8.72525 8.56634C8.80881 8.35523 9.04481 8.06634 9.43325 7.69967C9.72214 7.41079 9.94992 7.13567 10.1166 6.87434C10.2833 6.61301 10.3666 6.29923 10.3666 5.93301C10.3666 5.31079 10.1388 4.83301 9.68325 4.49967C9.2277 4.16634 8.68881 3.99967 8.06659 3.99967C7.43325 3.99967 6.91947 4.16634 6.52525 4.49967C6.13103 4.83301 5.85592 5.23301 5.69992 5.69967L6.79992 6.13301C6.85547 5.93301 6.98059 5.71634 7.17525 5.48301C7.36992 5.24967 7.66703 5.13301 8.06659 5.13301C8.42214 5.13301 8.68881 5.23034 8.86659 5.42501C9.04436 5.61967 9.13325 5.83345 9.13325 6.06634C9.13325 6.28856 9.06659 6.49701 8.93325 6.69167C8.79992 6.88634 8.63325 7.06679 8.43325 7.23301C7.94436 7.66634 7.64436 7.99412 7.53325 8.21634C7.42214 8.43856 7.36659 8.84412 7.36659 9.43301ZM7.99992 14.6663C7.0777 14.6663 6.21103 14.4915 5.39992 14.1417C4.58881 13.7919 3.88325 13.3168 3.28325 12.7163C2.68325 12.1163 2.20836 11.4108 1.85859 10.5997C1.50881 9.78856 1.3337 8.9219 1.33325 7.99967C1.33325 7.07745 1.50836 6.21079 1.85859 5.39967C2.20881 4.58856 2.6837 3.88301 3.28325 3.28301C3.88325 2.68301 4.58881 2.20812 5.39992 1.85834C6.21103 1.50856 7.0777 1.33345 7.99992 1.33301C8.92214 1.33301 9.78881 1.50812 10.5999 1.85834C11.411 2.20856 12.1166 2.68345 12.7166 3.28301C13.3166 3.88301 13.7917 4.58856 14.1419 5.39967C14.4921 6.21079 14.667 7.07745 14.6666 7.99967C14.6666 8.9219 14.4915 9.78856 14.1413 10.5997C13.791 11.4108 13.3161 12.1163 12.7166 12.7163C12.1166 13.3163 11.411 13.7915 10.5999 14.1417C9.78881 14.4919 8.92214 14.6668 7.99992 14.6663ZM7.99992 13.333C9.48881 13.333 10.7499 12.8163 11.7833 11.783C12.8166 10.7497 13.3333 9.48856 13.3333 7.99967C13.3333 6.51079 12.8166 5.24967 11.7833 4.21634C10.7499 3.18301 9.48881 2.66634 7.99992 2.66634C6.51103 2.66634 5.24992 3.18301 4.21659 4.21634C3.18325 5.24967 2.66659 6.51079 2.66659 7.99967C2.66659 9.48856 3.18325 10.7497 4.21659 11.783C5.24992 12.8163 6.51103 13.333 7.99992 13.333Z"
+                fill={currentPage === "/manual" ? "#9a0501" : "#909090"}
+              />
+            </svg>
+            <p
+              className={`${
+                currentPage === "/manual" ? "text-[#9a0501]" : "text-[#909090]"
+              } 
+                        flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
+            >
+              도움말
             </p>
           </button>
 
@@ -198,7 +249,9 @@ const Footer = () => {
               />
               <p
                 className={`${
-                  currentPage === "/editprofile" ? "text-[#9a0501]" : "text-[#909090]"
+                  currentPage === "/editprofile"
+                    ? "text-[#9a0501]"
+                    : "text-[#909090]"
                 } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
               >
                 마이페이지
@@ -212,7 +265,7 @@ const Footer = () => {
               <svg
                 width={12}
                 height={12}
-                viewBox="0 0 21 18"
+                viewBox="0 0 22 22"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className="flex-grow-0 flex-shrink-0"
@@ -315,7 +368,9 @@ const Footer = () => {
             </svg>
             <p
               className={`${
-                currentPage === "/chatting" ? "text-[#9a0501]" : "text-[#909090]"
+                currentPage === "/chatting"
+                  ? "text-[#9a0501]"
+                  : "text-[#909090]"
               } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
             >
               채팅
@@ -340,7 +395,9 @@ const Footer = () => {
               />
               <p
                 className={`${
-                  currentPage === "/editprofile" ? "text-[#9a0501]" : "text-[#909090]"
+                  currentPage === "/editprofile"
+                    ? "text-[#9a0501]"
+                    : "text-[#909090]"
                 } flex-grow-0 flex-shrink-0 text-xs text-center hover:font-semibold`}
               >
                 My
@@ -352,9 +409,9 @@ const Footer = () => {
               onClick={togoAuth}
             >
               <svg
-                width={21}
-                height={18}
-                viewBox="0 0 21 18"
+                width={24}
+                height={20}
+                viewBox="0 0 24 20"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className="flex-grow-0 flex-shrink-0"
