@@ -1,63 +1,98 @@
-import { SmallText } from '../../../styles/text';
-import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+import { SmallText } from "../../../styles/text";
+import styled from "styled-components";
+import { useState, useEffect } from "react";
 import { LuSearch } from "react-icons/lu";
+import { searchResult } from "../../../store/search-action";
+import { useSelector, useDispatch } from "react-redux";
+import { SearchAction } from "../../../store/searchSlice";
 
-const RecentSearch = () => {
-    const [recentHistory, setRecentHistory] = useState([]);
+const RecentSearch = ({ setInputValue, setPageNum, setResultData }) => {
+  const [recentHistory, setRecentHistory] = useState([]);
+  const search = useSelector((state) => state.search.search);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        const recentHistoryString = localStorage.getItem("searchHistory");
-        const parsedHistory = JSON.parse(recentHistoryString) || [];
-        setRecentHistory(parsedHistory);
-    }, []);
+  useEffect(() => {
+    const recentHistoryString = localStorage.getItem("searchHistory");
+    const parsedHistory = JSON.parse(recentHistoryString) || [];
+    setRecentHistory(parsedHistory);
+  }, []);
 
-    const onClickDelete = () => {
-        localStorage.removeItem("searchHistory");
-        setRecentHistory([]); // 로컬 스토리지 삭제 후 상태 업데이트
-    }
+  const onClickDelete = () => {
+    localStorage.removeItem("searchHistory");
+    setRecentHistory([]); // 로컬 스토리지 삭제 후 상태 업데이트
+  };
 
-    return (
-        <>
-            <TextWrapper>
-                <SmallText margin="0px 0px 32px 0px" fontWeight="600">최근 검색</SmallText>
-                <SmallText
-                    fontSize="0.75rem"
-                    color='#9A0501'
-                    margin="0px 0px 32px 0px"
-                    fontWeight="600"
-                    cursor="pointer"
-                    onClick={onClickDelete}
-                >모두 삭제</SmallText>
-            </TextWrapper>
-            {recentHistory.map((item, index) => (
-                <SearchWrapper key={index}>
-                    <LuSearch
-                        size="19"
-                        color="#909090"
-                    />
-                    <SmallText
-                        margin="0px 0px 0px 16px"
-                    >{item}</SmallText>
-                    {console.log("아이템", item)}
-                </SearchWrapper>
-            ))}
-        </>
-    )
-}
+  const onClickRecent = async (item) => {
+    dispatch(SearchAction.setSearch(item));
+  };
+
+  return (
+    <>
+      <TextWrapper>
+        <SmallText margin="0px 0px 32px 0px" fontWeight="600">
+          최근 검색
+        </SmallText>
+        <SmallText
+          fontSize="0.75rem"
+          color="#9A0501"
+          margin="0px 0px 32px 0px"
+          fontWeight="600"
+          cursor="pointer"
+          onClick={onClickDelete}
+        >
+          모두 삭제
+        </SmallText>
+      </TextWrapper>
+      <Wrapper>
+        {recentHistory.map((item, index) => (
+          <SearchWrapper key={index}>
+            <LuSearch size="19" color="#909090" />
+            <SmallText
+              margin="0px 0px 0px 16px"
+              onClick={() => onClickRecent(item)}
+            >
+              {item}
+            </SmallText>
+            {/* {console.log("아이템", item)} */}
+          </SearchWrapper>
+        ))}
+      </Wrapper>
+    </>
+  );
+};
 
 export default RecentSearch;
 
 const TextWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const SearchWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    padding: 10px 0px 10px 0px;
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0px 10px 0px;
+  cursor: pointer;
+`;
+
+const Wrapper = styled.div`
+  height: 80vh;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px; /* Width of scrollbar */
+    height: 0px; /* Set to 0 for horizontal scrollbar */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0; /* Scrollbar color */
+    border-radius: 4px; /* Round the corners of the scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Color of scrollbar track */
+  }
 `;
 
 // const DUMMY_DATA = [
