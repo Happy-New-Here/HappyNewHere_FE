@@ -1,4 +1,4 @@
-import { MessagePapersSRC, MessagePapers } from "../utils/MessagePapersSRC";
+// import { MessagePapersSRC, MessagePapers } from "../utils/MessagePapersSRC";
 import { PlaceTopColumn } from "./utils";
 import styled from "styled-components";
 
@@ -16,11 +16,7 @@ export const StyledMessage = styled.div`
 // 편지지 영역
 export const MessageContainer = styled(PlaceTopColumn)`
   width: 100%;
-  background: ${(props) =>
-    `url(${MessagePapersSRC}/${MessagePapers[props.day].color}/${
-      MessagePapers[props.day].name[props.paperNum]
-    }
-  )`};
+  background: ${(props) => `url(${props.src})`} center/cover;
   background-size: 100% 100%;
   margin: 0px 0px 16px;
   padding: 30px 32px 80px;

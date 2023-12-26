@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { setCurrentPage } from "../../store/currentPageSlice";
 import Header from "../common/Header";
 import TodayQuestionOrganism from "../organisms/Message/TodayQuestionOrganism";
@@ -8,15 +9,17 @@ import MessagePaperThumbnailOrganism from "../organisms/Message/MessagePaperThum
 import MessageWriteOrganism from "../organisms/Message/MessageWriteOrganism";
 import Footer from "../common/Footer";
 import {
-  ResponsiveLayoutPC,
-  Leftside,
-  Center,
-  Rightside,
-  ContentLayout,
-} from "../../styles/utils";
+    ResponsiveLayoutPC,
+    Leftside,
+    Center,
+    Rightside,
+    ContentLayout,
+    ResponsiveLayoutMobile,
+    ResponsiveLayout,
+} from '../../styles/utils';
 import { useSpring, animated } from "react-spring"; // 애니메이션
 import { useMediaQuery } from "react-responsive";
-import ProfileSearching from "../common/ProfileSearcing";
+import ProfileSearching from "../common/ProfileSearching";
 import { useParams } from "react-router";
 import { searchResult } from "../../store/search-action";
 // import { userAction } from '../../store/User-Slice';
@@ -67,9 +70,9 @@ const MessageWriteTemplate = () => {
   }, [userId]);
 
   return (
-    <ResponsiveLayoutPC>
+    <>
       {window.innerWidth >= 768 ? (
-        <>
+        <ResponsiveLayoutPC>
           <Leftside>
             <Header />
             <Footer currentPage="home" isPc={isPc} />
@@ -104,7 +107,7 @@ const MessageWriteTemplate = () => {
               <></>
             )}
           </Rightside>
-        </>
+        </ResponsiveLayoutPC>
       ) : (
         <>
           <Header />
@@ -127,7 +130,7 @@ const MessageWriteTemplate = () => {
           <Footer currentPage="home" />
         </>
       )}
-    </ResponsiveLayoutPC>
+    </>
   );
 };
 

@@ -73,8 +73,9 @@ export const ContentLayout = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 30rem;
-    height: calc(100vh - 76px - 77px);
+    width: 23.5rem;
+    height: calc(100vh - 200px);
+    /* height: 100vh; */
     /* gap: 32px; */
     padding: 0 32px 32px; //상 좌우 하
 

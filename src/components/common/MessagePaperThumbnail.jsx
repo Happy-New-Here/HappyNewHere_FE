@@ -3,54 +3,67 @@ import React from "react";
 import styled from "styled-components";
 import { MessagePapersSRC, MessagePapers } from "../../utils/MessagePapersSRC";
 
-const MessagePaperButton = styled.button`
+const StyledMessagePaperThumbnail = styled.img`
   width: 60px;
   height: 60px;
   border: none;
   border-radius: 5px;
   padding: 0px 0px;
-  background: ${(props) =>
-    `url(${MessagePapersSRC}/${MessagePapers[props.day].color}/${
-      MessagePapers[props.day].name[props.paperNum]
-    }
-  )`};
-  background-size: 100% 100%;
+  cursor: pointer;
 
-  @media (min-width: 768px) {
-    width: 80px;
-    height: 80px;
+  /* Hover 효과: 약간 위로 이동 */
+  transition: transform 0.3s;
+  &:hover {
+    transform: translateY(-4px);
   }
 
   ${(props) =>
     props.isSelected &&
     `
-    // border: 2px solid black;
-    width: 70px;
-    height: 70px;
+    transform: translateY(-4px);
+    z-index: 1;
+  `}
 
-    @media (min-width: 768px) {
-      width: 90px;
-      height: 90px;
-    }
+  @media (min-width: 768px) {
+    width: 80px;
+    height: 80px;
 
-    // @media (prefers-color-scheme: dark) {
-    //   border: 2px solid #9A0501;
-    // }
-    `}// 이 밑으로 적으면 스타일 적용이 안 됨
+    ${(props) =>
+      props.isSelected &&
+      `
+      transform: translateY(-4px);
+      z-index: 1;
+    `}
+  }
 `;
 
 const MessagePaperThumbnail = ({ paperNum, isSelected, onSelect }) => {
   const today = new Date();
   const day = today.getDay(); // 일요일: 0 ~ 토요일: 6
+  // 요일에 따른 색상 매핑
+  const dayColorMapping = {
+    0: "Red", // 일
+    1: "Navy", // 월
+    2: "White", // 화
+    3: "Green", // 수
+    4: "Brown", // 목
+    5: "Pink", // 금
+    6: "Yellow", // 토
+  };
+  const dayColor = dayColorMapping[day];
+
+  const imageSRC = MessagePapers[dayColor]?.[paperNum] || NavyPuppy; // 기본값으로 NavyPuppy
 
   const handlePaperChange = () => {
     onSelect(paperNum); // 부모 컴포넌트 MessagePaperSelect로 전달
   };
 
   return (
-    <MessagePaperButton
-      day={day}
-      paperNum={paperNum}
+    <StyledMessagePaperThumbnail
+      // day={day}
+      // paperNum={paperNum}
+      src={imageSRC}
+      alt="Message Paper"
       isSelected={isSelected}
       onClick={handlePaperChange}
     />
