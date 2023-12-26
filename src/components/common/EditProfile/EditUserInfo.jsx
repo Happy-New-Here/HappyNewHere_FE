@@ -2,7 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { GetUserInfo } from "../../../store/User-action";
-import { setStateMsgInput, setNicknameInput } from "../../../store/UserInfoInputSlice";
+import {
+  setUserIdInput,
+  setStateMsgInput,
+  setNicknameInput,
+} from "../../../store/UserInfoInputSlice";
 import LogoutButton from "../../organisms/EditProfile/LogoutButton";
 import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
@@ -63,6 +67,7 @@ const EditUserInfo = () => {
   const stateMsg = localStorage.getItem("stateMsg");
 
   // 편집 완료 전 인풋값 임시 저장할 곳
+  const userIdInput = useSelector((state) => state.userInfoInput.userIdInput);
   const nicknameInput = useSelector((state) => state.userInfoInput.nicknameInput);
   const stateMsgInput = useSelector((state) => state.userInfoInput.stateMsgInput);
 
@@ -71,6 +76,10 @@ const EditUserInfo = () => {
   useEffect(() => {
     GetUserInfo(dispatch); // 유저 정보 get
   }, [dispatch]);
+
+  const handleUserIdInputChange = (event) => {
+    dispatch(setUserIdInput(event.target.value)); // 임시 저장
+  };
 
   const handleNicknameInputChange = (event) => {
     dispatch(setNicknameInput(event.target.value)); // 임시 저장
@@ -98,12 +107,23 @@ const EditUserInfo = () => {
           <UserInfo>
             <input
               type="text"
-              defaultValue={userId}
-              value={userId}
-              readOnly
+              defaultValue={userIdInput}
+              value={userIdInput}
+              // readOnly
+              onChange={handleUserIdInputChange}
+              placeholder="ID를 입력하세요"
               // style={{ width: "100%" }}
-              className="w-full h-[44px] p-3 border rounded-md border-black outline-none"
+              className="w-full h-[44px] p-3 border rounded-md border-black focus:border-2 focus:border-[#9a0501] outline-none"
             />
+            {!userIdInput ? (
+              <div className="h-[24px] flex justify-center items-center">
+                <SmallText fontSize="12px" color="#9A0501">
+                  ID는 필수 항목입니다.
+                </SmallText>
+              </div>
+            ) : (
+              <div className="h-[24px] flex justify-center items-center"></div>
+            )}
           </UserInfo>
         </UserInfoContainer>
 

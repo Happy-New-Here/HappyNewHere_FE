@@ -57,7 +57,17 @@ const ProfileSubmitButton = () => {
         navigate("/");
       })
       .catch((error) => {
-        console.error(`Failed to submit user info.`, error);
+        if (
+          error.response &&
+          error.response.status === 400 &&
+          error.response.data.error === "DUPLICATED_USER_NAME"
+        ) {
+          // 에러 코드 400 && 에러 메시지 'DUPLICATED_USER_NAME'
+          alert("이미 사용 중인 ID입니다.");
+        } else {
+          // 다른 오류에 대한 처리
+          console.error(`Failed to submit user info.`, error);
+        }
       });
   };
 
