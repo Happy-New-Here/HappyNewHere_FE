@@ -38,7 +38,7 @@ const Footer = () => {
   const havetoLogin = () => {
     alert("로그인 후 이용 가능합니다.");
     navigate("/auth");
-  }
+  };
 
   const handleLoginIconClick = () => {
     navigate("/auth");
@@ -82,7 +82,7 @@ const Footer = () => {
           {/* 검색 */}
           <button
             className="flex justify-start items-center flex-grow-0 flex-shrink-0 w-[140px] relative gap-[25px]"
-            onClick={accessToken ? togoSearch : havetoLogin}
+            onClick={togoSearch}
           >
             <svg
               width={12}
@@ -222,7 +222,7 @@ const Footer = () => {
           {/* 검색 */}
           <button
             className="w-1/4 h-full flex flex-col justify-center items-center flex-grow-0 flex-shrink-0 relative gap-[7px]"
-            onClick={accessToken ? togoSearch : havetoLogin}
+            onClick={togoSearch}
           >
             <svg
               width={21}
