@@ -29,7 +29,6 @@ const IdTemplate = () => {
 
   const userId = useSelector((state) => state.user.userId);
   const stateMsg = useSelector((state) => state.user.stateMsg);
-  const currentPage = localStorage.getItem("currentPage"); // 로그인 하면 리덕스 스토어 값 리셋되므로 로컬에서 가져와야 함
 
   const isPc = useMediaQuery({
     query: "(min-width:768px)",
@@ -59,9 +58,8 @@ const IdTemplate = () => {
     // <Toast text={"아이디 중복방지"}></Toast>;
 
     await dispatch(idResult(userId, stateMsg));
-    navigate(currentPage);
+    navigate("/");
   };
-
   return (
     <>
       {isPc ? (
