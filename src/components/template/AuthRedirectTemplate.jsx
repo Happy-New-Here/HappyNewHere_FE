@@ -12,7 +12,8 @@ const AuthRedirectTemplate = () => {
   const [second, setSecond] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const currentPage = useSelector((state) => state.currentPage);
+  // const currentPage = useSelector((state) => state.currentPage);
+  const currentPage = localStorage.getItem("currentPage"); // 로그인 하면 리덕스 스토어 값 리셋되므로 로컬에서 가져와야 함
   const userIdFromStore = useSelector((state) => state.user.userId);
 
   useEffect(() => {
@@ -52,7 +53,7 @@ const AuthRedirectTemplate = () => {
       if (userIdFromStore === null) {
         navigate("/auth/id/input");
       } else {
-        navigate("/");
+        navigate(currentPage);
       }
     }
   }, [userIdFromStore, navigate]);
