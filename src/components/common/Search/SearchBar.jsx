@@ -7,7 +7,7 @@ const SearchBar = ({ onClick, value, onChange, onKeyDown, onReset }) => {
       <input
         type="text"
         className="outline-none text-base bg-gray-200 ml-2 w-full"
-        placeholder="검색어를 입력 후 엔터키를 입력해주세요"
+        placeholder="검색어를 입력해주세요"
         value={value}
         onChange={onChange}
         onKeyDown={onKeyDown}
