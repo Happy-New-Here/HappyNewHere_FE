@@ -41,7 +41,7 @@ const Profile = () => {
     //   await GetUserInfo(dispatch);
     // };
     // fetchUserInfo();
-  }, [dispatch]);
+  }, [dispatch, userId, nickname, stateMsg, profileImg]);
 
   const handleEditClick = () => {
     // 프로필 편집 페이지로 이동
