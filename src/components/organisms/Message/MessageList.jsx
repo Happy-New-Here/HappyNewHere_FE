@@ -50,12 +50,20 @@ const MessageList = ({ messageList, selectedDate, selectedDateForm }) => {
       <StyledMessageList>
         {filteredMessages.map((message, index) => {
           const originalIndex = messageList.indexOf(message);
+          console.log("message", message);
+          const displayName = message.anonymous
+            ? "익명의 산타"
+            : message.senderNickname;
+          // 메세지에 타입값들을 콘솔로찍으면 볼수있지/????? -> true
+          //message.anonymous이게 익명유무인데
+          //
+
           return (
             <MessageThumbnail
               key={index}
               day={selectedDay}
               paperNum={message.paperNum}
-              sender={message.senderNickname}
+              sender={displayName}
               originalIndex={originalIndex}
               active={activeIndex === originalIndex}
               onClick={() => handleThumbnailClick(originalIndex)}
