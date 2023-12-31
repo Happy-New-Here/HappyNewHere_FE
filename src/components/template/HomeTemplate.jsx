@@ -75,7 +75,7 @@ const HomeTemplate = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}calender/${userId}`, {
+        const response = await axios.get(`${BASE_URL}/calender/${userId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
@@ -92,7 +92,7 @@ const HomeTemplate = () => {
         }
       } catch (error) {
         // 에러 처리
-        // alert("편지가 오는 중입니다. 새로고침으로 받아보세요 !");
+        alert("편지가 오는 중입니다. 새로고침으로 받아보세요 !");
         console.error("Error fetching user messages:", error);
       }
     };
@@ -189,11 +189,8 @@ const HomeTemplate = () => {
   const AfterOpen = () => {
     return (
       <>
-        {selectedDate && (
-          <div>
-            {/* 선택한 날짜에 따른 메시지 목록 또는 내용을 여기에 표시 */}
-          </div>
-        )}
+        {selectedDate && <div></div>}
+
         <MessageList
           messageList={selectedMessageList}
           selectedDate={selectedDate}
@@ -226,7 +223,7 @@ const HomeTemplate = () => {
 
               {today > targetDate ? (
                 <TodayQuestionOrganism
-                  nickname={nickname}
+                  nickname={nickname} // 현대 오류 발생
                   selectedDateForm={selectedDate}
                 />
               ) : (
@@ -248,6 +245,10 @@ const HomeTemplate = () => {
           <Header />
           <ContentLayoutMobile>
             <Profile />
+            <TodayQuestionOrganism
+              nickname={nickname} // 현대 오류 발생
+              selectedDateForm={selectedDate}
+            />
             <Calendar.wrapper>
               {weekDates.map((date, index) => (
                 <Calendar.item
@@ -261,6 +262,7 @@ const HomeTemplate = () => {
 
             {/* 오픈일 이후 메시지 목록 공개 */}
             {today > targetDate ? <AfterOpen /> : <BeforeOpen isPc={isPc} />}
+            {selectedMessageIndex ? <MessageViewOrganism /> : null}
           </ContentLayoutMobile>
 
           <Footer />
