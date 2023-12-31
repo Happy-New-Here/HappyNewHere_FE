@@ -33,7 +33,7 @@ const MessageList = ({ messageList, selectedDate, selectedDateForm }) => {
   });
 
   const handleThumbnailClick = (index) => {
-    console.log("click", index);
+    // console.log("click", index);
     if (index !== activeIndex) {
       setActiveIndex(index);
     }
@@ -50,12 +50,16 @@ const MessageList = ({ messageList, selectedDate, selectedDateForm }) => {
       <StyledMessageList>
         {filteredMessages.map((message, index) => {
           const originalIndex = messageList.indexOf(message);
+          const displayName = message.anonymous
+            ? "익명의 산타"
+            : message.senderNickname;
+
           return (
             <MessageThumbnail
               key={index}
               day={selectedDay}
               paperNum={message.paperNum}
-              sender={message.senderNickname}
+              sender={displayName}
               originalIndex={originalIndex}
               active={activeIndex === originalIndex}
               onClick={() => handleThumbnailClick(originalIndex)}
