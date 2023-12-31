@@ -45,7 +45,7 @@ const HomeTemplate = () => {
     query: "(min-width:768px)",
   });
 
-  let weekDates = Calendar.getWeekDates(25); // 이벤트 시작날짜 설정
+  let weekDates = Calendar.getWeekDates(); // 이벤트 시작날짜 설정
   const [selectedDate, setSelectedDate] = useState(null);
   const dispatch = useDispatch();
   const nickname = useSelector((state) => state.user.nickname);
@@ -84,7 +84,7 @@ const HomeTemplate = () => {
         if (response.data) {
           // 응답이 성공적으로 도착한 경우 데이터를 처리하고 Redux 상태를 업데이트
           console.log("Response Data:");
-          console.log(response.data);
+          // console.log(response.data);
           const data = response.data;
           dispatch(setCalendar(data.calendar));
           dispatch(setMessagesList(data.messagesList));
@@ -105,12 +105,15 @@ const HomeTemplate = () => {
   //selectedDate 는 임시로 넣어둬서 빼야함
 
   // 메시지 읽기 오픈일 설정
-  const targetDate = new Date("2024-01-01"); // 오픈일
+  const targetDate = new Date("2022-01-01"); // 오픈일
   const today = new Date(); // 오늘
 
   const handleDateClick = (date) => {
     setSelectedDate(date);
   };
+
+  // console.log("selectedDate", selectedDate);
+  // console.log("selectedMessageList", selectedMessageList);
 
   const handleShareLink = () => {
     // 현재 경로/userId를 클립보드에 복사.
