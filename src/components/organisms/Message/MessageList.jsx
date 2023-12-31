@@ -18,8 +18,12 @@ const MessageList = ({ messageList, selectedDate, selectedDateForm }) => {
   const dispatch = useDispatch();
 
   const today = new Date();
+  // console.log("selectedDate->", selectedDate);
   const filteredDate = new Date(selectedDate).getDate();
   const selectedDay = new Date(selectedDate).getDay();
+  // console.log("filteredDate->", filteredDate, selectedDay);
+  // const filteredDate = selectedDate.getDate(); // Extract day directly from the Date object
+  // const selectedDay = selectedDate.getDay();
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const filteredMessages = messageList.filter((message) => {
