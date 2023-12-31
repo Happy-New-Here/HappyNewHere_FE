@@ -92,7 +92,7 @@ const HomeTemplate = () => {
         }
       } catch (error) {
         // 에러 처리
-        alert("편지가 오는 중입니다. 새로고침으로 받아보세요 !");
+        // alert("편지가 오는 중입니다. 새로고침으로 받아보세요 !");
         console.error("Error fetching user messages:", error);
       }
     };

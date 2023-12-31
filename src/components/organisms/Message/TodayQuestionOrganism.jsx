@@ -85,7 +85,7 @@ const TodayQuestionText = ({ nickname, selectedDateForm }) => {
         </p>
       );
     default:
-      return <p>다음 이벤트 질문을 만들고 있어요! </p>;
+      return <p>장식을 눌러 편지를 확인해보세요!</p>;
   }
 };
 
@@ -101,26 +101,26 @@ const TodayQuestion = ({ nickname, selectedDateForm }) => {
 
   const questionNum =
     todayDate === 25
-      ? "첫 번째"
+      ? "첫 번째 질문"
       : todayDate === 26
-      ? "두 번째"
+      ? "두 번째 질문"
       : todayDate === 27
-      ? "세 번째"
+      ? "세 번째 질문"
       : todayDate === 28
-      ? "네 번째"
+      ? "네 번째 질문"
       : todayDate === 29
-      ? "다섯 번째"
+      ? "다섯 번째 질문"
       : todayDate === 30
-      ? "여섯 번째"
+      ? "여섯 번째 질문"
       : todayDate === 31
       ? "마지막"
-      : "도착하고 있는 ";
+      : "편지 확인하기";
 
   return (
     <TodayQuestionContainer>
       <TodayAndQuestionNum>
         <Today>{formattedToday}</Today>
-        <QuestionNum>#{questionNum} 질문</QuestionNum>
+        <QuestionNum>#{questionNum}</QuestionNum>
       </TodayAndQuestionNum>
       <TodayQuestionText
         nickname={nickname}
