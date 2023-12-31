@@ -83,8 +83,6 @@ const HomeTemplate = () => {
 
         if (response.data) {
           // 응답이 성공적으로 도착한 경우 데이터를 처리하고 Redux 상태를 업데이트
-          console.log("Response Data:");
-          // console.log(response.data);
           const data = response.data;
           dispatch(setCalendar(data.calendar));
           dispatch(setMessagesList(data.messagesList));
