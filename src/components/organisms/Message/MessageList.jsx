@@ -33,17 +33,19 @@ const MessageList = ({ messageList, selectedDate, selectedDateForm }) => {
   });
 
   const handleThumbnailClick = (index) => {
-    // console.log("click", index);
-    if (index !== activeIndex) {
-      setActiveIndex(index);
-    }
+    console.log("click", index);
+    dispatch(setSelectedMessageIndex(index));
+    // if (index !== activeIndex) {
+    //   setActiveIndex(index);
+    //   dispatch(setSelectedMessageIndex(index));
+    // }
   };
 
-  useEffect(() => {
-    if (activeIndex !== -1) {
-      dispatch(setSelectedMessageIndex(activeIndex));
-    }
-  }, [activeIndex, dispatch]);
+  // useEffect(() => {
+  //   if (activeIndex !== -1) {
+  //     dispatch(setSelectedMessageIndex(activeIndex));
+  //   }
+  // }, [activeIndex, dispatch]);
 
   return (
     <>
