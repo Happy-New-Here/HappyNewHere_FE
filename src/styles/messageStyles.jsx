@@ -17,7 +17,7 @@ export const StyledMessage = styled.div`
 export const MessageContainer = styled(PlaceTopColumn)`
   width: 100%;
   background: ${(props) => `url(${props.src})`} center/cover;
-  background-size: 100% 100%;
+  // background-size: 100% 100%;
   margin: 0px 0px 16px;
   padding: 30px 32px 80px;
   border-radius: 5px;

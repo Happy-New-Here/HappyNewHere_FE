@@ -1,46 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import {
-  MessageThumbnailsSRC,
-  MessagePapers,
-} from "../../utils/MessagePapersSRC";
+import { MessageThumbnails } from "../../utils/MessagePapersSRC";
 import { PlaceLeftRow } from "../../styles/utils";
 import { SmallText } from "../../styles/text";
-
-import NavyPuppy from "../../assets/MessagePapers/Navy/Puppy.svg";
-import NavySanta from "../../assets/MessagePapers/Navy/Santa.svg";
-import NavyTogether from "../../assets/MessagePapers/Navy/Together.svg";
-import NavyTown from "../../assets/MessagePapers/Navy/Town.svg";
-
-import WhitePuppy from "../../assets/MessagePapers/White/Puppy.svg";
-import WhiteSanta from "../../assets/MessagePapers/White/Santa.svg";
-import WhiteTogether from "../../assets/MessagePapers/White/Together.svg";
-import WhiteTown from "../../assets/MessagePapers/White/Town.svg";
-
-import GreenPuppy from "../../assets/MessagePapers/Green/Puppy.svg";
-import GreenSanta from "../../assets/MessagePapers/Green/Santa.svg";
-import GreenTogether from "../../assets/MessagePapers/Green/Together.svg";
-import GreenTown from "../../assets/MessagePapers/Green/Town.svg";
-
-import BrownPuppy from "../../assets/MessagePapers/Brown/Puppy.svg";
-import BrownSanta from "../../assets/MessagePapers/Brown/Santa.svg";
-import BrownTogether from "../../assets/MessagePapers/Brown/Together.svg";
-import BrownTown from "../../assets/MessagePapers/Brown/Town.svg";
-
-import PinkPuppy from "../../assets/MessagePapers/Pink/Puppy.svg";
-import PinkSanta from "../../assets/MessagePapers/Pink/Santa.svg";
-import PinkTogether from "../../assets/MessagePapers/Pink/Together.svg";
-import PinkTown from "../../assets/MessagePapers/Pink/Town.svg";
-
-import YellowPuppy from "../../assets/MessagePapers/Yellow/Puppy.svg";
-import YellowSanta from "../../assets/MessagePapers/Yellow/Santa.svg";
-import YellowTogether from "../../assets/MessagePapers/Yellow/Together.svg";
-import YellowTown from "../../assets/MessagePapers/Yellow/Town.svg";
-
-import RedPuppy from "../../assets/MessagePapers/Red/Puppy.svg";
-import RedSanta from "../../assets/MessagePapers/Red/Santa.svg";
-import RedTogether from "../../assets/MessagePapers/Red/Together.svg";
-import RedTown from "../../assets/MessagePapers/Red/Town.svg";
 
 const StyledMessageThumbnail = styled(PlaceLeftRow)`
   width: 100%;
@@ -48,9 +10,8 @@ const StyledMessageThumbnail = styled(PlaceLeftRow)`
   padding: 0px 16px;
   border-radius: 5px;
   font-size: 12px;
-  background: ${(props) => `url(${props.src})`} center/cover;
-  background-size: cover;
-  background-position: right;
+  background: ${(props) => `url(${props.src})`} right center/cover;
+  // background-position: 가로 right 세로 center / background-size: cover
 
   /* active prop이 true일 때 그림자 스타일을 추가 */
   ${(props) =>
@@ -93,7 +54,7 @@ const MessageThumbnail = (props) => {
   };
   const dayColor = dayColorMapping[day];
 
-  const imageSRC = MessagePapers[dayColor]?.[paperNum] || NavyPuppy; // 기본값으로 NavyPuppy
+  const imageSRC = MessageThumbnails[dayColor]?.[paperNum] || MessageThumbnails["Navy"][0]; // 기본값으로 NavyPuppy
 
   const handleClick = () => {
     onClick();
