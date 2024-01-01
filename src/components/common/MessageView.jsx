@@ -11,6 +11,7 @@ import {
   ReceiverOrSender,
   MessageText,
 } from "../../styles/messageStyles";
+import { setIsMessageViewVisible } from "../../store/isMessageViewVisibleSlice";
 
 const TextArea = styled.p`
   width: 100%;
@@ -62,29 +63,58 @@ const MessageView = ({
   const dispatch = useDispatch();
 
   const handleCancelClick = () => {
-    //   dispatch(setIsMessageWriteVisible(false));
+    // dispatch(setIsMessageWriteVisible(false));
     // 메시지뷰어 꺼지고 메시지리스트 다시 나오게
+    dispatch(setIsMessageViewVisible(false));
   };
 
-  return (
-    <StyledMessage>
-      <CancelIcon
-        src={cancelIcon}
-        alt="cancelIcon"
-        onClick={handleCancelClick}
-      />
+  const isMessageViewVisible = useSelector(
+    (state) => state.isMessageViewVisible.messageViewVisible
+  );
+  console.log("isMessageViewVisible", isMessageViewVisible);
 
-      <MessageContainer
-        ref={messageContainerRef}
-        day={effectiveDayColor}
-        paperNum={paperNum}
-      >
-        <MessageText fontColor="#000000">
-          <TextArea fontColor="#000000">{context}</TextArea>
-          <ReceiverOrSender>From. {displayName}</ReceiverOrSender>
-        </MessageText>
-      </MessageContainer>
-    </StyledMessage>
+  return (
+    // <StyledMessage>
+    //   <CancelIcon
+    //     src={cancelIcon}
+    //     alt="cancelIcon"
+    //     onClick={handleCancelClick}
+    //   />
+
+    //   <MessageContainer
+    //     ref={messageContainerRef}
+    //     day={effectiveDayColor}
+    //     paperNum={paperNum}
+    //   >
+    //     <MessageText fontColor="#000000">
+    //       <TextArea fontColor="#000000">{context}</TextArea>
+    //       <ReceiverOrSender>From. {displayName}</ReceiverOrSender>
+    //     </MessageText>
+    //   </MessageContainer>
+    // </StyledMessage>
+
+    <div>
+      {isMessageViewVisible && (
+        <StyledMessage>
+          <CancelIcon
+            src={cancelIcon}
+            alt="cancelIcon"
+            onClick={handleCancelClick}
+          />
+
+          <MessageContainer
+            ref={messageContainerRef}
+            day={effectiveDayColor}
+            paperNum={paperNum}
+          >
+            <MessageText fontColor="#000000">
+              <TextArea fontColor="#000000">{context}</TextArea>
+              <ReceiverOrSender>From. {displayName}</ReceiverOrSender>
+            </MessageText>
+          </MessageContainer>
+        </StyledMessage>
+      )}
+    </div>
   );
 };
 
