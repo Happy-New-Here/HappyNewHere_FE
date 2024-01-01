@@ -74,7 +74,7 @@ const TodayQuestionText = ({ nickname, selectedDateForm }) => {
         <p>곧 맞이할 새해를 기념해서 {receiverNickname} 님에게 하고싶은 말을 남겨주세요 :)</p>
       );
     default:
-      return <p>장식을 눌러 편지를 확인해보세요!</p>;
+      return <p>장식을 눌러 도착한 메시지들을 열어보세요!</p>;
   }
 };
 
@@ -103,7 +103,7 @@ const TodayQuestion = ({ nickname, selectedDateForm }) => {
       ? "여섯 번째 질문"
       : todayDate === 31
       ? "마지막 질문"
-      : "편지 확인하기";
+      : "메시지 열어보기";
 
   return (
     <TodayQuestionContainer>
