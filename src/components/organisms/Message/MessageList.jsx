@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import MessageThumbnail from "../../common/MessageThumbnail";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSelectedMessageIndex } from "../../../store/calendar-slice";
+import { setIsMessageViewVisible } from "../../../store/isMessageViewVisibleSlice";
 
 const StyledMessageList = styled.label`
   display: flex;
@@ -26,6 +27,10 @@ const MessageList = ({ messageList, selectedDate, selectedDateForm }) => {
   // const selectedDay = selectedDate.getDay();
   const [activeIndex, setActiveIndex] = useState(-1);
 
+  const isMessageViewVisible = useSelector(
+    (state) => state.isMessageViewVisible.messageViewVisible
+  );
+
   const filteredMessages = messageList.filter((message) => {
     const messageDate = message.day.split("T")[0];
     const messageDay = messageDate.split("-")[2];
@@ -34,6 +39,8 @@ const MessageList = ({ messageList, selectedDate, selectedDateForm }) => {
 
   const handleThumbnailClick = (index) => {
     // console.log("click", index);
+    dispatch(setIsMessageViewVisible(true));
+    // console.log("isMessageViewVisible", isMessageViewVisible);
     if (index !== activeIndex) {
       setActiveIndex(index);
     }
