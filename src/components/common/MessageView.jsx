@@ -47,7 +47,7 @@ const MessageView = ({
 }) => {
   // MessageContainer height width에 따라 동적 적용
   const messageContainerRef = useRef(null);
-  console.log("test: ", context, senderNickname, paperNum, anonymous, dayColor);
+  // console.log("test: ", context, senderNickname, paperNum, anonymous, dayColor);
 
   const displayName = anonymous ? "익명의 산타" : senderNickname;
   const effectiveDayColor = dayColor || 0;

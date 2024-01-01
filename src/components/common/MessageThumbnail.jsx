@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { MessageThumbnailsSRC, MessagePapers } from "../../utils/MessagePapersSRC";
+import {
+  MessageThumbnailsSRC,
+  MessagePapers,
+} from "../../utils/MessagePapersSRC";
 import { PlaceLeftRow } from "../../styles/utils";
 import { SmallText } from "../../styles/text";
 
@@ -76,7 +79,7 @@ const TextArea = styled(PlaceLeftRow)`
 
 const MessageThumbnail = (props) => {
   const { day, paperNum, sender, onClick, originalIndex, active } = props;
-  console.log(active, originalIndex);
+  // console.log(active, originalIndex);
 
   // 요일에 따른 색상 매핑
   const dayColorMapping = {

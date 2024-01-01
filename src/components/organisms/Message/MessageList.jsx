@@ -36,14 +36,17 @@ const MessageList = ({ messageList, selectedDate, selectedDateForm }) => {
     // console.log("click", index);
     if (index !== activeIndex) {
       setActiveIndex(index);
+      dispatch(setSelectedMessageIndex(index));
+    }
+    if (index === 0) {
+      // console.log("click 0", index);
+      dispatch(setSelectedMessageIndex(index));
     }
   };
 
   useEffect(() => {
-    if (activeIndex !== -1) {
-      dispatch(setSelectedMessageIndex(activeIndex));
-    }
-  }, [activeIndex, dispatch]);
+    // dispatch(setSelectedMessageIndex(activeIndex));
+  }, [dispatch]);
 
   return (
     <>

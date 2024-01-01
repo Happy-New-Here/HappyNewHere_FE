@@ -90,7 +90,7 @@ const TodayQuestionText = ({ nickname, selectedDateForm }) => {
 };
 
 const TodayQuestion = ({ nickname, selectedDateForm }) => {
-  console.log("nickname", nickname);
+  // console.log("nickname", nickname);
   const isTest = false; // 테스트 모드 활성화
   const testDate = "2023-12-25"; // 테스트용 날짜 설정
   const useDate = calculateDate(selectedDateForm, isTest, testDate);
