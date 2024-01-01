@@ -1,11 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import {
-  PlaceCenter,
-  PlaceLeftRow,
-  PlaceLeftColumn,
-} from "../../../styles/utils";
+import { PlaceCenter, PlaceLeftRow, PlaceLeftColumn } from "../../../styles/utils";
 
 const TodayQuestionContainer = styled(PlaceLeftColumn)`
   width: 100%;
@@ -28,11 +24,7 @@ const QuestionNum = styled.span`
   font-size: 12px;
 `;
 
-const calculateDate = (
-  selectedDateForm,
-  isTest = false,
-  testDate = "2024-01-01"
-) => {
+const calculateDate = (selectedDateForm, isTest = false, testDate = "2024-01-01") => {
   const eventStartDate = new Date(2024, 0, 1); // 이벤트 시작 날짜<< 2024,0,1 여기 수정해야함
 
   let currentDate;
@@ -79,10 +71,7 @@ const TodayQuestionText = ({ nickname, selectedDateForm }) => {
       return <p>내가 아는 {receiverNickname} 님의 반전스러운 면?</p>;
     case 31:
       return (
-        <p>
-          곧 맞이할 새해를 기념해서 {receiverNickname} 님에게 하고싶은 말을
-          남겨주세요 :)
-        </p>
+        <p>곧 맞이할 새해를 기념해서 {receiverNickname} 님에게 하고싶은 말을 남겨주세요 :)</p>
       );
     default:
       return <p>장식을 눌러 편지를 확인해보세요!</p>;
@@ -113,7 +102,7 @@ const TodayQuestion = ({ nickname, selectedDateForm }) => {
       : todayDate === 30
       ? "여섯 번째 질문"
       : todayDate === 31
-      ? "마지막"
+      ? "마지막 질문"
       : "편지 확인하기";
 
   return (
@@ -122,10 +111,7 @@ const TodayQuestion = ({ nickname, selectedDateForm }) => {
         <Today>{formattedToday}</Today>
         <QuestionNum>#{questionNum}</QuestionNum>
       </TodayAndQuestionNum>
-      <TodayQuestionText
-        nickname={nickname}
-        selectedDateForm={selectedDateForm}
-      />
+      <TodayQuestionText nickname={nickname} selectedDateForm={selectedDateForm} />
     </TodayQuestionContainer>
   );
 };
