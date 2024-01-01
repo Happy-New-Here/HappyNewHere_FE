@@ -24,8 +24,8 @@ export const MessageContainer = styled(PlaceTopColumn)`
 `;
 
 export const CancelIcon = styled.img`
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
   position: relative;
   top: 0;
   right: 0;
@@ -38,10 +38,10 @@ export const CancelIcon = styled.img`
   //   filter: invert(100%);
   // }
 
-  @media (min-width: 768px) {
-    width: 12px;
-    height: 12px;
-  }
+  // @media (min-width: 768px) {
+  //   width: 12px;
+  //   height: 12px;
+  // }
 `;
 
 export const ReceiverOrSender = styled.p`
