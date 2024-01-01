@@ -23,11 +23,7 @@ import { SmallText } from "../../styles/text";
 import styled from "styled-components";
 import axios from "axios";
 import { BASE_URL } from "../../utils/URL";
-import {
-  setCalendar,
-  setMessagesList,
-  setOwner,
-} from "../../store/calendar-slice";
+import { setCalendar, setMessagesList, setOwner } from "../../store/calendar-slice";
 import TodayQuestionOrganism from "../organisms/Message/TodayQuestionOrganism";
 import { ContentLayoutMobile } from "../organisms/Home/ContentLayoutMobile";
 
@@ -51,12 +47,8 @@ const HomeTemplate = () => {
   const nickname = useSelector((state) => state.user.nickname);
   const currentPage = useSelector((state) => state.currentPage);
   const userId = useSelector((state) => state.user.userId);
-  const selectedMessageList = useSelector(
-    (state) => state.calendar.messagesList
-  );
-  const selectedMessageIndex = useSelector(
-    (state) => state.calendar.selectedMessageIndex
-  );
+  const selectedMessageList = useSelector((state) => state.calendar.messagesList);
+  const selectedMessageIndex = useSelector((state) => state.calendar.selectedMessageIndex);
 
   const urlRef = useRef(null);
 
@@ -139,12 +131,7 @@ const HomeTemplate = () => {
         {!props.isPc && <GiftBox />}
         {props.isPc ? (
           <>
-            <SmallText
-              fontSize="18px"
-              fontWeight="600"
-              lineHeight="24px"
-              textAlign="center"
-            >
+            <SmallText fontSize="18px" fontWeight="600" lineHeight="24px" textAlign="center">
               메시지함은 <br /> 1월 1일에 열 수 있어요!
             </SmallText>
             <SmallText
@@ -160,12 +147,7 @@ const HomeTemplate = () => {
           </>
         ) : (
           <>
-            <SmallText
-              fontSize="20px"
-              fontWeight="600"
-              lineHeight="40px"
-              textAlign="center"
-            >
+            <SmallText fontSize="20px" fontWeight="600" lineHeight="40px" textAlign="center">
               메시지함은 1월 1일에 열 수 있어요!
             </SmallText>
             <SmallText
@@ -244,10 +226,6 @@ const HomeTemplate = () => {
           <Header />
           <ContentLayoutMobile>
             <Profile />
-            <TodayQuestionOrganism
-              nickname={nickname} // 현대 오류 발생
-              selectedDateForm={selectedDate}
-            />
             <Calendar.wrapper>
               {weekDates.map((date, index) => (
                 <Calendar.item
@@ -258,7 +236,10 @@ const HomeTemplate = () => {
                 />
               ))}
             </Calendar.wrapper>
-
+            <TodayQuestionOrganism
+              nickname={nickname} // 현대 오류 발생
+              selectedDateForm={selectedDate}
+            />
             {/* 오픈일 이후 메시지 목록 공개 */}
             {today > targetDate ? <AfterOpen /> : <BeforeOpen isPc={isPc} />}
             {selectedMessageIndex !== null ? <MessageViewOrganism /> : null}
