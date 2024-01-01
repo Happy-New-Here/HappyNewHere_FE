@@ -18,7 +18,7 @@ const Header = () => {
     query: "(min-width:768px)",
   });
 
-  console.log("isPC", isPC);
+  // console.log("isPC", isPC);
 
   return (
     <HeaderLayout>

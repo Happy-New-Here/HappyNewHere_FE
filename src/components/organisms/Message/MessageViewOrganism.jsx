@@ -11,6 +11,8 @@ const MessageViewOrganism = () => {
     (state) => state.calendar.selectedMessageIndex
   );
 
+  console.log("selectedMessageIndex", selectedMessageIndex);
+
   return (
     <MessageView
       context={selectedMessageList[selectedMessageIndex]?.context}
