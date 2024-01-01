@@ -9,6 +9,8 @@ const MessageViewOrganism = () => {
 
   console.log("selectedMessageIndex", selectedMessageIndex);
 
+  console.log("selectedMessageIndex", selectedMessageIndex);
+
   return (
     <MessageView
       context={selectedMessageList[selectedMessageIndex]?.context}

@@ -40,7 +40,7 @@ const TextArea = styled(PlaceLeftRow)`
 
 const MessageThumbnail = (props) => {
   const { day, paperNum, sender, onClick, originalIndex, active } = props;
-  console.log(active, originalIndex);
+  // console.log(active, originalIndex);
 
   // 요일에 따른 색상 매핑
   const dayColorMapping = {

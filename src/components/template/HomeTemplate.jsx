@@ -96,7 +96,6 @@ const HomeTemplate = () => {
         console.error("Error fetching user messages:", error);
       }
     };
-
     // 컴포넌트가 마운트될 때 최초 요청 시작
     fetchData();
   }, [userId]);
@@ -230,7 +229,7 @@ const HomeTemplate = () => {
                 <GiftBox />
               )}
 
-              {selectedMessageIndex ? <MessageViewOrganism /> : null}
+              {selectedMessageIndex !== null ? <MessageViewOrganism /> : null}
             </Center>
           </ContentLayout>
 
@@ -262,7 +261,7 @@ const HomeTemplate = () => {
 
             {/* 오픈일 이후 메시지 목록 공개 */}
             {today > targetDate ? <AfterOpen /> : <BeforeOpen isPc={isPc} />}
-            {selectedMessageIndex ? <MessageViewOrganism /> : null}
+            {selectedMessageIndex !== null ? <MessageViewOrganism /> : null}
           </ContentLayoutMobile>
 
           <Footer />

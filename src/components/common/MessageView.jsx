@@ -11,6 +11,7 @@ import {
   ReceiverOrSender,
   MessageText,
 } from "../../styles/messageStyles";
+import { setIsMessageViewVisible } from "../../store/isMessageViewVisibleSlice";
 
 const TextArea = styled.p`
   width: 100%;
@@ -39,12 +40,12 @@ const TextArea = styled.p`
 `;
 
 const MessageView = ({ context, senderNickname, paperNum, anonymous, day }) => {
-  console.log("test: ", context, senderNickname, paperNum, anonymous, day);
+  // console.log("test: ", context, senderNickname, paperNum, anonymous, day);
   const displayName = anonymous ? "익명의 산타" : senderNickname;
-
+  
   // MessageContainer height width에 따라 동적 적용
   const messageContainerRef = useRef(null);
-
+  
   useEffect(() => {
     const messageContainer = messageContainerRef.current;
     const width = messageContainer.offsetWidth;
@@ -53,12 +54,17 @@ const MessageView = ({ context, senderNickname, paperNum, anonymous, day }) => {
   }, []);
 
   const dispatch = useDispatch();
-
+  
   const handleCancelClick = () => {
-    //   dispatch(setIsMessageWriteVisible(false));
     // 메시지뷰어 꺼지고 메시지리스트 다시 나오게
+    dispatch(setIsMessageViewVisible(false));
   };
 
+  const isMessageViewVisible = useSelector(
+    (state) => state.isMessageViewVisible.messageViewVisible
+  );
+//   console.log("isMessageViewVisible", isMessageViewVisible);
+  
   const dayColorMapping = {
     0: "Red", // 일
     1: "Navy", // 월
@@ -72,21 +78,29 @@ const MessageView = ({ context, senderNickname, paperNum, anonymous, day }) => {
   const imageSRC = MessagePapers[dayColor]?.[paperNum] || MessagePapers["Navy"][0]; // 기본값으로 NavyPuppy
 
   return (
-    <StyledMessage>
-      <CancelIcon src={cancelIcon} alt="cancelIcon" onClick={handleCancelClick} />
+    <div>
+      {isMessageViewVisible && (
+        <StyledMessage>
+          <CancelIcon
+            src={cancelIcon}
+            alt="cancelIcon"
+            onClick={handleCancelClick}
+          />
 
-      <MessageContainer
-        ref={messageContainerRef}
-        // day={dayColor}
-        // paperNum={paperNum}
-        src={imageSRC}
-      >
-        <MessageText fontColor="#000000">
-          <TextArea fontColor="#000000">{context}</TextArea>
-          <ReceiverOrSender>From. {displayName}</ReceiverOrSender>
-        </MessageText>
-      </MessageContainer>
-    </StyledMessage>
+          <MessageContainer
+            ref={messageContainerRef}
+            // day={dayColor}
+            // paperNum={paperNum}
+            src={imageSRC}
+          >
+            <MessageText fontColor="#000000">
+              <TextArea fontColor="#000000">{context}</TextArea>
+              <ReceiverOrSender>From. {displayName}</ReceiverOrSender>
+            </MessageText>
+          </MessageContainer>
+        </StyledMessage>
+      )}
+    </div>
   );
 };
 
