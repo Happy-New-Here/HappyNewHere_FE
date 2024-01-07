@@ -36,17 +36,19 @@ http://happynewhere.kro.kr/
 ## 아키텍쳐
 
 ### 웹서버 아키텍처
-![전체아키텍쳐](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/fc94f8b0-1c88-4272-a675-703b90d410cc)
-
+<div align="center">
+ 
+ ![전체아키텍쳐](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/33a13f79-577e-4930-94c5-a51e444c436a)
+</div>
 
 ### 유저 플로우
 
 
 ### 소스 디렉토리
-```
-
-```
-
+<div align="center">
+ 
+![프론트아키텍쳐_black](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/267e0011-3d08-4701-9428-3fe70aff2022)
+</div>
 ---
 
 ## 프로젝트 시작 (로컬)
@@ -84,36 +86,42 @@ http://happynewhere.kro.kr/
 ### Environment
 <div>
   
- <img src="https://img.shields.io/badge/visualstudiocode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white">
- <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+ <img src="https://img.shields.io/badge/visualstudiocode-007ACC?style=for-the-badgestyle=flat-squaret&logo=visualstudiocode&logoColor=white">
+ <img src="https://img.shields.io/badge/github-181717?style=for-the-badgestyle=flat-squaret&logo=github&logoColor=white">
 
 </div>
 
 ### Config
 
-<img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white">
+<img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badgestyle=flat-squaretlogo=npm&logoColor=white">
 
 
 ### Development
 
 <div>
- <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white">
- <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white">
- <img src="https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white">
- <img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white">
- <img src="https://img.shields.io/badge/googlemaps-4285F4?style=for-the-badge&logo=googlemaps&logoColor=white">
- <img src="https://img.shields.io/badge/tensorflow.js-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white">
- <img src="https://img.shields.io/badge/zxing-181717?style=for-the-badge&logo=&logoColor=white">
+ <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badgestyle=flat-squaret&logo=react&logoColor=white">
+ <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badgestyle=flat-squaret&logo=vite&logoColor=white">
+ <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badgestyle=flat-squaret&logo=redux&logoColor=white">
+ <img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badgestyle=flat-squaret&logo=axios&logoColor=white">
+ <img src="https://img.shields.io/badge/Tailwindcss-06B6D4?style=for-the-badgestyle=flat-squaret&logo=styledcomponents&logoColor=white">
+ <img src="https://img.shields.io/badge/Style&ndash;components-DB7093?style=for-the-badgestyle=flat-squaret&logo=styledcomponents&logoColor=white">
+
 </div>
 
 
 ### Deploy
-<img src="https://img.shields.io/badge/netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white">
+<div>
+ <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badgestyle=flat-squaret&logo=nginx&logoColor=white">
+ <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badgestyle=flat-squaret&logo=amazonaws&logoColor=white">
+</div>
 
 ### Communication
 <div>
- <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
- <img src="https://img.shields.io/badge/googlemeet-00897B?style=for-the-badge&logo=googlemeet&logoColor=white"> 
+ <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badgestyle=flat-squaret&logo=discord&logoColor=white">
+ <img src="https://img.shields.io/badge/googlemeet-00897B?style=for-the-badgestyle=flat-squaret&logo=googlemeet&logoColor=white"> 
+ <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badgestyle=flat-squaret&logo=notion&logoColor=white">
+ <img src="https://img.shields.io/badge/Github&ndash;project-181717?style=for-the-badgestyle=flat-squaret&logo=github&logoColor=white">
+ <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badgestyle=flat-squaret&logo=figma&logoColor=white">
 </div>
 
 
@@ -130,26 +138,21 @@ http://happynewhere.kro.kr/
   ### 홈 Mobile
   <img src="https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/d18c7c05-0587-4962-81f5-a0518321f60a" width="300">
   <img src="https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/7e359fed-243d-4cf5-b9dd-fd4df5dbdd77" width="300">
-<!--   ![Home_mobile](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/d18c7c05-0587-4962-81f5-a0518321f60a)
-  ![Home2_mobile](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/7e359fed-243d-4cf5-b9dd-fd4df5dbdd77) -->
 
 
   ### 도움말 PC / Mobile
-  ![manual](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/f425407b-0e44-4494-8aaf-b02d82eadafa)
-  <img src="https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/f425407b-0e44-4494-8aaf-b02d82eadafa" height="300">
-  <img src="https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/d1a3d038-461d-4bda-8b78-d31163749777" width="300">
-<!--   ![manual_mobile](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/d1a3d038-461d-4bda-8b78-d31163749777) -->
+  <img src="https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/f425407b-0e44-4494-8aaf-b02d82eadafa" width="1200">
+<!--   <img src="https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/d1a3d038-461d-4bda-8b78-d31163749777" width="300"> -->
 
   ### 검색 PC
   ![Search](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/0642a020-dda8-4185-ba86-e84f99bdc00c)
-  ### 검색 Mobile
-  ![Search_mobile](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/7bb40d1e-8bd9-4cee-ad97-c8dbe2c64c89)
-
-
+  
   ### 메세지 쓰기 PC
   ![wrtting](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/ce5a2be5-50c7-43d3-8c01-ba843e472a97)
-  ### 메세지 쓰기 Mobile
-  ![wrtting_mobile](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/a1d82d9b-1ba5-4164-a5f1-db7d66d84438)
+  
+  ### 검색 / 메세지 쓰기 Mobile
+  <img src="https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/7bb40d1e-8bd9-4cee-ad97-c8dbe2c64c89" width="300">
+  <img src="https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/a1d82d9b-1ba5-4164-a5f1-db7d66d84438" width="300">
 
 
 </div>
