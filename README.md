@@ -104,7 +104,7 @@ http://happynewhere.kro.kr/
  <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badgestyle=flat-squaret&logo=redux&logoColor=white">
  <img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badgestyle=flat-squaret&logo=axios&logoColor=white">
  <img src="https://img.shields.io/badge/Tailwindcss-06B6D4?style=for-the-badgestyle=flat-squaret&logo=styledcomponents&logoColor=white">
- <img src="https://img.shields.io/badge/Style&ndash;components-DB7093?style=for-the-badgestyle=flat-squaret&logo=styledcomponents&logoColor=white">
+ <img src="https://img.shields.io/badge/Styled&ndash;components-DB7093?style=for-the-badgestyle=flat-squaret&logo=styledcomponents&logoColor=white">
 
 </div>
 
