@@ -1,13 +1,26 @@
-# HappyNewHere
+# 🎄Merry christmas and a Happy new Here🎄
 
 ## 소개
 <br>
 
 > 가장 추운 계절에 만나는 가장 따뜻한 시작, 해피뉴히어 입니다.
 
-7일 간의 마음을 모아 전합니다.
+안녕하세요 여러분!!
+끝나지 않을 것만 같던 2학기도 드디어 끝이 나고 새해가 다가옵니다! 여러분의 2023년은 어떠셨나요?
 
-해피뉴히어에서 따뜻한 마음을 전해주세요.
+2023년을 일주일만 남겨둔 시점, 여러분께 더 의미 있는 연말을 선물해드리기 위해 함께 재미있게 참여 가능한 이벤트 하나를 준비했습니다☺️
+
+🎁 25일(크리스마스)부터 매일 하나씩 제공되는 질문에 대한 답을 친구에게 편지로 써 주세요!
+🎁 25일부터 31일까지, 일주일 동안 매일 한 통씩 차곡차곡 쌓인 편지들은 1월 1일에 모두 열어 볼 수 있습니다!
+🎁 일주일 동안 친구들과 함께 서비스를 즐긴 후, 간단한 피드백을 구글 폼으로 남겨 주세요!
+🎁 피드백 참여 후 서비스 이용 화면(ex. 크리스마스 캘린더 화면)을 캡처해 스토리에 @happy_new_here을 태그하여 올려 주세요😊
+
+🍗 BBQ 황금올리브치킨(1명), 🍨배스킨라빈스 파인트(1명), 스타벅스 커피쿠폰(3명)
+
+그럼 해피뉴히어 서비스와 함께 즐거운 연말 되었으면 좋겠습니다🥰
+
+👇내 크리스마스 우편함 만들러 가기
+http://happynewhere.kro.kr/
 
 
 
@@ -107,22 +120,38 @@ http://happynewhere.kro.kr/
 ---
 
 ## 프로젝트 페이지 
-
-<p align="center">
-  ### 홈 PC
+<div align="center">
+ 
+### 홈 PC
   
   ![Home](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/95a7f5c0-a7e1-49d3-b14f-397b8d08b1e0 )
-  
   ![Home2](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/cf42d13b-4336-41d5-8583-128ed42adbdd )
 
-  ### 도움말 PC
+  ### 홈 Mobile
+  <img src="https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/d18c7c05-0587-4962-81f5-a0518321f60a" width="300">
+  <img src="https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/7e359fed-243d-4cf5-b9dd-fd4df5dbdd77" width="300">
+<!--   ![Home_mobile](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/d18c7c05-0587-4962-81f5-a0518321f60a)
+  ![Home2_mobile](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/7e359fed-243d-4cf5-b9dd-fd4df5dbdd77) -->
+
+
+  ### 도움말 PC / Mobile
   ![manual](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/f425407b-0e44-4494-8aaf-b02d82eadafa)
+  <img src="https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/f425407b-0e44-4494-8aaf-b02d82eadafa" height="300">
+  <img src="https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/d1a3d038-461d-4bda-8b78-d31163749777" width="300">
+<!--   ![manual_mobile](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/d1a3d038-461d-4bda-8b78-d31163749777) -->
+
+  ### 검색 PC
+  ![Search](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/0642a020-dda8-4185-ba86-e84f99bdc00c)
+  ### 검색 Mobile
+  ![Search_mobile](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/7bb40d1e-8bd9-4cee-ad97-c8dbe2c64c89)
 
 
   ### 메세지 쓰기 PC
   ![wrtting](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/ce5a2be5-50c7-43d3-8c01-ba843e472a97)
+  ### 메세지 쓰기 Mobile
+  ![wrtting_mobile](https://github.com/Happy-New-Here/HappyNewHere_FE/assets/96682768/a1d82d9b-1ba5-4164-a5f1-db7d66d84438)
 
 
-</p>
+</div>
 
 ---
